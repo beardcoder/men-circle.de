@@ -1,5 +1,5 @@
 @php
-  $image = TwillImage::make($block, 'cover');
+  $image = TwillImage::make($block, 'hero');
   $image->preset([
       'crop' => 'default',
       'sizes' => '(max-width: 1023px) 100vw, (min-width: 1023px)',

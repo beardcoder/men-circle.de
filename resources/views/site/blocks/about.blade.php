@@ -1,7 +1,7 @@
 @php
   $image = TwillImage::make($block, 'cover');
   $image->preset([
-      'crop' => 'default',
+      'crop' => 'flexible',
       'sizes' => '(max-width: 1023px) 100vw, (min-width: 1023px)',
       'sources' => [
           [
@@ -11,7 +11,7 @@
               'media_query' => '(max-width: 420px)',
           ],
           [
-              'crop' => 'default',
+              'crop' => 'flexible',
               'media_query' => '(min-width: 420px) and (max-width: 1023px)',
           ],
       ],
