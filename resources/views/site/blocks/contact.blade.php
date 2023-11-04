@@ -1,18 +1,25 @@
 <section
-  class="bg-white dark:bg-stone-900"
+  class="bg-stone-100 dark:bg-stone-900"
   id="contact"
 >
   <div class="mx-auto max-w-screen-md px-4 py-8 lg:py-16">
-    <h2 class="mb-4 text-center text-4xl font-extrabold tracking-tight text-stone-900 dark:text-white">
+    <h2
+      class="mb-4 text-center text-4xl font-extrabold tracking-tight text-stone-900 dark:text-white"
+      data-apper
+    >
       {!! $block->input('title') !!}
     </h2>
     @if ($block->input('text'))
-      <p class="mb-8 text-center font-light text-stone-500 dark:text-stone-400 sm:text-xl lg:mb-16">
+      <p
+        class="mb-8 text-center font-light text-stone-500 dark:text-stone-400 sm:text-xl lg:mb-16"
+        data-apper
+      >
         {!! $block->input('text') !!}
       </p>
     @endif
     <form
       class="space-y-8"
+      data-apper
       action="#"
     >
       <div>
