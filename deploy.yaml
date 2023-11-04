@@ -1,0 +1,45 @@
+import:
+  - recipe/laravel.php
+
+config:
+  repository: 'https://github.com/beardcoder/men-circle.de.git'
+  branch: main
+  git_ssh_command: ssh
+  composer_options: ' --no-dev --verbose --prefer-dist --no-progress --no-interaction --optimize-autoloader'
+  keep_releases: 2
+
+hosts:
+  host.letsbenow.de:
+    remote_user: markus
+    deploy_path: '~/html/men-circle.de'
+
+tasks:
+  deploy:
+    - deploy:info
+    - deploy:setup
+    - deploy:lock
+    - deploy:release
+    - deploy:update_code
+    - deploy:shared
+    - deploy:vendors
+
+    - artisan:storage:link
+    - artisan:view:cache
+    - artisan:config:cache
+    - artisan:route:cache
+    - artisan:event:cache
+    - artisan:migrate
+
+    - npm:install
+    - npm:build
+
+    - deploy:publish
+  npm:install:
+    - run: "cd {{release_path}} && npm install --prefer-offline --no-audit --progress=false"
+  npm:build:
+    - run: "cd {{release_path}} && npm run build"
+  build:
+    - run: uptime
+
+after:
+  deploy:failed: deploy:unlock
