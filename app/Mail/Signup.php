@@ -13,16 +13,14 @@ class Signup extends Mailable
 {
   use Queueable, SerializesModels;
 
-  private $name;
-  private $email;
-
   /**
    * Create a new message instance.
    */
-  public function __construct(string $name, string $email)
-  {
-    $this->name = $name;
-    $this->email = $email;
+  public function __construct(
+    private string $name,
+    private string $email,
+    private string $token,
+  ) {
   }
 
   /**
@@ -47,6 +45,7 @@ class Signup extends Mailable
       with: [
         'name' => $this->name,
         'email' => $this->email,
+        'token' => $this->token,
       ],
     );
   }

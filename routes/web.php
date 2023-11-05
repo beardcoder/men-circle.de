@@ -23,9 +23,16 @@ Route::get('{slug}', [
   'show',
 ])->name('frontend.page');
 
-Route::post('mail/signup', [
-  \App\Http\Controllers\MailController::class,
+Route::post('subscription/signup', [
+  \App\Http\Controllers\SubscriptionController::class,
   'signup',
 ])
   ->middleware(ProtectAgainstSpam::class)
-  ->name('mail.signup');
+  ->name('subscription.signup');
+
+Route::get('subscription/optin', [
+  \App\Http\Controllers\SubscriptionController::class,
+  'optin',
+])
+  ->middleware(ProtectAgainstSpam::class)
+  ->name('subscription.optin');

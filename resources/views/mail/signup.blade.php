@@ -13,12 +13,12 @@
     >
       <h2 style="color: #333333; margin-bottom: 20px; font-weight: 600;">Hallo,</h2>
 
-      <p style="color: #777777; margin-top: 0;">Vielen dank für deine Nachricht hier der Link zu meiner Telegram Gruppe:
+      <p style="color: #777777; margin-top: 0;">Vielen dank für deine Anmeldung bitte bestätige deine E-Mail Adresse:
       </p>
       <a
-        href="https://t.me/+J8e6gcycMLs2YTIy"
+        href="{{ route('subscription.optin', ['token' => $token]) }}"
         style="color: #777777; margin-top: 0;"
-      >https://t.me/+J8e6gcycMLs2YTIy</p>
+      >{{ route('subscription.optin', ['token' => $token]) }}</p>
     </div>
   </div>
 </body>

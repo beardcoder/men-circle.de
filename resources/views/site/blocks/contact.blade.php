@@ -20,7 +20,7 @@
     <form
       class="space-y-8"
       data-apper
-      action="{{ route('mail.signup') }}"
+      action="{{ route('subscription.signup') }}"
       method="POST"
     >
       @csrf
