@@ -29,7 +29,10 @@ class Signup extends Mailable
   public function envelope(): Envelope
   {
     return new Envelope(
-      from: new Address(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME')),
+      from: new Address(
+        env('MAIL_FROM_ADDRESS', 'info@mens-circle.de'),
+        env('MAIL_FROM_NAME', 'Men\'s Circle'),
+      ),
       replyTo: [new Address($this->email, $this->name)],
       subject: 'Order Shipped',
     );
