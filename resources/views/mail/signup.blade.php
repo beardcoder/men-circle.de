@@ -13,13 +13,12 @@
     >
       <h2 style="color: #333333; margin-bottom: 20px; font-weight: 600;">Hallo,</h2>
 
-      <p style="color: #777777; margin-top: 0;">Du hast eine neue Nachricht erhalten. Hier sind die Details:</p>
-
-      <h5 style="margin-top: 30px; color: #555555; margin-bottom: 10px; font-weight: 500;">Name</h5>
-      <p style="color: #777777; margin-top: 5px;">{{ $name }}</p>
-
-      <h5 style="margin-top: 20px; color: #555555; margin-bottom: 10px; font-weight: 500;">Email</h5>
-      <p style="color: #777777; margin-top: 5px;">{{ $email }}</p>
+      <p style="color: #777777; margin-top: 0;">Vielen dank für deine Nachricht hier der Link zu meiner Telegram Gruppe:
+      </p>
+      <a
+        href="https://t.me/+J8e6gcycMLs2YTIy"
+        style="color: #777777; margin-top: 0;"
+      >https://t.me/+J8e6gcycMLs2YTIy</p>
     </div>
   </div>
 </body>
