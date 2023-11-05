@@ -2,7 +2,7 @@ import:
   - recipe/laravel.php
 
 config:
-  repository: 'https://github.com/beardcoder/men-circle.de.git'
+  repository: 'https://github.com/beardcoder/mens-circle.de.git'
   branch: main
   git_ssh_command: ssh
   composer_options: ' --no-dev --verbose --prefer-dist --no-progress --no-interaction --optimize-autoloader'
@@ -11,7 +11,7 @@ config:
 hosts:
   host.letsbenow.de:
     remote_user: markus
-    deploy_path: '~/html/men-circle.de'
+    deploy_path: '~/html/mens-circle.de'
 
 tasks:
   deploy:

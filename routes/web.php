@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Spatie\Honeypot\ProtectAgainstSpam;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [
-    \App\Http\Controllers\PageDisplayController::class,
-    'home',
+  \App\Http\Controllers\PageDisplayController::class,
+  'home',
 ])->name('frontend.home');
 Route::get('{slug}', [
-    \App\Http\Controllers\PageDisplayController::class,
-    'show',
+  \App\Http\Controllers\PageDisplayController::class,
+  'show',
 ])->name('frontend.page');
+
+Route::post('mail/signup', [
+  \App\Http\Controllers\MailController::class,
+  'signup',
+])
+  ->middleware(ProtectAgainstSpam::class)
+  ->name('mail.signup');

@@ -20,8 +20,11 @@
     <form
       class="space-y-8"
       data-apper
-      action="#"
+      action="{{ route('mail.signup') }}"
+      method="POST"
     >
+      @csrf
+      @honeypot
       <div>
         <label
           class="mb-2 block text-sm font-medium text-stone-900 dark:text-stone-300"
@@ -30,6 +33,7 @@
         <input
           class="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light block w-full border border-stone-300 bg-stone-50 p-2.5 text-sm text-stone-900 shadow-sm dark:border-stone-600 dark:bg-stone-700 dark:text-white dark:placeholder-stone-400"
           id="name"
+          name="name"
           type="text"
           placeholder="Christian Baumer"
           required
@@ -43,6 +47,7 @@
         <input
           class="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light block w-full border border-stone-300 bg-stone-50 p-2.5 text-sm text-stone-900 shadow-sm dark:border-stone-600 dark:bg-stone-700 dark:text-white dark:placeholder-stone-400"
           id="email"
+          name="email"
           type="email"
           placeholder="christian.baumer@men-circle.de"
           required

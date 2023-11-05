@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "311cb00aabe4cb78117d161ec5d221f3",
+  "content-hash": "2ba1b14ef191a8a452e52e7c05213ea6",
   "packages": [
     {
       "name": "area17/twill",
@@ -4854,6 +4854,67 @@
       "time": "2021-07-07T17:06:15+00:00"
     },
     {
+      "name": "predis/predis",
+      "version": "v2.2.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/predis/predis.git",
+        "reference": "b1d3255ed9ad4d7254f9f9bba386c99f4bb983d1"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/predis/predis/zipball/b1d3255ed9ad4d7254f9f9bba386c99f4bb983d1",
+        "reference": "b1d3255ed9ad4d7254f9f9bba386c99f4bb983d1",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.2 || ^8.0"
+      },
+      "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.3",
+        "phpstan/phpstan": "^1.9",
+        "phpunit/phpunit": "^8.0 || ~9.4.4"
+      },
+      "suggest": {
+        "ext-relay": "Faster connection with in-memory caching (>=0.6.2)"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "Predis\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Till Krüss",
+          "homepage": "https://till.im",
+          "role": "Maintainer"
+        }
+      ],
+      "description": "A flexible and feature-complete Redis client for PHP.",
+      "homepage": "http://github.com/predis/predis",
+      "keywords": [
+        "nosql",
+        "predis",
+        "redis"
+      ],
+      "support": {
+        "issues": "https://github.com/predis/predis/issues",
+        "source": "https://github.com/predis/predis/tree/v2.2.2"
+      },
+      "funding": [
+        {
+          "url": "https://github.com/sponsors/tillkruss",
+          "type": "github"
+        }
+      ],
+      "time": "2023-09-13T16:42:03+00:00"
+    },
+    {
       "name": "psr/cache",
       "version": "3.0.0",
       "source": {
@@ -5787,6 +5848,82 @@
         }
       ],
       "time": "2023-02-01T08:53:25+00:00"
+    },
+    {
+      "name": "spatie/laravel-honeypot",
+      "version": "4.3.4",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/spatie/laravel-honeypot.git",
+        "reference": "a888d2d7a7c841c4f0578b4f41c5d714e34c51fb"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/spatie/laravel-honeypot/zipball/a888d2d7a7c841c4f0578b4f41c5d714e34c51fb",
+        "reference": "a888d2d7a7c841c4f0578b4f41c5d714e34c51fb",
+        "shasum": ""
+      },
+      "require": {
+        "illuminate/contracts": "^8.0|^9.0|^10.0",
+        "illuminate/encryption": "^8.0|^9.0|^10.0",
+        "illuminate/http": "^8.0|^9.0|^10.0",
+        "illuminate/support": "^8.0|^9.0|^10.0",
+        "illuminate/validation": "^8.0|^9.0|^10.0",
+        "nesbot/carbon": "^2.0",
+        "php": "^8.0",
+        "spatie/laravel-package-tools": "^1.9",
+        "symfony/http-foundation": "^5.1.2|^6.0"
+      },
+      "require-dev": {
+        "livewire/livewire": "^2.10",
+        "orchestra/testbench": "^6.23|^7.0|^8.0",
+        "pestphp/pest-plugin-livewire": "^1.0",
+        "phpunit/phpunit": "^9.4",
+        "spatie/pest-plugin-snapshots": "^1.1",
+        "spatie/phpunit-snapshot-assertions": "^4.2",
+        "spatie/test-time": "^1.2.1"
+      },
+      "type": "library",
+      "extra": {
+        "laravel": {
+          "providers": [
+            "Spatie\\Honeypot\\HoneypotServiceProvider"
+          ]
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Spatie\\Honeypot\\": "src"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Freek Van der Herten",
+          "email": "freek@spatie.be",
+          "homepage": "https://spatie.be",
+          "role": "Developer"
+        }
+      ],
+      "description": "Preventing spam submitted through forms",
+      "homepage": "https://github.com/spatie/laravel-honeypot",
+      "keywords": [
+        "laravel-honeypot",
+        "spatie"
+      ],
+      "support": {
+        "source": "https://github.com/spatie/laravel-honeypot/tree/4.3.4"
+      },
+      "funding": [
+        {
+          "url": "https://spatie.be/open-source/support-us",
+          "type": "custom"
+        }
+      ],
+      "time": "2023-07-19T19:23:12+00:00"
     },
     {
       "name": "spatie/laravel-package-tools",
