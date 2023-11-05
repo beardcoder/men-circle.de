@@ -18,7 +18,7 @@
       </p>
     @endif
     <form
-      class="space-y-8"
+      class="mx-auto max-w-md space-y-8"
       data-apper
       action="{{ route('subscription.signup') }}"
       method="POST"
@@ -49,15 +49,16 @@
           id="email"
           name="email"
           type="email"
-          placeholder="christian.baumer@men-circle.de"
+          placeholder="christian.baumer@mens-circle.de"
           required
         >
       </div>
 
       <x-button
+        class="block w-full"
         type="submit"
-        size="lg"
-      >Send message</x-button>
+        size="md"
+      >Jetzt Anmelden</x-button>
     </form>
   </div>
 </section>

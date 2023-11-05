@@ -1,8 +1,11 @@
 @php
   $realsize = 'px-5 py-2.5 text-sm';
   $type = $attributes['type'] ?? 'button';
-  $size = $attributes['size'] ?? 'lg';
+  $size = $attributes['size'] ?? 'md';
   switch ($size) {
+      case 'md':
+          $realsize = 'px-5 py-2.5 text-sm';
+          break;
       case 'lg':
           $realsize = 'px-5 py-3 text-base';
           break;
