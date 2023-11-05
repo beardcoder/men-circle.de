@@ -13,7 +13,7 @@
     "area17/twill-image": "^1.0",
     "artesaos/seotools": "^1.2",
     "deployer/deployer": "^7.3",
-    "guzzlehttp/guzzle": "^7.2",
+    "guzzlehttp/guzzle": "^7.8",
     "laravel/framework": "^10.10",
     "laravel/sanctum": "^3.3",
     "laravel/tinker": "^2.8",

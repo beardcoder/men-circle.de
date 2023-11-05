@@ -6,7 +6,7 @@ use App\Mail\Signup;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Facades\Http;
 
 class SubscriptionController extends Controller
 {
@@ -17,30 +17,18 @@ class SubscriptionController extends Controller
       'name' => 'required',
     ]);
 
-    $existing = Subscription::where('email', $request->get('email'))->first();
+    $response = Http::withBasicAuth(
+      config('listmonk.user'),
+      config('listmonk.password'),
+    )
+      ->post(config('listmonk.url') . '/api/subscribers', [
+        'email' => $request->email,
+        'name' => $request->name,
+        'lists' => [intval(config('listmonk.list'))],
+      ])
+      ->json();
 
-    if (!$existing) {
-      $subscription = Subscription::create([
-        'name' => $request->get('name'),
-        'email' => $request->get('email'),
-        'token' => Uuid::uuid4()->toString(),
-      ]);
-    } else {
-      $subscription = $existing;
-      $subscription->token = Uuid::uuid4()->toString();
-    }
-
-    $subscription->save();
-
-    Mail::to($request->get('email'))->send(
-      new Signup(
-        $subscription->name,
-        $subscription->email,
-        $subscription->token,
-      ),
-    );
-
-    return back()->with('success');
+    return back()->with('success', $response);
   }
 
   public function optin(Request $request)
