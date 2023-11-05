@@ -15,6 +15,16 @@
     name="viewport"
     content="width=device-width, initial-scale=1"
   />
+  <link
+    type="image/svg+xml"
+    href="/favicon.svg"
+    rel="icon"
+  >
+  <link
+    type="image/png"
+    href="/favicon.png"
+    rel="icon"
+  >
   @vite('resources/css/app.css')
 </head>
 
