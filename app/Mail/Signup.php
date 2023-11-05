@@ -34,7 +34,7 @@ class Signup extends Mailable
         env('MAIL_FROM_NAME', 'Men\'s Circle'),
       ),
       replyTo: [new Address($this->email, $this->name)],
-      subject: 'Order Shipped',
+      subject: 'Men\'s Circle Anmeldung',
     );
   }
 
