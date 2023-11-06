@@ -28,11 +28,6 @@ class AppServiceProvider extends ServiceProvider
         ->forModule('pages')
         ->title('Seiten'),
     );
-    TwillNavigation::addLink(
-      NavigationLink::make()
-        ->forModule('subscriptions')
-        ->title('Anmeldungen'),
-    );
     TwillAppSettings::registerSettingsGroup(
       SettingsGroup::make()
         ->name('homepage')

@@ -29,10 +29,3 @@ Route::post('subscription/signup', [
 ])
   ->middleware(ProtectAgainstSpam::class)
   ->name('subscription.signup');
-
-Route::get('subscription/optin', [
-  \App\Http\Controllers\SubscriptionController::class,
-  'optin',
-])
-  ->middleware(ProtectAgainstSpam::class)
-  ->name('subscription.optin');

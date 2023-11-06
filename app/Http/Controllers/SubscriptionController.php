@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\Signup;
-use App\Models\Subscription;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Http;
 
 class SubscriptionController extends Controller
@@ -29,23 +26,5 @@ class SubscriptionController extends Controller
       ->json();
 
     return back()->with('success', $response);
-  }
-
-  public function optin(Request $request)
-  {
-    $subscription = Subscription::where(
-      'token',
-      $request->get('token'),
-    )->first();
-
-    if (!$subscription) {
-      return route('frontend.home');
-    }
-
-    $subscription->optin = true;
-    $subscription->token = null;
-    $subscription->save();
-
-    return view('site.subscription', ['item' => $subscription]);
   }
 }
