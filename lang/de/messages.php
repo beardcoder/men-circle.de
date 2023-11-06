@@ -11,4 +11,5 @@ return [
   'hero' => 'Hero',
   'name' => 'Name',
   'cover' => 'Cover Bild',
+  'footer' => 'Fußzeile',
 ];

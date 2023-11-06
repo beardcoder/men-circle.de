@@ -14,7 +14,9 @@
         height="500"
       />
     </a>
-    <p class="my-6">Some Text</p>
+    <p class="my-6">
+      {{ TwillAppSettings::get('homepage.homepage.footer') }}
+    </p>
     <ul class="mb-6 flex flex-wrap items-center justify-center dark:text-white">
       <li>
         <a

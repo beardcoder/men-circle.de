@@ -7,3 +7,8 @@
   label="Select the homepage"
   module-name="pages"
 />
+
+<x-twill::input
+  name="footer"
+  :label="__('messages.footer')"
+/>
