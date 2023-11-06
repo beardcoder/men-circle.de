@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubscriptionsTables extends Migration
+class MyCreateSubscriptionsTables extends Migration
 {
   public function up()
   {
