@@ -10,7 +10,7 @@
       <h2 class="mb-4 text-4xl font-extrabold tracking-tight text-stone-900 dark:text-white">
         {!! $block->input('title') !!}
       </h2>
-      <div class="format dark:format-invert max-w-3xl">
+      <div class="format lg:format-lg dark:format-invert max-w-3xl">
         {!! $block->input('text') !!}
       </div>
     </div>
