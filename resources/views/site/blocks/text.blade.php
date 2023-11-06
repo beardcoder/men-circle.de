@@ -1,5 +1,5 @@
 @php
-  $hasImage = $item->hasImage('text_image');
+  $hasImage = $block->hasImage('text_image');
 @endphp
 
 <section class="bg-white dark:bg-stone-900">
@@ -18,8 +18,8 @@
       <div class="mt-8">
         <img
           class="w-full"
-          src="{{ $item->image('text_image') }}"
-          alt="{{ $item->imageAltText('text_image') }}"
+          src="{{ $block->image('text_image') }}"
+          alt="{{ $block->imageAltText('text_image') }}"
         />
       </div>
     @endif
