@@ -19,13 +19,12 @@
     @endif
     <form
       class="mx-auto max-w-md space-y-8"
-      data-apper
       action="{{ route('subscription.signup') }}"
       method="POST"
     >
       @csrf
       @honeypot
-      <div>
+      <div data-apper>
         <label
           class="mb-2 block text-sm font-medium text-stone-900 dark:text-stone-300"
           for="name"
@@ -39,7 +38,7 @@
           required
         >
       </div>
-      <div>
+      <div data-apper>
         <label
           class="mb-2 block text-sm font-medium text-stone-900 dark:text-stone-300"
           for="email"
@@ -56,6 +55,7 @@
 
       <x-button
         class="block w-full"
+        data-apper
         type="submit"
         size="md"
       >Jetzt Anmelden</x-button>

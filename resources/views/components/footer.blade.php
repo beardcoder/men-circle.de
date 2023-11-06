@@ -21,20 +21,16 @@
       <li>
         <a
           class="mr-4 hover:underline md:mr-6"
-          href="/impressum"
-        >Impressum</a>
-      </li>
-      <li>
-        <a
-          class="mr-4 hover:underline md:mr-6"
-          href="#contact"
+          href="info@mens-circle.de"
         >Kontakt</a>
       </li>
       <li>
         <a
           class="mr-4 hover:underline md:mr-6"
           href="https://www.instagram.com/markus.sommer/"
-        >Instagram</a>
+        >
+          Instagram
+        </a>
       </li>
 
     </ul>
