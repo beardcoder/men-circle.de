@@ -21,7 +21,7 @@
       <li>
         <a
           class="mr-4 hover:underline md:mr-6"
-          href="info@mens-circle.de"
+          href="mailto:info@mens-circle.de"
         >Kontakt</a>
       </li>
       <li>
