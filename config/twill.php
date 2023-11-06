@@ -46,5 +46,13 @@ return [
         ],
       ],
     ],
+    'text_image' => [
+      'default' => [
+        [
+          'name' => 'default',
+          'ratio' => 0,
+        ],
+      ],
+    ],
   ],
 ];
