@@ -25,7 +25,6 @@
       'table',
   ]"
   :label="twillTrans('Text')"
-  :maxlength="200"
 />
 
 <x-twill::medias
