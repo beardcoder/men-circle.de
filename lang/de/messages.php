@@ -12,4 +12,7 @@ return [
   'name' => 'Name',
   'cover' => 'Cover Bild',
   'footer' => 'Fußzeile',
+  'tools' => 'Werkzeuge',
+  'tool' => 'Werkzeug',
+  'add_tool' => 'Werkzeug hinzufügen',
 ];

@@ -38,5 +38,13 @@ return [
         ],
       ],
     ],
+    'tool_image' => [
+      'default' => [
+        [
+          'name' => 'default',
+          'ratio' => 1,
+        ],
+      ],
+    ],
   ],
 ];

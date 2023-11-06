@@ -12,7 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   target.forEach((item) => {
     item.classList.add('opacity-0')
-    item.classList.add('-translate-x-10')
+    if (item.dataset.apper === 'right') {
+      item.classList.add('translate-x-10')
+    } else {
+      item.classList.add('-translate-x-10')
+    }
     item.classList.add('transition-all')
     item.classList.add('duration-1000')
     const callback = (entries) => {
@@ -22,6 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         entry.target.classList.add('opacity-100')
         entry.target.classList.add('translate-x-0')
+        if (item.dataset.apper === 'right') {
+          item.classList.remove('translate-x-10')
+        } else {
+          item.classList.remove('-translate-x-10')
+        }
       })
     }
 

@@ -2,7 +2,7 @@
   <div class="mx-auto max-w-screen-xl px-4 py-8 sm:py-24 lg:px-6">
     <div class="mb-8 lg:mb-16">
       <h2
-        class="mb-4 text-center text-4xl font-extrabold tracking-tight text-stone-900 dark:text-white"
+        class="mb-4 text-center text-5xl font-extrabold tracking-tight text-stone-900 dark:text-white"
         data-apper
       >
         {!! $block->input('title') !!}

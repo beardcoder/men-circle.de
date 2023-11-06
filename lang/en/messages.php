@@ -12,4 +12,7 @@ return [
   'name' => 'Name',
   'cover' => 'Cover Image',
   'footer' => 'Footer',
+  'tools' => 'Tools',
+  'tool' => 'Tool',
+  'add_tool' => 'Add tool',
 ];
