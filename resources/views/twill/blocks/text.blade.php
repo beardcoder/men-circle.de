@@ -9,6 +9,21 @@
 
 <x-twill::wysiwyg
   name="text"
+  :toolbar-options="[
+      ['header' => [3, 4, 5, 6, false]],
+      'bold',
+      'italic',
+      'underline',
+      'strike',
+      'blockquote',
+      'ordered',
+      'bullet',
+      'hr',
+      'code',
+      'link',
+      'clean',
+      'table',
+  ]"
   :label="twillTrans('Text')"
   :maxlength="200"
 />
