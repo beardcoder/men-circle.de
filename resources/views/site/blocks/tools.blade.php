@@ -21,7 +21,6 @@
           data-apper="{{ $loop->odd ? 'left' : 'right' }}"
         >
           {!! $image->render([
-              'loading' => 'eager',
               'class' => 'w-full',
           ]) !!}
         </div>

@@ -22,7 +22,6 @@
 <section class="dark:textwhite bg-stone-100 text-stone-900 dark:bg-stone-900 dark:text-white md:flex">
   <div class="w-full md:w-1/2">
     {!! $image->render([
-        'loading' => 'eager',
         'class' => 'w-full h-full object-cover',
     ]) !!}
   </div>
