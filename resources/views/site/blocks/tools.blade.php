@@ -1,13 +1,15 @@
 <section class="bg-white dark:bg-stone-800">
   <div class="mx-auto max-w-screen-xl px-4 py-8 sm:py-24 lg:px-6">
-    <div class="mb-8 lg:mb-16">
+    <div class="mb-8 lg:mb-8">
       <h2
         class="mb-4 text-center text-5xl font-extrabold tracking-tight text-stone-900 dark:text-white"
         data-apper
       >
         {!! $block->input('title') !!}
       </h2>
-      <p class="text-stone-500 dark:text-stone-400 sm:text-xl">{!! $block->input('description') !!}</p>
+      @if ($block->input('text'))
+        <p class="text-stone-500 dark:text-stone-400 sm:text-xl">{!! $block->input('text') !!}</p>
+      @endif
     </div>
     @foreach ($block->children as $child)
       @php
