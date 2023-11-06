@@ -2,7 +2,7 @@
   $hasImage = $block->hasImage('text_image');
 @endphp
 
-<section class="{{ $black->input('background') ? 'bg-stone-100 dark:bg-stone-800' : 'bg-white dark:bg-stone-900' }}">
+<section class="{{ $block->input('background') ? 'bg-stone-100 dark:bg-stone-800' : 'bg-white dark:bg-stone-900' }}">
   <div
     class="{{ $hasImage ? 'lg:grid lg:grid-cols-2' : '' }} mx-auto max-w-screen-xl items-center gap-16 px-4 py-8 lg:px-6 lg:py-16"
   >

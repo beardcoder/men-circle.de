@@ -15,4 +15,5 @@ return [
   'tools' => 'Werkzeuge',
   'tool' => 'Werkzeug',
   'add_tool' => 'Werkzeug hinzufügen',
+  'background' => 'Hintergrund',
 ];
