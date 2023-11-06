@@ -1,4 +1,4 @@
-<section class="bg-white dark:bg-stone-900">
+<section class="bg-white dark:bg-stone-800">
   <div class="mx-auto max-w-screen-xl px-4 py-8 sm:py-24 lg:px-6">
     <div class="mb-8 lg:mb-16">
       <h2
@@ -13,17 +13,20 @@
       @php
         $image = TwillImage::make($child, 'tool_image');
       @endphp
-      <div
-        class="mx-auto max-w-screen-xl items-center gap-8 px-4 py-8 sm:py-16 md:flex lg:px-6 xl:gap-16"
-        data-apper="{{ $loop->odd ? 'right' : 'left' }}"
-      >
-        <div class="{{ $loop->odd ? 'order-1' : 'order-2' }} md:w-1/3">
+      <div class="mx-auto max-w-screen-xl items-center gap-8 px-4 py-8 sm:py-16 md:flex lg:px-6 xl:gap-16">
+        <div
+          class="{{ $loop->odd ? 'order-1' : 'order-2' }} md:w-1/3"
+          data-apper="{{ $loop->odd ? 'left' : 'right' }}"
+        >
           {!! $image->render([
               'loading' => 'eager',
               'class' => 'w-full',
           ]) !!}
         </div>
-        <div class="{{ $loop->odd ? 'order-2' : 'order-1' }} mt-4 md:mt-0 md:w-2/3">
+        <div
+          class="{{ $loop->odd ? 'order-2' : 'order-1' }} mt-4 md:mt-0 md:w-2/3"
+          data-apper="{{ $loop->odd ? 'right' : 'left' }}"
+        >
           <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-stone-900 dark:text-white">
             {!! $child->input('title') !!}
           </h2>
