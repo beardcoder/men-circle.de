@@ -15,4 +15,5 @@ return [
   'tools' => 'Tools',
   'tool' => 'Tool',
   'add_tool' => 'Add tool',
+  'background' => 'Background',
 ];
