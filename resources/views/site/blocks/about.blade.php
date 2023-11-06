@@ -12,6 +12,7 @@
           ],
           [
               'crop' => 'flexible',
+              'width' => 1280,
               'media_query' => '(min-width: 420px) and (max-width: 1023px)',
           ],
       ],
