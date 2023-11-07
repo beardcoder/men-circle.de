@@ -20,19 +20,15 @@
 @endphp
 
 <section class="dark:textwhite bg-stone-100 text-stone-900 dark:bg-stone-900 dark:text-white md:flex">
-  <div class="w-full md:w-1/2">
-    {!! $image->render([
-        'class' => 'w-full h-full object-cover',
-    ]) !!}
-  </div>
-  <div class="w-full flex-1 md:w-1/2">
-    <div class="mx-auto max-w-2xl px-8 py-20 text-center">
+
+  <div class="flex w-full flex-1 md:w-1/2">
+    <div class="mx-auto my-auto max-w-2xl px-8 py-20">
       <h2
-        class="mb-4 text-center text-4xl font-extrabold tracking-tight text-stone-900 dark:text-white"
+        class="mb-4 text-4xl font-extrabold tracking-tight text-stone-900 dark:text-white"
         data-apper
       >
         {!! $block->input('title') !!}
-        <span class="text-primary-500 block">{!! $block->input('name') !!}</span>
+        <span class="text-primary block">{!! $block->input('name') !!}</span>
       </h2>
       <div
         class="format lg:format-lg dark:format-invert max-w-none text-stone-700 dark:text-stone-400"
@@ -47,5 +43,10 @@
         size="lg"
       >Jetzt dabei sein</x-button>
     </div>
+  </div>
+  <div class="w-full md:w-1/2">
+    {!! $image->render([
+        'class' => 'w-full h-full object-cover',
+    ]) !!}
   </div>
 </section>
