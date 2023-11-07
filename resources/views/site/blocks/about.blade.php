@@ -19,7 +19,7 @@
   ]);
 @endphp
 
-<section class="dark:textwhite bg-stone-100 text-stone-900 dark:bg-stone-900 dark:text-white md:flex">
+<section class="dark:textwhite bg-white text-stone-900 dark:bg-stone-800 dark:text-white md:flex">
 
   <div class="flex w-full flex-1 md:w-1/2">
     <div class="mx-auto my-auto max-w-2xl px-8 py-20">
