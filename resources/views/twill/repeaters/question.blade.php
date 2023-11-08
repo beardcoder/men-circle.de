@@ -1,6 +1,6 @@
 @twillRepeaterTitle(__('messages.question'))
 @twillRepeaterTrigger(__('messages.add_question'))
-@twillRepeaterTitleField('title', ['hidePrefix' => true])
+@twillRepeaterTitleField('question', ['hidePrefix' => true])
 @twillRepeaterGroup('app')
 
 <x-twill::input
