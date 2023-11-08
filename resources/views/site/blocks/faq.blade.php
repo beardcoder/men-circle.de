@@ -8,7 +8,7 @@
     </x-partials.content.title>
     <div class="grid border-t border-gray-200 pt-8 text-left dark:border-gray-700 md:grid-cols-2 md:gap-16">
       @foreach ($block->children as $child)
-        <div>
+        <div data-apper="{{ $loop->odd ? 'left' : 'right' }}">
           <div class="mb-10">
             <h3 class="mb-4 flex items-center text-lg font-medium text-gray-900 dark:text-white">
               <svg
