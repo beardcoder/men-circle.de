@@ -26,6 +26,15 @@
     rel="icon"
   >
   @vite('resources/css/app.css')
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "https://mens-circle.de/",
+      "logo": "https://mens-circle.de/assets/web/images/logo.png"
+    }
+    </script>
 </head>
 
 <body>
