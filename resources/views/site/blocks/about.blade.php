@@ -41,6 +41,7 @@
       </div>
       <x-button
         class="mt-4"
+        data-apper
         type="link"
         href="/#contact"
         size="lg"
