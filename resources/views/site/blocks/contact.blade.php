@@ -2,7 +2,7 @@
   :background="$block->input('background')"
   :anchor="$block->input('anchor')"
 >
-  <div class="mx-auto max-w-screen-md px-4 py-8 lg:py-16">
+  <div class="mx-auto max-w-screen-md px-6 py-8 lg:py-16">
     <x-partials.content.title data-apper>
       {!! $block->input('title') !!}
     </x-partials.content.title>

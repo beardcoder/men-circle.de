@@ -20,7 +20,7 @@
 
 <section class="relative w-full">
   <div class="relative z-10 flex max-w-[100vw] items-center pb-24 pt-40 xl:aspect-video">
-    <div class="mx-auto max-w-5xl px-8">
+    <div class="mx-auto max-w-5xl px-6">
       <h1 class="font-header text-4xl font-black uppercase text-white sm:text-4xl md:text-8xl md:leading-none">
         {!! $block->input('title') !!}
       </h1>

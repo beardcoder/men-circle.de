@@ -2,7 +2,7 @@
   :background="$block->input('background')"
   :anchor="$block->input('anchor')"
 >
-  <div class="mx-auto max-w-screen-xl px-4 py-8 sm:py-24 lg:px-6">
+  <div class="mx-auto max-w-screen-xl px-6 py-8 sm:py-24 lg:px-6">
     <div class="mb-8 lg:mb-8">
       <x-partials.content.title data-apper>
         {!! $block->input('title') !!}
@@ -15,7 +15,7 @@
       @php
         $image = TwillImage::make($child, 'tool_image');
       @endphp
-      <div class="mx-auto max-w-screen-xl items-center gap-8 px-4 py-8 sm:py-16 md:flex lg:px-6 xl:gap-16">
+      <div class="mx-auto max-w-screen-xl items-center gap-8 px-6 py-8 sm:py-16 md:flex lg:px-6 xl:gap-16">
         <div
           class="{{ $loop->odd ? 'order-1' : 'order-2' }} md:w-1/3"
           data-apper="{{ $loop->odd ? 'left' : 'right' }}"

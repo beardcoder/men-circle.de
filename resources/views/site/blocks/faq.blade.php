@@ -4,7 +4,7 @@
   itemscope
   itemtype="https://schema.org/FAQPage"
 >
-  <div class="mx-auto max-w-screen-xl px-4 py-8 sm:py-16 lg:px-6">
+  <div class="mx-auto max-w-screen-xl px-6 py-8 sm:py-16">
     <x-partials.content.title data-apper>
       {!! $block->input('title') !!}
     </x-partials.content.title>
