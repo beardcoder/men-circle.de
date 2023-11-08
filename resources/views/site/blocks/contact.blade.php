@@ -1,6 +1,6 @@
-<section
-  class="bg-stone-100 dark:bg-stone-900"
-  id="contact"
+<x-partials.content.wrapper
+  :background="$block->input('background')"
+  :anchor="$block->input('anchor')"
 >
   <div class="mx-auto max-w-screen-md px-4 py-8 lg:py-16">
     <h2
@@ -61,4 +61,4 @@
       >Jetzt Anmelden</x-button>
     </form>
   </div>
-</section>
+</x-partials.content.wrapper>

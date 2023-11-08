@@ -13,3 +13,13 @@
 />
 
 <x-twill::repeater type="tool" />
+
+<x-twill::checkbox
+  name="background"
+  :label="__('messages.background')"
+/>
+
+<x-twill::input
+  name="anchor"
+  :label="__('messages.anchor')"
+/>

@@ -22,3 +22,13 @@
   :label="__('messages.cover')"
   field-note="Minimum image width: 1500px"
 />
+
+<x-twill::checkbox
+  name="background"
+  :label="__('messages.background')"
+/>
+
+<x-twill::input
+  name="anchor"
+  :label="__('messages.anchor')"
+/>

@@ -1,4 +1,7 @@
-<section class="bg-white dark:bg-stone-800">
+<x-partials.content.wrapper
+  :background="$block->input('background')"
+  :anchor="$block->input('anchor')"
+>
   <div class="mx-auto max-w-screen-xl px-4 py-8 sm:py-24 lg:px-6">
     <div class="mb-8 lg:mb-16">
       <h2
@@ -25,4 +28,4 @@
       @endforeach
     </div>
   </div>
-</section>
+</x-partials.content.wrapper>

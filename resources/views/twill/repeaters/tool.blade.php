@@ -5,13 +5,27 @@
 
 <x-twill::input
   name="title"
-  :label="twillTrans('Title')"
+  :label="__('messages.title')"
 />
 
 <x-twill::wysiwyg
   name="text"
-  :label="twillTrans('Text')"
-  :maxlength="200"
+  :toolbar-options="[
+      ['header' => [3, 4, 5, 6, false]],
+      'bold',
+      'italic',
+      'underline',
+      'strike',
+      'blockquote',
+      'ordered',
+      'bullet',
+      'hr',
+      'code',
+      'link',
+      'clean',
+      'table',
+  ]"
+  :label="__('messages.text')"
 />
 
 <x-twill::medias

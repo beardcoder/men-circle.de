@@ -16,4 +16,9 @@ return [
   'tool' => 'Tool',
   'add_tool' => 'Add tool',
   'background' => 'Background',
+  'faq' => 'FAQs',
+  'question' => 'Question',
+  'add_question' => 'Add question',
+  'answer' => 'Answer',
+  'anchor' => 'Anchor',
 ];

@@ -2,7 +2,10 @@
   $hasImage = $block->hasImage('text_image');
 @endphp
 
-<section class="{{ $block->input('background') ? 'bg-white dark:bg-stone-800' : 'bg-stone-100 dark:bg-stone-900' }}">
+<x-partials.content.wrapper
+  :background="$block->input('background')"
+  :anchor="$block->input('anchor')"
+>
   <div
     class="{{ $hasImage ? 'lg:grid lg:grid-cols-2' : '' }} mx-auto max-w-screen-xl items-center gap-16 px-4 py-8 lg:px-6 lg:py-16"
   >
@@ -24,4 +27,4 @@
       </div>
     @endif
   </div>
-</section>
+</x-partials.content.wrapper>

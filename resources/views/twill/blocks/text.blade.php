@@ -24,7 +24,7 @@
       'clean',
       'table',
   ]"
-  :label="twillTrans('Text')"
+  :label="__('messages.text')"
 />
 
 <x-twill::medias
@@ -36,4 +36,9 @@
 <x-twill::checkbox
   name="background"
   :label="__('messages.background')"
+/>
+
+<x-twill::input
+  name="anchor"
+  :label="__('messages.anchor')"
 />

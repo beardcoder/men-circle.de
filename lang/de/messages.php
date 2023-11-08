@@ -16,4 +16,9 @@ return [
   'tool' => 'Werkzeug',
   'add_tool' => 'Werkzeug hinzufügen',
   'background' => 'Hintergrund',
+  'faq' => 'Fragen',
+  'question' => 'Frage',
+  'add_question' => 'Frage hinzufügen',
+  'answer' => 'Antwort',
+  'anchor' => 'Anker',
 ];
