@@ -37,7 +37,7 @@
     </script>
 </head>
 
-<body>
+<body class="overflow-y-auto overflow-x-hidden">
   <x-header />
   {{ $slot }}
   <x-footer />
