@@ -3,12 +3,9 @@
   :anchor="$block->input('anchor')"
 >
   <div class="mx-auto max-w-screen-md px-4 py-8 lg:py-16">
-    <h2
-      class="mb-4 text-center text-5xl font-extrabold tracking-tight text-stone-900 dark:text-white"
-      data-apper
-    >
+    <x-partials.content.title data-apper>
       {!! $block->input('title') !!}
-    </h2>
+    </x-partials.content.title>
     @if ($block->input('text'))
       <p
         class="mb-8 text-center font-light text-stone-500 dark:text-stone-400 sm:text-xl lg:mb-16"

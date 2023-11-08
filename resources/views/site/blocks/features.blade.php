@@ -4,12 +4,9 @@
 >
   <div class="mx-auto max-w-screen-xl px-4 py-8 sm:py-24 lg:px-6">
     <div class="mb-8 lg:mb-16">
-      <h2
-        class="mb-4 text-center text-5xl font-extrabold tracking-tight text-stone-900 dark:text-white"
-        data-apper
-      >
+      <x-partials.content.title data-apper>
         {!! $block->input('title') !!}
-      </h2>
+      </x-partials.content.title>
       <p class="text-stone-500 dark:text-stone-400 sm:text-xl">{!! $block->input('description') !!}</p>
     </div>
     <div class="space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:grid-cols-3">
