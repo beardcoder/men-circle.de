@@ -24,6 +24,7 @@
     <nav class="{{ $color }} mx-auto mt-2 flex space-x-8 text-xl font-bold uppercase md:mr-0 md:mt-0">
       <a href="/">Home</a>
       <a href="/#contact">Kontakt</a>
+      <a href="/#faq">FAQ's</a>
       {{-- <a href="/impressum">Impressum</a> --}}
     </nav>
   </div>
