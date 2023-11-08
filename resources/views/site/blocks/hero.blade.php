@@ -19,7 +19,7 @@
 @endphp
 
 <section class="relative">
-  <div class="relative z-10 flex aspect-video items-center pb-24 pt-32">
+  <div class="relative z-10 flex aspect-video items-center pb-24 pt-40">
     <div class="mx-auto max-w-5xl px-8">
       <h1 class="font-header text-4xl font-black uppercase text-white sm:text-4xl md:text-8xl md:leading-none">
         {!! $block->input('title') !!}
