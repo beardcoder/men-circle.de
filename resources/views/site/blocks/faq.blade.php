@@ -1,6 +1,8 @@
 <x-partials.content.wrapper
   :background="$block->input('background')"
   :anchor="$block->input('anchor')"
+  itemscope
+  itemtype="https://schema.org/FAQPage"
 >
   <div class="mx-auto max-w-screen-xl px-4 py-8 sm:py-16 lg:px-6">
     <x-partials.content.title data-apper>
@@ -8,9 +10,17 @@
     </x-partials.content.title>
     <div class="grid border-t border-gray-200 pt-8 text-left dark:border-gray-700 md:grid-cols-2 md:gap-16">
       @foreach ($block->children as $child)
-        <div data-apper="{{ $loop->odd ? 'left' : 'right' }}">
+        <div
+          data-apper="{{ $loop->odd ? 'left' : 'right' }}"
+          itemscope
+          itemprop="mainEntity"
+          itemtype="https://schema.org/Question"
+        >
           <div class="mb-10">
-            <h3 class="mb-4 flex items-center text-lg font-medium text-gray-900 dark:text-white">
+            <h3
+              class="mb-4 flex items-center text-lg font-medium text-gray-900 dark:text-white"
+              itemprop="name"
+            >
               <svg
                 class="mr-2 h-5 w-5 flex-shrink-0 text-gray-500 dark:text-gray-400"
                 fill="currentColor"
@@ -25,8 +35,17 @@
               </svg>
               {!! $child->input('question') !!}
             </h3>
-            <div class="format lg:format-lg text-gray-500 dark:text-gray-400">
-              {!! $child->input('answer') !!}
+            <div
+              itemscope
+              itemprop="acceptedAnswer"
+              itemtype="https://schema.org/Answer"
+            >
+              <div
+                class="format lg:format-lg text-gray-500 dark:text-gray-400"
+                itemprop="text"
+              >
+                {!! $child->input('answer') !!}
+              </div>
             </div>
           </div>
         </div>
