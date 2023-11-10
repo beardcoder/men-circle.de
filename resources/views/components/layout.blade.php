@@ -35,6 +35,11 @@
       "logo": "https://mens-circle.de/assets/web/images/logo.png"
     }
     </script>
+  <script
+    async
+    src="https://tracking.letsbenow.de/script.js"
+    data-website-id="9384afba-8736-46df-a418-642b3ec39742"
+  ></script>
 </head>
 
 <body class="overflow-y-auto overflow-x-hidden">
