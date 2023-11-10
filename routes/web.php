@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
+use Spatie\ResponseCache\Middlewares\DoNotCacheResponse;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,5 @@ Route::post('subscription/signup', [
   'signup',
 ])
   ->middleware(ProtectAgainstSpam::class)
+  ->middleware(DoNotCacheResponse::class)
   ->name('subscription.signup');
