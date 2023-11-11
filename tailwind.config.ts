@@ -42,6 +42,19 @@ export default {
           950: '#000F0D',
         },
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            color: '#333333',
+            a: {
+              color: '#B76F2B',
+              '&:hover': {
+                color: '#8A5320',
+              },
+            },
+          },
+        },
+      },
     },
   },
   plugins: [require('flowbite-typography')],

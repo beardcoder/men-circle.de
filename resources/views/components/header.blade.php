@@ -17,9 +17,11 @@
       <img
         class="{{ $color }} h-full w-auto"
         src="{{ URL::asset($logo) }}"
+        alt="logo"
         width="500"
         height="500"
       />
+      <span class="sr-only">Startseite</span>
     </a>
     <nav class="{{ $color }} mx-auto mt-2 flex space-x-8 text-xl font-bold uppercase md:mr-0 md:mt-0">
       <a href="/">Home</a>

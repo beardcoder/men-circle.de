@@ -10,9 +10,11 @@
       <img
         class="h-full w-auto"
         src="{{ URL::asset($logo) }}"
+        alt="logo"
         width="500"
         height="500"
       />
+      <span class="sr-only">Startseite</span>
     </a>
     <p class="my-6">
       {{ TwillAppSettings::get('homepage.homepage.footer') }}
