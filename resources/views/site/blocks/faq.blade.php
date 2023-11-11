@@ -23,6 +23,7 @@
             >
               <svg
                 class="mr-2 h-5 w-5 flex-shrink-0 text-gray-500 dark:text-gray-400"
+                role="presentation"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
