@@ -29,10 +29,11 @@ tasks:
     - artisan:route:cache
     - artisan:event:cache
     - artisan:migrate
-    - responsecache:clear
 
     - npm:install
     - npm:build
+
+    - responsecache:clear
 
     - deploy:publish
   npm:install:
