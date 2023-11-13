@@ -36,6 +36,7 @@
   </div>
   <div class="absolute inset-0 w-full after:absolute after:inset-0 after:bg-black after:bg-opacity-40">
     {!! $image->render([
+        'lqip' => true,
         'loading' => 'eager',
         'class' => 'w-full h-full object-cover object-center',
     ]) !!}

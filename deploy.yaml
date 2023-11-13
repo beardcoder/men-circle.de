@@ -29,6 +29,7 @@ tasks:
     - artisan:route:cache
     - artisan:event:cache
     - artisan:migrate
+    - responsecache:clear
 
     - npm:install
     - npm:build
@@ -38,6 +39,8 @@ tasks:
     - run: "cd {{release_path}} && npm install --prefer-offline --no-audit --progress=false"
   npm:build:
     - run: "cd {{release_path}} && npm run build"
+  responsecache:clear:
+    - run: "cd {{release_path}} && php artisan responsecache:clear"
   build:
     - run: uptime
 

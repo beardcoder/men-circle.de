@@ -10,7 +10,7 @@ return [
     | Examples: 'gray', 'transparent', 'rgba(0, 0, 0, 0.25)'
     |
     */
-  'background_color' => '#e3e3e3',
+  'background_color' => 'transparent',
 
   /*
     |--------------------------------------------------------------------------

@@ -1,4 +1,8 @@
-@php($logo = '/assets/web/images/logo.png')
+@php
+  $block = TwillAppSettings::getGroupDataForSectionAndName('homepage', 'footer');
+  $image = TwillImage::make($block, 'logo');
+  $logo = TwillAppSettings::get('homepage.footer.logo');
+@endphp
 
 <footer class="bg-secondary p-4 text-white md:p-8 lg:p-10">
   <div class="mx-auto max-w-screen-xl text-center">
@@ -7,17 +11,12 @@
       class="mx-auto block h-20 w-20"
       href="/"
     >
-      <img
-        class="h-full w-auto"
-        src="{{ URL::asset($logo) }}"
-        alt="logo"
-        width="500"
-        height="500"
-      />
+      {!! $image->width(80)->render() !!}
+
       <span class="sr-only">Startseite</span>
     </a>
     <p class="my-6">
-      {{ TwillAppSettings::get('homepage.homepage.footer') }}
+      {{ TwillAppSettings::get('homepage.footer.text') }}
     </p>
     <ul class="mb-6 flex flex-wrap items-center justify-center dark:text-white">
       <li>

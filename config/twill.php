@@ -1,6 +1,19 @@
 <?php
 
 return [
+  'block_editor' => [
+    'use_twill_blocks' => [],
+    'crops' => [
+      'logo' => [
+        'default' => [
+          [
+            'name' => 'Default',
+            'ratio' => 0,
+          ],
+        ],
+      ],
+    ],
+  ],
   'default_crops' => [
     'cover' => [
       'mobile' => [
@@ -47,6 +60,14 @@ return [
       ],
     ],
     'text_image' => [
+      'default' => [
+        [
+          'name' => 'default',
+          'ratio' => 0,
+        ],
+      ],
+    ],
+    'logo' => [
       'default' => [
         [
           'name' => 'default',
