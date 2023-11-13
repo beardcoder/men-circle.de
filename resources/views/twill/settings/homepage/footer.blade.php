@@ -6,8 +6,3 @@
   name="text"
   :label="__('messages.footer')"
 />
-
-<x-twill::medias
-  name="logo"
-  label="Logo"
-/>
