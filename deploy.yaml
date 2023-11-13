@@ -23,6 +23,7 @@ tasks:
     - deploy:release
     - deploy:update_code
     - deploy:shared
+
     - deploy:vendors
 
     - artisan:storage:link
@@ -31,6 +32,7 @@ tasks:
     - artisan:route:cache
     - artisan:event:cache
     - artisan:migrate
+    - artisan:optimize
 
     - npm:install
     - npm:build
