@@ -8,7 +8,7 @@
     </x-partials.content.title>
     @if ($block->input('text'))
       <p
-        class="mb-8 text-center font-light text-stone-500 dark:text-stone-400 sm:text-xl lg:mb-16"
+        class="mb-8 text-center sm:text-xl lg:mb-16"
         data-apper
       >
         {!! $block->input('text') !!}

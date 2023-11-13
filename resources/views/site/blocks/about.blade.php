@@ -34,7 +34,7 @@
         <span class="text-primary block">{!! $block->input('name') !!}</span>
       </h2>
       <div
-        class="format lg:format-lg dark:format-invert max-w-none text-stone-700 dark:text-stone-400"
+        class="format lg:format-lg dark:format-invert max-w-none"
         data-apper
       >
         {!! $block->input('text') !!}

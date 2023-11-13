@@ -9,6 +9,19 @@ export default {
   ],
   theme: {
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            color: '#333333',
+            a: {
+              color: '#B76F2B',
+              '&:hover': {
+                color: '#5C3816',
+              },
+            },
+          },
+        },
+      },
       fontFamily: {
         sans: ['"Jost Variable"', ...defaultTheme.fontFamily.sans],
       },

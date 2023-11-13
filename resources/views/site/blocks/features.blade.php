@@ -7,7 +7,7 @@
       <x-partials.content.title data-apper>
         {!! $block->input('title') !!}
       </x-partials.content.title>
-      <p class="text-stone-500 dark:text-stone-400 sm:text-xl">{!! $block->input('description') !!}</p>
+      <p class="sm:text-xl">{!! $block->input('description') !!}</p>
     </div>
     <div class="space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:grid-cols-3">
       @foreach ($block->children as $child)
@@ -18,7 +18,7 @@
           <h3 class="mb-2 text-xl font-bold dark:text-white">
             {!! $child->input('title') !!}
           </h3>
-          <p class="text-stone-500 dark:text-stone-400">
+          <p class="">
             {!! $child->input('text') !!}
           </p>
         </div>

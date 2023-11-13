@@ -42,7 +42,7 @@
   ></script>
 </head>
 
-<body class="overflow-y-auto overflow-x-hidden">
+<body class="overflow-y-auto overflow-x-hidden text-base lg:text-lg">
   <x-header />
   {{ $slot }}
   <x-footer />

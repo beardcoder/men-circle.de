@@ -8,7 +8,7 @@
         {!! $block->input('title') !!}
       </x-partials.content.title>
       @if ($block->input('text'))
-        <p class="text-stone-500 dark:text-stone-400 sm:text-xl">{!! $block->input('text') !!}</p>
+        <p class="sm:text-xl">{!! $block->input('text') !!}</p>
       @endif
     </div>
     @foreach ($block->children as $child)
@@ -31,7 +31,7 @@
           <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-stone-900 dark:text-white">
             {!! $child->input('title') !!}
           </h2>
-          <div class="format md:format-lg mb-6 font-light text-stone-500 dark:text-stone-400">
+          <div class="format md:format-lg mb-6">
             {!! $child->input('text') !!}
           </div>
         </div>
