@@ -18,7 +18,7 @@
           <h3 class="mb-2 text-xl font-bold dark:text-white">
             {!! $child->input('title') !!}
           </h3>
-          <p class="">
+          <p>
             {!! $child->input('text') !!}
           </p>
         </div>

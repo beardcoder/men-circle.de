@@ -12,7 +12,18 @@ export default {
       typography: {
         DEFAULT: {
           css: {
-            color: '#333333',
+            color: '#0c0a09',
+            a: {
+              color: '#B76F2B',
+              '&:hover': {
+                color: '#5C3816',
+              },
+            },
+          },
+        },
+        invert: {
+          css: {
+            color: '#fafaf9',
             a: {
               color: '#B76F2B',
               '&:hover': {

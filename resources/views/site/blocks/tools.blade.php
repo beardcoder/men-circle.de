@@ -31,7 +31,7 @@
           <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-stone-900 dark:text-white">
             {!! $child->input('title') !!}
           </h2>
-          <div class="format md:format-lg mb-6">
+          <div class="format md:format-lg dark:format-invert mb-6">
             {!! $child->input('text') !!}
           </div>
         </div>
