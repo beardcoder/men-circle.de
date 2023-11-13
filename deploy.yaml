@@ -48,5 +48,6 @@ tasks:
 
 after:
   deploy:failed: deploy:unlock
-  deploy:publish: responsecache:clear
-  deploy:symlink: cachetool:clear:opcache
+  deploy:publish:
+    - cachetool:clear:opcache
+    - responsecache:clear
