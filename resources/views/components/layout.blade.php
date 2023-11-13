@@ -35,11 +35,6 @@
       "logo": "https://mens-circle.de/assets/web/images/logo.png"
     }
     </script>
-  <script
-    async
-    src="https://tracking.letsbenow.de/script.js"
-    data-website-id="9384afba-8736-46df-a418-642b3ec39742"
-  ></script>
 </head>
 
 <body class="overflow-y-auto overflow-x-hidden text-base lg:text-lg">
@@ -47,6 +42,11 @@
   {{ $slot }}
   <x-footer />
   @vite(['resources/js/app.js'])
+  <script
+    async
+    src="https://tracking.letsbenow.de/script.js"
+    data-website-id="9384afba-8736-46df-a418-642b3ec39742"
+  ></script>
 </body>
 
 </html>
