@@ -47,3 +47,4 @@ tasks:
 
 after:
   deploy:failed: deploy:unlock
+  deploy:publish: responsecache:clear
