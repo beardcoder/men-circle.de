@@ -6,15 +6,6 @@
 
 <footer class="bg-secondary p-4 text-white md:p-8 lg:p-10">
   <div class="mx-auto max-w-screen-xl text-center">
-
-    <a
-      class="mx-auto block h-20 w-20"
-      href="/"
-    >
-      {!! $image->width(80)->render(['lqip' => false]) !!}
-
-      <span class="sr-only">Startseite</span>
-    </a>
     <p class="my-6">
       {{ TwillAppSettings::get('homepage.footer.text') }}
     </p>
