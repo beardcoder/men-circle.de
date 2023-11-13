@@ -8,6 +8,7 @@ config:
   git_ssh_command: ssh
   composer_options: ' --no-dev --verbose --prefer-dist --no-progress --no-interaction --optimize-autoloader'
   keep_releases: 2
+  cachetool: '/var/run/php/php8.2-fpm.sock'
 
 hosts:
   host.letsbenow.de:

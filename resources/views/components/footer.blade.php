@@ -11,7 +11,7 @@
       class="mx-auto block h-20 w-20"
       href="/"
     >
-      {!! $image->width(80)->render() !!}
+      {!! $image->width(80)->render(['lqip' => false]) !!}
 
       <span class="sr-only">Startseite</span>
     </a>
