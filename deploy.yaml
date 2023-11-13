@@ -1,5 +1,6 @@
 import:
   - recipe/laravel.php
+  - contrib/cachetool.php
 
 config:
   repository: 'https://github.com/beardcoder/mens-circle.de.git'
@@ -48,3 +49,4 @@ tasks:
 after:
   deploy:failed: deploy:unlock
   deploy:publish: responsecache:clear
+  deploy:symlink: cachetool:clear:opcache
