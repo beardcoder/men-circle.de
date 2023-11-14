@@ -16,14 +16,46 @@
     content="width=device-width, initial-scale=1"
   />
   <link
-    type="image/svg+xml"
-    href="/favicon.svg"
-    rel="icon"
+    href="/apple-touch-icon.png"
+    rel="apple-touch-icon"
+    sizes="180x180"
   >
   <link
     type="image/png"
-    href="/favicon.png"
+    href="/favicon-32x32.png"
     rel="icon"
+    sizes="32x32"
+  >
+  <link
+    type="image/png"
+    href="/favicon-16x16.png"
+    rel="icon"
+    sizes="16x16"
+  >
+  <link
+    href="/site.webmanifest"
+    rel="manifest"
+  >
+  <link
+    href="/safari-pinned-tab.svg"
+    rel="mask-icon"
+    color="#b76f2b"
+  >
+  <meta
+    name="apple-mobile-web-app-title"
+    content="M&auml;nnergruppe Straubing/Niederbayern"
+  >
+  <meta
+    name="application-name"
+    content="M&auml;nnergruppe Straubing/Niederbayern"
+  >
+  <meta
+    name="msapplication-TileColor"
+    content="#ffffff"
+  >
+  <meta
+    name="theme-color"
+    content="#ffffff"
   >
   @vite('resources/css/app.css')
 
