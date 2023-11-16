@@ -4,8 +4,132 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "27095d01b27ed835a98caad50581f2f8",
+  "content-hash": "6fe76e4d9a17a78f9b00eb303ea147b8",
   "packages": [
+    {
+      "name": "abordage/html-min",
+      "version": "0.2.1",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/abordage/html-min.git",
+        "reference": "681764a1c46996ade054a786656ec1f00f2dd0cf"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/abordage/html-min/zipball/681764a1c46996ade054a786656ec1f00f2dd0cf",
+        "reference": "681764a1c46996ade054a786656ec1f00f2dd0cf",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.4"
+      },
+      "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phpstan/phpstan": "^1.0",
+        "phpunit/phpunit": "^9.5"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "Abordage\\HtmlMin\\": "src"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Pavel Bychko",
+          "email": "box@abordage.dev",
+          "role": "Developer"
+        }
+      ],
+      "description": "Very simple (and very fast) PHP package for HTML minification",
+      "homepage": "https://github.com/abordage/html-min",
+      "keywords": [
+        "HTML minify",
+        "html compress",
+        "html min",
+        "html minification",
+        "html minifier"
+      ],
+      "support": {
+        "issues": "https://github.com/abordage/html-min/issues",
+        "source": "https://github.com/abordage/html-min/tree/0.2.1"
+      },
+      "time": "2023-02-25T10:25:25+00:00"
+    },
+    {
+      "name": "abordage/laravel-html-min",
+      "version": "0.2.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/abordage/laravel-html-min.git",
+        "reference": "9c8c3a809b0be075e9eefa5740518ce0ded13c47"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/abordage/laravel-html-min/zipball/9c8c3a809b0be075e9eefa5740518ce0ded13c47",
+        "reference": "9c8c3a809b0be075e9eefa5740518ce0ded13c47",
+        "shasum": ""
+      },
+      "require": {
+        "abordage/html-min": "^0.2.1",
+        "illuminate/support": "^8.0 || ^9.0 || ^10.0",
+        "php": ">=7.4"
+      },
+      "require-dev": {
+        "ext-json": "*",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "nunomaduro/collision": "^5.0 || ^6.0 || ^7.0",
+        "nunomaduro/larastan": "^1.0 || ^2.0",
+        "orchestra/testbench": "^6.0 || ^7.0 || ^8.0",
+        "phpstan/phpstan": "^1.0",
+        "phpunit/phpunit": "^9.6 || ^10.0"
+      },
+      "type": "library",
+      "extra": {
+        "laravel": {
+          "aliases": {
+            "HtmlMin": "Abordage\\LaravelHtmlMin\\Facades\\HtmlMin"
+          },
+          "providers": [
+            "Abordage\\LaravelHtmlMin\\HtmlMinServiceProvider"
+          ]
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Abordage\\LaravelHtmlMin\\": "src"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Pavel Bychko",
+          "email": "box@abordage.dev",
+          "role": "Developer"
+        }
+      ],
+      "description": "HtmlMin is very simple (and very fast) html compression package for Laravel",
+      "homepage": "https://github.com/abordage/laravel-html-min",
+      "keywords": [
+        "HTML minify",
+        "html compress",
+        "html min",
+        "html minification",
+        "html minifier"
+      ],
+      "support": {
+        "issues": "https://github.com/abordage/laravel-html-min/issues",
+        "source": "https://github.com/abordage/laravel-html-min/tree/0.2.0"
+      },
+      "time": "2023-02-25T11:36:31+00:00"
+    },
     {
       "name": "area17/twill",
       "version": "3.0.2",
