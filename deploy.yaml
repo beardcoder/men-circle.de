@@ -51,7 +51,8 @@ tasks:
 
 after:
   deploy:failed: deploy:unlock
-  deploy:publish:
-    - cachetool:clear:opcache
   deploy:success:
+    - responsecache:clear
+before:
+  artisan:optimize:
     - responsecache:clear
