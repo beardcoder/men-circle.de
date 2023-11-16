@@ -1,7 +1,7 @@
 @php
   $image = TwillImage::make($block, 'hero');
   $image->preset([
-      'crop' => 'default',
+      'crop' => 'desktop',
       'sizes' => '(max-width: 1023px) 100vw, (min-width: 1023px)',
       'sources' => [
           [
@@ -11,7 +11,7 @@
               'media_query' => '(max-width: 420px)',
           ],
           [
-              'crop' => 'default',
+              'crop' => 'desktop',
               'media_query' => '(min-width: 420px) and (max-width: 1023px)',
           ],
       ],
