@@ -24,7 +24,7 @@ class PageDisplayController extends Controller
 
     self::setSeoData($page);
     SEOTools::opengraph()->setUrl(URL::to($slug));
-
+    SEOTools::setTitle($page->title);
     OpenGraph::addProperty('type', 'website');
 
     return view('site.page', ['item' => $page]);
@@ -38,6 +38,7 @@ class PageDisplayController extends Controller
 
       if ($page->published) {
         self::setSeoData($page);
+        SEOTools::setTitle('Männerkreis Straubing und Niederbayern');
         SEOTools::opengraph()->setUrl(URL::to('/'));
 
         return view('site.page', ['item' => $page]);
@@ -49,7 +50,6 @@ class PageDisplayController extends Controller
 
   private static function setSeoData(Page|TwillModelContract $page)
   {
-    SEOTools::setTitle($page->title);
     if ($page->description) {
       SEOTools::setDescription($page->description);
     }
