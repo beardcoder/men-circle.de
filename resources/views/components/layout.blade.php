@@ -5,7 +5,7 @@
 >
 
 <head>
-  {!! SEOMeta::generate() !!}
+  {!! SEO::generate() !!}
   <meta charset="utf-8" />
   <meta
     http-equiv="X-UA-Compatible"
@@ -58,15 +58,6 @@
     content="#ffffff"
   >
   @vite('resources/css/app.css')
-
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "url": "https://mens-circle.de/",
-      "logo": "https://mens-circle.de/assets/web/images/logo.png"
-    }
-    </script>
 </head>
 
 <body class="overflow-y-auto overflow-x-hidden text-base lg:text-lg">
