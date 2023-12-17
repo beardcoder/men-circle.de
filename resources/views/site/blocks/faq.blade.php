@@ -5,13 +5,13 @@
   itemtype="https://schema.org/FAQPage"
 >
   <div class="mx-auto max-w-screen-xl px-6 py-8 sm:py-16">
-    <x-partials.content.title data-apper>
+    <x-partials.content.title data-fade>
       {!! $block->input('title') !!}
     </x-partials.content.title>
     <div class="grid border-t border-gray-200 pt-8 text-left dark:border-gray-700 md:grid-cols-2 md:gap-16">
       @foreach ($block->children as $child)
         <div
-          data-apper="{{ $loop->odd ? 'left' : 'right' }}"
+          data-fade="{{ $loop->odd ? 'left' : 'right' }}"
           itemscope
           itemprop="mainEntity"
           itemtype="https://schema.org/Question"

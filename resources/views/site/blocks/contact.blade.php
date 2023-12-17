@@ -3,13 +3,13 @@
   :anchor="$block->input('anchor')"
 >
   <div class="mx-auto max-w-screen-md px-6 py-8 lg:py-16">
-    <x-partials.content.title data-apper>
+    <x-partials.content.title data-fade="bottom">
       {!! $block->input('title') !!}
     </x-partials.content.title>
     @if ($block->input('text'))
       <p
         class="mb-8 text-center sm:text-xl lg:mb-16"
-        data-apper
+        data-fade="bottom"
       >
         {!! $block->input('text') !!}
       </p>
@@ -21,7 +21,7 @@
     >
       @csrf
       @honeypot
-      <div data-apper>
+      <div data-fade="bottom">
         <label
           class="mb-2 block text-sm font-medium text-stone-900 dark:text-stone-300"
           for="name"
@@ -35,7 +35,7 @@
           required
         >
       </div>
-      <div data-apper>
+      <div data-fade="bottom">
         <label
           class="mb-2 block text-sm font-medium text-stone-900 dark:text-stone-300"
           for="email"
@@ -52,7 +52,7 @@
 
       <x-button
         class="block w-full"
-        data-apper
+        data-fade="bottom"
         type="submit"
         size="md"
       >Jetzt Anmelden</x-button>

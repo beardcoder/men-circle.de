@@ -102,11 +102,12 @@ return [
     */
   'static_local_path' => public_path(),
 
-  'static_image_support' => false,
+  'static_image_support' => true,
 
   // Glide config overrides
   'glide' => [
     'source' => public_path(),
+    'driver' => 'imagick',
     'base_path' => 'static',
   ],
 ];

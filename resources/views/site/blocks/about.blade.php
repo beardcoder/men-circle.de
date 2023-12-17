@@ -28,20 +28,20 @@
     <div class="mx-auto my-auto max-w-2xl px-6 py-20">
       <h2
         class="mb-4 text-4xl font-extrabold tracking-tight text-stone-900 dark:text-white"
-        data-apper
+        data-fade="bottom"
       >
         {!! $block->input('title') !!}
         <span class="text-primary block">{!! $block->input('name') !!}</span>
       </h2>
       <div
         class="format lg:format-lg dark:format-invert max-w-none"
-        data-apper
+        data-fade="bottom"
       >
         {!! $block->input('text') !!}
       </div>
       <x-button
         class="mt-4"
-        data-apper
+        data-fade="bottom"
         type="link"
         href="/#contact"
         size="lg"

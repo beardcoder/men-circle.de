@@ -58,13 +58,16 @@
     content="#ffffff"
   >
   @vite('resources/css/app.css')
+  <script>
+    document.querySelector('html').classList.add('has-js')
+  </script>
 </head>
 
 <body class="overflow-y-auto overflow-x-hidden text-base lg:text-lg">
   <x-header />
   {{ $slot }}
   <x-footer />
-  @vite(['resources/js/app.js'])
+  @vite(['resources/js/app.ts'])
   <script
     async
     src="https://tracking.letsbenow.de/script.js"

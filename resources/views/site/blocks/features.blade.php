@@ -4,7 +4,7 @@
 >
   <div class="mx-auto max-w-screen-xl px-6 py-8 sm:py-24 lg:px-6">
     <div class="mb-8 lg:mb-16">
-      <x-partials.content.title data-apper>
+      <x-partials.content.title data-fade="bottom">
         {!! $block->input('title') !!}
       </x-partials.content.title>
       <p class="sm:text-xl">{!! $block->input('description') !!}</p>
@@ -13,7 +13,7 @@
       @foreach ($block->children as $child)
         <div
           class="delay-200"
-          data-apper
+          data-fade="bottom"
         >
           <h3 class="mb-2 text-xl font-bold dark:text-white">
             {!! $child->input('title') !!}

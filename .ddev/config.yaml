@@ -2,7 +2,7 @@ name: mens-circle.de
 type: laravel
 docroot: public
 php_version: '8.2'
-webserver_type: nginx-fpm
+webserver_type: apache-fpm
 xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns: []
@@ -100,7 +100,8 @@ web_extra_exposed_ports:
 # would provide http and https URLs for "example.com" and "sub1.example.com"
 # Please take care with this because it can cause great confusion.
 
-# upload_dirs: "custom/upload/dir"
+upload_dirs:
+ - "storage"
 #
 # upload_dirs:
 #   - custom/upload/dir
