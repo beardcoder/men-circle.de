@@ -3,7 +3,7 @@ import:
   - contrib/cachetool.php
 
 config:
-  repository: 'https://github.com/beardcoder/mens-circle.de.git'
+  repository: 'git@github.com:beardcoder/mens-circle.de.git'
   branch: main
   git_ssh_command: ssh
   composer_options: ' --no-dev --verbose --prefer-dist --no-progress --no-interaction --optimize-autoloader'

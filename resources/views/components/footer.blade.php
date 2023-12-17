@@ -26,7 +26,8 @@
       </li>
 
     </ul>
-    <span class="text-sm sm:text-center">© 2023-{{ now()->year }} Build with ❤️ and
+    <span class="text-sm sm:text-center">
+      © 2023-{{ now()->year }} Build with ❤️ and
       mindfulness in Bavaria</span>
   </div>
 </footer>
