@@ -1,7 +1,7 @@
 <?php
 
 return [
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Application Locales
     |--------------------------------------------------------------------------
@@ -9,9 +9,9 @@ return [
     | Contains an array with the applications available locales.
     |
      */
-    "locales" => ["de"],
+  'locales' => ['de'],
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Locale separator
     |--------------------------------------------------------------------------
@@ -21,9 +21,9 @@ return [
     | colombian spanish will be saved as 'es-CO' into the database.
     |
      */
-    "locale_separator" => "-",
+  'locale_separator' => '-',
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Default locale
     |--------------------------------------------------------------------------
@@ -33,9 +33,9 @@ return [
     | you can specify what default should be used here.
     |
      */
-    "locale" => null,
+  'locale' => null,
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Use fallback
     |--------------------------------------------------------------------------
@@ -46,9 +46,9 @@ return [
     | $useTranslationFallback when defined
     |
      */
-    "use_fallback" => false,
+  'use_fallback' => false,
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Use fallback per property
     |--------------------------------------------------------------------------
@@ -58,9 +58,9 @@ return [
     | locale. Note that 'use_fallback' must be enabled.
     |
      */
-    "use_property_fallback" => true,
+  'use_property_fallback' => true,
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Fallback Locale
     |--------------------------------------------------------------------------
@@ -70,9 +70,9 @@ return [
     | set it to false.
     |
      */
-    "fallback_locale" => "de",
+  'fallback_locale' => 'de',
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Translation Suffix
     |--------------------------------------------------------------------------
@@ -82,9 +82,9 @@ return [
     | application, set this to 'Trans'.
     |
      */
-    "translation_suffix" => "Translation",
+  'translation_suffix' => 'Translation',
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Locale key
     |--------------------------------------------------------------------------
@@ -93,9 +93,9 @@ return [
     | translation model.
     |
      */
-    "locale_key" => "locale",
+  'locale_key' => 'locale',
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Always load translations when converting to array
     |--------------------------------------------------------------------------
@@ -104,5 +104,5 @@ return [
     | translations relationship is already loaded.
     |
      */
-    "to_array_always_loads_translations" => true,
+  'to_array_always_loads_translations' => true,
 ];

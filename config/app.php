@@ -69,7 +69,7 @@ return [
     |
     */
 
-  'timezone' => 'UTC',
+  'timezone' => 'Europe/Berlin',
 
   /*
     |--------------------------------------------------------------------------
@@ -108,7 +108,7 @@ return [
     |
     */
 
-  'faker_locale' => 'en_US',
+  'faker_locale' => 'de_DE',
 
   /*
     |--------------------------------------------------------------------------
@@ -184,7 +184,7 @@ return [
 
   'aliases' => Facade::defaultAliases()
     ->merge([
-      'SEOMeta' => Artesaos\SEOTools\Facades\SEOMeta::class,
+      'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
     ])
     ->toArray(),
 ];

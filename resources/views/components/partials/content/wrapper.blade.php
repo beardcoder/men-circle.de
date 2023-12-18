@@ -4,7 +4,6 @@
 
 <section
   {{ $attributes->merge(['class' => 'max-w-[100vw] overflow-x-hidden text-stone-800 dark:text-stone-100 ' . $backgroundColor]) }}
-  {{ $anchor ? 'id=' . $anchor . '' : '' }}
->
+  {{ $anchor ? 'id=' . $anchor . '' : '' }}>
   {{ $slot }}
 </section>

@@ -14,13 +14,7 @@ use App\Traits\ClearsResponseCache;
 
 class Page extends Model implements Sortable
 {
-  use HasBlocks,
-    HasSlug,
-    HasMedias,
-    HasFiles,
-    HasRevisions,
-    ClearsResponseCache,
-    HasPosition;
+  use HasBlocks, HasSlug, HasMedias, HasFiles, HasRevisions, ClearsResponseCache, HasPosition;
 
   protected $fillable = ['published', 'title', 'description', 'position'];
 

@@ -15,19 +15,11 @@ use Spatie\ResponseCache\Middlewares\DoNotCacheResponse;
 |
 */
 
-Route::get('/', [
-  \App\Http\Controllers\PageDisplayController::class,
-  'home',
-])->name('frontend.home');
-Route::get('{slug}', [
-  \App\Http\Controllers\PageDisplayController::class,
-  'show',
-])->name('frontend.page');
+Route::get('/', [\App\Http\Controllers\PageDisplayController::class, 'home'])->name('frontend.home');
 
-Route::post('subscription/signup', [
-  \App\Http\Controllers\SubscriptionController::class,
-  'signup',
-])
+Route::get('{slug}', [\App\Http\Controllers\PageDisplayController::class, 'show'])->name('frontend.page');
+
+Route::post('subscription/signup', [\App\Http\Controllers\SubscriptionController::class, 'signup'])
   ->middleware(ProtectAgainstSpam::class)
   ->middleware(DoNotCacheResponse::class)
   ->name('subscription.signup');

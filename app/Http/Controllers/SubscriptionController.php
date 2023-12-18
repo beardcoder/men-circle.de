@@ -14,10 +14,7 @@ class SubscriptionController extends Controller
       'name' => 'required',
     ]);
 
-    $response = Http::withBasicAuth(
-      config('listmonk.user'),
-      config('listmonk.password'),
-    )
+    $response = Http::withBasicAuth(config('listmonk.user'), config('listmonk.password'))
       ->post(config('listmonk.url') . '/api/subscribers', [
         'email' => $request->email,
         'name' => $request->name,

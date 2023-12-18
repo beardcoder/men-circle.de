@@ -55,8 +55,6 @@ class PageDisplayController extends Controller
     }
 
     SEOTools::opengraph()->addProperty('type', 'website');
-    SEOTools::jsonLd()->addImage(
-      'https://mens-circle.de/assets/web/images/logo.png',
-    );
+    SEOTools::jsonLd()->addImage('https://mens-circle.de/assets/web/images/logo.png');
   }
 }

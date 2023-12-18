@@ -14,8 +14,8 @@ composer_version: '2'
 web_environment: []
 hooks:
   post-start:
-    - exec: "npm run dev"
-nodejs_version: "20"
+    - exec: 'npm run dev'
+nodejs_version: '20'
 web_extra_exposed_ports:
   - name: node-vite
     container_port: 5173
@@ -101,7 +101,7 @@ web_extra_exposed_ports:
 # Please take care with this because it can cause great confusion.
 
 upload_dirs:
- - "storage"
+  - 'storage'
 #
 # upload_dirs:
 #   - custom/upload/dir

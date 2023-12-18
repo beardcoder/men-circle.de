@@ -3,12 +3,6 @@
 @twillRepeaterTitleField('title', ['hidePrefix' => true])
 @twillRepeaterGroup('app')
 
-<x-twill::input
-  name="title"
-  :label="__('messages.title')"
-/>
+<x-twill::input name="title" :label="__('messages.title')" />
 
-<x-twill::input
-  name="text"
-  :label="__('messages.text')"
-/>
+<x-twill::input name="text" :label="__('messages.text')" />

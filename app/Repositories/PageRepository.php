@@ -12,10 +12,10 @@ use App\Models\Page;
 
 class PageRepository extends ModuleRepository
 {
-    use HandleBlocks, HandleSlugs, HandleMedias, HandleFiles, HandleRevisions;
+  use HandleBlocks, HandleSlugs, HandleMedias, HandleFiles, HandleRevisions;
 
-    public function __construct(Page $model)
-    {
-        $this->model = $model;
-    }
+  public function __construct(Page $model)
+  {
+    $this->model = $model;
+  }
 }

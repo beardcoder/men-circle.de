@@ -16,17 +16,14 @@
 @endphp
 @if ($type == 'button')
   <button
-    {{ $attributes->merge(['class' => 'bg-primary-500 hover:bg-primary-600 focus:ring-primary-300 dark:focus:ring-primary-900 font-medium uppercase text-white focus:outline-none focus:ring-4 transition ' . $realsize]) }}
-  >
+    {{ $attributes->merge(['class' => 'bg-primary-500 hover:bg-primary-600 focus:ring-primary-300 dark:focus:ring-primary-900 font-medium uppercase text-white focus:outline-none focus:ring-4 transition ' . $realsize]) }}>
     {{ $slot }}
   </button>
 @endif
 
 @if ($type == 'submit')
-  <button
-    type="submit"
-    {{ $attributes->merge(['class' => 'bg-primary-500 hover:bg-primary-600 focus:ring-primary-300 dark:focus:ring-primary-900 font-medium uppercase text-white focus:outline-none focus:ring-4 transition ' . $realsize]) }}
-  >
+  <button type="submit"
+    {{ $attributes->merge(['class' => 'bg-primary-500 hover:bg-primary-600 focus:ring-primary-300 dark:focus:ring-primary-900 font-medium uppercase text-white focus:outline-none focus:ring-4 transition ' . $realsize]) }}>
     {{ $slot }}
   </button>
 @endif

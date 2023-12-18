@@ -11,10 +11,8 @@ class Wrapper extends Component
   /**
    * Create a new component instance.
    */
-  public function __construct(
-    public string|null $anchor = '',
-    public bool|null $background = false,
-  ) {
+  public function __construct(public string|null $anchor = '', public bool|null $background = false)
+  {
   }
 
   /**
