@@ -1,5 +1,6 @@
-<x-layout>
+@extends('site.layouts.page')
+@section('content')
   <main>
     {!! $item->renderBlocks() !!}
   </main>
-</x-layout>
+@stop
