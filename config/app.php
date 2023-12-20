@@ -185,6 +185,7 @@ return [
   'aliases' => Facade::defaultAliases()
     ->merge([
       'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+      'DateHelper' => App\Helpers\DateHelper::class,
     ])
     ->toArray(),
 ];

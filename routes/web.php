@@ -1,5 +1,6 @@
 <?php
 
+use App\Twill\Capsules\Appointments\Http\Controllers\Frontend\AppointmentController;
 use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
 use Spatie\ResponseCache\Middlewares\DoNotCacheResponse;
@@ -23,3 +24,8 @@ Route::post('subscription/signup', [\App\Http\Controllers\SubscriptionController
   ->middleware(ProtectAgainstSpam::class)
   ->middleware(DoNotCacheResponse::class)
   ->name('subscription.signup');
+
+Route::get('appointment/{id}', [AppointmentController::class, 'show'])->name('appointment.show');
+Route::post('appointment/{id}/registration', [AppointmentController::class, 'registration'])->name(
+  'appointment.registration',
+);

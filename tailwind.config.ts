@@ -1,8 +1,14 @@
 import type { Config } from 'tailwindcss'
 import defaultTheme from 'tailwindcss/defaultTheme'
+import typography from 'flowbite-typography'
 
 export default {
-  content: ['./resources/**/*.blade.php', './resources/**/*.js', './resources/**/*.vue'],
+  content: [
+    './resources/**/*.blade.php',
+    './app/Twill/Capsules/*/resources/**/*.blade.php',
+    './resources/**/*.js',
+    './resources/**/*.vue',
+  ],
   theme: {
     extend: {
       typography: {
@@ -64,5 +70,5 @@ export default {
       },
     },
   },
-  plugins: [require('flowbite-typography')],
+  plugins: [typography],
 } satisfies Config

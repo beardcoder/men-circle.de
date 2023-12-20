@@ -1,6 +1,14 @@
 <?php
 
 return [
+  'capsules' => [
+    'list' => [
+      [
+        'name' => 'Appointments',
+        'enabled' => true,
+      ],
+    ],
+  ],
   'enabled' => [
     'users-management' => true,
     'media-library' => true,
@@ -62,6 +70,34 @@ return [
           [
             'name' => 'portrait',
             'ratio' => 3 / 5,
+          ],
+        ],
+      ],
+      'appointment' => [
+        'mobile' => [
+          [
+            'name' => 'Mobile',
+            'ratio' => 1,
+          ],
+        ],
+        'desktop' => [
+          [
+            'name' => 'Desktop',
+            'ratio' => 8 / 9,
+          ],
+        ],
+      ],
+      'appointment_map' => [
+        'mobile' => [
+          [
+            'name' => 'Mobile',
+            'ratio' => 1,
+          ],
+        ],
+        'desktop' => [
+          [
+            'name' => 'Desktop',
+            'ratio' => 16 / 5,
           ],
         ],
       ],

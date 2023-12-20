@@ -28,6 +28,11 @@ class AppServiceProvider extends ServiceProvider
         ->forModule('pages')
         ->title('Seiten'),
     );
+    TwillNavigation::addLink(
+      NavigationLink::make()
+        ->forModule('appointments')
+        ->title('Termine'),
+    );
     TwillAppSettings::registerSettingsGroup(
       SettingsGroup::make()
         ->name('homepage')

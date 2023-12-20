@@ -66,7 +66,6 @@
 <body
   class="overflow-y-auto overflow-x-hidden bg-white text-base text-stone-800 dark:bg-stone-800 dark:text-stone-100 lg:text-lg"
 >
-  <x-header />
   @yield('content')
   <x-footer />
   @vite(['resources/js/app.ts'])
