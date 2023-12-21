@@ -6,11 +6,12 @@ use A17\Twill\Models\Behaviors\HasMedias;
 use A17\Twill\Models\Behaviors\HasFiles;
 use A17\Twill\Models\Behaviors\HasRevisions;
 use A17\Twill\Models\Model;
+use App\Traits\ClearsResponseCache;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Appointment extends Model
 {
-  use HasMedias, HasFiles, HasRevisions;
+  use HasMedias, HasFiles, HasRevisions, ClearsResponseCache;
 
   protected $dates = ['date'];
 
