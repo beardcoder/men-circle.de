@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Twill\Capsules\Appointments\Repositories;
+namespace App\Repositories;
 
 use A17\Twill\Repositories\ModuleRepository;
-use App\Twill\Capsules\Appointments\Models\AppointmentRegistration;
+use App\Models\AppointmentRegistration;
 
 class AppointmentRegistrationRepository extends ModuleRepository
 {

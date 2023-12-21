@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Twill\Capsules\Appointments\Models;
+namespace App\Models\Revisions;
 
 use A17\Twill\Models\Revision;
 

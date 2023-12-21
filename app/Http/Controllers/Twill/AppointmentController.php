@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Twill\Capsules\Appointments\Http\Controllers;
+namespace App\Http\Controllers\Twill;
 
 use A17\Twill\Http\Controllers\Admin\ModuleController as BaseModuleController;
 use A17\Twill\Models\Contracts\TwillModelContract;
-use A17\Twill\Services\Forms\Columns;
-use A17\Twill\Services\Forms\Fields\BlockEditor;
 use A17\Twill\Services\Forms\Fields\DatePicker;
 use A17\Twill\Services\Forms\Fields\Input;
 use A17\Twill\Services\Forms\Fields\Medias;
@@ -16,7 +14,7 @@ use A17\Twill\Services\Listings\Columns\Text;
 use A17\Twill\Services\Listings\Filters\QuickFilter;
 use A17\Twill\Services\Listings\Filters\QuickFilters;
 use A17\Twill\Services\Listings\TableColumns;
-use App\Twill\Capsules\Appointments\Models\Appointment;
+use App\Models\Appointment;
 use Illuminate\Database\Eloquent\Builder;
 
 class AppointmentController extends BaseModuleController

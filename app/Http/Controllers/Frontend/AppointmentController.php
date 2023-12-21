@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Twill\Capsules\Appointments\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Frontend;
 
 use App\Helpers\DateHelper;
 use App\Http\Controllers\Controller;
-use App\Twill\Capsules\Appointments\Models\AppointmentRegistration;
-use App\Twill\Capsules\Appointments\Repositories\AppointmentRepository;
+use App\Models\AppointmentRegistration;
+use App\Repositories\AppointmentRepository;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -26,7 +26,7 @@ class AppointmentController extends Controller
       $appointment->title . ' - ' . DateHelper::getLocalDate($appointment->date)->formatLocalized('%d.%m.%Y %H:%M'),
     );
 
-    return view('Appointments.resources.views.appointment', ['item' => $appointment]);
+    return view('site.appointment', ['item' => $appointment]);
   }
   public function registration(
     string $id,

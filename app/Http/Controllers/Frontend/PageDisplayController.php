@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
 use A17\Twill\Facades\TwillAppSettings;
 use A17\Twill\Models\Contracts\TwillModelContract;
+use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Repositories\PageRepository;
 use Artesaos\SEOTools\Facades\OpenGraph;

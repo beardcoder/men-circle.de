@@ -1,6 +1,6 @@
 <?php
 
-use App\Twill\Capsules\Appointments\Models\Appointment;
+use App\Models\Appointment;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

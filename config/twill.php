@@ -1,14 +1,6 @@
 <?php
 
 return [
-  'capsules' => [
-    'list' => [
-      [
-        'name' => 'Appointments',
-        'enabled' => true,
-      ],
-    ],
-  ],
   'enabled' => [
     'users-management' => true,
     'media-library' => true,

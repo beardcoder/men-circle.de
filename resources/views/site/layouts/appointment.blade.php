@@ -1,7 +1,7 @@
 <!doctype html>
 <html
   class="scroll-smooth"
-  lang="{{ app()->getLocale() }}"
+  lang="{{ str_replace('_', '-', app()->getLocale()) }}"
 >
 
 <head>

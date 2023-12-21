@@ -1,6 +1,8 @@
 <?php
 
-use App\Twill\Capsules\Appointments\Http\Controllers\Frontend\AppointmentController;
+use App\Http\Controllers\Frontend\SubscriptionController;
+use App\Http\Controllers\Frontend\AppointmentController;
+use App\Http\Controllers\Frontend\PageDisplayController;
 use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
 use Spatie\ResponseCache\Middlewares\DoNotCacheResponse;
@@ -16,11 +18,11 @@ use Spatie\ResponseCache\Middlewares\DoNotCacheResponse;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\PageDisplayController::class, 'home'])->name('frontend.home');
+Route::get('/', [PageDisplayController::class, 'home'])->name('frontend.home');
 
-Route::get('{slug}', [\App\Http\Controllers\PageDisplayController::class, 'show'])->name('frontend.page');
+Route::get('{slug}', [PageDisplayController::class, 'show'])->name('frontend.page');
 
-Route::post('subscription/signup', [\App\Http\Controllers\SubscriptionController::class, 'signup'])
+Route::post('subscription/signup', [SubscriptionController::class, 'signup'])
   ->middleware(ProtectAgainstSpam::class)
   ->middleware(DoNotCacheResponse::class)
   ->name('subscription.signup');

@@ -18,7 +18,8 @@
   },
   "dependencies": {
     "@fontsource-variable/jost": "^5.0.17",
-    "@fontsource-variable/lexend": "^5.0.18"
+    "@fontsource-variable/lexend": "^5.0.18",
+    "flowbite": "^2.2.1"
   },
   "overrides": {
     "rollup": "npm:@rollup/wasm-node"

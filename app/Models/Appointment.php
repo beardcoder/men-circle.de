@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Twill\Capsules\Appointments\Models;
+namespace App\Models;
 
-use A17\Twill\Models\Behaviors\HasBlocks;
 use A17\Twill\Models\Behaviors\HasMedias;
 use A17\Twill\Models\Behaviors\HasFiles;
 use A17\Twill\Models\Behaviors\HasRevisions;
