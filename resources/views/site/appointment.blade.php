@@ -81,13 +81,28 @@
         </div>
       </div>
     </div>
-    @if ($item->hasImage('appointment_map', 'desktop'))
-      <div class="aspect-square lg:aspect-auto">
-        {!! $map->render([
-            'lqip' => true,
-            'class' => 'w-full h-full object-cover object-center',
-        ]) !!}
-      </div>
-    @endif
+
+    <div class="aspect-square lg:aspect-auto">
+      <div
+        class="aspect-square lg:aspect-[16/5]"
+        id="map"
+      ></div>
+      <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+      ></script>
+      <script>
+        var map = L.map('map', {
+          zoomControl: false,
+          scrollWheelZoom: false
+        }).setView([48.882795, 12.570681], 100);
+        var marker = L.marker([48.882795, 12.570681]).addTo(map);
+        marker.bindPopup("<b>Hier&Jetzt Yogastudio - Straubing</b><br>Fraunhoferstraße 13, 94315 Straubing").openPopup();
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.svg', {
+          attribution: '©OpenStreetMap, ©CartoDB'
+        }).addTo(map);
+      </script>
+    </div>
   </main>
 @stop

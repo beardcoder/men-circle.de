@@ -59,12 +59,6 @@ class AppointmentController extends BaseModuleController
         ->label(twillTrans('Cover image'))
         ->max(1),
     );
-    $form->add(
-      Medias::make()
-        ->name('appointment_map')
-        ->label(twillTrans('Karte'))
-        ->max(1),
-    );
 
     $form->addFieldset(
       Fieldset::make()

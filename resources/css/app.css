@@ -27,3 +27,9 @@
     transform: translateY(50px);
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .leaflet-layer {
+    filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+  }
+}
