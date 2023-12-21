@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Frontend\SubscriptionController;
 use App\Http\Controllers\Frontend\AppointmentController;
 use App\Http\Controllers\Frontend\PageDisplayController;
 use Illuminate\Support\Facades\Route;
@@ -21,11 +20,6 @@ use Spatie\ResponseCache\Middlewares\DoNotCacheResponse;
 Route::get('/', [PageDisplayController::class, 'home'])->name('frontend.home');
 
 Route::get('{slug}', [PageDisplayController::class, 'show'])->name('frontend.page');
-
-Route::post('subscription/signup', [SubscriptionController::class, 'signup'])
-  ->middleware(ProtectAgainstSpam::class)
-  ->middleware(DoNotCacheResponse::class)
-  ->name('subscription.signup');
 
 Route::get('appointment/{id}', [AppointmentController::class, 'show'])->name('appointment.show');
 Route::post('appointment/{id}/registration', [AppointmentController::class, 'registration'])->name(

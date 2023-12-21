@@ -67,7 +67,7 @@
             > {{ DateHelper::getLocalDate($item->date)->formatLocalized('%d.%m.%Y %H:%M') }}
             </time>
           </h1>
-          <livewire:register :id="$item->id" />
+          <livewire:register appointment="{{ $item->id }}" />
         </div>
       </div>
 

@@ -57,6 +57,7 @@
     name="theme-color"
     content="#ffffff"
   >
+  @livewireStyles
   @vite('resources/css/app.css')
   <script>
     document.querySelector('html').classList.add('has-js')
@@ -69,6 +70,8 @@
   <x-header />
   @yield('content')
   <x-footer />
+  @livewireScripts
+
   @vite(['resources/js/app.ts'])
   <script
     async
