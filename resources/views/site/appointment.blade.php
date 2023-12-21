@@ -95,7 +95,8 @@
       <script>
         var map = L.map('map', {
           zoomControl: false,
-          scrollWheelZoom: false
+          scrollWheelZoom: false,
+          gestureHandling: true,
         }).setView([48.882795, 12.570681], 100);
         var marker = L.marker([48.882795, 12.570681]).addTo(map);
         marker.bindPopup("<b>Hier&Jetzt Yogastudio - Straubing</b><br>Fraunhoferstraße 13, 94315 Straubing").openPopup();
