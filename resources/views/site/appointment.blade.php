@@ -40,7 +40,7 @@
 
 @section('content')
   <main>
-    <div class="relative grid min-h-screen lg:grid-cols-2">
+    <section class="relative grid min-h-screen lg:grid-cols-2">
       <div
         class="pointer-events-none absolute left-1/2 top-[650px] z-10 h-32 w-32 -translate-x-1/2 -translate-y-1/2 lg:top-1/2"
       >
@@ -84,9 +84,11 @@
           ]) !!}
         </div>
       </div>
+    </section>
+    <div>
+      {!! $item->renderBlocks() !!}
     </div>
-
-    <div class="aspect-square lg:aspect-auto">
+    <section class="aspect-square lg:aspect-auto">
       <div
         class="aspect-square lg:aspect-[16/5]"
         id="map"
@@ -108,6 +110,6 @@
           attribution: '©OpenStreetMap, ©CartoDB'
         }).addTo(map);
       </script>
-    </div>
+    </section>
   </main>
 @stop

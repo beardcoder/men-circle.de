@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Twill;
 
 use A17\Twill\Http\Controllers\Admin\ModuleController as BaseModuleController;
 use A17\Twill\Models\Contracts\TwillModelContract;
+use A17\Twill\Services\Forms\Fields\BlockEditor;
 use A17\Twill\Services\Forms\Fields\DatePicker;
 use A17\Twill\Services\Forms\Fields\Input;
 use A17\Twill\Services\Forms\Fields\Medias;
@@ -59,6 +60,8 @@ class AppointmentController extends BaseModuleController
         ->label(twillTrans('Cover image'))
         ->max(1),
     );
+
+    $form->add(BlockEditor::make());
 
     $form->addFieldset(
       Fieldset::make()
