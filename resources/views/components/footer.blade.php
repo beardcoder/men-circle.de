@@ -25,6 +25,14 @@
       <li>
         <a
           class="mr-4 hover:underline md:mr-6"
+          href="/impressum"
+        >
+          Impressum
+        </a>
+      </li>
+      <li>
+        <a
+          class="mr-4 hover:underline md:mr-6"
           href="https://www.instagram.com/markus.sommer/"
         >
           Instagram
