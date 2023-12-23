@@ -22,6 +22,8 @@ Route::middleware(['cacheResponse'])->group(function () {
 
   Route::get('{slug}', [PageDisplayController::class, 'show'])->name('frontend.page');
 
+  Route::get('event/next', [AppointmentController::class, 'next'])->name('event.next');
+  Route::get('event/{id}', [AppointmentController::class, 'show'])->name('event.show');
   Route::get('appointment/{id}', [AppointmentController::class, 'show'])->name('appointment.show');
 });
 

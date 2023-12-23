@@ -34,7 +34,7 @@ class AppointmentController extends BaseModuleController
   {
     if ($request->route('appointment')) {
       return [
-        'customPermalink' => route('appointment.show', ['id' => $request->route('appointment')]),
+        'customPermalink' => route('event.show', ['id' => $request->route('appointment')]),
       ];
     }
     return [];
