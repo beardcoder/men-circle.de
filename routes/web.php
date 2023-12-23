@@ -17,11 +17,14 @@ use Spatie\ResponseCache\Middlewares\DoNotCacheResponse;
 |
 */
 
-Route::get('/', [PageDisplayController::class, 'home'])->name('frontend.home');
+Route::middleware(['cacheResponse'])->group(function () {
+  Route::get('/', [PageDisplayController::class, 'home'])->name('frontend.home');
 
-Route::get('{slug}', [PageDisplayController::class, 'show'])->name('frontend.page');
+  Route::get('{slug}', [PageDisplayController::class, 'show'])->name('frontend.page');
 
-Route::get('appointment/{id}', [AppointmentController::class, 'show'])->name('appointment.show');
+  Route::get('appointment/{id}', [AppointmentController::class, 'show'])->name('appointment.show');
+});
+
 Route::post('appointment/{id}/registration', [AppointmentController::class, 'registration'])->name(
   'appointment.registration',
 );
