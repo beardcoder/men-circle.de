@@ -73,11 +73,13 @@
   @livewireScripts
 
   @vite(['resources/js/app.ts'])
-  <script
-    async
-    src="https://tracking.letsbenow.de/script.js"
-    data-website-id="9384afba-8736-46df-a418-642b3ec39742"
-  ></script>
+  @production
+    <script
+      async
+      src="https://tracking.letsbenow.de/script.js"
+      data-website-id="9384afba-8736-46df-a418-642b3ec39742"
+    ></script>
+  @endproduction
 </body>
 
 </html>

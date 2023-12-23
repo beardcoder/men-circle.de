@@ -62,7 +62,7 @@
           id="newsletter"
           type="checkbox"
           value="true"
-          wire:model="email"
+          wire:model="newsletter"
         >
         <label
           class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
