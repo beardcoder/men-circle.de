@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\AppointmentRegistration;
+use App\Models\EventRegistration;
 use Livewire\Component;
 use Illuminate\Support\Facades\Http;
 use Spatie\Honeypot\Http\Livewire\Concerns\HoneypotData;
@@ -14,7 +14,7 @@ class Register extends Component
 
   public $name = '';
   public $email = '';
-  public $appointment = 0;
+  public $event = 0;
   public $newsletter = false;
   public $success = false;
 
@@ -34,10 +34,10 @@ class Register extends Component
   {
     $this->protectAgainstSpam();
 
-    AppointmentRegistration::create([
+    EventRegistration::create([
       'name' => $this->name,
       'email' => $this->email,
-      'appointment_id' => $this->appointment,
+      'event_id' => $this->event,
     ]);
 
     if ($this->newsletter) {

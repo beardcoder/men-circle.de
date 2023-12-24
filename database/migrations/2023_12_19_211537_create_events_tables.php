@@ -1,15 +1,15 @@
 <?php
 
-use App\Models\Appointment;
+use App\Models\Event;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAppointmentsTables extends Migration
+class CreateEventsTables extends Migration
 {
   public function up()
   {
-    Schema::create('appointments', function (Blueprint $table) {
+    Schema::create('events', function (Blueprint $table) {
       // this will create an id, a "published" column, and soft delete and timestamps columns
       createDefaultTableFields($table);
 
@@ -26,29 +26,29 @@ class CreateAppointmentsTables extends Migration
       // $table->timestamp('publish_end_date')->nullable();
     });
 
-    Schema::create('appointment_registrations', function (Blueprint $table) {
+    Schema::create('event_registrations', function (Blueprint $table) {
       // this will create an id, a "published" column, and soft delete and timestamps columns
       createDefaultTableFields($table);
 
       $table->string('name', 200)->nullable();
       $table->string('email', 200)->nullable();
-      $table->foreignIdFor(Appointment::class)->nullable();
+      $table->foreignIdFor(Event::class)->nullable();
     });
 
-    Schema::create('appointment_slugs', function (Blueprint $table) {
-      createDefaultSlugsTableFields($table, 'appointment');
+    Schema::create('event_slugs', function (Blueprint $table) {
+      createDefaultSlugsTableFields($table, 'event');
     });
 
-    Schema::create('appointment_revisions', function (Blueprint $table) {
-      createDefaultRevisionsTableFields($table, 'appointment');
+    Schema::create('event_revisions', function (Blueprint $table) {
+      createDefaultRevisionsTableFields($table, 'event');
     });
   }
 
   public function down()
   {
-    Schema::dropIfExists('appointment_revisions');
-    Schema::dropIfExists('appointment_slugs');
-    Schema::dropIfExists('appointment_registrations');
-    Schema::dropIfExists('appointments');
+    Schema::dropIfExists('event_revisions');
+    Schema::dropIfExists('event_slugs');
+    Schema::dropIfExists('event_registrations');
+    Schema::dropIfExists('events');
   }
 }

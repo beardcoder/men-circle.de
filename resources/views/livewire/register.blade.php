@@ -1,4 +1,4 @@
-@props(['appointment' => 0])
+@props(['event' => 0])
 <div>
   @if ($success)
     <div class="format lg:format-lg dark:format-invert max-w-none">
@@ -13,10 +13,10 @@
       @csrf
       <x-honeypot livewire-model="extraFields" />
       <input
-        name="appointment"
+        name="event"
         type="hidden"
-        value="{{ $appointment }}"
-        wire:model="appointment"
+        value="{{ $event }}"
+        wire:model="event"
       />
       <div data-fade="left">
         <label

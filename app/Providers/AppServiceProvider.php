@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
     );
     TwillNavigation::addLink(
       NavigationLink::make()
-        ->forModule('appointments')
+        ->forModule('events')
         ->title('Termine'),
     );
     TwillAppSettings::registerSettingsGroup(

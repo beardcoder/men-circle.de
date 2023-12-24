@@ -10,7 +10,7 @@ use A17\Twill\Models\Model;
 use App\Traits\ClearsResponseCache;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Appointment extends Model
+class Event extends Model
 {
   use HasBlocks, HasMedias, HasFiles, HasRevisions, ClearsResponseCache;
 
@@ -22,9 +22,9 @@ class Appointment extends Model
 
   protected $fillable = ['published', 'title', 'date'];
 
-  public function appointment_registrations(): HasMany
+  public function event_registrations(): HasMany
   {
-    return $this->hasMany(AppointmentRegistration::class);
+    return $this->hasMany(EventRegistration::class);
   }
 
   public static function findFuture()

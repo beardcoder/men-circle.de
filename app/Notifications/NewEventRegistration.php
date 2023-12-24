@@ -2,20 +2,20 @@
 
 namespace App\Notifications;
 
-use App\Models\AppointmentRegistration;
+use App\Models\EventRegistration;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewAppointmentRegistration extends Notification
+class NewEventRegistration extends Notification
 {
   use Queueable;
 
   /**
    * Create a new notification instance.
    */
-  public function __construct(private AppointmentRegistration $appointmentRegistration)
+  public function __construct(private EventRegistration $eventRegistration)
   {
     //
   }
@@ -38,7 +38,7 @@ class NewAppointmentRegistration extends Notification
     return (new MailMessage())
       ->subject('Neue Anmeldung für den Männerkreis')
       ->salutation('Neue Anmeldung für den Männerkreis')
-      ->lines(['Name: ' . $this->appointmentRegistration->name, 'Email: ' . $this->appointmentRegistration->email]);
+      ->lines(['Name: ' . $this->eventRegistration->name, 'Email: ' . $this->eventRegistration->email]);
   }
 
   /**

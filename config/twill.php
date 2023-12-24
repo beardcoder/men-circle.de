@@ -65,7 +65,7 @@ return [
           ],
         ],
       ],
-      'appointment' => [
+      'event' => [
         'mobile' => [
           [
             'name' => 'Mobile',
@@ -79,7 +79,7 @@ return [
           ],
         ],
       ],
-      'appointment_map' => [
+      'event_map' => [
         'mobile' => [
           [
             'name' => 'Mobile',

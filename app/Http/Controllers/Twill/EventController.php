@@ -15,26 +15,26 @@ use A17\Twill\Services\Listings\Columns\Text;
 use A17\Twill\Services\Listings\Filters\QuickFilter;
 use A17\Twill\Services\Listings\Filters\QuickFilters;
 use A17\Twill\Services\Listings\TableColumns;
-use App\Models\Appointment;
+use App\Models\Event;
 use Illuminate\Database\Eloquent\Builder;
 
-class AppointmentController extends BaseModuleController
+class EventController extends BaseModuleController
 {
-  protected $moduleName = 'appointments';
+  protected $moduleName = 'events';
 
   /**
    * This method can be used to enable/disable defaults. See setUpController in the docs for available options.
    */
   protected function setUpController(): void
   {
-    // $this->setPermalinkBase('appointment');
+    // $this->setPermalinkBase('event');
   }
 
   protected function formData($request)
   {
-    if ($request->route('appointment')) {
+    if ($request->route('event')) {
       return [
-        'customPermalink' => route('event.show', ['id' => $request->route('appointment')]),
+        'customPermalink' => route('event.show', ['id' => $request->route('event')]),
       ];
     }
     return [];
@@ -56,7 +56,7 @@ class AppointmentController extends BaseModuleController
     );
     $form->add(
       Medias::make()
-        ->name('appointment')
+        ->name('event')
         ->label(twillTrans('Cover image'))
         ->max(1),
     );
@@ -68,7 +68,7 @@ class AppointmentController extends BaseModuleController
         ->title('Anmeldungen')
         ->fields([
           InlineRepeater::make()
-            ->name('appointment_registrations')
+            ->name('event_registrations')
             ->triggerText('Anmeldung hinzufügen')
             ->label('Anmeldung')
             ->fields([Input::make()->name('name'), Input::make()->name('email')]),
@@ -110,7 +110,7 @@ class AppointmentController extends BaseModuleController
       Text::make()
         ->field('date')
         ->title('Datum')
-        ->customRender(function (Appointment $model) {
+        ->customRender(function (Event $model) {
           return view('backend.table.date', [
             'date' => $model->date,
           ])->render();

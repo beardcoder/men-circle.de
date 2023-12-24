@@ -3,4 +3,4 @@
 use A17\Twill\Facades\TwillRoutes;
 
 TwillRoutes::module('pages');
-TwillRoutes::module('appointments');
+TwillRoutes::module('events');

@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\AppointmentRegistration;
-use App\Observers\AppointmentRegistrationObserver;
+use App\Models\EventRegistration;
+use App\Observers\EventRegistrationObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -29,7 +29,7 @@ class EventServiceProvider extends ServiceProvider
    */
   protected $observers = [
     Setting::class => [SettingObserver::class],
-    AppointmentRegistration::class => [AppointmentRegistrationObserver::class],
+    EventRegistration::class => [EventRegistrationObserver::class],
   ];
 
   /**

@@ -1,7 +1,7 @@
 @extends('site.layouts.event')
 
 @php
-  $image = TwillImage::make($item, 'appointment');
+  $image = TwillImage::make($item, 'event');
   $image->preset([
       'crop' => 'desktop',
       'sizes' => '(max-width: 1023px) 100vw, (min-width: 1023px)',
@@ -19,7 +19,7 @@
       ],
   ]);
 
-  $map = TwillImage::make($item, 'appointment_map');
+  $map = TwillImage::make($item, 'event_map');
   $map->preset([
       'crop' => 'desktop',
       'sizes' => '(max-width: 1023px) 100vw, (min-width: 1023px)',
@@ -68,7 +68,7 @@
             > {{ DateHelper::getLocalDate($item->date)->formatLocalized('%d.%m.%Y %H:%M') }}
             </time>
           </h1>
-          <livewire:register appointment="{{ $item->id }}" />
+          <livewire:register event="{{ $item->id }}" />
         </div>
       </div>
 

@@ -7,13 +7,13 @@ use A17\Twill\Repositories\Behaviors\HandleFiles;
 use A17\Twill\Repositories\Behaviors\HandleMedias;
 use A17\Twill\Repositories\Behaviors\HandleRevisions;
 use A17\Twill\Repositories\ModuleRepository;
-use App\Models\Appointment;
+use App\Models\Event;
 
-class AppointmentRepository extends ModuleRepository
+class EventRepository extends ModuleRepository
 {
   use HandleBlocks, HandleMedias, HandleFiles, HandleRevisions;
 
-  public function __construct(Appointment $model)
+  public function __construct(Event $model)
   {
     $this->model = $model;
   }
@@ -23,9 +23,9 @@ class AppointmentRepository extends ModuleRepository
     $this->updateRepeater(
       $model,
       $fields,
-      'appointment_registrations',
-      AppointmentRegistrationRepository::class,
-      'appointment_registrations',
+      'event_registrations',
+      EventRegistrationRepository::class,
+      'event_registrations',
     );
     parent::afterSave($model, $fields);
   }
@@ -37,9 +37,9 @@ class AppointmentRepository extends ModuleRepository
     return $this->getFormFieldsForRepeater(
       $object,
       $fields,
-      'appointment_registrations',
-      AppointmentRegistrationRepository::class,
-      'appointment_registrations',
+      'event_registrations',
+      EventRegistrationRepository::class,
+      'event_registrations',
     );
   }
 }
