@@ -1,4 +1,4 @@
-@extends('site.layouts.appointment')
+@extends('site.layouts.event')
 
 @php
   $image = TwillImage::make($item, 'appointment');
