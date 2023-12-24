@@ -17,7 +17,6 @@ class NewEventRegistration extends Notification
    */
   public function __construct(private EventRegistration $eventRegistration)
   {
-    //
   }
 
   /**
