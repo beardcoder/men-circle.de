@@ -61,6 +61,13 @@ class EventController extends BaseModuleController
         ->max(1),
     );
 
+    $form->add(
+      Input::make()
+        ->name('list')
+        ->label(twillTrans('Email Liste'))
+        ->type('number'),
+    );
+
     $form->add(BlockEditor::make());
 
     $form->addFieldset(
