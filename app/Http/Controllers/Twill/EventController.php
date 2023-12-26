@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Twill;
 
 use A17\Twill\Http\Controllers\Admin\ModuleController as BaseModuleController;
 use A17\Twill\Models\Contracts\TwillModelContract;
+use A17\Twill\Services\Forms\Columns;
 use A17\Twill\Services\Forms\Fields\BlockEditor;
 use A17\Twill\Services\Forms\Fields\DatePicker;
 use A17\Twill\Services\Forms\Fields\Input;
@@ -66,6 +67,28 @@ class EventController extends BaseModuleController
         ->name('list')
         ->label(twillTrans('Email Liste'))
         ->type('number'),
+    );
+
+    $form->add(
+      Input::make()
+        ->name('place')
+        ->label(twillTrans('Ort')),
+    );
+
+    $form->add(
+      Columns::make()
+        ->left([
+          Input::make()
+            ->name('latitude')
+            ->label(twillTrans('Latitude'))
+            ->type('number'),
+        ])
+        ->right([
+          Input::make()
+            ->name('longitude')
+            ->label(twillTrans('Longitude'))
+            ->type('number'),
+        ]),
     );
 
     $form->add(BlockEditor::make());

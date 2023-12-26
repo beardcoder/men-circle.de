@@ -20,7 +20,7 @@ class Event extends Model
     'date' => 'datetime',
   ];
 
-  protected $fillable = ['published', 'title', 'date'];
+  protected $fillable = ['published', 'title', 'date', 'list', 'latitude', 'longitude', 'place'];
 
   public function event_registrations(): HasMany
   {
