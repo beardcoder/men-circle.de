@@ -40,16 +40,17 @@ class Register extends Component
       'event_id' => $this->event,
     ]);
 
-    if ($this->newsletter) {
-      Http::withBasicAuth(config('listmonk.user'), config('listmonk.password'))->post(
-        config('listmonk.url') . '/api/subscribers',
-        [
-          'email' => $this->email,
-          'name' => $this->name,
-          'lists' => [intval(config('listmonk.list'))],
+    Http::withBasicAuth(config('listmonk.user'), config('listmonk.password'))->post(
+      config('listmonk.url') . '/api/subscribers',
+      [
+        'email' => $this->email,
+        'name' => $this->name,
+        'lists' => [intval(config('listmonk.register')), $this->newsletter ? intval(config('listmonk.list')) : null],
+        'attribs' => [
+          'event' => intval($this->event),
         ],
-      );
-    }
+      ],
+    );
 
     $this->success = true;
   }

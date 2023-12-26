@@ -3,21 +3,22 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Mail\Mailables\Address;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class Signup extends Mailable
+class EventRegisterMail extends Mailable
 {
   use Queueable, SerializesModels;
 
   /**
    * Create a new message instance.
    */
-  public function __construct(private string $name, private string $email, private string $token)
+  public function __construct()
   {
+    //
   }
 
   /**
@@ -25,11 +26,7 @@ class Signup extends Mailable
    */
   public function envelope(): Envelope
   {
-    return new Envelope(
-      from: new Address(env('MAIL_FROM_ADDRESS', 'info@mens-circle.de'), env('MAIL_FROM_NAME', 'Men\'s Circle')),
-      replyTo: [new Address($this->email, $this->name)],
-      subject: 'Men\'s Circle Anmeldung',
-    );
+    return new Envelope(subject: 'Event Register Mail');
   }
 
   /**
@@ -37,14 +34,7 @@ class Signup extends Mailable
    */
   public function content(): Content
   {
-    return new Content(
-      view: 'mail.signup',
-      with: [
-        'name' => $this->name,
-        'email' => $this->email,
-        'token' => $this->token,
-      ],
-    );
+    return new Content(view: 'mail.event.register');
   }
 
   /**
