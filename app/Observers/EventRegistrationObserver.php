@@ -14,7 +14,7 @@ class EventRegistrationObserver
    */
   public function created(EventRegistration $eventRegistration): void
   {
-    $user = User::find(1)->first();
+    $user = User::firstWhere('id', 1);
     $user->notify(new NewEventRegistration($eventRegistration));
   }
 }

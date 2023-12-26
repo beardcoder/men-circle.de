@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Event;
 use App\Models\EventRegistration;
 use Livewire\Component;
 use Illuminate\Support\Facades\Http;
@@ -33,6 +34,7 @@ class Register extends Component
   public function register()
   {
     $this->protectAgainstSpam();
+    $event = Event::firstWhere('id', $this->event);
 
     EventRegistration::create([
       'name' => $this->name,
@@ -40,18 +42,37 @@ class Register extends Component
       'event_id' => $this->event,
     ]);
 
-    Http::withBasicAuth(config('listmonk.user'), config('listmonk.password'))->post(
-      config('listmonk.url') . '/api/subscribers',
-      [
-        'email' => $this->email,
-        'name' => $this->name,
-        'lists' => [intval(config('listmonk.register')), $this->newsletter ? intval(config('listmonk.list')) : null],
-        'status' => 'enabled',
-        'attribs' => [
-          'event' => intval($this->event),
-        ],
-      ],
-    );
+    $res = Http::withBasicAuth(config('listmonk.user'), config('listmonk.password'))
+      ->get(config('listmonk.url') . '/api/subscribers?query=subscribers.email LIKE \'' . $this->email . '\'')
+      ->json();
+    if (count($res['data']['results']) >= 1) {
+      $subscriber = $res['data']['results'][0];
+      $existingLists = [];
+
+      if (count($subscriber['lists']) >= 1) {
+        foreach ($subscriber['lists'] as $list) {
+          $existingLists[] = $list['id'];
+        }
+      }
+
+      $test = Http::withBasicAuth(config('listmonk.user'), config('listmonk.password'))
+        ->put(config('listmonk.url') . '/api/subscribers/' . $subscriber['id'], [
+          'email' => $this->email,
+          'name' => $this->name,
+          'lists' => [$event->list, $this->newsletter ? intval(config('listmonk.list')) : null, ...$existingLists],
+          'status' => 'enabled',
+        ])
+        ->json();
+    } else {
+      Http::withBasicAuth(config('listmonk.user'), config('listmonk.password'))
+        ->post(config('listmonk.url') . '/api/subscribers', [
+          'email' => $this->email,
+          'name' => $this->name,
+          'lists' => [$event->list, $this->newsletter ? intval(config('listmonk.list')) : null],
+          'status' => 'enabled',
+        ])
+        ->json();
+    }
 
     $this->success = true;
   }
