@@ -40,9 +40,9 @@
 
 @section('content')
   <main>
-    <section class="relative grid min-h-screen lg:grid-cols-2">
+    <section class="relative grid min-h-screen overflow-hidden lg:grid-cols-2">
       <div
-        class="pointer-events-none absolute left-1/2 top-[650px] z-10 h-32 w-32 -translate-x-1/2 -translate-y-1/2 lg:top-1/2"
+        class="pointer-events-none absolute left-1/2 top-[850px] z-10 h-32 w-32 -translate-x-1/2 -translate-y-1/2 lg:top-1/2"
       >
         <div
           class="bg-secondary rounded-full"
@@ -57,7 +57,7 @@
           />
         </div>
       </div>
-      <div class="mx-auto my-auto flex h-[650px] max-w-xl px-8 py-20 lg:h-auto lg:px-20">
+      <div class="mx-auto my-auto flex h-[850px] max-w-xl px-8 py-20 lg:h-auto lg:px-20">
         <div class="mx-auto my-auto">
           <h1
             class="mb-4 text-4xl font-bold tracking-tight text-stone-900 dark:text-white"
