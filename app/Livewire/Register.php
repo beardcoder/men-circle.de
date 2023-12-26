@@ -46,6 +46,7 @@ class Register extends Component
         'email' => $this->email,
         'name' => $this->name,
         'lists' => [intval(config('listmonk.register')), $this->newsletter ? intval(config('listmonk.list')) : null],
+        'status' => 'enabled',
         'attribs' => [
           'event' => intval($this->event),
         ],
