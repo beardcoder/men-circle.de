@@ -16,31 +16,27 @@ class EventController extends Controller
 {
   public function show(string $id, EventRepository $eventRepository): View
   {
-    /** @var \App\Models\Page $event */
+    /** @var \App\Models\Event $event */
     $event = $eventRepository->getById($id);
     if (!$event) {
       abort(404);
     }
 
-    SEOTools::setTitle(
-      $event->title . ' - ' . DateHelper::getLocalDate($event->date)->formatLocalized('%d.%m.%Y %H:%M'),
-    );
+    $this->setJsonLD($event);
 
     return view('site.event', ['item' => $event]);
   }
 
   public function next(): View
   {
-    /** @var \App\Models\Page $event */
+    /** @var \App\Models\Event $event */
     $event = Event::where('date', '>', now())->first();
 
     if (!$event) {
       abort(404);
     }
 
-    SEOTools::setTitle(
-      $event->title . ' - ' . DateHelper::getLocalDate($event->date)->formatLocalized('%d.%m.%Y %H:%M'),
-    );
+    $this->setJsonLD($event);
 
     return view('site.event', ['item' => $event]);
   }
@@ -62,5 +58,43 @@ class EventController extends Controller
     return back()
       ->with('success', 'success')
       ->withFragment('#registration_form');
+  }
+
+  private function setJsonLD(Event $event)
+  {
+    SEOTools::setTitle(
+      $event->title . ' - ' . DateHelper::getLocalDate($event->date)->formatLocalized('%d.%m.%Y %H:%M'),
+    );
+    SEOTools::opengraph()->addProperty('type', 'event');
+    SEOTools::jsonLd()->setType('Event');
+    SEOTools::jsonLd()->addValues([
+      'startDate' => $event->date,
+      'eventAttendanceMode' => 'https://schema.org/OfflineEventAttendanceMode',
+      'eventStatus' => 'https://schema.org/EventScheduled',
+      'location' => [
+        '@type' => 'Place',
+        'name' => 'Hier&Jetzt Yogastudio - Straubing',
+        'address' => [
+          '@type' => 'PostalAddress',
+          'streetAddress' => 'Fraunhoferstraße 13',
+          'addressLocality' => 'Straubing',
+          'postalCode' => '94315',
+          'addressCountry' => 'DE',
+        ],
+      ],
+      'description' =>
+        'Ein Raum für offene Kommunikation, Weisheit, Unterstützung, Spannungslinderung, Akzeptanz, Verständnis, Vertrauen und Anerkennung. Geschichten und Erfahrungen teilen in einer unterstützenden Männergruppe.',
+      'offers' => [
+        '@type' => 'Offer',
+        'price' => '0',
+        'priceCurrency' => 'EUR',
+        'description' => 'Kostenlos / Spendenbasis',
+      ],
+      'organizer' => [
+        '@type' => 'Person',
+        'name' => 'Markus Sommer',
+        'url' => 'https://mens-circle.de',
+      ],
+    ]);
   }
 }

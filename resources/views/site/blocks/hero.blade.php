@@ -27,7 +27,11 @@
       <div class="format mb-12 mt-8 max-w-3xl text-2xl text-white">
         {!! $block->input('text') !!}
       </div>
-      <x-button type="link" href="/#contact" size="xl">Jetzt dabei sein</x-button>
+      <x-button
+        type="link"
+        href="/#contact"
+        size="xl"
+      >Jetzt dabei sein</x-button>
     </div>
   </div>
   <div class="absolute inset-0 w-full after:absolute after:inset-0 after:bg-black after:bg-opacity-40">

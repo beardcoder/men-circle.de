@@ -5,7 +5,10 @@
 >
 
 <head>
-  {!! SEO::generate() !!}
+  {!! SEOMeta::generate() !!}
+  {!! OpenGraph::generate() !!}
+  {!! Twitter::generate() !!}
+  {!! JsonLd::generate() !!}
   <meta charset="utf-8" />
   <meta
     http-equiv="X-UA-Compatible"
