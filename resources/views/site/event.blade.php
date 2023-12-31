@@ -64,8 +64,8 @@
             data-fade="left"
           >
             Anmeldung zum Männerkreis am <time
-              datetime="{{ DateHelper::getLocalDate($item->date)->formatLocalized('%d.%m.%Y %H:%M') }}"
-            > {{ DateHelper::getLocalDate($item->date)->formatLocalized('%d.%m.%Y %H:%M') }}
+              datetime="{{ DateHelper::getLocalDate($item->startDate)->formatLocalized('%d.%m.%Y %H:%M') }}"
+            > {{ DateHelper::getLocalDate($item->startDate)->formatLocalized('%d.%m.%Y %H:%M') }}
             </time>
           </h1>
           <livewire:register event="{{ $item->id }}" />
@@ -88,7 +88,7 @@
                     d="M7 0a7 7 0 0 0-1 13.92V19a1 1 0 1 0 2 0v-5.08A7 7 0 0 0 7 0Zm0 5.5A1.5 1.5 0 0 0 5.5 7a1 1 0 0 1-2 0A3.5 3.5 0 0 1 7 3.5a1 1 0 0 1 0 2Z"
                   />
                 </svg>
-                {!! $item->place !!}
+                {!! $item->place !!} - {!! $item->streetAddress !!}, {!! $item->postalCode !!} {!! $item->addressLocality !!}
               </li>
               <li class="flex items-center">
                 <svg
@@ -141,11 +141,31 @@
                     d="M1 7h9.231M1 11h9.231M13 2.086A5.95 5.95 0 0 0 9.615 1C5.877 1 2.846 4.582 2.846 9s3.031 8 6.769 8A5.94 5.94 0 0 0 13 15.916"
                   />
                 </svg>
-                Kostenlos / Spendenbasis
+                {{ Cknow\Money\Money::EUR($item->price) }}
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="me-2 h-3.5 w-3.5 flex-shrink-0 text-gray-500 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 1v3m5-3v3m5-3v3M1 7h18M5 11h10M2 3h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"
+                  />
+                </svg>
+                <a
+                  href="{{ route('event.ical', $item->id) }}"
+                  download
+                >Kalender Download</a>
               </li>
             </ul>
           </div>
-
         </div>
       </div>
 
@@ -183,7 +203,8 @@
           gestureHandling: true,
         }).setView([{{ $item->latitude }}, {{ $item->longitude }}], 100);
         var marker = L.marker([{{ $item->latitude }}, {{ $item->longitude }}]).addTo(map);
-        marker.bindPopup("{!! $item->place !!}").openPopup();
+        marker.bindPopup("{!! $item->place !!} - {!! $item->streetAddress !!}, {!! $item->postalCode !!} {!! $item->addressLocality !!}")
+          .openPopup();
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.svg', {
           attribution: '©OpenStreetMap, ©CartoDB'
         }).addTo(map);

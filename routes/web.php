@@ -13,3 +13,5 @@ Route::middleware(['cacheResponse'])->group(function () {
   Route::get('events/{id}', [EventController::class, 'show'])->name('events.show');
   Route::get('event/{id}', [EventController::class, 'show'])->name('event.show');
 });
+
+Route::get('events/{id}/ical', [EventController::class, 'ical'])->name('event.ical');

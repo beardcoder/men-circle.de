@@ -14,13 +14,28 @@ class Event extends Model
 {
   use HasBlocks, HasMedias, HasFiles, HasRevisions, ClearsResponseCache;
 
-  protected $dates = ['date'];
+  protected $dates = ['startDate', 'endDate'];
 
   protected $casts = [
-    'date' => 'datetime',
+    'startDate' => 'datetime',
+    'endDate' => 'datetime',
   ];
 
-  protected $fillable = ['published', 'title', 'date', 'list', 'latitude', 'longitude', 'place'];
+  protected $fillable = [
+    'published',
+    'title',
+    'description',
+    'startDate',
+    'endDate',
+    'list',
+    'latitude',
+    'longitude',
+    'place',
+    'streetAddress',
+    'addressLocality',
+    'postalCode',
+    'price',
+  ];
 
   public function event_registrations(): HasMany
   {
@@ -29,6 +44,6 @@ class Event extends Model
 
   public static function findFuture()
   {
-    return static::where('date', '>=', date('Y-m-d G:i:s'))->get();
+    return static::where('startDate', '>=', date('Y-m-d G:i:s'))->get();
   }
 }

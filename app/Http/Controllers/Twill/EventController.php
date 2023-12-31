@@ -49,19 +49,17 @@ class EventController extends BaseModuleController
   {
     $form = parent::getForm($model);
     $form->add(
-      DatePicker::make()
-        ->name('date')
-        ->label('Datum')
-        ->time24h()
-        ->required(),
-    );
-    $form->add(
       Medias::make()
         ->name('event')
         ->label(twillTrans('Cover image'))
         ->max(1),
     );
-
+    $form->add(
+      Input::make()
+        ->name('description')
+        ->label(twillTrans('Beschreibung'))
+        ->required(),
+    );
     $form->add(
       Input::make()
         ->name('list')
@@ -88,6 +86,48 @@ class EventController extends BaseModuleController
             ->name('longitude')
             ->label(twillTrans('Longitude'))
             ->type('number'),
+        ]),
+    );
+
+    $form->add(
+      Columns::make()
+        ->left([
+          DatePicker::make()
+            ->name('startDate')
+            ->label(twillTrans('Start Datum'))
+            ->time24h()
+            ->required(),
+        ])
+        ->right([
+          DatePicker::make()
+            ->name('endDate')
+            ->label(twillTrans('End Datum'))
+            ->time24h()
+            ->required(),
+        ]),
+    );
+
+    $form->addFieldset(
+      Fieldset::make()
+        ->title(twillTrans('Ort'))
+        ->fields([
+          Columns::make()
+            ->left([
+              Input::make()
+                ->name('postalCode')
+                ->label(twillTrans('Postleitzahl'))
+                ->required(),
+            ])
+            ->right([
+              Input::make()
+                ->name('addressLocality')
+                ->label(twillTrans('Ort'))
+                ->required(),
+            ]),
+          Input::make()
+            ->name('streetAddress')
+            ->label(twillTrans('Straße und Hausnummer'))
+            ->required(),
         ]),
     );
 
@@ -120,7 +160,7 @@ class EventController extends BaseModuleController
 
     $form->add(
       DatePicker::make()
-        ->name('date')
+        ->name('startDate')
         ->label('Datum')
         ->time24h()
         ->required(),
@@ -138,11 +178,11 @@ class EventController extends BaseModuleController
 
     $table->push(
       Text::make()
-        ->field('date')
+        ->field('startDate')
         ->title('Datum')
         ->customRender(function (Event $model) {
           return view('backend.table.date', [
-            'date' => $model->date,
+            'date' => $model->startDate,
           ])->render();
         })
         ->sortable(true),
@@ -159,8 +199,8 @@ class EventController extends BaseModuleController
       QuickFilter::make()
         ->queryString('next')
         ->label('Bevorstehende')
-        ->amount(fn() => $this->repository->whereDate('date', '>=', date('Y-m-d G:i:s'))->count())
-        ->apply(fn(Builder $builder) => $builder->whereDate('date', '>=', date('Y-m-d G:i:s'))),
+        ->amount(fn() => $this->repository->whereDate('startDate', '>=', date('Y-m-d G:i:s'))->count())
+        ->apply(fn(Builder $builder) => $builder->whereDate('startDate', '>=', date('Y-m-d G:i:s'))),
     );
 
     $filters->add(

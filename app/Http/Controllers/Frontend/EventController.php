@@ -11,6 +11,10 @@ use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Response;
+use Spatie\IcalendarGenerator\Components\Calendar;
+use Spatie\IcalendarGenerator\Components\Event as CalEvent;
+use Spatie\IcalendarGenerator\Enums\Display;
 
 class EventController extends Controller
 {
@@ -30,7 +34,7 @@ class EventController extends Controller
   public function next(): View
   {
     /** @var \App\Models\Event $event */
-    $event = Event::where('date', '>', now())->first();
+    $event = Event::where('startDate', '>', now())->first();
 
     if (!$event) {
       abort(404);
@@ -40,57 +44,72 @@ class EventController extends Controller
 
     return view('site.event', ['item' => $event]);
   }
-  public function registration(string $id, EventRepository $eventRepository, Request $request): RedirectResponse
+  public function ical(string $id, EventRepository $eventRepository, Request $request)
   {
     /** @var \App\Models\Page $event */
     $event = $eventRepository->getById($id);
-
     if (!$event) {
       abort(404);
     }
 
-    EventRegistration::create([
-      'name' => $request->get('name'),
-      'email' => $request->get('email'),
-      'event_id' => $id,
-    ]);
+    $calEvent = CalEvent::create()
+      ->name($event->title . ' - ' . DateHelper::getLocalDate($event->startDate)->formatLocalized('%d.%m.%Y %H:%M'))
+      ->description($event->description)
+      ->startsAt(DateHelper::getLocalDate($event->startDate)->toDate())
+      ->endsAt(DateHelper::getLocalDate($event->endDate)->toDate())
+      ->address($event->streetAddress . ', ' . $event->postalCode . ' ' . $event->addressLocality)
+      ->addressName($event->place)
+      ->coordinates($event->latitude, $event->longitude)
+      ->image('https://mens-circle.de/assets/web/images/logo.png')
+      ->organizer('markus@letsbenow.de', 'Markus Sommer');
 
-    return back()
-      ->with('success', 'success')
-      ->withFragment('#registration_form');
+    $calendar = Calendar::create(
+      $event->title . ' - ' . DateHelper::getLocalDate($event->startDate)->formatLocalized('%d.%m.%Y %H:%M'),
+    )->event($calEvent);
+
+    return response($calendar->get(), 200, [
+      'Content-Type' => 'text/calendar; charset=utf-8',
+      'Content-Disposition' => 'attachment; filename="calendar.ics"',
+    ]);
   }
 
   private function setJsonLD(Event $event)
   {
     SEOTools::setTitle(
-      $event->title . ' - ' . DateHelper::getLocalDate($event->date)->formatLocalized('%d.%m.%Y %H:%M'),
+      $event->title . ' - ' . DateHelper::getLocalDate($event->startDate)->formatLocalized('%d.%m.%Y %H:%M'),
     );
     SEOTools::opengraph()->addProperty('type', 'event');
     SEOTools::jsonLd()->setType('Event');
     SEOTools::jsonLd()->addValues([
-      'startDate' => $event->date,
+      'startDate' => $event->startDate,
+      'endDate' => $event->endDate,
       'eventAttendanceMode' => 'https://schema.org/OfflineEventAttendanceMode',
       'eventStatus' => 'https://schema.org/EventScheduled',
       'location' => [
         '@type' => 'Place',
-        'name' => 'Hier&Jetzt Yogastudio - Straubing',
+        'name' => $event->place,
         'address' => [
           '@type' => 'PostalAddress',
-          'streetAddress' => 'Fraunhoferstraße 13',
-          'addressLocality' => 'Straubing',
-          'postalCode' => '94315',
+          'streetAddress' => $event->streetAddress,
+          'addressLocality' => $event->addressLocality,
+          'postalCode' => $event->postalCode,
           'addressCountry' => 'DE',
         ],
       ],
-      'description' =>
-        'Ein Raum für offene Kommunikation, Weisheit, Unterstützung, Spannungslinderung, Akzeptanz, Verständnis, Vertrauen und Anerkennung. Geschichten und Erfahrungen teilen in einer unterstützenden Männergruppe.',
+      'description' => $event->description,
       'offers' => [
         '@type' => 'Offer',
-        'price' => '0',
+        'price' => $event->price,
+        'availability' => 'https://schema.org/InStock',
+        'url' => url(route('events.show', $event->id)),
         'priceCurrency' => 'EUR',
-        'description' => 'Kostenlos / Spendenbasis',
       ],
       'organizer' => [
+        '@type' => 'Person',
+        'name' => 'Markus Sommer',
+        'url' => 'https://mens-circle.de',
+      ],
+      'performer' => [
         '@type' => 'Person',
         'name' => 'Markus Sommer',
         'url' => 'https://mens-circle.de',

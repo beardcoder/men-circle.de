@@ -16,7 +16,8 @@ class EventObserver
   {
     $res = Http::withBasicAuth(config('listmonk.user'), config('listmonk.password'))
       ->post(config('listmonk.url') . '/api/lists', [
-        'name' => $event->title . ' - ' . DateHelper::getLocalDate($event->date)->formatLocalized('%d.%m.%Y %H:%M'),
+        'name' =>
+          $event->title . ' - ' . DateHelper::getLocalDate($event->startDate)->formatLocalized('%d.%m.%Y %H:%M'),
         'type' => 'private',
         'optin' => 'single',
         'tags' => [App::environment()],
@@ -34,7 +35,8 @@ class EventObserver
   {
     Http::withBasicAuth(config('listmonk.user'), config('listmonk.password'))
       ->put(config('listmonk.url') . '/api/lists/' . $event->list, [
-        'name' => $event->title . ' - ' . DateHelper::getLocalDate($event->date)->formatLocalized('%d.%m.%Y %H:%M'),
+        'name' =>
+          $event->title . ' - ' . DateHelper::getLocalDate($event->startDate)->formatLocalized('%d.%m.%Y %H:%M'),
         'list_id' => $event->list,
         'tags' => [App::environment()],
       ])
