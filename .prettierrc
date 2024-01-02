@@ -8,8 +8,9 @@
     {
       "files": ["*.blade.php"],
       "options": {
-        "parser": "blade",
-        "tabWidth": 2
+        "tabWidth": 2,
+        "wrapAttributes": "force-expand-multiline",
+        "parser": "blade"
       }
     }
   ]

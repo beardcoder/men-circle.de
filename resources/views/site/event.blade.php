@@ -18,24 +18,6 @@
           ],
       ],
   ]);
-
-  $map = TwillImage::make($item, 'event_map');
-  $map->preset([
-      'crop' => 'desktop',
-      'sizes' => '(max-width: 1023px) 100vw, (min-width: 1023px)',
-      'sources' => [
-          [
-              'crop' => 'mobile',
-              'width' => 420,
-              'height' => 420,
-              'media_query' => '(max-width: 420px)',
-          ],
-          [
-              'crop' => 'desktop',
-              'media_query' => '(min-width: 420px) and (max-width: 1023px)',
-          ],
-      ],
-  ]);
 @endphp
 
 @section('content')
@@ -65,7 +47,8 @@
           >
             Anmeldung zum Männerkreis am <time
               datetime="{{ DateHelper::getLocalDate($item->startDate)->formatLocalized('%d.%m.%Y %H:%M') }}"
-            > {{ DateHelper::getLocalDate($item->startDate)->formatLocalized('%d.%m.%Y %H:%M') }}
+            >
+              {{ DateHelper::getLocalDate($item->startDate)->formatLocalized('%d.%m.%Y %H:%M') }}
             </time>
           </h1>
           <livewire:register event="{{ $item->id }}" />
@@ -123,7 +106,6 @@
                 >
                   markus@letsbenow.de
                 </a>
-              </li>
               </li>
               <li class="flex items-center">
                 <svg

@@ -67,7 +67,8 @@
         <label
           class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           for="newsletter"
-        >Ich möchte regelmässige infos zum Männerkreis erhalten</label>
+        >Ich möchte
+          regelmässige infos zum Männerkreis erhalten</label>
       </div>
 
       <x-button

@@ -1,4 +1,4 @@
-@twillBlockTitle('Text')
+@twillBlockTitle('Events')
 @twillBlockIcon('text')
 @twillBlockGroup('app')
 
@@ -25,12 +25,6 @@
       'table',
   ]"
   :label="__('messages.text')"
-/>
-
-<x-twill::medias
-  name="text_image"
-  :label="__('messages.cover')"
-  field-note="Minimum image width: 1500px"
 />
 
 <x-twill::checkbox
