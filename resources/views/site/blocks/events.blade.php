@@ -38,7 +38,7 @@
 
           <a
             href="{{ route('event.show', $event->id) }}"
-            class="flex flex-col w-1/2 items-center bg-white border border-stone-200 shadow md:flex-row hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-800 dark:hover:bg-stone-700"
+            class="flex w-1/2 items-center bg-white border border-stone-200 shadow flex-row hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-800 dark:hover:bg-stone-700"
             data-fade="bottom"
           >
             {!! $image->render([
