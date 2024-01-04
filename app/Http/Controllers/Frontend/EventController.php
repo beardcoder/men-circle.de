@@ -34,7 +34,7 @@ class EventController extends Controller
   public function next(): View
   {
     /** @var \App\Models\Event $event */
-    $event = Event::where('startDate', '>', now())->first();
+    $event = Event::where([['startDate', '>', now()], ['published', '=', 1]])->first();
 
     if (!$event) {
       abort(404);

@@ -1,7 +1,5 @@
 @php
-  $events = \App\Models\Event::where('startDate', '>', now())
-      ->where('published', '=', 1)
-      ->get();
+  $events = \App\Models\Event::where([['startDate', '>', now()], ['published', '=', 1]])->get();
 @endphp
 @if ($events)
 

@@ -16,7 +16,10 @@
           ],
       ],
   ]);
-  $nextEvent = \App\Models\Event::where('startDate', '>', now())->first();
+  $nextEvent = \App\Models\Event::where([
+    ['startDate', '>', now()]
+    ['published', '=', 1]
+    ])->first()
 @endphp
 
 <section class="relative w-full">
