@@ -8,18 +8,20 @@
   "devDependencies": {
     "@prettier/plugin-php": "^0.22.1",
     "@shufo/prettier-plugin-blade": "^1.13.4",
-    "autoprefixer": "^10.4.16",
+    "@types/leaflet": "^1.9.8",
+    "autoprefixer": "^10.4.17",
     "flowbite-typography": "^1.0.3",
     "laravel-vite-plugin": "^1.0.1",
-    "postcss": "^8.4.32",
-    "prettier": "^3.1.1",
-    "tailwindcss": "^3.4.0",
-    "vite": "^5.0.10"
+    "postcss": "^8.4.33",
+    "prettier": "^3.2.4",
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.0.12"
   },
   "dependencies": {
     "@fontsource-variable/jost": "^5.0.17",
     "@fontsource-variable/lexend": "^5.0.18",
-    "flowbite": "^2.2.1"
+    "flowbite": "^2.2.1",
+    "leaflet": "^1.9.4"
   },
   "overrides": {
     "rollup": "npm:@rollup/wasm-node"

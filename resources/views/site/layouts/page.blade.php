@@ -59,6 +59,7 @@
   >
   @livewireStyles
   @vite('resources/css/app.css')
+  @stack('styles')
   <script>
     document.querySelector('html').classList.add('has-js')
   </script>
@@ -73,6 +74,7 @@
   @livewireScripts
 
   @vite(['resources/js/app.ts'])
+  @stack('scripts')
   @production
     <script
       async

@@ -173,24 +173,25 @@
         class="aspect-square lg:aspect-[16/5]"
         id="map"
       ></div>
-      <script
-        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        crossorigin=""
-      ></script>
-      <script>
-        var map = L.map('map', {
-          zoomControl: false,
-          scrollWheelZoom: false,
-          gestureHandling: true,
-        }).setView([{{ $item->latitude }}, {{ $item->longitude }}], 100);
-        var marker = L.marker([{{ $item->latitude }}, {{ $item->longitude }}]).addTo(map);
-        marker.bindPopup("{!! $item->place !!} - {!! $item->streetAddress !!}, {!! $item->postalCode !!} {!! $item->addressLocality !!}")
-          .openPopup();
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.svg', {
-          attribution: '©OpenStreetMap, ©CartoDB'
-        }).addTo(map);
-      </script>
+
+      @push('scripts')
+        <script>
+          document.addEventListener('leafletLoaded', () => {
+            var map = L.map('map', {
+              zoomControl: false,
+              scrollWheelZoom: false,
+              gestureHandling: true,
+            }).setView([{{ $item->latitude }}, {{ $item->longitude }}], 100);
+            var marker = L.marker([{{ $item->latitude }}, {{ $item->longitude }}]).addTo(map);
+            marker.bindPopup(
+                "{!! $item->place !!} - {!! $item->streetAddress !!}, {!! $item->postalCode !!} {!! $item->addressLocality !!}")
+              .openPopup();
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.svg', {
+              attribution: '©OpenStreetMap, ©CartoDB'
+            }).addTo(map);
+          })
+        </script>
+      @endpush
     </section>
   </main>
 @stop

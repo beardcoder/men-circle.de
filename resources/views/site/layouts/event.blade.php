@@ -62,15 +62,10 @@
   >
   @livewireStyles
   @vite('resources/css/app.css')
+  @stack('styles')
   <script>
     document.querySelector('html').classList.add('has-js')
   </script>
-  <link
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    rel="stylesheet"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  />
 </head>
 
 <body
@@ -80,6 +75,7 @@
   <x-footer />
   @livewireScripts
   @vite(['resources/js/app.ts'])
+  @stack('scripts')
   @production
     <script
       async
