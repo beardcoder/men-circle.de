@@ -19,7 +19,9 @@
       ],
   ]);
 @endphp
-
+@push('meta')
+  {!! $schema->toScript() !!}
+@endpush
 @section('content')
   <main>
     <section class="relative grid min-h-screen overflow-hidden lg:grid-cols-2">

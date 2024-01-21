@@ -9,6 +9,7 @@
   {!! OpenGraph::generate() !!}
   {!! Twitter::generate() !!}
   {!! JsonLd::generate() !!}
+  @stack('meta')
   <meta charset="utf-8" />
   <meta
     http-equiv="X-UA-Compatible"

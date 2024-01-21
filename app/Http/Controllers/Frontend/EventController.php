@@ -15,6 +15,9 @@ use Response;
 use Spatie\IcalendarGenerator\Components\Calendar;
 use Spatie\IcalendarGenerator\Components\Event as CalEvent;
 use Spatie\IcalendarGenerator\Enums\Display;
+use Spatie\SchemaOrg\Contracts\EventAttendanceModeEnumerationContract;
+use Spatie\SchemaOrg\Contracts\PostalAddressContract;
+use Spatie\SchemaOrg\Schema;
 
 class EventController extends Controller
 {
@@ -26,9 +29,11 @@ class EventController extends Controller
       abort(404);
     }
 
-    $this->setJsonLD($event);
+    $eventSchema = $this->buildSchema($event);
 
-    return view('site.event', ['item' => $event]);
+    $this->setSeo($event);
+
+    return view('site.event', ['item' => $event, 'schema' => $eventSchema]);
   }
 
   public function next(): View
@@ -39,10 +44,10 @@ class EventController extends Controller
     if (!$event) {
       abort(404);
     }
+    $eventSchema = $this->buildSchema($event);
+    $this->setSeo($event);
 
-    $this->setJsonLD($event);
-
-    return view('site.event', ['item' => $event]);
+    return view('site.event', ['item' => $event, 'schema' => $eventSchema]);
   }
   public function ical(string $id, EventRepository $eventRepository, Request $request)
   {
@@ -73,47 +78,52 @@ class EventController extends Controller
     ]);
   }
 
-  private function setJsonLD(Event $event)
+  private function buildSchema(Event $event)
+  {
+    return Schema::event()
+      ->name($event->title . ' - ' . DateHelper::getLocalDate($event->startDate)->formatLocalized('%d.%m.%Y %H:%M'))
+      ->description($event->description)
+      ->image($event->image('event', 'desktop'))
+      ->startDate($event->startDate)
+      ->endDate($event->endDate)
+      ->eventAttendanceMode('https://schema.org/OfflineEventAttendanceMode')
+      ->eventStatus('https://schema.org/EventScheduled')
+      ->location(
+        Schema::place()
+          ->name($event->place)
+          ->address(
+            Schema::postalAddress()
+              ->streetAddress($event->streetAddress)
+              ->addressLocality($event->addressLocality)
+              ->postalCode($event->postalCode)
+              ->addressCountry('DE'),
+          ),
+      )
+      ->offers(
+        Schema::offer()
+          ->validFrom($event->created_at)
+          ->price($event->price)
+          ->availability('https://schema.org/InStock')
+          ->url(url(route('events.show', $event->id)))
+          ->priceCurrency('EUR'),
+      )
+      ->organizer(
+        Schema::person()
+          ->name('Markus Sommer')
+          ->url('https://mens-circle.de'),
+      )
+      ->performer(
+        Schema::person()
+          ->name('Markus Sommer')
+          ->url('https://mens-circle.de'),
+      );
+  }
+
+  private function setSeo(Event $event)
   {
     SEOTools::setTitle(
       $event->title . ' - ' . DateHelper::getLocalDate($event->startDate)->formatLocalized('%d.%m.%Y %H:%M'),
     );
     SEOTools::opengraph()->addProperty('type', 'event');
-    SEOTools::jsonLd()->setType('Event');
-    SEOTools::jsonLd()->addValues([
-      'startDate' => $event->startDate,
-      'endDate' => $event->endDate,
-      'eventAttendanceMode' => 'https://schema.org/OfflineEventAttendanceMode',
-      'eventStatus' => 'https://schema.org/EventScheduled',
-      'location' => [
-        '@type' => 'Place',
-        'name' => $event->place,
-        'address' => [
-          '@type' => 'PostalAddress',
-          'streetAddress' => $event->streetAddress,
-          'addressLocality' => $event->addressLocality,
-          'postalCode' => $event->postalCode,
-          'addressCountry' => 'DE',
-        ],
-      ],
-      'description' => $event->description,
-      'offers' => [
-        '@type' => 'Offer',
-        'price' => $event->price,
-        'availability' => 'https://schema.org/InStock',
-        'url' => url(route('events.show', $event->id)),
-        'priceCurrency' => 'EUR',
-      ],
-      'organizer' => [
-        '@type' => 'Person',
-        'name' => 'Markus Sommer',
-        'url' => 'https://mens-circle.de',
-      ],
-      'performer' => [
-        '@type' => 'Person',
-        'name' => 'Markus Sommer',
-        'url' => 'https://mens-circle.de',
-      ],
-    ]);
   }
 }
