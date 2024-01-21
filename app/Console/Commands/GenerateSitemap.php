@@ -8,25 +8,27 @@ use Spatie\Sitemap\SitemapGenerator;
 class GenerateSitemap extends Command
 {
   /**
-   * The name and signature of the console command.
+   * The console command name.
    *
    * @var string
    */
   protected $signature = 'sitemap:generate';
+
   /**
    * The console command description.
    *
    * @var string
    */
-  protected $description = 'Automatically Generate an XML Sitemap';
+  protected $description = 'Generate the sitemap.';
 
   /**
    * Execute the console command.
    *
-   * @return int
+   * @return mixed
    */
   public function handle()
   {
-    SitemapGenerator::create(config('app.url'))->writeToFile(public_path() . '/sitemap.xml');
+    // modify this to your own needs
+    SitemapGenerator::create(config('app.url'))->writeToFile(public_path('sitemap.xml'));
   }
 }
