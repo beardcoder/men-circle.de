@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
   protected function schedule(Schedule $schedule): void
   {
     $schedule->command('twill:lqip')->hourly();
+    $schedule->command('sitemap:generate')->hourly();
   }
 
   /**
