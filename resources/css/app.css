@@ -2,31 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.has-js {
-  [data-fade] {
-    opacity: 0;
-    transition:
-      opacity 0.8s ease-in-out,
-      transform 0.8s ease-in-out;
-  }
-
-  [data-fade='left'] {
-    transform: translateX(-50px);
-  }
-
-  [data-fade='right'] {
-    transform: translateX(50px);
-  }
-
-  [data-fade='top'] {
-    transform: translateY(-50px);
-  }
-
-  [data-fade='bottom'] {
-    transform: translateY(50px);
-  }
-}
-
 @media (prefers-color-scheme: dark) {
   .leaflet-layer {
     filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);

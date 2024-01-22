@@ -112,15 +112,16 @@
         >
           Kein Event für dich dabei? Melde dich für den Newsletter an
         </p>
-        <x-button
-          class="mt-4"
-          data-fade="bottom"
-          type="link"
-          href="/#contact"
-          size="lg"
-        >
-          Jetzt Anmelden
-        </x-button>
+        <div data-fade="bottom">
+          <x-button
+            class="mt-4"
+            type="link"
+            href="/#contact"
+            size="lg"
+          >
+            Jetzt Anmelden
+          </x-button>
+        </div>
       </div>
     </div>
 

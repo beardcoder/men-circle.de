@@ -11,10 +11,7 @@
     </div>
     <div class="space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0 lg:grid-cols-3">
       @foreach ($block->children as $child)
-        <div
-          class="delay-200"
-          data-fade="bottom"
-        >
+        <div data-fade="bottom">
           <h3 class="mb-2 text-xl font-bold dark:text-white">
             {!! $child->input('title') !!}
           </h3>

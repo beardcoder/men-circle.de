@@ -1,15 +1,16 @@
 // fade-in-on-scroll.ts
+import anime from 'animejs'
+
 type Direction = 'left' | 'right' | 'top' | 'bottom'
 
 export function fiosSetup(): void {
   const observer = new IntersectionObserver(
-    (entries: IntersectionObserverEntry[]) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue
-        const direction = entry.target.getAttribute('data-fade') as Direction
-        applyAnimation(entry.target as HTMLElement, direction)
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return
+        applyAnimation(entry.target as HTMLElement)
         observer.unobserve(entry.target)
-      }
+      })
     },
     {
       root: null,
@@ -20,30 +21,39 @@ export function fiosSetup(): void {
 
   document.addEventListener('DOMContentLoaded', () => {
     const elements = document.querySelectorAll<HTMLElement>('[data-fade]')
-    for (const element of elements) observer.observe(element)
+    elements.forEach((element) => {
+      const direction = element.getAttribute('data-fade') as Direction
+      const { translateX, translateY } = getDirection(direction)
+      anime({
+        targets: element,
+        opacity: 0,
+        translateX,
+        translateY,
+        easing: 'easeInOutCubic',
+        duration: 1,
+      })
+    })
+    elements.forEach((element) => observer.observe(element))
   })
 }
 
-/**
- * Applies an animation to the given element based on the given direction.
- *
- * @param element - the element to apply the animation to
- * @param direction - the direction of the animation
- */
-function applyAnimation(element: HTMLElement, direction: Direction): void {
-  element.style.opacity = '1'
-  switch (direction) {
-    case 'left':
-      element.style.transform = 'translateX(0)'
-      break
-    case 'right':
-      element.style.transform = 'translateX(0)'
-      break
-    case 'top':
-      element.style.transform = 'translateY(0)'
-      break
-    case 'bottom':
-      element.style.transform = 'translateY(0)'
-      break
-  }
+const directionTranslations: Record<Direction, { translateX: number; translateY: number }> = {
+  left: { translateX: -100, translateY: 0 },
+  right: { translateX: 100, translateY: 0 },
+  top: { translateX: 0, translateY: -100 },
+  bottom: { translateX: 0, translateY: 100 },
+}
+
+function getDirection(direction: Direction) {
+  return directionTranslations[direction]
+}
+
+function applyAnimation(element: HTMLElement): void {
+  anime({
+    targets: element,
+    opacity: { value: 1, duration: 1000 },
+    translateX: { value: 0, duration: 800 },
+    translateY: { value: 0, duration: 800 },
+    easing: 'easeInOutCubic',
+  })
 }

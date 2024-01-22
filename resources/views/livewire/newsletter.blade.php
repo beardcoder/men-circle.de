@@ -44,15 +44,15 @@
           required
         >
       </div>
-
-      <x-button
-        class="block w-full"
-        data-fade="bottom"
-        type="submit"
-        size="md"
-      >
-        Jetzt Anmelden
-      </x-button>
+      <div data-fade="bottom">
+        <x-button
+          class="block w-full"
+          type="submit"
+          size="md"
+        >
+          Jetzt Anmelden
+        </x-button>
+      </div>
     </form>
   @endif
 
