@@ -1,4 +1,3 @@
-// fade-in-on-scroll.ts
 import anime from 'animejs'
 
 type Direction = 'left' | 'right' | 'top' | 'bottom'
