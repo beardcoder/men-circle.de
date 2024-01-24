@@ -10,12 +10,12 @@
     class="{{ $hasImage ? 'lg:grid lg:grid-cols-2' : '' }} mx-auto max-w-screen-xl items-center gap-16 px-6 py-8 lg:px-6 lg:py-16"
   >
     <div class="{{ $hasImage ? '' : 'mx-auto' }} max-w-4xl sm:text-lg">
-      <x-partials.content.title data-fade="bottom">
+      <x-partials.content.title data-aos="fade-up">
         {!! $block->input('title') !!}
       </x-partials.content.title>
       <div
         class="format lg:format-lg dark:format-invert max-w-none"
-        data-fade="bottom"
+        data-aos="fade-up"
       >
         {!! $block->input('text') !!}
       </div>

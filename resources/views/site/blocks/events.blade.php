@@ -13,7 +13,7 @@
       </x-partials.content.title>
       <div
         class="format lg:format-lg dark:format-invert max-w-none"
-        data-fade="bottom"
+        data-aos="fade-up"
       >
         {!! $block->input('text') !!}
       </div>
@@ -37,7 +37,7 @@
           <a
             href="{{ route('event.show', $event->id) }}"
             class="flex w-full md:w-1/2 items-center bg-white border border-stone-200 shadow flex-row hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-800 dark:hover:bg-stone-700"
-            data-fade="bottom"
+            data-aos="fade-up"
           >
             {!! $image->render([
                 'class' => 'object-cover h-full w-1/3 object-center',
@@ -108,11 +108,11 @@
       <div class="text-center mx-auto">
         <p
           class="text-xl"
-          data-fade="bottom"
+          data-aos="fade-up"
         >
           Kein Event für dich dabei? Melde dich für den Newsletter an
         </p>
-        <div data-fade="bottom">
+        <div data-aos="fade-up">
           <x-button
             class="mt-4"
             type="link"

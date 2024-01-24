@@ -28,18 +28,18 @@
     <div class="mx-auto my-auto max-w-2xl px-6 py-20">
       <h2
         class="mb-4 text-4xl font-extrabold tracking-tight text-stone-900 dark:text-white"
-        data-fade="bottom"
+        data-aos="fade-up"
       >
         {!! $block->input('title') !!}
         <span class="text-primary block">{!! $block->input('name') !!}</span>
       </h2>
       <div
         class="format lg:format-lg dark:format-invert max-w-none"
-        data-fade="bottom"
+        data-aos="fade-up"
       >
         {!! $block->input('text') !!}
       </div>
-      <div data-fade="bottom">
+      <div data-aos="fade-up">
         <x-button
           class="mt-4"
           type="link"

@@ -3,13 +3,14 @@ import 'leaflet/dist/leaflet.css'
 import 'flowbite'
 
 import { TwillImage } from '../../vendor/area17/twill-image'
-import { fiosSetup } from './fios'
+import AOS from 'simple-aos'
 
 document.addEventListener('DOMContentLoaded', () => {
   new TwillImage()
 })
-
-fiosSetup()
+AOS.init({
+  once: true,
+})
 
 const map = document.getElementById('map')
 const leafletLoaded = new Event('leafletLoaded')

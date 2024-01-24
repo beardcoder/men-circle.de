@@ -12,7 +12,7 @@
     >
       @csrf
       @honeypot
-      <div data-fade="bottom">
+      <div data-aos="fade-up">
         <label
           class="mb-2 block text-sm font-medium text-stone-900 dark:text-stone-300"
           for="name"
@@ -27,7 +27,7 @@
           required
         >
       </div>
-      <div data-fade="bottom">
+      <div data-aos="fade-up">
         <label
           class="mb-2 block text-sm font-medium text-stone-900 dark:text-stone-300"
           for="email"
@@ -44,7 +44,7 @@
           required
         >
       </div>
-      <div data-fade="bottom">
+      <div data-aos="fade-up">
         <x-button
           class="block w-full"
           type="submit"

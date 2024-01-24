@@ -11,7 +11,7 @@
     <div class="grid border-t border-gray-200 pt-8 text-left dark:border-gray-700 md:grid-cols-2 md:gap-16">
       @foreach ($block->children as $child)
         <div
-          data-fade="{{ $loop->odd ? 'left' : 'right' }}"
+          data-aos="fade-{{ $loop->odd ? 'right' : 'left' }}"
           itemscope
           itemprop="mainEntity"
           itemtype="https://schema.org/Question"

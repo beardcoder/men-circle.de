@@ -4,7 +4,7 @@
 >
   <div class="mx-auto max-w-screen-xl px-6 py-8 sm:py-24 lg:px-6">
     <div class="mb-8 lg:mb-8">
-      <x-partials.content.title data-fade="bottom">
+      <x-partials.content.title data-aos="fade-up">
         {!! $block->input('title') !!}
       </x-partials.content.title>
       @if ($block->input('text'))

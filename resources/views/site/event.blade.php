@@ -30,7 +30,7 @@
       >
         <div
           class="bg-secondary rounded-full"
-          data-fade="bottom"
+          data-aos="fade-up"
         >
           <img
             class="h-full w-auto"
