@@ -23,14 +23,7 @@
             $image = TwillImage::make($event, 'event');
             $image->preset([
                 'crop' => 'desktop',
-                'sizes' => '(max-width: 1023px) 100vw, (min-width: 1023px)',
-                'sources' => [
-                    [
-                        'crop' => 'desktop',
-                        'width' => 420,
-                        'media_query' => '(max-width: 420px)',
-                    ],
-                ],
+                'srcSetWidths' => [300],
             ]);
           @endphp
 

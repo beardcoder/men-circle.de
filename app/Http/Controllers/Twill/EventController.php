@@ -35,7 +35,7 @@ class EventController extends BaseModuleController
   {
     if ($request->route('event')) {
       return [
-        'customPermalink' => route('event.show', ['id' => $request->route('event')]),
+        'customPermalink' => route('event.show', ['event' => $request->route('event')]),
       ];
     }
     return [];
