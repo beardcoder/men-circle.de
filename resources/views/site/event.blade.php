@@ -53,7 +53,7 @@
               {{ DateHelper::getLocalDate($item->startDate)->formatLocalized('%d.%m.%Y %H:%M') }}
             </time>
           </h1>
-          <livewire:register event="{{ $item->id }}" />
+          <x-event-register event="{{ $item->id }}" />
           <div
             class="mt-8 text-sm"
             data-fade="left"

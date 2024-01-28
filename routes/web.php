@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\EventController;
+use App\Http\Controllers\Frontend\NewsletterController;
 use App\Http\Controllers\Frontend\PageDisplayController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,8 +11,10 @@ Route::middleware(['cacheResponse'])->group(function () {
   Route::get('{slug}', [PageDisplayController::class, 'show'])->name('frontend.page');
 
   Route::get('events/next', [EventController::class, 'next'])->name('events.next');
-  Route::get('events/{id}', [EventController::class, 'show'])->name('events.show');
-  Route::get('event/{id}', [EventController::class, 'show'])->name('event.show');
+  Route::get('events/{event}', [EventController::class, 'show'])->name('events.show');
+  Route::get('event/{event}', [EventController::class, 'show'])->name('event.show');
 });
 
-Route::get('events/{id}/ical', [EventController::class, 'ical'])->name('event.ical');
+Route::get('events/{event}/ical', [EventController::class, 'ical'])->name('event.ical');
+Route::post('newsletter/register', [NewsletterController::class, 'register'])->name('newsletter.register');
+Route::post('events/{event}/register', [EventController::class, 'register'])->name('events.register');

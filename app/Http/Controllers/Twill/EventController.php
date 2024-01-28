@@ -28,7 +28,7 @@ class EventController extends BaseModuleController
    */
   protected function setUpController(): void
   {
-    // $this->setPermalinkBase('event');
+    $this->enableDuplicate();
   }
 
   protected function formData($request)

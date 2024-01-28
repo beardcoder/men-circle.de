@@ -4,27 +4,20 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Helpers\DateHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EventRegisterRequest;
 use App\Models\Event;
 use App\Models\EventRegistration;
-use App\Repositories\EventRepository;
+use App\Services\EventRegisterService;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Response;
 use Spatie\IcalendarGenerator\Components\Calendar;
 use Spatie\IcalendarGenerator\Components\Event as CalEvent;
-use Spatie\IcalendarGenerator\Enums\Display;
-use Spatie\SchemaOrg\Contracts\EventAttendanceModeEnumerationContract;
-use Spatie\SchemaOrg\Contracts\PostalAddressContract;
 use Spatie\SchemaOrg\Schema;
 
 class EventController extends Controller
 {
-  public function show(string $id, EventRepository $eventRepository): View
+  public function show(Event $event): View
   {
-    /** @var \App\Models\Event $event */
-    $event = $eventRepository->getById($id);
     if (!$event) {
       abort(404);
     }
@@ -49,10 +42,9 @@ class EventController extends Controller
 
     return view('site.event', ['item' => $event, 'schema' => $eventSchema]);
   }
-  public function ical(string $id, EventRepository $eventRepository, Request $request)
+
+  public function ical(Event $event)
   {
-    /** @var \App\Models\Page $event */
-    $event = $eventRepository->getById($id);
     if (!$event) {
       abort(404);
     }
@@ -125,5 +117,29 @@ class EventController extends Controller
       $event->title . ' - ' . DateHelper::getLocalDate($event->startDate)->formatLocalized('%d.%m.%Y %H:%M'),
     );
     SEOTools::opengraph()->addProperty('type', 'event');
+  }
+
+  protected function prepareForValidation()
+  {
+    $this->merge(['newsletter' => $this->has('newsletter')]);
+  }
+
+  public function register(Event $event, EventRegisterRequest $request)
+  {
+    EventRegistration::create([
+      'name' => $request->name,
+      'email' => $request->email,
+      'event_id' => $event->id,
+    ]);
+
+    (new EventRegisterService(
+      $event,
+      $request->name,
+      $request->email,
+      $request->newsletter,
+    ))->updateOrCreateSubscriber();
+
+    flash('Vielen dank für deine Anmeldung.<br /> Wir freuen uns auf dich');
+    return back();
   }
 }
