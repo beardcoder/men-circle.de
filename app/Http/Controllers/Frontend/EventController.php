@@ -140,6 +140,6 @@ class EventController extends Controller
     ))->updateOrCreateSubscriber();
 
     flash('Vielen dank für deine Anmeldung.<br /> Wir freuen uns auf dich');
-    return back();
+    return back()->setTargetUrl(back()->getTargetUrl() . '?success=true');
   }
 }

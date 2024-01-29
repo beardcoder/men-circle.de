@@ -21,6 +21,6 @@ class NewsletterController extends Controller
     );
 
     flash('Vielen dank für deine Anmeldung. Du hast eine E-Mail bekommen um deine Anmeldung nochmals zu bestätigen');
-    return back();
+    return back()->setTargetUrl(back()->getTargetUrl() . '?success=true');
   }
 }
