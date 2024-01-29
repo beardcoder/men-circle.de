@@ -1,5 +1,7 @@
 @php
-  $events = \App\Models\Event::where([['startDate', '>', now()], ['published', '=', 1]])->get();
+  $events = cache('next-events', 15, function () {
+      return \App\Models\Event::where([['startDate', '>', now()], ['published', '=', 1]])->get();
+  });
 @endphp
 @if ($events)
 
