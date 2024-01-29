@@ -10,6 +10,7 @@ use App\Repositories\PageRepository;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\URL;
 
 class PageDisplayController extends Controller
@@ -17,7 +18,10 @@ class PageDisplayController extends Controller
   public function show(string $slug, PageRepository $pageRepository): View
   {
     /** @var \App\Models\Page $page */
-    $page = $pageRepository->forSlug($slug);
+
+    $page = Cache::remember("pages.{$slug}", 15, function () use ($slug, $pageRepository) {
+      return $pageRepository->forSlug($slug);
+    });
 
     if (!$page) {
       abort(404);
@@ -35,13 +39,15 @@ class PageDisplayController extends Controller
   {
     if (TwillAppSettings::get('homepage.homepage.page')->isNotEmpty()) {
       /** @var \App\Models\Page $page */
-      $page = TwillAppSettings::get('homepage.homepage.page')->first();
+
+      $page = Cache::remember('pages.home', 15, function () {
+        return TwillAppSettings::get('homepage.homepage.page')->first();
+      });
 
       if ($page->published) {
         self::setSeoData($page);
         SEOTools::setTitle('Männerkreis Straubing und Niederbayern');
         SEOTools::opengraph()->setUrl(URL::to('/'));
-
         return view('site.page', ['item' => $page]);
       }
     }
