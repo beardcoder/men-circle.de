@@ -1,5 +1,5 @@
 @php
-  $events = cache('next-events', 15, function () {
+  $events = \Illuminate\Support\Facades\Cache::remember('next-events', 15, function () {
       return \App\Models\Event::where([['startDate', '>', now()], ['published', '=', 1]])->get();
   });
 @endphp
