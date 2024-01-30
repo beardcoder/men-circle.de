@@ -1,7 +1,13 @@
 @php
-  $block = TwillAppSettings::getGroupDataForSectionAndName('homepage', 'footer');
+  $block = cache()->rememberForever('footer', function () {
+      return TwillAppSettings::getGroupDataForSectionAndName('homepage', 'footer');
+  });
+
   $image = TwillImage::make($block, 'logo');
-  $logo = TwillAppSettings::get('homepage.footer.logo');
+
+  $logo = cache()->rememberForever('footer.logo', function () {
+      return TwillAppSettings::get('homepage.footer.logo');
+  });
 @endphp
 
 <footer class="bg-secondary p-4 text-white md:p-8 lg:p-10">

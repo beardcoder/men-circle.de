@@ -37,19 +37,16 @@ class PageDisplayController extends Controller
 
   public function home(): View
   {
-    if (TwillAppSettings::get('homepage.homepage.page')->isNotEmpty()) {
-      /** @var \App\Models\Page $page */
+    /** @var \App\Models\Page $page */
+    $page = Cache::remember('pages.home', 15, function () {
+      return TwillAppSettings::get('homepage.homepage.page')->first();
+    });
 
-      $page = Cache::remember('pages.home', 15, function () {
-        return TwillAppSettings::get('homepage.homepage.page')->first();
-      });
-
-      if ($page->published) {
-        self::setSeoData($page);
-        SEOTools::setTitle('Männerkreis Straubing und Niederbayern');
-        SEOTools::opengraph()->setUrl(URL::to('/'));
-        return view('site.page', ['item' => $page]);
-      }
+    if ($page->published) {
+      self::setSeoData($page);
+      SEOTools::setTitle('Männerkreis Straubing und Niederbayern');
+      SEOTools::opengraph()->setUrl(URL::to('/'));
+      return view('site.page', ['item' => $page]);
     }
 
     abort(404);

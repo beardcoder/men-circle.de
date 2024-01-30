@@ -16,7 +16,9 @@
           ],
       ],
   ]);
-  $nextEvent = \App\Models\Event::where([['startDate', '>', now()], ['published', '=', 1]])->first();
+  $nextEvent = cache()->rememberForever('events.next', function () {
+      return \App\Models\Event::where([['startDate', '>', now()], ['published', '=', 1]])->first();
+  });
 @endphp
 
 <section class="relative w-full">
