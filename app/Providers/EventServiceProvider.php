@@ -11,6 +11,8 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use App\Observers\SettingObserver;
 use A17\Twill\Models\Setting;
+use App\Models\Page;
+use App\Observers\CacheObserver;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -29,9 +31,11 @@ class EventServiceProvider extends ServiceProvider
    * @var array
    */
   protected $observers = [
-    Setting::class => [SettingObserver::class],
     EventRegistration::class => [EventRegistrationObserver::class],
     Event::class => [EventObserver::class],
+    Setting::class => [CacheObserver::class],
+    Page::class => [CacheObserver::class],
+    Event::class => [CacheObserver::class],
   ];
 
   /**

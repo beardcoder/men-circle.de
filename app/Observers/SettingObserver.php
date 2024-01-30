@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use A17\Twill\Models\Setting;
+use Illuminate\Support\Facades\Cache;
 use Spatie\ResponseCache\Facades\ResponseCache;
 
 class SettingObserver
@@ -13,6 +14,7 @@ class SettingObserver
   public function created(Setting $setting): void
   {
     ResponseCache::clear();
+    Cache::flush();
   }
 
   /**
@@ -21,6 +23,7 @@ class SettingObserver
   public function updated(Setting $setting): void
   {
     ResponseCache::clear();
+    Cache::flush();
   }
 
   /**
@@ -29,6 +32,7 @@ class SettingObserver
   public function deleted(Setting $setting): void
   {
     ResponseCache::clear();
+    Cache::flush();
   }
 
   /**
@@ -37,6 +41,7 @@ class SettingObserver
   public function restored(Setting $setting): void
   {
     ResponseCache::clear();
+    Cache::flush();
   }
 
   /**
@@ -45,5 +50,6 @@ class SettingObserver
   public function forceDeleted(Setting $setting): void
   {
     ResponseCache::clear();
+    Cache::flush();
   }
 }
