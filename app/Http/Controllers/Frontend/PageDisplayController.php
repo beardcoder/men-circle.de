@@ -19,7 +19,7 @@ class PageDisplayController extends Controller
   {
     /** @var \App\Models\Page $page */
 
-    $page = Cache::remember("pages.{$slug}", 15, function () use ($slug, $pageRepository) {
+    $page = Cache::rememberForever("pages.{$slug}", function () use ($slug, $pageRepository) {
       return $pageRepository->forSlug($slug);
     });
 
@@ -38,7 +38,7 @@ class PageDisplayController extends Controller
   public function home(): View
   {
     /** @var \App\Models\Page $page */
-    $page = Cache::remember('pages.home', 15, function () {
+    $page = Cache::rememberForever('pages.home', function () {
       return TwillAppSettings::get('homepage.homepage.page')->first();
     });
 

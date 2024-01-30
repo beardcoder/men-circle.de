@@ -1,5 +1,7 @@
 @php
-  $image = TwillImage::make($block, 'cover');
+  $image = cache()->rememberForever("{$block->id}.image", function () use ($block) {
+      return TwillImage::make($block, 'cover');
+  });
   $image->preset([
       'crop' => 'flexible',
       'sizes' => '(max-width: 1023px) 100vw, (min-width: 1023px)',

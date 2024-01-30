@@ -1,5 +1,5 @@
 @php
-  $events = \Illuminate\Support\Facades\Cache::remember('next-events', 15, function () {
+  $events = \Illuminate\Support\Facades\Cache::rememberForever('next-events', function () {
       return \App\Models\Event::where([['startDate', '>', now()], ['published', '=', 1]])->get();
   });
 @endphp
@@ -22,7 +22,9 @@
       <div class="flex flex-wrap my-8">
         @foreach ($events as $event)
           @php
-            $image = TwillImage::make($event, 'event');
+            $image = cache()->rememberForever("{$event->id}.image", function () use ($event) {
+                return TwillImage::make($event, 'event');
+            });
             $image->preset([
                 'crop' => 'desktop',
                 'srcSetWidths' => [300],
