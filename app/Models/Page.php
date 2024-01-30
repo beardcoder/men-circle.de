@@ -19,4 +19,9 @@ class Page extends Model implements Sortable
   protected $fillable = ['published', 'title', 'description', 'position'];
 
   public $slugAttributes = ['title'];
+
+  public function getRouteKeyName(): string
+  {
+    return 'slug';
+  }
 }
