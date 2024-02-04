@@ -33,10 +33,9 @@
       <span class="sr-only">Startseite</span>
     </a>
     @if ($menu)
-      <nav class="{{ $color }} mx-auto mt-2 flex space-x-8 text-xl font-bold uppercase md:mr-0 md:mt-0">
-        <a href="/">Home</a>
-        <a href="/#contact">Anmeldung</a>
-        <a href="/#faq">FAQ's</a>
+      <nav class="{{ $color }} mx-auto md:mr-0">
+        <x-main-menu />
+
         {{-- <a href="/impressum">Impressum</a> --}}
       </nav>
     @endif

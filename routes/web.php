@@ -3,14 +3,9 @@
 use App\Http\Controllers\Frontend\EventController;
 use App\Http\Controllers\Frontend\NewsletterController;
 use App\Http\Controllers\Frontend\PageDisplayController;
-use App\Models\Page;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['cacheResponse'])->group(function () {});
-
-Route::get('/page/{page:slug}', function (Page $page) {
-  return $page;
-});
 
 Route::get('/', [PageDisplayController::class, 'home'])->name('frontend.home');
 Route::get('{slug}', [PageDisplayController::class, 'show'])->name('frontend.page');

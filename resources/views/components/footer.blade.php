@@ -8,37 +8,7 @@
     <p class="my-6">
       {{ TwillAppSettings::get('homepage.footer.text') }}
     </p>
-    <ul class="mb-6 flex flex-wrap items-center justify-center dark:text-white">
-      <li>
-        <a
-          class="mr-4 hover:underline md:mr-6"
-          href="/"
-        >Startseite</a>
-      </li>
-      <li>
-        <a
-          class="mr-4 hover:underline md:mr-6"
-          href="mailto:info@mens-circle.de"
-        >Kontakt</a>
-      </li>
-      <li>
-        <a
-          class="mr-4 hover:underline md:mr-6"
-          href="/impressum"
-        >
-          Impressum
-        </a>
-      </li>
-      <li>
-        <a
-          class="mr-4 hover:underline md:mr-6"
-          href="https://www.instagram.com/markus.sommer/"
-        >
-          Instagram
-        </a>
-      </li>
-
-    </ul>
+    <x-footer-menu />
     <span class="text-sm sm:text-center">
       © 2023-{{ now()->year }} Build with ❤️ and
       mindfulness in Bavaria</span>

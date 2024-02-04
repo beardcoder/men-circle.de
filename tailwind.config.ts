@@ -7,6 +7,7 @@ export default {
   content: [
     './resources/**/*.blade.php',
     './app/Twill/Capsules/*/resources/**/*.blade.php',
+    './app/View/Components/**/*.php',
     './resources/**/*.js',
     './resources/**/*.ts',
     './resources/**/*.vue',

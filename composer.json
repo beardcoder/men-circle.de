@@ -16,6 +16,7 @@
     "cknow/laravel-money": "^7.2",
     "deployer/deployer": "^7.3",
     "guzzlehttp/guzzle": "^7.8",
+    "knplabs/knp-menu": "^3.4",
     "laravel/framework": "^10.10",
     "laravel/sanctum": "^3.3",
     "laravel/tinker": "^2.8",
