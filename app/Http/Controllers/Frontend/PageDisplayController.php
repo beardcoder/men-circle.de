@@ -10,7 +10,6 @@ use App\Repositories\PageRepository;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\URL;
 
@@ -36,24 +35,21 @@ class PageDisplayController extends Controller
     return view('site.page', ['item' => $page]);
   }
 
-  public function home()
+  public function home(): View
   {
-    if (request()->has('success')) {
-      return $this->renderHome();
-    }
-    return Cache::rememberForever('pages.home', function () {
-      return $this->renderHome();
+    /** @var \App\Models\Page $page */
+    $page = Cache::rememberForever('pages.home', function () {
+      return TwillAppSettings::get('homepage.homepage.page')->first();
     });
-  }
 
-  private function renderHome()
-  {
-    $page = TwillAppSettings::get('homepage.homepage.page')->first();
+    if ($page->published) {
+      self::setSeoData($page);
+      SEOTools::setTitle('Männerkreis Straubing und Niederbayern');
+      SEOTools::opengraph()->setUrl(URL::to('/'));
+      return view('site.page', ['item' => $page]);
+    }
 
-    self::setSeoData($page);
-    SEOTools::setTitle('Männerkreis Straubing und Niederbayern');
-    SEOTools::opengraph()->setUrl(URL::to('/'));
-    return view('site.page', ['item' => $page])->render();
+    abort(404);
   }
 
   private static function setSeoData(Page|TwillModelContract $page)
