@@ -4,7 +4,6 @@ namespace App\Observers;
 
 use A17\Twill\Models\Setting;
 use Illuminate\Support\Facades\Cache;
-use Spatie\ResponseCache\Facades\ResponseCache;
 
 class SettingObserver
 {
