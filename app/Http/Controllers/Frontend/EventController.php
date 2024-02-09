@@ -99,16 +99,8 @@ class EventController extends Controller
           ->url(url(route('events.show', $event->id)))
           ->priceCurrency('EUR'),
       )
-      ->organizer(
-        Schema::person()
-          ->name('Markus Sommer')
-          ->url('https://mens-circle.de'),
-      )
-      ->performer(
-        Schema::person()
-          ->name('Markus Sommer')
-          ->url('https://mens-circle.de'),
-      );
+      ->organizer(Schema::person()->name('Markus Sommer')->url('https://mens-circle.de'))
+      ->performer(Schema::person()->name('Markus Sommer')->url('https://mens-circle.de'));
   }
 
   private function setSeo(Event $event)
