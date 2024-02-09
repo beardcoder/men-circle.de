@@ -13,6 +13,7 @@ use Illuminate\Contracts\View\View;
 use Spatie\IcalendarGenerator\Components\Calendar;
 use Spatie\IcalendarGenerator\Components\Event as CalEvent;
 use Spatie\SchemaOrg\Schema;
+use Illuminate\Support\Facades\Cache;
 
 class EventController extends Controller
 {
@@ -22,11 +23,22 @@ class EventController extends Controller
       abort(404);
     }
 
+    if (request()->has('success')) {
+      return $this->renderEvent($event);
+    }
+
+    return Cache::rememberForever("events.{$event->id}", function () use ($event) {
+      return $this->renderEvent($event);
+    });
+  }
+
+  private function renderEvent(Event $event)
+  {
     $eventSchema = $this->buildSchema($event);
 
     $this->setSeo($event);
 
-    return view('site.event', ['item' => $event, 'schema' => $eventSchema]);
+    return view('site.event', ['item' => $event, 'schema' => $eventSchema])->render();
   }
 
   public function next(): View
