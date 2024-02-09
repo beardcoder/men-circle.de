@@ -48,8 +48,3 @@ tasks:
 
 after:
   deploy:failed: deploy:unlock
-  deploy:success:
-    - responsecache:clear
-before:
-  artisan:optimize:
-    - responsecache:clear
