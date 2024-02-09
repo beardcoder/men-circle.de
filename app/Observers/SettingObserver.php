@@ -13,7 +13,6 @@ class SettingObserver
    */
   public function created(Setting $setting): void
   {
-    ResponseCache::clear();
     Cache::flush();
   }
 
@@ -22,7 +21,6 @@ class SettingObserver
    */
   public function updated(Setting $setting): void
   {
-    ResponseCache::clear();
     Cache::flush();
   }
 
@@ -31,7 +29,6 @@ class SettingObserver
    */
   public function deleted(Setting $setting): void
   {
-    ResponseCache::clear();
     Cache::flush();
   }
 
@@ -40,7 +37,6 @@ class SettingObserver
    */
   public function restored(Setting $setting): void
   {
-    ResponseCache::clear();
     Cache::flush();
   }
 
@@ -49,7 +45,6 @@ class SettingObserver
    */
   public function forceDeleted(Setting $setting): void
   {
-    ResponseCache::clear();
     Cache::flush();
   }
 }

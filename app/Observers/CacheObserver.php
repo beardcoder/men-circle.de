@@ -13,7 +13,6 @@ class CacheObserver
    */
   public function created(Model $model): void
   {
-    ResponseCache::clear();
     Cache::flush();
   }
 
@@ -22,7 +21,6 @@ class CacheObserver
    */
   public function updated(Model $model): void
   {
-    ResponseCache::clear();
     Cache::flush();
   }
 
@@ -31,7 +29,6 @@ class CacheObserver
    */
   public function deleted(Model $model): void
   {
-    ResponseCache::clear();
     Cache::flush();
   }
 
@@ -40,7 +37,6 @@ class CacheObserver
    */
   public function restored(Model $model): void
   {
-    ResponseCache::clear();
     Cache::flush();
   }
 
@@ -49,7 +45,6 @@ class CacheObserver
    */
   public function forceDeleted(Model $model): void
   {
-    ResponseCache::clear();
     Cache::flush();
   }
 }
