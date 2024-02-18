@@ -10,11 +10,10 @@ use A17\Twill\Models\Behaviors\HasRevisions;
 use A17\Twill\Models\Behaviors\HasPosition;
 use A17\Twill\Models\Behaviors\Sortable;
 use A17\Twill\Models\Model;
-use App\Traits\ClearsResponseCache;
 
 class Page extends Model implements Sortable
 {
-  use HasBlocks, HasSlug, HasMedias, HasFiles, HasRevisions, ClearsResponseCache, HasPosition;
+  use HasBlocks, HasSlug, HasMedias, HasFiles, HasRevisions, HasPosition;
 
   protected $fillable = ['published', 'title', 'description', 'position'];
 

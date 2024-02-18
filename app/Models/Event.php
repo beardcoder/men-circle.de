@@ -8,12 +8,11 @@ use A17\Twill\Models\Behaviors\HasMedias;
 use A17\Twill\Models\Behaviors\HasRevisions;
 use A17\Twill\Models\Model;
 use App\Models\EventRegistration;
-use App\Traits\ClearsResponseCache;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Event extends Model
 {
-  use HasBlocks, HasMedias, HasFiles, HasRevisions, ClearsResponseCache;
+  use HasBlocks, HasMedias, HasFiles, HasRevisions;
 
   protected $dates = ['startDate', 'endDate'];
 
