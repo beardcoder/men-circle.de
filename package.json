@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "cross-env NODE_ENV=production vite build"
   },
   "devDependencies": {
     "@prettier/plugin-php": "^0.22.2",
@@ -11,6 +11,8 @@
     "@types/animejs": "^3.1.12",
     "@types/leaflet": "^1.9.8",
     "autoprefixer": "^10.4.17",
+    "cross-env": "^7.0.3",
+    "cssnano": "^6.0.5",
     "flowbite-typography": "^1.0.3",
     "laravel-vite-plugin": "^1.0.1",
     "postcss": "^8.4.33",
@@ -20,7 +22,6 @@
   },
   "dependencies": {
     "@fontsource-variable/jost": "^5.0.17",
-    "cssnano": "^6.0.3",
     "flowbite": "^2.2.1",
     "leaflet": "^1.9.4",
     "simple-aos": "^4.2.0"
