@@ -1,6 +1,9 @@
 import laravel from 'laravel-vite-plugin'
 import { defineConfig } from 'vite'
 
+const port = 5173
+const origin = `${process.env.DDEV_PRIMARY_URL}:${port}`
+
 export default defineConfig({
   plugins: [
     laravel({
@@ -10,10 +13,9 @@ export default defineConfig({
   ],
 
   server: {
-    host: true,
-    hmr: {
-      host: process.env.DDEV_HOSTNAME,
-      protocol: 'wss',
-    },
+    host: '0.0.0.0',
+    port,
+    strictPort: true,
+    origin,
   },
 })

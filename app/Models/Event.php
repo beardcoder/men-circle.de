@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use A17\Twill\Helpers\BlockRenderer;
 use A17\Twill\Models\Behaviors\HasBlocks;
 use A17\Twill\Models\Behaviors\HasFiles;
 use A17\Twill\Models\Behaviors\HasMedias;
@@ -9,6 +10,7 @@ use A17\Twill\Models\Behaviors\HasRevisions;
 use A17\Twill\Models\Model;
 use App\Models\EventRegistration;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Cache;
 
 class Event extends Model
 {
@@ -45,5 +47,13 @@ class Event extends Model
   public static function findFuture()
   {
     return static::where('startDate', '>=', date('Y-m-d G:i:s'))->get();
+  }
+
+  public function renderBlocks($blockViewMappings = [], $data = [])
+  {
+    $blocks = Cache::rememberForever("events.{$this->id}.blocks", function () use ($blockViewMappings, $data) {
+      return BlockRenderer::fromEditor($this, 'default')->render($blockViewMappings, $data);
+    });
+    return $blocks;
   }
 }

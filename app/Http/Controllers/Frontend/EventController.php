@@ -10,6 +10,7 @@ use App\Models\EventRegistration;
 use App\Services\EventRegisterService;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Cache;
 use Spatie\IcalendarGenerator\Components\Calendar;
 use Spatie\IcalendarGenerator\Components\Event as CalEvent;
 use Spatie\SchemaOrg\Schema;
@@ -72,35 +73,37 @@ class EventController extends Controller
 
   private function buildSchema(Event $event)
   {
-    return Schema::event()
-      ->name($event->title . ' - ' . DateHelper::getLocalDate($event->startDate)->formatLocalized('%d.%m.%Y %H:%M'))
-      ->description($event->description)
-      ->image($event->image('event', 'desktop'))
-      ->startDate($event->startDate)
-      ->endDate($event->endDate)
-      ->eventAttendanceMode('https://schema.org/OfflineEventAttendanceMode')
-      ->eventStatus('https://schema.org/EventScheduled')
-      ->location(
-        Schema::place()
-          ->name($event->place)
-          ->address(
-            Schema::postalAddress()
-              ->streetAddress($event->streetAddress)
-              ->addressLocality($event->addressLocality)
-              ->postalCode($event->postalCode)
-              ->addressCountry('DE'),
-          ),
-      )
-      ->offers(
-        Schema::offer()
-          ->validFrom($event->created_at)
-          ->price($event->price)
-          ->availability('https://schema.org/InStock')
-          ->url(url(route('events.show', $event->id)))
-          ->priceCurrency('EUR'),
-      )
-      ->organizer(Schema::person()->name('Markus Sommer')->url('https://mens-circle.de'))
-      ->performer(Schema::person()->name('Markus Sommer')->url('https://mens-circle.de'));
+    return Cache::rememberForever("events.{$event->id}.schema", function () use ($event) {
+      return Schema::event()
+        ->name($event->title . ' - ' . DateHelper::getLocalDate($event->startDate)->formatLocalized('%d.%m.%Y %H:%M'))
+        ->description($event->description)
+        ->image($event->image('event', 'desktop'))
+        ->startDate($event->startDate)
+        ->endDate($event->endDate)
+        ->eventAttendanceMode('https://schema.org/OfflineEventAttendanceMode')
+        ->eventStatus('https://schema.org/EventScheduled')
+        ->location(
+          Schema::place()
+            ->name($event->place)
+            ->address(
+              Schema::postalAddress()
+                ->streetAddress($event->streetAddress)
+                ->addressLocality($event->addressLocality)
+                ->postalCode($event->postalCode)
+                ->addressCountry('DE'),
+            ),
+        )
+        ->offers(
+          Schema::offer()
+            ->validFrom($event->created_at)
+            ->price($event->price)
+            ->availability('https://schema.org/InStock')
+            ->url(url(route('events.show', $event->id)))
+            ->priceCurrency('EUR'),
+        )
+        ->organizer(Schema::person()->name('Markus Sommer')->url('https://mens-circle.de'))
+        ->performer(Schema::person()->name('Markus Sommer')->url('https://mens-circle.de'));
+    });
   }
 
   private function setSeo(Event $event)
