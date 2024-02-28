@@ -18,10 +18,7 @@ class PageDisplayController extends Controller
   public function show(string $slug, PageRepository $pageRepository): View
   {
     /** @var \App\Models\Page $page */
-
-    $page = Cache::rememberForever("pages.{$slug}", function () use ($slug, $pageRepository) {
-      return $pageRepository->forSlug($slug);
-    });
+    $page = $pageRepository->forSlug($slug);
 
     if (!$page) {
       abort(404);
@@ -38,9 +35,7 @@ class PageDisplayController extends Controller
   public function home(): View
   {
     /** @var \App\Models\Page $page */
-    $page = Cache::rememberForever('pages.home', function () {
-      return TwillAppSettings::get('homepage.homepage.page')->first();
-    });
+    $page = TwillAppSettings::get('homepage.homepage.page')->first();
 
     if ($page->published) {
       self::setSeoData($page);

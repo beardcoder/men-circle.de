@@ -22,9 +22,7 @@ class NewsletterController extends Controller
       ],
     );
 
-    $page = Cache::rememberForever('pages.thanks', function () {
-      return TwillAppSettings::get('homepage.email.thanks')->first();
-    });
+    $page = TwillAppSettings::get('homepage.email.thanks')->first();
 
     return redirect()->route('frontend.page', ['slug' => $page->slug]);
   }
