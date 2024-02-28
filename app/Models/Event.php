@@ -48,12 +48,4 @@ class Event extends Model
   {
     return static::where('startDate', '>=', date('Y-m-d G:i:s'))->get();
   }
-
-  public function renderBlocks($blockViewMappings = [], $data = [])
-  {
-    $blocks = Cache::rememberForever("events.{$this->id}.blocks", function () use ($blockViewMappings, $data) {
-      return BlockRenderer::fromEditor($this, 'default')->render($blockViewMappings, $data);
-    });
-    return $blocks;
-  }
 }

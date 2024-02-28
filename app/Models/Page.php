@@ -20,12 +20,4 @@ class Page extends Model implements Sortable
   protected $fillable = ['published', 'title', 'description', 'position'];
 
   public $slugAttributes = ['title'];
-
-  public function renderBlocks($blockViewMappings = [], $data = [])
-  {
-    $blocks = Cache::rememberForever("pages.{$this->id}.blocks", function () use ($blockViewMappings, $data) {
-      return BlockRenderer::fromEditor($this, 'default')->render($blockViewMappings, $data);
-    });
-    return $blocks;
-  }
 }
