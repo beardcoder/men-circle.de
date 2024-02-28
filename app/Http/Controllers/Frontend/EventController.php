@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use A17\Twill\Facades\TwillAppSettings;
 use App\Helpers\DateHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EventRegisterRequest;
@@ -134,7 +135,10 @@ class EventController extends Controller
       $request->newsletter,
     ))->updateOrCreateSubscriber();
 
-    flash('Vielen dank für deine Anmeldung.<br /> Wir freuen uns auf dich');
-    return back()->setTargetUrl(back()->getTargetUrl() . '?success=true');
+    $page = Cache::rememberForever('pages.thanks', function () {
+      return TwillAppSettings::get('homepage.email.thanks')->first();
+    });
+
+    return redirect()->route('frontend.page', ['slug' => $page->slug]);
   }
 }

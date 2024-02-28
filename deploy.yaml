@@ -36,7 +36,7 @@ tasks:
 
     - npm:install
     - npm:build
-
+    - responsecache:clear
 
     - deploy:publish
   npm:install:
@@ -45,6 +45,13 @@ tasks:
     - run: 'cd {{release_or_current_path}} && npm run build'
   build:
     - run: uptime
+  responsecache:clear:
+    - run: 'cd {{release_or_current_path}} && php artisan responsecache:clear'
 
 after:
   deploy:failed: deploy:unlock
+  deploy:success:
+    - responsecache:clear
+before:
+  artisan:optimize:
+    - responsecache:clear

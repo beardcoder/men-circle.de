@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use A17\Twill\Models\Model;
 use Illuminate\Support\Facades\Cache;
+use Spatie\ResponseCache\Facades\ResponseCache;
 
 class CacheObserver
 {
@@ -13,6 +14,7 @@ class CacheObserver
   public function created(Model $model): void
   {
     Cache::flush();
+    ResponseCache::clear();
   }
 
   /**
@@ -21,6 +23,7 @@ class CacheObserver
   public function updated(Model $model): void
   {
     Cache::flush();
+    ResponseCache::clear();
   }
 
   /**
@@ -29,6 +32,7 @@ class CacheObserver
   public function deleted(Model $model): void
   {
     Cache::flush();
+    ResponseCache::clear();
   }
 
   /**
@@ -37,6 +41,7 @@ class CacheObserver
   public function restored(Model $model): void
   {
     Cache::flush();
+    ResponseCache::clear();
   }
 
   /**
@@ -45,5 +50,6 @@ class CacheObserver
   public function forceDeleted(Model $model): void
   {
     Cache::flush();
+    ResponseCache::clear();
   }
 }
