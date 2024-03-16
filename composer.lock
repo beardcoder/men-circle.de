@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "878e4b8058ce60248e78fbb5b4e328ed",
+  "content-hash": "37234fe9eb0db3d84d0ef8d0657cbe9a",
   "packages": [
     {
       "name": "abordage/html-min",
@@ -62,16 +62,16 @@
     },
     {
       "name": "abordage/laravel-html-min",
-      "version": "0.2.0",
+      "version": "dev-master",
       "source": {
         "type": "git",
         "url": "https://github.com/abordage/laravel-html-min.git",
-        "reference": "9c8c3a809b0be075e9eefa5740518ce0ded13c47"
+        "reference": "9ee4624cee88bcf9edc80b3e5183b15f40401ca3"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/abordage/laravel-html-min/zipball/9c8c3a809b0be075e9eefa5740518ce0ded13c47",
-        "reference": "9c8c3a809b0be075e9eefa5740518ce0ded13c47",
+        "url": "https://api.github.com/repos/abordage/laravel-html-min/zipball/9ee4624cee88bcf9edc80b3e5183b15f40401ca3",
+        "reference": "9ee4624cee88bcf9edc80b3e5183b15f40401ca3",
         "shasum": ""
       },
       "require": {
@@ -88,6 +88,7 @@
         "phpstan/phpstan": "^1.0",
         "phpunit/phpunit": "^9.6 || ^10.0"
       },
+      "default-branch": true,
       "type": "library",
       "extra": {
         "laravel": {
@@ -126,9 +127,9 @@
       ],
       "support": {
         "issues": "https://github.com/abordage/laravel-html-min/issues",
-        "source": "https://github.com/abordage/laravel-html-min/tree/0.2.0"
+        "source": "https://github.com/abordage/laravel-html-min/tree/master"
       },
-      "time": "2023-02-25T11:36:31+00:00"
+      "time": "2023-09-14T20:07:51+00:00"
     },
     {
       "name": "area17/twill",
@@ -234,16 +235,16 @@
     },
     {
       "name": "area17/twill-image",
-      "version": "1.x-dev",
+      "version": "2.x-dev",
       "source": {
         "type": "git",
         "url": "https://github.com/area17/twill-image.git",
-        "reference": "9b8d5bdbb306815db5480794057b1cc1fde320cf"
+        "reference": "2b106a25043e844f26788016ad5329c94db698ad"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/area17/twill-image/zipball/9b8d5bdbb306815db5480794057b1cc1fde320cf",
-        "reference": "9b8d5bdbb306815db5480794057b1cc1fde320cf",
+        "url": "https://api.github.com/repos/area17/twill-image/zipball/2b106a25043e844f26788016ad5329c94db698ad",
+        "reference": "2b106a25043e844f26788016ad5329c94db698ad",
         "shasum": ""
       },
       "require": {
@@ -255,7 +256,6 @@
       "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0"
       },
-      "default-branch": true,
       "type": "library",
       "extra": {
         "laravel": {
@@ -285,13 +285,13 @@
       ],
       "support": {
         "issues": "https://github.com/area17/twill-image/issues",
-        "source": "https://github.com/area17/twill-image/tree/v1.0.6"
+        "source": "https://github.com/area17/twill-image/tree/2.x"
       },
-      "time": "2023-06-01T19:24:57+00:00"
+      "time": "2024-02-28T19:02:58+00:00"
     },
     {
       "name": "artesaos/seotools",
-      "version": "v1.3.0",
+      "version": "dev-master",
       "source": {
         "type": "git",
         "url": "https://github.com/artesaos/seotools.git",
@@ -314,6 +314,7 @@
         "phpspec/phpspec": "~5.1.1 || ^6.0 || ^7.0",
         "phpunit/phpunit": "^9.0 || ^10.0"
       },
+      "default-branch": true,
       "type": "library",
       "extra": {
         "laravel": {
@@ -793,33 +794,33 @@
     },
     {
       "name": "cknow/laravel-money",
-      "version": "7.x-dev",
+      "version": "dev-main",
       "source": {
         "type": "git",
         "url": "https://github.com/cknow/laravel-money.git",
-        "reference": "82d506202f95e8b6977a9ffffcdbd218bc58bdc5"
+        "reference": "799f2f34a77c801f53cc03ce73f08be52d4153b3"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/cknow/laravel-money/zipball/82d506202f95e8b6977a9ffffcdbd218bc58bdc5",
-        "reference": "82d506202f95e8b6977a9ffffcdbd218bc58bdc5",
+        "url": "https://api.github.com/repos/cknow/laravel-money/zipball/799f2f34a77c801f53cc03ce73f08be52d4153b3",
+        "reference": "799f2f34a77c801f53cc03ce73f08be52d4153b3",
         "shasum": ""
       },
       "require": {
         "ext-intl": "*",
         "ext-json": "*",
-        "illuminate/support": "^7.0|^8.0|^9.0|^10.0",
-        "illuminate/view": "^7.0|^8.0|^9.0|^10.0",
-        "moneyphp/money": "^3.3|^4.2",
-        "php": "^7.3|^8.0"
+        "illuminate/support": "^9.0|^10.0|^11.0",
+        "illuminate/view": "^9.0|^10.0|^11.0",
+        "moneyphp/money": "^4.2",
+        "php": "^8.1"
       },
       "require-dev": {
-        "graham-campbell/testbench": "^5.7",
-        "illuminate/filesystem": "^7.0|^8.0|^9.0|^10.0",
+        "graham-campbell/testbench": "^6.0",
+        "illuminate/filesystem": "^9.0|^10.0|^11.0",
         "mockery/mockery": "^1.6",
-        "phpunit/phpunit": "^8.5|^9.5.10|^10.0",
-        "spatie/phpunit-watcher": "^1.23"
+        "phpunit/phpunit": "^10.5"
       },
+      "default-branch": true,
       "type": "library",
       "extra": {
         "laravel": {
@@ -855,9 +856,9 @@
       ],
       "support": {
         "issues": "https://github.com/cknow/laravel-money/issues",
-        "source": "https://github.com/cknow/laravel-money/tree/v7.2.1"
+        "source": "https://github.com/cknow/laravel-money/tree/v8.0.0"
       },
-      "time": "2024-03-16T12:43:13+00:00"
+      "time": "2024-03-16T13:05:42+00:00"
     },
     {
       "name": "deployer/deployer",
@@ -6695,16 +6696,16 @@
     },
     {
       "name": "spatie/icalendar-generator",
-      "version": "2.6.1",
+      "version": "dev-main",
       "source": {
         "type": "git",
         "url": "https://github.com/spatie/icalendar-generator.git",
-        "reference": "378c70e6fc0246174a7613fc995e9d77b24e15ee"
+        "reference": "8da113ceb0069679cabb731c98d332dc5fed8dce"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/spatie/icalendar-generator/zipball/378c70e6fc0246174a7613fc995e9d77b24e15ee",
-        "reference": "378c70e6fc0246174a7613fc995e9d77b24e15ee",
+        "url": "https://api.github.com/repos/spatie/icalendar-generator/zipball/8da113ceb0069679cabb731c98d332dc5fed8dce",
+        "reference": "8da113ceb0069679cabb731c98d332dc5fed8dce",
         "shasum": ""
       },
       "require": {
@@ -6715,11 +6716,12 @@
       "require-dev": {
         "ext-json": "*",
         "larapack/dd": "^1.1",
-        "nesbot/carbon": "^2.6|^3.0",
+        "nesbot/carbon": "^2.63|^3.0",
         "pestphp/pest": "^1.22",
         "spatie/pest-plugin-snapshots": "^1.1",
         "vimeo/psalm": "^4.13"
       },
+      "default-branch": true,
       "type": "library",
       "autoload": {
         "psr-4": {
@@ -6749,9 +6751,9 @@
       ],
       "support": {
         "issues": "https://github.com/spatie/icalendar-generator/issues",
-        "source": "https://github.com/spatie/icalendar-generator/tree/2.6.1"
+        "source": "https://github.com/spatie/icalendar-generator/tree/main"
       },
-      "time": "2024-02-26T11:53:49+00:00"
+      "time": "2024-02-26T13:06:51+00:00"
     },
     {
       "name": "spatie/laravel-activitylog",
@@ -6924,16 +6926,16 @@
     },
     {
       "name": "spatie/laravel-flash",
-      "version": "1.10.0",
+      "version": "dev-main",
       "source": {
         "type": "git",
         "url": "https://github.com/spatie/laravel-flash.git",
-        "reference": "6eb17846deeff5367581f5eba151f8b333b0b215"
+        "reference": "46be04635bd1820bc7631abd6108128719ee5e10"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/spatie/laravel-flash/zipball/6eb17846deeff5367581f5eba151f8b333b0b215",
-        "reference": "6eb17846deeff5367581f5eba151f8b333b0b215",
+        "url": "https://api.github.com/repos/spatie/laravel-flash/zipball/46be04635bd1820bc7631abd6108128719ee5e10",
+        "reference": "46be04635bd1820bc7631abd6108128719ee5e10",
         "shasum": ""
       },
       "require": {
@@ -6944,6 +6946,7 @@
         "orchestra/testbench": "^6.23|^7.0|^8.0|^9.0",
         "phpunit/phpunit": "^9.4|^10.5"
       },
+      "default-branch": true,
       "type": "library",
       "autoload": {
         "files": [
@@ -6973,7 +6976,7 @@
       ],
       "support": {
         "issues": "https://github.com/spatie/laravel-flash/issues",
-        "source": "https://github.com/spatie/laravel-flash/tree/1.10.0"
+        "source": "https://github.com/spatie/laravel-flash/tree/main"
       },
       "funding": [
         {
@@ -6981,20 +6984,20 @@
           "type": "custom"
         }
       ],
-      "time": "2024-02-27T15:18:02+00:00"
+      "time": "2024-02-27T15:20:17+00:00"
     },
     {
       "name": "spatie/laravel-honeypot",
-      "version": "4.5.1",
+      "version": "dev-main",
       "source": {
         "type": "git",
         "url": "https://github.com/spatie/laravel-honeypot.git",
-        "reference": "eaffd65f20faaa47cc87f9348e5920bc47ed7c42"
+        "reference": "446b78e236f2db79983c6b3404267efdfeed8c6c"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/spatie/laravel-honeypot/zipball/eaffd65f20faaa47cc87f9348e5920bc47ed7c42",
-        "reference": "eaffd65f20faaa47cc87f9348e5920bc47ed7c42",
+        "url": "https://api.github.com/repos/spatie/laravel-honeypot/zipball/446b78e236f2db79983c6b3404267efdfeed8c6c",
+        "reference": "446b78e236f2db79983c6b3404267efdfeed8c6c",
         "shasum": ""
       },
       "require": {
@@ -7017,6 +7020,7 @@
         "spatie/phpunit-snapshot-assertions": "^4.2|^5.1",
         "spatie/test-time": "^1.2.1"
       },
+      "default-branch": true,
       "type": "library",
       "extra": {
         "laravel": {
@@ -7049,7 +7053,7 @@
         "spatie"
       ],
       "support": {
-        "source": "https://github.com/spatie/laravel-honeypot/tree/4.5.1"
+        "source": "https://github.com/spatie/laravel-honeypot/tree/main"
       },
       "funding": [
         {
@@ -7057,7 +7061,7 @@
           "type": "custom"
         }
       ],
-      "time": "2024-03-14T12:57:40+00:00"
+      "time": "2024-03-14T12:58:13+00:00"
     },
     {
       "name": "spatie/laravel-package-tools",
@@ -7121,16 +7125,16 @@
     },
     {
       "name": "spatie/laravel-responsecache",
-      "version": "7.5.0",
+      "version": "dev-main",
       "source": {
         "type": "git",
         "url": "https://github.com/spatie/laravel-responsecache.git",
-        "reference": "c6880344402b53fbf32d4f8dd5df8bff9f725c36"
+        "reference": "b368edfd3b51c6c77ff94f4bf1a863b53001397a"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/spatie/laravel-responsecache/zipball/c6880344402b53fbf32d4f8dd5df8bff9f725c36",
-        "reference": "c6880344402b53fbf32d4f8dd5df8bff9f725c36",
+        "url": "https://api.github.com/repos/spatie/laravel-responsecache/zipball/b368edfd3b51c6c77ff94f4bf1a863b53001397a",
+        "reference": "b368edfd3b51c6c77ff94f4bf1a863b53001397a",
         "shasum": ""
       },
       "require": {
@@ -7149,6 +7153,7 @@
         "orchestra/testbench": "^8.0|^9.0",
         "pestphp/pest": "^2.22"
       },
+      "default-branch": true,
       "type": "library",
       "extra": {
         "laravel": {
@@ -7188,7 +7193,7 @@
         "spatie"
       ],
       "support": {
-        "source": "https://github.com/spatie/laravel-responsecache/tree/7.5.0"
+        "source": "https://github.com/spatie/laravel-responsecache/tree/main"
       },
       "funding": [
         {
@@ -7200,20 +7205,20 @@
           "type": "github"
         }
       ],
-      "time": "2024-03-11T23:35:58+00:00"
+      "time": "2024-03-11T23:37:22+00:00"
     },
     {
       "name": "spatie/laravel-sitemap",
-      "version": "7.2.0",
+      "version": "dev-main",
       "source": {
         "type": "git",
         "url": "https://github.com/spatie/laravel-sitemap.git",
-        "reference": "4f79443e76a677731edfb4e89fac8816d11e194b"
+        "reference": "a44ae1a0004316c6ff4289374298187261898653"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/spatie/laravel-sitemap/zipball/4f79443e76a677731edfb4e89fac8816d11e194b",
-        "reference": "4f79443e76a677731edfb4e89fac8816d11e194b",
+        "url": "https://api.github.com/repos/spatie/laravel-sitemap/zipball/a44ae1a0004316c6ff4289374298187261898653",
+        "reference": "a44ae1a0004316c6ff4289374298187261898653",
         "shasum": ""
       },
       "require": {
@@ -7233,6 +7238,7 @@
         "spatie/phpunit-snapshot-assertions": "^5.1.2",
         "spatie/temporary-directory": "^2.2"
       },
+      "default-branch": true,
       "type": "library",
       "extra": {
         "laravel": {
@@ -7265,7 +7271,7 @@
         "spatie"
       ],
       "support": {
-        "source": "https://github.com/spatie/laravel-sitemap/tree/7.2.0"
+        "source": "https://github.com/spatie/laravel-sitemap/tree/main"
       },
       "funding": [
         {
@@ -7273,7 +7279,7 @@
           "type": "custom"
         }
       ],
-      "time": "2024-02-15T10:50:21+00:00"
+      "time": "2024-02-15T10:51:06+00:00"
     },
     {
       "name": "spatie/laravel-view-models",
@@ -7469,16 +7475,16 @@
     },
     {
       "name": "spatie/schema-org",
-      "version": "3.23.0",
+      "version": "dev-main",
       "source": {
         "type": "git",
         "url": "https://github.com/spatie/schema-org.git",
-        "reference": "c95abf7da59f16570aec18ca11d861255e645c39"
+        "reference": "355d1ec7ee2d18b368a54e43ffebf23a3bd1ffcf"
       },
       "dist": {
         "type": "zip",
-        "url": "https://api.github.com/repos/spatie/schema-org/zipball/c95abf7da59f16570aec18ca11d861255e645c39",
-        "reference": "c95abf7da59f16570aec18ca11d861255e645c39",
+        "url": "https://api.github.com/repos/spatie/schema-org/zipball/355d1ec7ee2d18b368a54e43ffebf23a3bd1ffcf",
+        "reference": "355d1ec7ee2d18b368a54e43ffebf23a3bd1ffcf",
         "shasum": ""
       },
       "require": {
@@ -7494,6 +7500,7 @@
         "symfony/console": "^5.3.7 || 6.0",
         "twig/twig": "^3.3.3"
       },
+      "default-branch": true,
       "type": "library",
       "autoload": {
         "psr-4": {
@@ -7526,7 +7533,7 @@
       ],
       "support": {
         "issues": "https://github.com/spatie/schema-org/issues",
-        "source": "https://github.com/spatie/schema-org/tree/3.23.0"
+        "source": "https://github.com/spatie/schema-org/tree/main"
       },
       "funding": [
         {
@@ -7538,7 +7545,7 @@
           "type": "github"
         }
       ],
-      "time": "2024-01-11T14:58:44+00:00"
+      "time": "2024-01-11T14:59:19+00:00"
     },
     {
       "name": "spatie/temporary-directory",
