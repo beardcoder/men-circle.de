@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "208f7a281d9b19a5126ea572f009c71c",
+    "content-hash": "cd421e751c64aa58c5acb44e72b62d54",
     "packages": [
         {
             "name": "abordage/html-min",
@@ -235,16 +235,16 @@
         },
         {
             "name": "area17/twill-image",
-            "version": "2.x-dev",
+            "version": "1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/area17/twill-image.git",
-                "reference": "2b106a25043e844f26788016ad5329c94db698ad"
+                "reference": "9b8d5bdbb306815db5480794057b1cc1fde320cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/area17/twill-image/zipball/2b106a25043e844f26788016ad5329c94db698ad",
-                "reference": "2b106a25043e844f26788016ad5329c94db698ad",
+                "url": "https://api.github.com/repos/area17/twill-image/zipball/9b8d5bdbb306815db5480794057b1cc1fde320cf",
+                "reference": "9b8d5bdbb306815db5480794057b1cc1fde320cf",
                 "shasum": ""
             },
             "require": {
@@ -256,6 +256,7 @@
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -285,9 +286,9 @@
             ],
             "support": {
                 "issues": "https://github.com/area17/twill-image/issues",
-                "source": "https://github.com/area17/twill-image/tree/2.x"
+                "source": "https://github.com/area17/twill-image/tree/v1.0.6"
             },
-            "time": "2024-02-28T19:02:58+00:00"
+            "time": "2023-06-01T19:24:57+00:00"
         },
         {
             "name": "artesaos/seotools",
