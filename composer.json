@@ -9,7 +9,6 @@
   "license": "MIT",
   "require": {
     "php": "^8.1",
-    "abordage/laravel-html-min": "^0.2.0",
     "area17/twill": "3.x-dev as 3.0",
     "area17/twill-image": "^1.0",
     "artesaos/seotools": "^1.2",
@@ -24,7 +23,6 @@
     "predis/predis": "^2.2",
     "ramsey/uuid": "^4.7",
     "spatie/icalendar-generator": "^2.5",
-    "spatie/laravel-flash": "^1.9",
     "spatie/laravel-honeypot": "^4.3",
     "spatie/laravel-responsecache": "^7.4",
     "spatie/laravel-sitemap": "^7.0",
