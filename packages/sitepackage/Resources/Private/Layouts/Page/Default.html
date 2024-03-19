@@ -1,0 +1,33 @@
+<html
+        data-namespace-typo3-fluid="true"
+        xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
+>
+<vac:asset.vite entry="EXT:sitepackage/Resources/Private/Assets/Main.ts"/>
+<div class="overflow-y-auto overflow-x-hidden bg-white text-base text-stone-800 dark:bg-stone-800 dark:text-stone-100 lg:text-lg">
+    <header class="absolute top-0 z-20 h-32 w-full md:h-20">
+        <div class="mx-auto flex h-20 max-w-screen-xl flex-col items-center px-2 py-2 md:flex-row">
+            <a class="block h-16 w-16" href="/">
+                <img alt="logo"
+                     class="text-white h-full w-auto dark:hidden"
+                     height="500"
+                     src="https://mens-circle.de/assets/web/images/logo-white.svg"
+                     width="500">
+                <img alt="logo"
+                     class="text-white hidden h-full w-auto dark:block" height="500"
+                     src="https://mens-circle.de/assets/web/images/logo-white.svg" width="500">
+                <span class="sr-only">Startseite</span>
+            </a>
+            <nav class="text-white mx-auto md:mr-0">
+                <ul class="mt-2 flex space-x-8 text-xl font-bold uppercase md:mr-0 md:mt-0">
+                    <li class="active first"><a href="/">Home</a></li>
+                    <li><a href="/#contact">Anmeldung</a></li>
+                    <li class="last"><a href="/#faq">FAQ's</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <f:render section="Main"/>
+    </main>
+</div>
+</html>

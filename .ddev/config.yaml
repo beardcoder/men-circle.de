@@ -1,29 +1,26 @@
 name: mens-circle
-type: laravel
+type: typo3
 docroot: public
-php_version: '8.3'
-webserver_type: apache-fpm
+php_version: "8.3"
+webserver_type: nginx-fpm
 xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns: []
 database:
-  type: mysql
-  version: '8.0'
+    type: mysql
+    version: "8.0"
 use_dns_when_possible: true
-composer_version: '2'
+composer_version: "2"
 web_environment: []
-nodejs_version: '21'
-web_extra_exposed_ports:
-  - name: vite
-    container_port: 5173
-    http_port: 5172
-    https_port: 5173
+
 # Key features of DDEV's config.yaml:
 
 # name: <projectname> # Name of the project, automatically provides
 #   http://projectname.ddev.site and https://projectname.ddev.site
 
-# type: <projecttype>  # drupal6/7/8, backdrop, typo3, wordpress, php
+# type: <projecttype>  # backdrop, craftcms, django4, drupal6/7/8/9/10, laravel, magento, magento2, php, python, shopware6, silverstripe, typo3, wordpress
+# See https://ddev.readthedocs.io/en/latest/users/quickstart/ for more
+# information on the different project types
 
 # docroot: <relative_path> # Relative path to the directory containing index.php.
 
@@ -56,7 +53,7 @@ web_extra_exposed_ports:
 
 # webserver_type: nginx-fpm, apache-fpm, or nginx-gunicorn
 
-timezone: Europe/Berlin
+# timezone: Europe/Berlin
 # This is the timezone used in the containers and by PHP;
 # it can be set to any valid timezone,
 # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
@@ -79,11 +76,13 @@ timezone: Europe/Berlin
 # To reinstall Composer after the image was built, run "ddev debug refresh".
 
 # nodejs_version: "18"
-# change from the default system Node.js version to another supported version, like 16, 18, 20.
-# Note that you can use 'ddev nvm' or nvm inside the web container to provide nearly any
-# Node.js version, including v6, etc.
-# You only need to configure this if you are not using nvm and you want to use a major
-# version that is not the default.
+# change from the default system Node.js version to any other version.
+# Numeric version numbers can be complete (i.e. 18.15.0) or
+# incomplete (18, 17.2, 16). 'lts' and 'latest' can be used as well along with
+# other named releases.
+# see https://www.npmjs.com/package/n#specifying-nodejs-versions
+# Note that you can continue using 'ddev nvm' or nvm inside the web container
+# to change the project's installed node version if you need to.
 
 # additional_hostnames:
 #  - somename
@@ -97,8 +96,7 @@ timezone: Europe/Berlin
 # would provide http and https URLs for "example.com" and "sub1.example.com"
 # Please take care with this because it can cause great confusion.
 
-upload_dirs:
-  - 'storage'
+# upload_dirs: "custom/upload/dir"
 #
 # upload_dirs:
 #   - custom/upload/dir
@@ -275,3 +273,5 @@ upload_dirs:
 # information on the commands that can be extended and the tasks you can define
 # for them. Example:
 #hooks:
+#  post-start:
+#    - exec: composer install -d /var/www/html

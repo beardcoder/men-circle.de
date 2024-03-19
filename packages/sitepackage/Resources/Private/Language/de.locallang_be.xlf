@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns:t3="http://typo3.org/schemas/xliff" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" original="" datatype="plaintext" date="2024-03-19T12:55:23+01:00">
+        <body>
+            <trans-unit id="extension.title" resname="extension.title">
+                <source>Men&#39;s Circle</source>
+                <target>Männerkreis</target>
+            </trans-unit>
+            <trans-unit id="tt_content.CType.I.features" resname="tt_content.CType.I.features">
+                <source>Features</source>
+                <target>Vorteile</target>
+            </trans-unit>
+            <trans-unit id="tt_content.CType.I.features.description" resname="tt_content.CType.I.features.description">
+                <source>Grid element with sub items</source>
+                <target>Grid element mit unter elementen</target>
+            </trans-unit>
+            <trans-unit id="tt_content.CType.I.stage" resname="tt_content.CType.I.stage">
+                <source>Stage</source>
+                <target>Bühne</target>
+            </trans-unit>
+            <trans-unit id="tt_content.CType.I.stage.description" resname="tt_content.CType.I.stage.description">
+                <source>Big image with text</source>
+                <target>Großes Bild mit Text</target>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_feature.title" resname="tx_sitepackage_feature.title">
+                <source>Feature</source>
+                <target>Vorteil</target>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_feature.columns.title" resname="tx_sitepackage_feature.columns.title">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_feature.columns.bodytext" resname="tx_sitepackage_feature.columns.bodytext">
+                <source>Text</source>
+                <target>Text</target>
+            </trans-unit>
+            <trans-unit id="plugin.event_list" resname="plugin.event_list">
+                <source>Event list</source>
+                <target>Veranstaltungsliste</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

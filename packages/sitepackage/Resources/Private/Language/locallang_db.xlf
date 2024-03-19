@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns:t3="http://typo3.org/schemas/xliff" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" original="messages" datatype="plaintext" date="2024-03-16T22:49:49+01:00">
+        <body>
+            <trans-unit id="tx_sitepackage_domain_model_event" resname="tx_sitepackage_domain_model_event">
+                <source>Event</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.address" resname="tx_sitepackage_domain_model_event.address">
+                <source>Address</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.city" resname="tx_sitepackage_domain_model_event.city">
+                <source>City</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.description" resname="tx_sitepackage_domain_model_event.description">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.enddate" resname="tx_sitepackage_domain_model_event.enddate">
+                <source>End date</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.hidden" resname="tx_sitepackage_domain_model_event.hidden">
+                <source>Hidden</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.latitude" resname="tx_sitepackage_domain_model_event.latitude">
+                <source>Latitude</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.longitude" resname="tx_sitepackage_domain_model_event.longitude">
+                <source>Longitude</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.palettes.access" resname="tx_sitepackage_domain_model_event.palettes.access">
+                <source>Access</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.registrations" resname="tx_sitepackage_domain_model_event.registrations">
+                <source>Registrations</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.startdate" resname="tx_sitepackage_domain_model_event.startdate">
+                <source>Start date</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.tabs.access" resname="tx_sitepackage_domain_model_event.tabs.access">
+                <source>Access</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.title" resname="tx_sitepackage_domain_model_event.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.zip" resname="tx_sitepackage_domain_model_event.zip">
+                <source>Zip</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

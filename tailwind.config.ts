@@ -1,16 +1,15 @@
 import type { Config } from 'tailwindcss'
+// @ts-ignore
 import defaultTheme from 'tailwindcss/defaultTheme'
 import typography from 'flowbite-typography'
+// @ts-ignore
 import flowbite from 'flowbite/plugin'
 
 export default {
   content: [
-    './resources/**/*.blade.php',
-    './app/Twill/Capsules/*/resources/**/*.blade.php',
-    './app/View/Components/**/*.php',
-    './resources/**/*.js',
-    './resources/**/*.ts',
-    './resources/**/*.vue',
+    './packages/sitepackage/Resources/**/*.html',
+    './packages/sitepackage/Resources/**/*.ts',
+    './packages/sitepackage/Resources/**/*.js',
     './node_modules/flowbite/**/*.js',
   ],
   darkMode: 'media',

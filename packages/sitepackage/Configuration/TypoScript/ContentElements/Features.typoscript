@@ -1,0 +1,17 @@
+tt_content.features =< lib.contentElement
+tt_content.features {
+    templateName = Features
+    dataProcessing {
+        20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+        20 {
+            table = tx_sitepackage_feature
+            pidInList.field = pid
+            orderBy = sorting
+            where {
+                data = field:uid
+                intval = 1
+                wrap = tt_content=|
+            }
+        }
+    }
+}

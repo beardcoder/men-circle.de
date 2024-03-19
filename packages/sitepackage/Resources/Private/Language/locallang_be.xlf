@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns:t3="http://typo3.org/schemas/xliff" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" original="messages" datatype="plaintext" date="2024-03-19T12:55:23+01:00">
+        <header>
+            <authorName>Markus Sommer</authorName>
+            <authorEmail>markus@letsbenow.de</authorEmail>
+        </header>
+        <body>
+            <trans-unit id="backend_layout.column.normal" resname="backend_layout.column.normal">
+                <source>Normal</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.default" resname="backend_layout.default">
+                <source>Default</source>
+            </trans-unit>
+            <trans-unit id="extension.title" resname="extension.title">
+                <source>Men&#39;s Circle</source>
+            </trans-unit>
+            <trans-unit id="tt_content.CType.I.features" resname="tt_content.CType.I.features">
+                <source>Features</source>
+            </trans-unit>
+            <trans-unit id="tt_content.CType.I.features.description" resname="tt_content.CType.I.features.description">
+                <source>Grid element with sub items</source>
+            </trans-unit>
+            <trans-unit id="tt_content.CType.I.stage" resname="tt_content.CType.I.stage">
+                <source>Stage</source>
+            </trans-unit>
+            <trans-unit id="tt_content.CType.I.stage.description" resname="tt_content.CType.I.stage.description">
+                <source>Big image with text</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_feature.title" resname="tx_sitepackage_feature.title">
+                <source>Feature</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_feature.columns.title" resname="tx_sitepackage_feature.columns.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_feature.columns.bodytext" resname="tx_sitepackage_feature.columns.bodytext">
+                <source>Text</source>
+            </trans-unit>
+            <trans-unit id="plugin.event_list" resname="plugin.event_list">
+                <source>Event list</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

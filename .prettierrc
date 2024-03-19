@@ -1,17 +1,1 @@
-{
-  "semi": false,
-  "singleQuote": true,
-  "tabWidth": 2,
-  "printWidth": 120,
-  "plugins": ["@prettier/plugin-php", "@shufo/prettier-plugin-blade"],
-  "overrides": [
-    {
-      "files": ["*.blade.php"],
-      "options": {
-        "tabWidth": 2,
-        "wrapAttributes": "force-expand-multiline",
-        "parser": "blade"
-      }
-    }
-  ]
-}
+{}

@@ -1,0 +1,16 @@
+base: 'https://mens-circle.de'
+baseVariants:
+  -
+    base: 'https://mens-circle.ddev.site/'
+    condition: 'applicationContext == "Development/Local"'
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    languageId: 0
+    base: /
+    locale: de_DE.UTF-8
+    navigationTitle: Deutsch
+    flag: de
+rootPageId: 1
+websiteTitle: 'Men’s Circle Niederbayern'

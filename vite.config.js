@@ -1,21 +1,33 @@
-import laravel from 'laravel-vite-plugin'
-import { defineConfig } from 'vite'
+import { defineConfig } from "vite"
+import { dirname, resolve } from "node:path"
+import { fileURLToPath } from "node:url"
+import autoOrigin from "vite-plugin-auto-origin"
 
-const port = 5173
-const origin = `${process.env.DDEV_PRIMARY_URL}:${port}`
+// TYPO3 root path (relative to this config file)
+const VITE_TYPO3_ROOT = "./";
 
+// Vite input files (relative to TYPO3 root path)
+const VITE_ENTRYPOINTS = [
+  "packages/sitepackage/Resources/Private/Assets/Main.ts",
+];
+
+// Output path for generated assets
+const VITE_OUTPUT_PATH = "public/_assets/vite/";
+
+const currentDir = dirname(fileURLToPath(import.meta.url));
+const rootPath = resolve(currentDir, VITE_TYPO3_ROOT);
 export default defineConfig({
-  plugins: [
-    laravel({
-      input: ['resources/css/app.css', 'resources/js/app.ts'],
-      refresh: true,
-    }),
-  ],
-
-  server: {
-    host: '0.0.0.0',
-    port,
-    strictPort: true,
-    origin,
+  base: "",
+  build: {
+    manifest: true,
+    rollupOptions: {
+      input: VITE_ENTRYPOINTS.map(entry => resolve(rootPath, entry)),
+    },
+    outDir: resolve(rootPath, VITE_OUTPUT_PATH),
   },
-})
+  css: {
+    devSourcemap: true,
+  },
+  plugins: [ autoOrigin() ],
+  publicDir: false,
+});
