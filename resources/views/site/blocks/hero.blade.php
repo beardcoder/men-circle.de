@@ -1,7 +1,5 @@
 @php
-  $image = cache()->rememberForever("{$block->id}.image", function () use ($block) {
-      return TwillImage::make($block, 'hero');
-  });
+  $image = TwillImage::make($block, 'hero');
   $image->preset([
       'crop' => 'desktop',
       'sizes' => '(max-width: 1023px) 100vw, (min-width: 1023px)',

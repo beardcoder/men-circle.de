@@ -1,7 +1,5 @@
 @php
-  $block = cache()->rememberForever('footer', function () {
-      return TwillAppSettings::getGroupDataForSectionAndName('homepage', 'footer');
-  });
+  $block = TwillAppSettings::getGroupDataForSectionAndName('homepage', 'footer');
 @endphp
 <footer class="bg-secondary p-4 text-white md:p-8 lg:p-10">
   <div class="mx-auto max-w-screen-xl text-center">
