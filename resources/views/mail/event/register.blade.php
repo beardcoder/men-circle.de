@@ -122,10 +122,6 @@
       #u_content_text_4 .v-line-height {
         line-height: 140% !important;
       }
-
-      #u_content_text_7 .v-font-size {
-        font-size: 18px !important;
-      }
     }
   </style>
 
@@ -161,13 +157,13 @@
               >
                 <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 15px 15px 70px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:700px;"><tr style="background-color: transparent;"><![endif]-->
 
-                <!--[if (mso)|(IE)]><td align="center" width="700" style="width: 700px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;" valign="top"><![endif]-->
+                <!--[if (mso)|(IE)]><td align="center" width="700" style="background-color: #ffffff;width: 700px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;" valign="top"><![endif]-->
                 <div
                   class="u-col u-col-100"
                   style="max-width: 320px;min-width: 700px;display: table-cell;vertical-align: top;"
                 >
                   <div
-                    style="height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"
+                    style="background-color: #ffffff;height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"
                   >
                     <!--[if (!mso)&(!IE)]><!-->
                     <div
@@ -185,7 +181,7 @@
                         <tbody>
                           <tr>
                             <td
-                              style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:helvetica,sans-serif;"
+                              style="overflow-wrap:break-word;word-break:break-word;padding:0px;font-family:helvetica,sans-serif;"
                               align="left"
                             >
 
@@ -200,15 +196,17 @@
                                     style="padding-right: 0px;padding-left: 0px;"
                                     align="center"
                                   >
+
                                     <img
                                       align="center"
                                       border="0"
-                                      src="https://assets.unlayer.com/projects/0/1711394182140-email.jpg"
+                                      src="https://mens-circle.de/assets/web/images/email.jpg"
                                       alt=""
                                       title=""
-                                      style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 100%;max-width: 680px;"
-                                      width="680"
+                                      style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 100%;max-width: 700px;"
+                                      width="700"
                                     />
+
                                   </td>
                                 </tr>
                               </table>
@@ -230,7 +228,7 @@
                         <tbody>
                           <tr>
                             <td
-                              style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:helvetica,sans-serif;"
+                              style="overflow-wrap:break-word;word-break:break-word;padding:20px;font-family:helvetica,sans-serif;"
                               align="left"
                             >
 
@@ -249,7 +247,6 @@
                       </table>
 
                       <table
-                        id="u_content_text_7"
                         style="font-family:helvetica,sans-serif;"
                         role="presentation"
                         cellpadding="0"
@@ -260,13 +257,13 @@
                         <tbody>
                           <tr>
                             <td
-                              style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:helvetica,sans-serif;"
+                              style="overflow-wrap:break-word;word-break:break-word;padding:20px;font-family:helvetica,sans-serif;"
                               align="left"
                             >
 
                               <div
                                 class="v-line-height v-font-size"
-                                style="font-size: 14px; font-weight: 700; line-height: 140%; text-align: left; word-wrap: break-word;"
+                                style="font-size: 14px; font-weight: 400; line-height: 140%; text-align: left; word-wrap: break-word;"
                               >
                                 <p style="line-height: 140%;">Willkommen {{ $name }},</p>
                                 <div>

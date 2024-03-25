@@ -15,9 +15,8 @@ class EventRegisterMail extends Mailable
   /**
    * Create a new message instance.
    */
-  public function __construct()
+  public function __construct(private string $name, private string $date)
   {
-    //
   }
 
   /**
@@ -25,7 +24,7 @@ class EventRegisterMail extends Mailable
    */
   public function envelope(): Envelope
   {
-    return new Envelope(subject: 'Event Register Mail');
+    return new Envelope(subject: 'Anmeldung zum Männerkreis am ' . $this->date);
   }
 
   /**
@@ -33,7 +32,13 @@ class EventRegisterMail extends Mailable
    */
   public function content(): Content
   {
-    return new Content(view: 'mail.event.register');
+    return new Content(
+      view: 'mail.event.register',
+      with: [
+        'name' => $this->name,
+        'date' => $this->date,
+      ],
+    );
   }
 
   /**

@@ -6,12 +6,14 @@ use A17\Twill\Facades\TwillAppSettings;
 use App\Helpers\DateHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EventRegisterRequest;
+use App\Mail\EventRegisterMail;
 use App\Models\Event;
 use App\Models\EventRegistration;
 use App\Services\EventRegisterService;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Mail;
 use Spatie\IcalendarGenerator\Components\Calendar;
 use Spatie\IcalendarGenerator\Components\Event as CalEvent;
 use Spatie\SchemaOrg\Schema;
@@ -126,12 +128,21 @@ class EventController extends Controller
       'event_id' => $event->id,
     ]);
 
-    (new EventRegisterService(
-      $event,
-      $request->name,
-      $request->email,
-      $request->newsletter,
-    ))->updateOrCreateSubscriber();
+    Mail::to($request->email)->send(
+      new EventRegisterMail(
+        $request->get('name'),
+        DateHelper::getLocalDate($event->startDate)->formatLocalized('%d.%m.%Y %H:%M'),
+      ),
+    );
+
+    if (!app()->environment('local')) {
+      (new EventRegisterService(
+        $event,
+        $request->name,
+        $request->email,
+        $request->newsletter,
+      ))->updateOrCreateSubscriber();
+    }
 
     $page = TwillAppSettings::get('homepage.email.thanks')->first();
 
