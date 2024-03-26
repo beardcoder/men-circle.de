@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/area17/twill.git",
-                "reference": "ce0fbf153cb455514eeea2b800ab46d569e38c0a"
+                "reference": "9478f50c2859ed48f012c7320da8e05e9f75183f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/area17/twill/zipball/ce0fbf153cb455514eeea2b800ab46d569e38c0a",
-                "reference": "ce0fbf153cb455514eeea2b800ab46d569e38c0a",
+                "url": "https://api.github.com/repos/area17/twill/zipball/9478f50c2859ed48f012c7320da8e05e9f75183f",
+                "reference": "9478f50c2859ed48f012c7320da8e05e9f75183f",
                 "shasum": ""
             },
             "require": {
@@ -104,9 +104,9 @@
                 "chat": "https://discord.gg/cnWk7EFv8R",
                 "docs": "https://twillcms.com/docs/",
                 "issues": "https://github.com/area17/twill/issues/",
-                "source": "https://github.com/area17/twill/tree/3.2.0"
+                "source": "https://github.com/area17/twill/tree/3.2.1"
             },
-            "time": "2024-02-28T22:34:34+00:00"
+            "time": "2024-03-26T11:42:38+00:00"
         },
         {
             "name": "area17/twill-image",
@@ -384,16 +384,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.301.7",
+            "version": "3.301.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "2fd8cae93e87326f2263c420fa9031ad8903a2f2"
+                "reference": "a6ad44dd7bc4ace137d583c91439fa9c16331b01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2fd8cae93e87326f2263c420fa9031ad8903a2f2",
-                "reference": "2fd8cae93e87326f2263c420fa9031ad8903a2f2",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/a6ad44dd7bc4ace137d583c91439fa9c16331b01",
+                "reference": "a6ad44dd7bc4ace137d583c91439fa9c16331b01",
                 "shasum": ""
             },
             "require": {
@@ -473,9 +473,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.301.7"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.301.8"
             },
-            "time": "2024-03-25T18:14:28+00:00"
+            "time": "2024-03-26T18:14:03+00:00"
         },
         {
             "name": "brick/math",
@@ -2770,12 +2770,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "cfedb2300c6f7e6b45db5c36f8c4389c79305db9"
+                "reference": "772b861a7012b1cf6362759f828b53d38bed0532"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/cfedb2300c6f7e6b45db5c36f8c4389c79305db9",
-                "reference": "cfedb2300c6f7e6b45db5c36f8c4389c79305db9",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/772b861a7012b1cf6362759f828b53d38bed0532",
+                "reference": "772b861a7012b1cf6362759f828b53d38bed0532",
                 "shasum": ""
             },
             "require": {
@@ -2969,7 +2969,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-03-21T14:11:30+00:00"
+            "time": "2024-03-26T08:54:48+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -2977,12 +2977,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/prompts.git",
-                "reference": "8ee9f87f7f9eadcbe21e9e72cd4176b2f06cd5b5"
+                "reference": "0ee548fe2dcbb059adc2bf2c759dbc65be6a1628"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/prompts/zipball/8ee9f87f7f9eadcbe21e9e72cd4176b2f06cd5b5",
-                "reference": "8ee9f87f7f9eadcbe21e9e72cd4176b2f06cd5b5",
+                "url": "https://api.github.com/repos/laravel/prompts/zipball/0ee548fe2dcbb059adc2bf2c759dbc65be6a1628",
+                "reference": "0ee548fe2dcbb059adc2bf2c759dbc65be6a1628",
                 "shasum": ""
             },
             "require": {
@@ -3027,7 +3027,7 @@
                 "issues": "https://github.com/laravel/prompts/issues",
                 "source": "https://github.com/laravel/prompts/tree/main"
             },
-            "time": "2024-03-13T16:05:43+00:00"
+            "time": "2024-03-26T16:42:03+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -3302,12 +3302,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "a3562953123946996a503159199d6742d5534e61"
+                "reference": "bf2271d876760c08276067627aa3506580f55532"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/a3562953123946996a503159199d6742d5534e61",
-                "reference": "a3562953123946996a503159199d6742d5534e61",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/bf2271d876760c08276067627aa3506580f55532",
+                "reference": "bf2271d876760c08276067627aa3506580f55532",
                 "shasum": ""
             },
             "require": {
@@ -3358,7 +3358,7 @@
             "support": {
                 "source": "https://github.com/laravel/ui/tree/4.x"
             },
-            "time": "2024-03-21T18:12:29+00:00"
+            "time": "2024-03-26T16:51:40+00:00"
         },
         {
             "name": "league/commonmark",
@@ -6211,12 +6211,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "34a0491ea0cde136c0dbefbfa0b694cfe247dcdb"
+                "reference": "4dc941f775df808b0c2eb174c797dd266f713dbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/34a0491ea0cde136c0dbefbfa0b694cfe247dcdb",
-                "reference": "34a0491ea0cde136c0dbefbfa0b694cfe247dcdb",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/4dc941f775df808b0c2eb174c797dd266f713dbd",
+                "reference": "4dc941f775df808b0c2eb174c797dd266f713dbd",
                 "shasum": ""
             },
             "require": {
@@ -6296,7 +6296,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-18T21:14:18+00:00"
+            "time": "2024-03-25T21:48:13+00:00"
         },
         {
             "name": "spatie/browsershot",
@@ -10463,16 +10463,16 @@
         },
         {
             "name": "laravel/pint",
-            "version": "v1.14.0",
+            "version": "v1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/pint.git",
-                "reference": "6b127276e3f263f7bb17d5077e9e0269e61b2a0e"
+                "reference": "c52de679b3ac01207016c179d7ce173e4be128c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/pint/zipball/6b127276e3f263f7bb17d5077e9e0269e61b2a0e",
-                "reference": "6b127276e3f263f7bb17d5077e9e0269e61b2a0e",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/c52de679b3ac01207016c179d7ce173e4be128c4",
+                "reference": "c52de679b3ac01207016c179d7ce173e4be128c4",
                 "shasum": ""
             },
             "require": {
@@ -10525,7 +10525,7 @@
                 "issues": "https://github.com/laravel/pint/issues",
                 "source": "https://github.com/laravel/pint"
             },
-            "time": "2024-02-20T17:38:05+00:00"
+            "time": "2024-03-26T16:40:24+00:00"
         },
         {
             "name": "laravel/sail",
