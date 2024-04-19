@@ -1,8 +1,8 @@
 <?php
 
-namespace Benow\Sitepackage\Domain\Repository;
+namespace MensCircle\Sitepackage\Domain\Repository;
 
-use Benow\Sitepackage\Domain\Repository\Traits\StoragePageAgnosticTrait;
+use MensCircle\Sitepackage\Domain\Repository\Traits\StoragePageAgnosticTrait;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 

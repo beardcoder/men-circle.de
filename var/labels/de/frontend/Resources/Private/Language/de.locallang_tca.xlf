@@ -415,6 +415,10 @@
         <source>Keywords</source>
         <target state="final">Schlagworte</target>
       </trans-unit>
+      <trans-unit id="pages.description_formlabel" resname="pages.description_formlabel" approved="yes">
+        <source>Description</source>
+        <target state="final">Beschreibung</target>
+      </trans-unit>
       <trans-unit id="pages.author_formlabel" resname="pages.author_formlabel" approved="yes">
         <source>Author Name</source>
         <target state="final">Name des Autors</target>
@@ -551,6 +555,10 @@
         <source>Access</source>
         <target state="final">Zugriff</target>
       </trans-unit>
+      <trans-unit id="fe_users.tabs.options" resname="fe_users.tabs.options" approved="yes">
+        <source>Options</source>
+        <target state="final">Optionen</target>
+      </trans-unit>
       <trans-unit id="fe_users.tabs.extended" resname="fe_users.tabs.extended" approved="yes">
         <source>Extended</source>
         <target state="final">Erweitert</target>
@@ -566,6 +574,10 @@
       <trans-unit id="fe_groups.subgroup" resname="fe_groups.subgroup" approved="yes">
         <source>Subgroups</source>
         <target state="final">Untergruppen:</target>
+      </trans-unit>
+      <trans-unit id="fe_groups.tabs.options" resname="fe_groups.tabs.options" approved="yes">
+        <source>Options</source>
+        <target state="final">Optionen</target>
       </trans-unit>
       <trans-unit id="fe_groups.tabs.extended" resname="fe_groups.tabs.extended" approved="yes">
         <source>Extended</source>
@@ -625,8 +637,7 @@
 			 	This isn't used very often nowadays and it's often easier to understand and maintain the site by extracting TypoScript configuration to files
 				and to load the full set in a single main TypoScript record.
 			</source>
-        <target state="final">Fügen Sie zusätzliche TypoScript Datensätze hinzu, die sich woanders im Seitenbaum befinden. Dies kann verwendet werden, um die gleichen TypoScript-Einträge an mehreren Stellen in einem Seitenbaum zu laden. Dies wird heutzutage nicht sehr oft verwendet und es ist oft einfacher, die Seite zu verstehen und zu pflegen, indem Sie die TypoScript-Konfiguration in Dateien auslagern und den kompletten Datensatz in einem einzigen Haupt-TypoScript-Datensatz laden.
-			</target>
+        <target state="final">Fügen Sie zusätzliche TypoScript-Datensätze hinzu, die sich woanders im Seitenbaum befinden. Dies kann verwendet werden, um die gleichen Datensätze-Einträge an mehreren Stellen in einem Seitenbaum zu laden. Dies wird heutzutage nicht oft verwendet und es ist für das Verständnis und die Pflege des System oft einfacher, die TypoScript-Konfiguration in Dateien auszulagern und den kompletten Datensatz in einem einzigen Haupt-TypoScript-Datensatz zu laden.</target>
       </trans-unit>
       <trans-unit id="sys_template.includeStaticAfterBasedOn" resname="sys_template.includeStaticAfterBasedOn" approved="yes">
         <source>Load TypoScript sets after included TypoScript records</source>

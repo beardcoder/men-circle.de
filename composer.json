@@ -1,53 +1,57 @@
 {
-	"name": "typo3/cms-base-distribution",
-	"description" : "TYPO3 CMS Base Distribution",
-	"license": "GPL-2.0-or-later",
-	"type": "project",
-	"repositories": [
-		{
-			"type": "path",
-			"url": "./packages/*/"
-		}
-	],
-	"config": {
-		"allow-plugins": {
-			"typo3/class-alias-loader": true,
-			"typo3/cms-composer-installers": true,
-			"helhum/dotenv-connector": true
-		},
-		"sort-packages": true,
-		"platform": {
-			"php": "8.3"
-		}
-	},
-	"minimum-stability": "dev",
-	"prefer-stable": true,
-	"require": {
-		"benow/sitepackage": "@dev",
-		"doctrine/dbal": "4.0.0-RC2@rc",
-		"helhum/dotenv-connector": "^3.1",
-		"nng/nnhelpers": "13.x-dev",
-		"praetorius/vite-asset-collector": "^1.9",
-		"typo3/cms-backend": "^13.0.0",
-		"typo3/cms-belog": "^13.0.0",
-		"typo3/cms-beuser": "^13.0.0",
-		"typo3/cms-core": "^13.0.0",
-		"typo3/cms-extbase": "^13.0.0",
-		"typo3/cms-extensionmanager": "^13.0.0",
-		"typo3/cms-filelist": "^13.0.0",
-		"typo3/cms-fluid": "^13.0.0",
-		"typo3/cms-fluid-styled-content": "^13.0.0",
-		"typo3/cms-form": "^13.0.0",
-		"typo3/cms-frontend": "^13.0.0",
-		"typo3/cms-impexp": "^13.0.0",
-		"typo3/cms-info": "^13.0.0",
-		"typo3/cms-install": "^13.0.0",
-		"typo3/cms-reactions": "^13.0.0",
-		"typo3/cms-rte-ckeditor": "^13.0.0",
-		"typo3/cms-seo": "^13.0.0",
-		"typo3/cms-setup": "^13.0.0",
-		"typo3/cms-t3editor": "^13.0.0",
-		"typo3/cms-tstemplate": "^13.0.0",
-		"typo3/cms-viewpage": "^13.0.0"
-	}
+  "name": "typo3/cms-base-distribution",
+  "description": "TYPO3 CMS Base Distribution",
+  "license": "GPL-2.0-or-later",
+  "type": "project",
+  "repositories": [
+    {
+      "type": "path",
+      "url": "./packages/*/"
+    }
+  ],
+  "config": {
+    "allow-plugins": {
+      "typo3/class-alias-loader": true,
+      "typo3/cms-composer-installers": true,
+      "helhum/dotenv-connector": true
+    },
+    "sort-packages": true,
+    "platform": {
+      "php": "8.3"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "b13/container": "^2.3",
+    "b13/picture": "^2.0",
+    "contentblocks/content-blocks": "^0.7.3",
+    "helhum/dotenv-connector": "^3.1",
+    "helhum/typo3-console": "^8.1",
+    "lochmueller/staticfilecache": "^14.0",
+    "mens-circle/sitepackage": "@dev",
+    "nng/nnhelpers": "*",
+    "praetorius/vite-asset-collector": "^1.9",
+    "typo3/cms-backend": "^12.0.0",
+    "typo3/cms-belog": "^12.0.0",
+    "typo3/cms-beuser": "^12.0.0",
+    "typo3/cms-core": "^12.0.0",
+    "typo3/cms-extbase": "^12.0.0",
+    "typo3/cms-extensionmanager": "^12.0.0",
+    "typo3/cms-filelist": "^12.0.0",
+    "typo3/cms-fluid": "^12.0.0",
+    "typo3/cms-fluid-styled-content": "^12.0.0",
+    "typo3/cms-form": "^12.0.0",
+    "typo3/cms-frontend": "^12.0.0",
+    "typo3/cms-impexp": "^12.0.0",
+    "typo3/cms-info": "^12.0.0",
+    "typo3/cms-install": "^12.0.0",
+    "typo3/cms-reactions": "^12.0.0",
+    "typo3/cms-rte-ckeditor": "^12.0.0",
+    "typo3/cms-seo": "^12.0.0",
+    "typo3/cms-setup": "^12.0.0",
+    "typo3/cms-t3editor": "^12.0.0",
+    "typo3/cms-tstemplate": "^12.0.0",
+    "typo3/cms-viewpage": "^12.0.0"
+  }
 }

@@ -1,33 +1,15 @@
 <?php
 
+use MensCircle\Sitepackage\Services\TcaBuilderService;
 use nn\t3;
 
 $tca = [
-    'ctrl' => [
-        'title' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event_registration',
-        'label' => 'title',
-        'tstamp' => 'tstamp',
-        'crdate' => 'crdate',
-        'delete' => 'deleted',
-        'default_sortby' => 'title',
-        'iconfile' => 'EXT:sitepackage/Resources/Public/Icons/tx_sitepackage_domain_model_event_registration.svg',
-        'searchFields' => 'title, description',
-        'enablecolumns' => [
-            'fe_group' => 'fe_group',
-            'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
-        ],
-        'transOrigPointerField' => 'l18n_parent',
-        'transOrigDiffSourceField' => 'l18n_diffsource',
-        'languageField' => 'sys_language_uid',
-        'translationSource' => 'l10n_source',
-    ],
+    'ctrl' => TcaBuilderService::makeCtrl('tx_sitepackage_domain_model_event_registration', 'firstname,lastname', 'firstname', 'firstname,lastname'),
     'types' => [
         '1' => [
             'showitem' =>
                 '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
-                    title, description, image, slug, address, start_date, end_date, zip, city, longitude, latitude, registration,
+                    ,
                  --div--;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event_registration.tabs.access,
                     --palette--;;hidden,
                     --palette--;;access,',
@@ -50,10 +32,36 @@ $tca = [
         ],
     ],
     'columns' => t3::TCA()->createConfig(
-        'tx_sitepackage_domain_model_event_registration', true,
+        'tx_sitepackage_domain_model_event_registration',
+        true,
         [
+            'tt_content' => [
+                'exclude' => true,
+                'config' => [
+                    'type' => 'passthrough',
+                ],
+            ],
+            'firstname' => [
+                'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_eventregistration.firstname',
+                'config' => [
+                    'type' => 'input',
+                    'size' => 40,
+                    'max' => 255,
+                    'eval' => 'trim',
+                    'required' => true,
+                ],
+            ], 'lastname' => [
+                'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_eventregistration.lastname',
+                'config' => [
+                    'type' => 'input',
+                    'size' => 40,
+                    'max' => 255,
+                    'eval' => 'trim',
+                    'required' => true,
+                ],
+            ],
         ]
-    )
+    ),
 ];
 
 return $tca;

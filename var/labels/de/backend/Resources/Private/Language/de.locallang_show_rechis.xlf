@@ -4,16 +4,16 @@
     <header/>
     <body>
       <trans-unit id="title" resname="title" approved="yes">
-        <source>History/Undo</source>
-        <target state="final">Verlauf/Rückgängigmachung</target>
-      </trans-unit>
-      <trans-unit id="headline.titleOf" resname="title" approved="yes">
-        <source>of</source>
-        <target state="final">von</target>
+        <source>Record History / Undo</source>
+        <target state="final">Verlauf / Rückgängig</target>
       </trans-unit>
       <trans-unit id="time" resname="time" approved="yes">
         <source>Time</source>
         <target state="final">Zeit</target>
+      </trans-unit>
+      <trans-unit id="age" resname="age" approved="yes">
+        <source>Age</source>
+        <target state="final">Alter</target>
       </trans-unit>
       <trans-unit id="user" resname="user" approved="yes">
         <source>User</source>
@@ -23,17 +23,17 @@
         <source>Workspace</source>
         <target state="final">Arbeitsumgebung</target>
       </trans-unit>
-      <trans-unit id="column.action" resname="column.action" approved="yes">
-        <source>Action</source>
-        <target state="final">Aktion</target>
-      </trans-unit>
-      <trans-unit id="column.recordTitle" resname="column.recordTitle" approved="yes">
-        <source>Record title</source>
-        <target state="final">Titel des Datensatzes</target>
+      <trans-unit id="tableUid" resname="tableUid" approved="yes">
+        <source>Table:uid (Title)</source>
+        <target state="final">Tabelle:Uid (Titel)</target>
       </trans-unit>
       <trans-unit id="differences" resname="differences" approved="yes">
         <source>Differences</source>
         <target state="final">Unterschiede</target>
+      </trans-unit>
+      <trans-unit id="rollback" resname="rollback" approved="yes">
+        <source>Rollback</source>
+        <target state="final">Zurücksetzen</target>
       </trans-unit>
       <trans-unit id="changes" resname="changes" approved="yes">
         <source>Changelog</source>
@@ -72,8 +72,8 @@
         <target state="final">via</target>
       </trans-unit>
       <trans-unit id="sumUpChanges" resname="sumUpChanges" approved="yes">
-        <source>Rollback all changes to this state (preview)</source>
-        <target state="final">Alle Änderungen auf diesen Stand zurücksetzen (Vorschau)</target>
+        <source>Rollback (Preview)</source>
+        <target state="final">Rückgängig machen (Vorschau)</target>
       </trans-unit>
       <trans-unit id="markState" resname="markState" approved="yes">
         <source>mark this change</source>
@@ -96,56 +96,24 @@
         <target state="final">Verlauf auf diesen Datensatz begrenzen</target>
       </trans-unit>
       <trans-unit id="differenceMsg" resname="differenceMsg" approved="yes">
-        <source>In the Difference column you can see the changes at every modification of records. New changes are displayed in green colored text and the red colored text are the old values which were removed.</source>
-        <target state="final">In der Spalte Unterschied können Sie die Änderungen bei jeder Änderung von Datensätzen sehen. Neue Änderungen werden in grünem Text angezeigt und der rote Text sind die alten Werte, die entfernt wurden.</target>
+        <source>In the Difference column you can see the changes at every modification of records. New changes are displayed in &lt;span class="diff-g"&gt;green colored text&lt;/span&gt; and the &lt;span class="diff-r"&gt;red colored text&lt;/span&gt; are the old values which were removed.</source>
+        <target state="final">In der Spalte Unterschied sind die Änderungen bei jeder Bearbeitung des Datensatzes zu sehen. Neue Änderungen werden mit &lt;span class="diff-g"&gt;grünem Text&lt;/span&gt; dargestellt, die Änderungen mit &lt;span class="diff-r"&gt;rotem Text&lt;/span&gt; sind alte Werte, die entfernt wurden.</target>
       </trans-unit>
       <trans-unit id="fullView" resname="fullView" approved="yes">
         <source>Return to full view</source>
         <target state="final">Zurück zur Gesamtanzeige</target>
       </trans-unit>
-      <trans-unit id="historyRow.actiontype.1" resname="historyRow.actiontype.1" approved="yes">
-        <source>inserted</source>
-        <target state="final">eingefügt</target>
+      <trans-unit id="insert" resname="insert" approved="yes">
+        <source>insert</source>
+        <target state="final">einfügen</target>
       </trans-unit>
-      <trans-unit id="historyRow.actiontype.2" resname="historyRow.actiontype.2" approved="yes">
-        <source>modified</source>
-        <target state="final">bearbeitet</target>
-      </trans-unit>
-      <trans-unit id="historyRow.actiontype.3" resname="historyRow.actiontype.3" approved="yes">
-        <source>moved</source>
-        <target state="final">verschoben</target>
-      </trans-unit>
-      <trans-unit id="historyRow.actiontype.4" resname="historyRow.actiontype.4" approved="yes">
-        <source>deleted</source>
-        <target state="final">gelöscht</target>
-      </trans-unit>
-      <trans-unit id="historyRow.actiontype.5" resname="historyRow.actiontype.5" approved="yes">
-        <source>undeleted</source>
-        <target state="final">wiederhergestellt</target>
-      </trans-unit>
-      <trans-unit id="historyRow.actiontype.6" resname="historyRow.actiontype.6" approved="yes">
-        <source>stage changed</source>
-        <target state="final">Stufe geändert</target>
-      </trans-unit>
-      <trans-unit id="rollback.plannedAction.insert" resname="rollback.plannedAction.insert" approved="yes">
-        <source>The record has been deleted and will be restored again with the rollback.</source>
-        <target state="final">Der Datensatz wurde gelöscht und wird nach der Wiederherstellung wieder vorhanden sein.</target>
-      </trans-unit>
-      <trans-unit id="rollback.plannedAction.delete" resname="rollback.plannedAction.delete" approved="yes">
-        <source>The record will be deleted with the rollback.</source>
-        <target state="final">Der Datensatz wird mit der Wiederherstellung gelöscht.</target>
-      </trans-unit>
-      <trans-unit id="undelete" resname="undelete" approved="yes">
-        <source>undelete</source>
-        <target state="final">wiederherstellen</target>
+      <trans-unit id="delete" resname="delete" approved="yes">
+        <source>delete</source>
+        <target state="final">löschen</target>
       </trans-unit>
       <trans-unit id="mergedDifferences" resname="mergedDifferences" approved="yes">
-        <source>Preview for rollback</source>
-        <target state="final">Vorschau für Rollback</target>
-      </trans-unit>
-      <trans-unit id="mergedDifferences.description" resname="mergedDifferences.description" approved="yes">
-        <source>It is possible to rollback either individual fields or entire elements. Alternatively, all displayed changes can be rolled back.</source>
-        <target state="final">Es ist möglich, entweder einzelne Felder oder ganze Elemente zurückzusetzen. Alternativ können auch alle angezeigten Änderungen zurückgenommen werden.</target>
+        <source>Preview for Rollback</source>
+        <target state="final">Vorschau der Wiederherstellung</target>
       </trans-unit>
       <trans-unit id="settings" resname="settings" approved="yes">
         <source>Settings</source>
@@ -166,6 +134,14 @@
       <trans-unit id="showDiff" resname="showDiff" approved="yes">
         <source>Show differences</source>
         <target state="final">Unterschiede anzeigen</target>
+      </trans-unit>
+      <trans-unit id="showDiff_no" resname="showDiff_no" approved="yes">
+        <source>No</source>
+        <target state="final">Nein</target>
+      </trans-unit>
+      <trans-unit id="showDiff_inline" resname="showDiff_inline" approved="yes">
+        <source>Inline</source>
+        <target state="final">Eingebettet</target>
       </trans-unit>
       <trans-unit id="showSubElements" resname="showSubElements" approved="yes">
         <source>Show sub elements</source>

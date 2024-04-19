@@ -131,10 +131,6 @@
         <source>Target was not a directory!</source>
         <target state="final">Ziel war kein Verzeichnis!</target>
       </trans-unit>
-      <trans-unit id="reloadMetadata" resname="reloadMetadata" approved="yes">
-        <source>Reload Metadata</source>
-        <target state="final">Metadaten neu laden</target>
-      </trans-unit>
     </body>
   </file>
 </xliff>

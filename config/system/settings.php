@@ -1,8 +1,9 @@
 <?php
+
 return [
     'BE' => [
-        'debug' => false,
-        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$bXZnbkxYRmxvTXo4SmxlcQ$TMMh93fl2XM9WUj48fx7IT8V5LoWJHKvaFr99fKBpLE',
+        'debug' => true,
+        'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$SG1DcUpaRmlUNWhQSk9hbw$80/3AsTzsp0+iK/uuXY739fJWzCvCetYZKw375Jd00Y',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
@@ -56,6 +57,42 @@ return [
             'saltingKey' => '',
             'showMod' => '1',
         ],
+        'staticfilecache' => [
+            'backendDisplayMode' => 'both',
+            'boostMode' => '0',
+            'cacheTagsEnable' => '0',
+            'clearCacheForAllDomains' => '1',
+            'debugHeaders' => '0',
+            'disableInDevelopment' => '0',
+            'enableGeneratorBrotli' => '0',
+            'enableGeneratorGzip' => '1',
+            'enableGeneratorManifest' => '0',
+            'enableGeneratorPhp' => '0',
+            'enableGeneratorPlain' => '0',
+            'hashUriInCache' => '0',
+            'htaccessTemplateName' => 'EXT:staticfilecache/Resources/Private/Templates/Htaccess.html',
+            'inlineAssetsFileSize' => '50000',
+            'inlineScriptMinify' => '0',
+            'inlineServiceFavIcon' => '0',
+            'inlineServiceScripts' => '0',
+            'inlineServiceStyles' => '0',
+            'inlineStyleAssets' => 'ico,png,woff2',
+            'inlineStyleMinify' => '0',
+            'largeIdentifierInCacheTable' => '0',
+            'overrideCacheDirectory' => '',
+            'phpTemplateName' => 'EXT:staticfilecache/Resources/Private/Templates/Php.html',
+            'rawurldecodeCacheFileName' => '0',
+            'renameTablesToOtherPrefix' => '0',
+            'sendCacheControlHeaderRedirectAfterCacheTimeout' => '0',
+            'sendHttp2PushEnable' => '0',
+            'sendHttp2PushFileExtensions' => 'css,js',
+            'sendHttp2PushFileLimit' => '10',
+            'sendHttp2PushLimitToArea' => '',
+            'useFallbackMiddleware' => '1',
+            'useReverseUriLengthInPriority' => '1',
+            'validFallbackHeaders' => 'Content-Type,Content-Language,Content-Security-Policy,Link,X-SFC-Tags',
+            'validHtaccessHeaders' => 'Content-Type,Content-Language,Content-Security-Policy,Link,X-SFC-Tags',
+        ],
         'vite_asset_collector' => [
             'defaultManifest' => '_assets/vite/.vite/manifest.json',
             'devServerUri' => 'auto',
@@ -63,14 +100,17 @@ return [
         ],
     ],
     'FE' => [
-        'debug' => false,
+        'debug' => true,
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
         ],
     ],
     'GFX' => [
+        'imagefile_ext' => 'gif,jpg,jpeg,tif,tiff,bmp,pcx,tga,png,pdf,ai,svg,webp',
         'processor' => 'GraphicsMagick',
+        'processor_allowTemporaryMasksAsPng' => false,
+        'processor_colorspace' => 'RGB',
         'processor_effects' => false,
         'processor_enabled' => true,
         'processor_path' => '/usr/bin/',
@@ -82,7 +122,7 @@ return [
                     'writerConfiguration' => [
                         'notice' => [
                             'TYPO3\CMS\Core\Log\Writer\FileWriter' => [
-                                'disabled' => true,
+                                'disabled' => false,
                             ],
                         ],
                     ],
@@ -104,6 +144,12 @@ return [
                 'hash' => [
                     'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
                 ],
+                'imagesizes' => [
+                    'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
+                    'options' => [
+                        'compression' => true,
+                    ],
+                ],
                 'pages' => [
                     'backend' => 'TYPO3\\CMS\\Core\\Cache\\Backend\\Typo3DatabaseBackend',
                     'options' => [
@@ -118,14 +164,13 @@ return [
                 ],
             ],
         ],
-        'devIPmask' => '',
-        'displayErrors' => 0,
-        'encryptionKey' => '9ffcfae09cb49d2a6aff1a2777aaec2b7627d06537d03eb77ad0f3c7b637ae16ef8491acfdea87b975c6a7f37a51fb43',
-        'exceptionalErrors' => 4096,
+        'devIPmask' => '*',
+        'displayErrors' => 1,
+        'encryptionKey' => '7bf24e59234ae81bb2875eac483d6a45ff37b012bbca68ddc75eb5dd9d94718bdf647f1f363466ba3317e8a5377a3b37',
+        'exceptionalErrors' => 12290,
         'sitename' => 'Men\'s Circle Niederbayern',
         'systemMaintainers' => [
             1,
-            2,
         ],
         'trustedHostsPattern' => '.*.*',
     ],

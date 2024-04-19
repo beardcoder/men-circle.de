@@ -83,6 +83,10 @@
         <source>Tables on this page</source>
         <target state="final">Tabellen auf dieser Seite</target>
       </trans-unit>
+      <trans-unit id="makeconfig_expandedTree" resname="makeconfig_expandedTree" approved="yes">
+        <source>Expanded tree</source>
+        <target state="final">Erweiterter Baum</target>
+      </trans-unit>
       <trans-unit id="makeconfig_levels" resname="makeconfig_levels" approved="yes">
         <source>Levels</source>
         <target state="final">Ebenen:</target>

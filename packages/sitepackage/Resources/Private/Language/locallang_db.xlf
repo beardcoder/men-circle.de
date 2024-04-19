@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns:t3="http://typo3.org/schemas/xliff" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" original="messages" datatype="plaintext" date="2024-03-16T22:49:49+01:00">
+    <file source-language="en" original="messages" datatype="plaintext" date="2024-03-28T20:16:27+01:00">
         <body>
             <trans-unit id="tx_sitepackage_domain_model_event" resname="tx_sitepackage_domain_model_event">
                 <source>Event</source>
@@ -29,6 +29,9 @@
             <trans-unit id="tx_sitepackage_domain_model_event.palettes.access" resname="tx_sitepackage_domain_model_event.palettes.access">
                 <source>Access</source>
             </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.place" resname="tx_sitepackage_domain_model_event.place">
+                <source>Place</source>
+            </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.registrations" resname="tx_sitepackage_domain_model_event.registrations">
                 <source>Registrations</source>
             </trans-unit>
@@ -38,11 +41,20 @@
             <trans-unit id="tx_sitepackage_domain_model_event.tabs.access" resname="tx_sitepackage_domain_model_event.tabs.access">
                 <source>Access</source>
             </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.tabs.registration" resname="tx_sitepackage_domain_model_event.tabs.registration">
+                <source>Registrations</source>
+            </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.title" resname="tx_sitepackage_domain_model_event.title">
                 <source>Title</source>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.zip" resname="tx_sitepackage_domain_model_event.zip">
                 <source>Zip</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_eventregistration.firstname" resname="tx_sitepackage_domain_model_eventregistration.firstname">
+                <source>Firstname</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_eventregistration.lastname" resname="tx_sitepackage_domain_model_eventregistration.lastname">
+                <source>Lastname</source>
             </trans-unit>
         </body>
     </file>

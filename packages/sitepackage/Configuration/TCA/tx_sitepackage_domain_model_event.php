@@ -1,40 +1,34 @@
 <?php
 
+use MensCircle\Sitepackage\Services\EventSlugService;
+use MensCircle\Sitepackage\Services\TcaBuilderService;
 use nn\t3;
+
 use function Symfony\Component\Clock\now;
 
 $tca = [
-    'ctrl' => [
-        'title' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event',
-        'label' => 'title',
-        'tstamp' => 'tstamp',
-        'crdate' => 'crdate',
-        'delete' => 'deleted',
-        'default_sortby' => 'title',
-        'iconfile' => 'EXT:sitepackage/Resources/Public/Icons/tx_sitepackage_domain_model_event.svg',
-        'searchFields' => 'title, description',
-        'enablecolumns' => [
-            'fe_group' => 'fe_group',
-            'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
-        ],
-        'transOrigPointerField' => 'l18n_parent',
-        'transOrigDiffSourceField' => 'l18n_diffsource',
-        'languageField' => 'sys_language_uid',
-        'translationSource' => 'l10n_source',
-    ],
+    'ctrl' => TcaBuilderService::makeCtrl('tx_sitepackage_domain_model_event', 'title', 'title', 'title'),
     'types' => [
         '1' => [
-            'showitem' =>
-                '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
-                    title, description, image, slug, address, start_date, end_date, zip, city, longitude, latitude, registration,
-                 --div--;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.tabs.access,
-                    --palette--;;hidden,
-                    --palette--;;access,',
+            'showitem' => implode(',', [
+                '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general',
+                'title, description, image, slug',
+                '--palette--;;date',
+                '--palette--;;addres',
+                implode(',', ['--div--;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.tabs.registration', 'registration']),
+                implode(',', [
+                    '--div--;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.tabs.access', '--palette--;;hidden', '--palette--;;access',
+                ]),
+            ]),
         ],
     ],
     'palettes' => [
+        'address' => [
+            'showitem' => 'place, --linebreak--, address, --linebreak--, city, zip, --linebreak--, longitude, latitude',
+        ],
+        'date' => [
+            'showitem' => 'start_date, end_date',
+        ],
         'hidden' => [
             'showitem' => '
                 hidden;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.hidden
@@ -51,7 +45,8 @@ $tca = [
         ],
     ],
     'columns' => t3::TCA()->createConfig(
-        'tx_sitepackage_domain_model_event', ['sys_language_uid', 'l10n_parent', 'l10n_source', 'hidden', 'cruser_id', 'pid', 'crdate', 'tstamp', 'sorting', 'starttime', 'endtime', 'fe_group'],
+        'tx_sitepackage_domain_model_event',
+        true,
         [
             'title' => [
                 'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.title',
@@ -65,14 +60,7 @@ $tca = [
             ],
             'description' => [
                 'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.description',
-                'config' => [
-                    'type' => 'text',
-                    'enableRichtext' => false,
-                    'rows' => 8,
-                    'cols' => 40,
-                    'max' => 2000,
-                    'eval' => 'trim',
-                ],
+                'config' => t3::TCA()->getConfigForType('text'),
             ],
             'image' => [
                 'config' => t3::TCA()->getFileFieldTCAConfig('image', ['maxitems' => 1]),
@@ -84,18 +72,34 @@ $tca = [
                 'displayCond' => 'VERSION:IS:false',
                 'config' => [
                     'type' => 'slug',
+                    'eval' => 'uniqueInPid',
                     'size' => 50,
+                    'appearance' => [
+                        'prefix' => EventSlugService::class . '->getPrefix',
+                    ],
                     'generatorOptions' => [
-                        'fields' => ['title'],
+                        'fields' => ['title', 'start_date'],
                         'replacements' => [
                             '/' => '-',
                         ],
+                        'postModifiers' => [EventSlugService::class . '->modifySlug'],
                     ],
                     'fallbackCharacter' => '-',
                     'default' => '',
                 ],
             ],
 
+            'place' => [
+                'exclude' => true,
+                'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.place',
+                'config' => [
+                    'type' => 'input',
+                    'size' => 40,
+                    'max' => 255,
+                    'eval' => 'trim',
+                    'required' => true,
+                ],
+            ],
 
             'address' => [
                 'exclude' => true,
@@ -162,7 +166,7 @@ $tca = [
                     'size' => 11,
                     'max' => 11,
                     'default' => '0.00',
-                    'eval' => 'trim'
+                    'eval' => 'trim',
                 ],
             ],
             'latitude' => [
@@ -182,7 +186,7 @@ $tca = [
                 'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.registrations',
                 'config' => [
                     'type' => 'inline',
-                    'foreign_table' => 'tx_sitepackage_domain_model_event_registration',
+                    'foreign_table' => 'tx_sitepackage_domain_model_eventregistration',
                     'foreign_field' => 'event',
                     'maxitems' => 9999,
                     'appearance' => [
@@ -193,7 +197,7 @@ $tca = [
                 ],
             ],
         ]
-    )
+    ),
 ];
 
 return $tca;

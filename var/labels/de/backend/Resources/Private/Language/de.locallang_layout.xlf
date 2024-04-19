@@ -179,10 +179,6 @@
         <source>Edit the page title</source>
         <target state="final">Seitentitel bearbeiten</target>
       </trans-unit>
-      <trans-unit id="editPageTitle.input.field.label" resname="editPageTitle.input.field.label" approved="yes">
-        <source>Enter a page title</source>
-        <target state="final">Seitentitel eingeben</target>
-      </trans-unit>
       <trans-unit id="editPageLanguageOverlayProperties" resname="editPageLanguageOverlayProperties" approved="yes">
         <source>Edit page language overlay properties</source>
         <target state="final">Übersetzungseigenschaften bearbeiten</target>
@@ -200,8 +196,8 @@
         <target state="final">Neuen Datensatz erstellen</target>
       </trans-unit>
       <trans-unit id="newContentElement" resname="newContentElement" approved="yes">
-        <source>New Page Content</source>
-        <target state="final">Neuer Seiteninhalt</target>
+        <source>Create new content element</source>
+        <target state="final">Neues Inhaltselement erstellen</target>
       </trans-unit>
       <trans-unit id="CEonThisPage" resname="CEonThisPage" approved="yes">
         <source>Content elements on this page</source>
@@ -487,22 +483,6 @@
         <source>Start processing</source>
         <target state="final">Verarbeitung beginnen</target>
       </trans-unit>
-      <trans-unit id="localize.wizard.step.selectMode" resname="localize.wizard.step.selectMode" approved="yes">
-        <source>Localization mode</source>
-        <target state="final">Übersetzungsmodus</target>
-      </trans-unit>
-      <trans-unit id="localize.wizard.step.chooseLanguage" resname="localize.wizard.step.chooseLanguage" approved="yes">
-        <source>Source Language</source>
-        <target state="final">Ausgangssprache</target>
-      </trans-unit>
-      <trans-unit id="localize.wizard.step.chooseLanguage" resname="localize.wizard.step.chooseLanguage" approved="yes">
-        <source>Source Language</source>
-        <target state="final">Ausgangssprache</target>
-      </trans-unit>
-      <trans-unit id="localize.wizard.step.selectRecords" resname="localize.wizard.step.selectRecords" approved="yes">
-        <source>Records</source>
-        <target state="final">Datensätze</target>
-      </trans-unit>
       <trans-unit id="localize.view.chooseLanguage" resname="localize.view.chooseLanguage" approved="yes">
         <source>Choose the language from which you want to localize the content</source>
         <target state="final">Wählen Sie die Sprache, von der aus Sie Inhalte lokalisieren möchten</target>
@@ -524,29 +504,22 @@
 					This means that moving an element or setting meta information like start- or endtime will be taken from the original content and you will not be able to set these values on a translated content element.&lt;br&gt;
 					&lt;strong&gt;Use this when your workflow demands a strict translation workflow.&lt;/strong&gt;
 				</source>
-			<target state="final">Beim Übersetzen von Inhalten wird eine direkte Verbindung zwischen der Originalsprache und der Sprache, in die Sie übersetzen, hergestellt.&lt;br&gt;
-Das bedeutet, dass beim Verschieben eines Elements oder beim Setzen von Metainformationen wie Start- oder Endzeit vom Ursprungselement ausgegangen wird und Sie diese Werte bei einem übersetzten Inhaltselement nicht setzen können.&lt;br&gt;
-					&lt;strong&gt;Verwenden Sie dies, wenn Ihr Arbeitsablauf einen strikten Übersetzungsworkflow erfordert.&lt;/strong&gt;
-				</target></trans-unit>
+			<target state="final">Das Übersetzen von Inhalten schafft eine direkte Verbindung zwischen der Originalsprache und der Sprache, in die Sie übersetzen.&lt;br&gt; Das bedeutet, dass das Verschieben eines Elements oder das Setzen von Metainformationen wie Start- oder Endzeit vom ursprünglichen originalen Inhalt genommen wird und Sie diese Werte in einem übersetzten Inhaltselement nicht konfigurieren können.&lt;br&gt; &lt;strong&gt;Verwenden Sie dies, wenn Ihr Workflow einen strikten Übersetzungsprozess erfordert.&lt;/strong&gt;</target></trans-unit>
       <trans-unit id="localize.educate.copy" resname="localize.educate.copy" xml:space="preserve" approved="yes">
 				<source>Copying content will take the content elements from the source language and create copies in a different language.&lt;br&gt;
 					This means that you will be able to move content elements around freely, but you will not have the benefit of being able to compare changes made in the source language later on.&lt;br&gt;
 					&lt;strong&gt;Use this when you want to have freedom in designing your translated website.&lt;/strong&gt;
 				</source>
-			<target state="final">Inhalt zu kopieren wird die Inhaltselemente der Ausgangssprache benutzen und Kopien von ihnen in einer anderen Sprache erstellen.&lt;br&gt;
-					Sie werden Inhaltselemente frei bewegen können, aber Sie werden nicht die Möglichkeit haben, das Element mit Änderungen zu vergleichen, die in der Ausgangssprache gemacht wurden.&lt;br&gt;
-					&lt;strong&gt;Benutzen Sie diese Möglichkeit, wenn Sie Freiheit beim Entwurf Ihrer übersetzten Website wünschen.&lt;/strong&gt;
+			<target state="final">Beim Kopieren von Inhalten werden Kopien der Inhaltselemente der Originalsprache in einer anderen Sprache erstellt.&lt;br&gt;
+					Sie werden Inhaltselemente frei bewegen können, aber Sie werden nicht die Möglichkeit haben, das Element mit Änderungen zu vergleichen, die in der Originalsprache gemacht wurden.&lt;br&gt;
+					&lt;strong&gt;Benutzen Sie diese Möglichkeit, wenn Sie Freiheit beim Entwurf Ihrer übersetzten Website wünschen.&lt;/strong&gt;</target></trans-unit>
+      <trans-unit id="localize.educate.noTranslate" resname="localize.educate.noTranslate" xml:space="preserve" approved="yes">
+				<source>Using the translation wizard is not possible, because either translation is disabled or the translated page is in "mixed mode". Being in "mixed mode" means that both translated records that have a source language and "free mode" records without a parent, are present.&lt;br&gt;
+					We highlighted the problematic records for you in this case.
+				</source>
+			<target state="final">Die Verwendung des Übersetzungsassistenten ist nicht möglich, da entweder die Übersetzung deaktiviert ist oder die übersetzte Seite im "gemischten Modus" ist. "Gemischter Modus" bedeutet, dass sowohl übersetzte Datensätze mit einer Ausgangssprache als auch solche im "freien Modus", also ohne Bezug zu einem Element in der Ausgangssprache, vorhanden sind.&lt;br&gt;
+					Wir haben in diesem Fall die problematischen Datensätze für Sie hervorgehoben.
 				</target></trans-unit>
-      <trans-unit id="window.localization.mixed_mode.title" resname="window.localization.mixed_mode.title" approved="yes">
-        <source>Localization not possible</source>
-        <target state="final">Übersetzung nicht möglich</target>
-      </trans-unit>
-      <trans-unit id="window.localization.mixed_mode.message" resname="window.localization.mixed_mode.message" approved="yes">
-        <source>Using the translation wizard is not possible, because either translation is disabled or the translated page is in "mixed mode". Being in "mixed mode" means that both translated records that have a source language and "free mode" records without a parent, are present.
-					We highlighted the problematic records for you in this case.</source>
-        <target state="final">Die Verwendung des Übersetzungsassistenten ist nicht möglich, da entweder die Übersetzung deaktiviert ist oder die übersetzte Seite sich im "gemischten Modus" befindet. Gemischter Modus" bedeutet, dass sowohl übersetzte Datensätze, die eine Ausgangssprache haben, als auch Datensätze im "freien Modus" ohne Eltern-Datensatz vorhanden sind.
-					In diesem Fall haben wir die problematischen Datensätze für Sie hervorgehoben.</target>
-      </trans-unit>
       <trans-unit id="error.invalidBackendLayout" resname="error.invalidBackendLayout" approved="yes">
         <source>The selected page layout is mis-configured, no columns are specified to be editable. Please update your backend layout to have at least one parameter "colPos" set.</source>
         <target state="final">Das ausgewählte Seitenlayout ist falsch konfiguriert: Es sind keine Spalten als bearbeitbar festgelegt. Bitte aktualisieren Sie Ihr Backendlayout in der Art, dass zumindest einmal der Parameter "colPos" gesetzt ist.</target>

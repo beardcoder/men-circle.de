@@ -1,11 +1,9 @@
 base: 'https://mens-circle.de'
 baseVariants:
-  -
-    base: 'https://mens-circle.ddev.site/'
+  - base: 'https://mens-circle.ddev.site/'
     condition: 'applicationContext == "Development/Local"'
 languages:
-  -
-    title: Deutsch
+  - title: Deutsch
     enabled: true
     languageId: 0
     base: /
@@ -14,3 +12,20 @@ languages:
     flag: de
 rootPageId: 1
 websiteTitle: 'Men’s Circle Niederbayern'
+routeEnhancers:
+  EventDetail:
+    type: Extbase
+    extension: Sitepackage
+    namespace: tx_sitepackage_eventdetail
+    plugin: EventDetail
+    routes:
+      - routePath: '/{event_title}'
+        _controller: 'Event::detail'
+        _arguments:
+          event_title: event
+    defaultController: 'Event::detail'
+    aspects:
+      event_title:
+        type: PersistedAliasMapper
+        tableName: tx_sitepackage_domain_model_event
+        routeFieldName: slug

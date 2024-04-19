@@ -4,5 +4,7 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:sitepackage/Configuration/TsConfig/Page/RTE.tsconfig">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:sitepackage/Configuration/TsConfig/Page/TCEFORM.tsconfig">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:sitepackage/Configuration/TsConfig/Page/TCEMAIN.tsconfig">
+@import 'EXT:sitepackage/Configuration/TsConfig/Page/ContentElement/*.tsconfig'
+@import 'EXT:sitepackage/Configuration/TsConfig/Page/ContentElement/Element/*.tsconfig'
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:sitepackage/Configuration/TsConfig/Page/Mod/WebLayout/BackendLayouts.tsconfig">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:sitepackage/Configuration/TsConfig/Page/Mod/SHARED.tsconfig">

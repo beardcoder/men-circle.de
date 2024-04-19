@@ -1,11 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
-namespace Benow\Sitepackage\Domain\Model;
+namespace MensCircle\Sitepackage\Domain\Model;
 
-use DateTime;
-use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -15,25 +15,20 @@ class Event extends AbstractEntity
     public string $slug;
     public string $title;
     public string $description;
-    public ?DateTime $startDate;
-    public ?DateTime $endDate;
+    public ?\DateTime $startDate;
+    public ?\DateTime $endDate;
+    public string $place;
     public string $address;
     public string $zip;
     public string $city;
     public float $longitude = 0.0;
     public float $latitude = 0.0;
-    /**
-     * @var FileReference|null
-     * @phpstan-var FileReference|LazyLoadingProxy|null
-     * @Extbase\ORM\Lazy
-     */
-    protected FileReference|null $image;
 
-    /**
-     * @var ObjectStorage<EventRegistration>
-     * @Extbase\ORM\Cascade("remove")
-     * @Extbase\ORM\Lazy
-     */
+    #[Extbase\ORM\Lazy()]
+    protected FileReference|LazyLoadingProxy $image;
+
+    #[Extbase\ORM\Lazy()]
+    #[Extbase\ORM\Cascade(['value' => 'remove'])]
     protected ObjectStorage $registration;
 
     public function __construct()

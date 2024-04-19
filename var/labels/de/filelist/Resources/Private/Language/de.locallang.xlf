@@ -112,8 +112,7 @@
         <source>This filetype cannot be edited.&lt;br /&gt;The file must have an extension like:&lt;br /&gt;&lt;br
 					/&gt; &lt;b&gt;%s&lt;/b&gt;
 				</source>
-        <target state="final">Dieser Dateityp kann nicht bearbeitet werden.&lt;br /&gt;Folgende Dateitypen werden unterstützt:&lt;br /&gt;&lt;br /&gt; &lt;b&gt;%s&lt;/b&gt;
-				</target>
+        <target state="final">Dieser Dateityp kann nicht bearbeitet werden.&lt;br /&gt;Die Datei muss eine Erweiterung haben wie:&lt;br /&gt;&lt;br /&gt; &lt;b&gt;%s&lt;/b&gt;</target>
       </trans-unit>
       <trans-unit id="file_newfolder.php.pagetitle" resname="file_newfolder.php.pagetitle" approved="yes">
         <source>New file or folder</source>
@@ -158,6 +157,10 @@
       <trans-unit id="actions.create_file" resname="actions.create_file" approved="yes">
         <source>Create File</source>
         <target state="final">Datei erstellen</target>
+      </trans-unit>
+      <trans-unit id="translations" resname="translations" approved="yes">
+        <source>Translations</source>
+        <target state="final">Übersetzungen</target>
       </trans-unit>
     </body>
   </file>

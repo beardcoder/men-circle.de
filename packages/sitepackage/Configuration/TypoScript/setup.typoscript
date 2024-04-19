@@ -2,6 +2,7 @@
 #### DEPENDENCIES ####
 ######################
 @import 'EXT:fluid_styled_content/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:seo/Configuration/TypoScript/XmlSitemap/setup.typoscript'
 
 ################
 #### HELPER ####
@@ -13,6 +14,14 @@
 #### Content ####
 #################
 @import 'EXT:sitepackage/Configuration/TypoScript/ContentElements/*.typoscript'
+@import 'EXT:sitepackage/Configuration/TypoScript/Containers/*.typoscript'
+
+@import 'EXT:picture/Configuration/TypoScript/setup.typoscript'
+
+
+plugin.tx_picture {
+    addWebp = 1
+}
 
 ##############
 #### PAGE ####
@@ -185,6 +194,8 @@ page {
 
 ################
 #### CONFIG ####
+
+
 ################
 config {
     absRefPrefix = auto
@@ -223,15 +234,15 @@ config {
 plugin.tx_sitepackage {
     view {
         templateRootPaths {
-            0 = EXT:sitepackage/Resources/Private/Templates/
+            0 = EXT:sitepackage/Resources/Private/Templates/Event
         }
 
         partialRootPaths {
-            0 = EXT:sitepackage/Resources/Private/Partials/
+            0 = EXT:sitepackage/Resources/Private/Partials/Event
         }
 
         layoutRootPaths {
-            0 = EXT:sitepackage/Resources/Private/Layouts/
+            0 = EXT:sitepackage/Resources/Private/Layouts/Event
         }
     }
 

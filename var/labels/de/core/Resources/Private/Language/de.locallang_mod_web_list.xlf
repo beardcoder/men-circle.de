@@ -67,10 +67,6 @@
         <source>New record</source>
         <target state="final">Datensatz erstellen</target>
       </trans-unit>
-      <trans-unit id="newRecordOfType" resname="newRecordOfType" approved="yes">
-        <source>New %s</source>
-        <target state="final">Neu %s</target>
-      </trans-unit>
       <trans-unit id="newPage" resname="newPage" approved="yes">
         <source>Create new page after this page</source>
         <target state="final">Neue Seite nach dieser Seite erstellen</target>
@@ -128,8 +124,8 @@
         <target state="final">Datensatz löschen(!)</target>
       </trans-unit>
       <trans-unit id="history" resname="history" approved="yes">
-        <source>History/Undo</source>
-        <target state="final">Verlauf/Rückgängigmachung</target>
+        <source>Display change history / Un-do</source>
+        <target state="final">Änderungsverlauf anzeigen/Rückgängig</target>
       </trans-unit>
       <trans-unit id="displayVersions" resname="displayVersions" approved="yes">
         <source>Display versions</source>

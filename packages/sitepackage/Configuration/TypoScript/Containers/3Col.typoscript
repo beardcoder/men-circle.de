@@ -1,0 +1,33 @@
+tt_content.3cols < lib.contentElement
+tt_content.3cols {
+    templateName = 3Cols
+    templateRootPaths {
+        10 = EXT:sitepackage/Resources/Private/Templates/Containers
+    }
+
+    dataProcessing {
+        210 = B13\Container\DataProcessing\ContainerProcessor
+        210 {
+            colPos = 210
+            as = children_210
+        }
+
+        200 = B13\Container\DataProcessing\ContainerProcessor
+        200 {
+            colPos = 200
+            as = children_200
+        }
+
+        201 = B13\Container\DataProcessing\ContainerProcessor
+        201 {
+            colPos = 201
+            as = children_201
+        }
+
+        202 = B13\Container\DataProcessing\ContainerProcessor
+        202 {
+            colPos = 202
+            as = children_202
+        }
+    }
+}

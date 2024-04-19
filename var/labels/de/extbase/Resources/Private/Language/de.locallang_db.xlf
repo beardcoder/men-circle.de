@@ -15,6 +15,18 @@
         <source>Tx_Extbase_Domain_Model_FrontendUser</source>
         <target state="final">Tx_Extbase_Domain_Model_FrontendUser</target>
       </trans-unit>
+      <trans-unit id="fe_groups.tx_extbase_type" resname="fe_groups.tx_extbase_type" approved="yes">
+        <source>Record Type</source>
+        <target state="final">Datensatztyp</target>
+      </trans-unit>
+      <trans-unit id="fe_groups.tx_extbase_type.0" resname="fe_groups.tx_extbase_type.0" approved="yes">
+        <source>undefined</source>
+        <target state="final">nicht definiert</target>
+      </trans-unit>
+      <trans-unit id="fe_groups.tx_extbase_type.Tx_Extbase_Domain_Model_FrontendUserGroup" resname="fe_groups.tx_extbase_type.Tx_Extbase_Domain_Model_FrontendUserGroup" approved="yes">
+        <source>Tx_Extbase_Domain_Model_FrontendUserGroup</source>
+        <target state="final">Tx_Extbase_Domain_Model_FrontendUserGroup</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

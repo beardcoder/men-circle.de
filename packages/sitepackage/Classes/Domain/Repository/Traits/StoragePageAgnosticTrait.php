@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-namespace Benow\Sitepackage\Domain\Repository\Traits;
+namespace MensCircle\Sitepackage\Domain\Repository\Traits;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;

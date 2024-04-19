@@ -1,7 +1,10 @@
 <?php
-defined('TYPO3') or die('Access denied.');
-call_user_func(function()
-{
+
+declare(strict_types=1);
+
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
+call_user_func(function () {
     /**
      * Temporary variables
      */
@@ -10,7 +13,7 @@ call_user_func(function()
     /**
      * Default TypoScript for Sitepackage
      */
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+    ExtensionManagementUtility::addStaticFile(
         $extensionKey,
         'Configuration/TypoScript',
         'sitepackage'

@@ -31,34 +31,6 @@
         <source>Extended</source>
         <target state="final">Erweitert</target>
       </trans-unit>
-      <trans-unit id="appearance" resname="appearance" approved="yes">
-        <source>Appearance</source>
-        <target state="final">Erscheinungsbild</target>
-      </trans-unit>
-      <trans-unit id="behaviour" resname="behaviour" approved="yes">
-        <source>Behaviour</source>
-        <target state="final">Verhalten</target>
-      </trans-unit>
-      <trans-unit id="images" resname="images" approved="yes">
-        <source>Images</source>
-        <target state="final">Bilder</target>
-      </trans-unit>
-      <trans-unit id="accessibility" resname="accessibility" approved="yes">
-        <source>Accessibility</source>
-        <target state="final">Barrierefreiheit</target>
-      </trans-unit>
-      <trans-unit id="text" resname="text" approved="yes">
-        <source>Text</source>
-        <target state="final">Text</target>
-      </trans-unit>
-      <trans-unit id="media" resname="media" approved="yes">
-        <source>Media</source>
-        <target state="final">Medien</target>
-      </trans-unit>
-      <trans-unit id="plugin" resname="plugin" approved="yes">
-        <source>Plugin</source>
-        <target state="final">Plugin</target>
-      </trans-unit>
     </body>
   </file>
 </xliff>

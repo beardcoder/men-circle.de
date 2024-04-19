@@ -47,10 +47,6 @@
         <source>The %s '%s' began to edit content on this page %s ago.</source>
         <target state="final">Der %s "%s" hat mit der Bearbeitung dieser Seite vor %s begonnen.</target>
       </trans-unit>
-      <trans-unit id="labels.color" resname="labels.color" approved="yes">
-        <source>Color</source>
-        <target state="final">Farbe</target>
-      </trans-unit>
       <trans-unit id="labels.user" resname="labels.user" approved="yes">
         <source>User</source>
         <target state="final">Benutzer</target>
@@ -379,6 +375,10 @@ Ohne Speichern fortfahren?</target></trans-unit>
       <trans-unit id="labels.show" resname="labels.show" approved="yes">
         <source>Show</source>
         <target state="final">Anzeigen</target>
+      </trans-unit>
+      <trans-unit id="labels.generalTab" resname="labels.generalTab" approved="yes">
+        <source>General</source>
+        <target state="final">Allgemein</target>
       </trans-unit>
       <trans-unit id="labels.refresh" resname="labels.refresh" approved="yes">
         <source>Reload the tree from server</source>
@@ -1200,10 +1200,6 @@ Do you want to refresh it now?</source>
         <source>Move "%1$s" into column "%3$s" on page "%2$s"?</source>
         <target state="final">"%1$s" in Spalte "%3$s" auf Seite "%2$s" verschieben?</target>
       </trans-unit>
-      <trans-unit id="mess.move_before" resname="mess.move_before" approved="yes">
-        <source>Move "%s" to before "%s"?</source>
-        <target state="final">Verschiebe "%s" vor "%s"?</target>
-      </trans-unit>
       <trans-unit id="mess.move_after" resname="mess.move_after" approved="yes">
         <source>Move "%s" to after "%s"?</source>
         <target state="final">"%s" hinter "%s" verschieben?</target>
@@ -1536,6 +1532,10 @@ Do you want to refresh it now?</source>
         <source>Select</source>
         <target state="final">Auswählen</target>
       </trans-unit>
+      <trans-unit id="cm.selectFile" resname="cm.selectFile" approved="yes">
+        <source>Select %s</source>
+        <target state="final">Wähle %s</target>
+      </trans-unit>
       <trans-unit id="cm.deselect" resname="cm.deselect" approved="yes">
         <source>Deselect</source>
         <target state="final">Auswahl aufheben</target>
@@ -1692,9 +1692,29 @@ Do you want to refresh it now?</source>
         <source>Drag to move</source>
         <target state="final">Ziehen zum Bewegen</target>
       </trans-unit>
+      <trans-unit id="tree.defaultPageTitle" resname="tree.defaultPageTitle" approved="yes">
+        <source>[Default Title]</source>
+        <target state="final">[Standard-Titel]</target>
+      </trans-unit>
+      <trans-unit id="tree.activeFilterMode" resname="tree.activeFilterMode" approved="yes">
+        <source>Active Filtering Mode</source>
+        <target state="final">Filtermodus aktiv</target>
+      </trans-unit>
+      <trans-unit id="tree.buttonNewNode" resname="tree.buttonNewNode" approved="yes">
+        <source>Create new pages</source>
+        <target state="final">Neue Seiten erstellen</target>
+      </trans-unit>
+      <trans-unit id="tree.buttonFilter" resname="tree.buttonFilter" approved="yes">
+        <source>Filter tree</source>
+        <target state="final">Baum filtern</target>
+      </trans-unit>
       <trans-unit id="tree.searchTermInfo" resname="tree.searchTermInfo" approved="yes">
         <source>Enter search term</source>
         <target state="final">Suchbegriff eingeben</target>
+      </trans-unit>
+      <trans-unit id="warning.backend_admin" resname="warning.backend_admin" approved="yes">
+        <source>A backend user "admin" with password "password" is still present. %sEdit this account%s, either deleting it completely or changing the username and password.</source>
+        <target state="final">Der Backend-Benutzer "admin" mit dem Passwort "password" ist noch vorhanden. %sÄndern Sie dieses Konto%s durch Änderung des Benutzernamens und Passworts oder löschen Sie den Backend-Benutzer Datensatz vollständig.</target>
       </trans-unit>
       <trans-unit id="warning.file_deny_pattern" resname="warning.file_deny_pattern" approved="yes">
         <source>The value of fileDenyPattern is not set to its default:%s If TYPO3 is running on Apache, a customized value might enable backend or frontend users to execute malicious php scripts.</source>

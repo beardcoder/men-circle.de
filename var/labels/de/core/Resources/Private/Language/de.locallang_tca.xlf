@@ -51,6 +51,14 @@
         <source>Edit Live (Online)</source>
         <target state="final">Live bearbeiten (Online)</target>
       </trans-unit>
+      <trans-unit id="workspace_perms_draft" resname="workspace_perms_draft" approved="yes">
+        <source>Edit Draft (Offline)</source>
+        <target state="final">Entwurf bearbeiten (Offline)</target>
+      </trans-unit>
+      <trans-unit id="workspace_perms_custom" resname="workspace_perms_custom" approved="yes">
+        <source>Create new workspace projects</source>
+        <target state="final">Neue Arbeitsumgebungsprojekte erstellen</target>
+      </trans-unit>
       <trans-unit id="TSconfig" resname="TSconfig" approved="yes">
         <source>TSconfig</source>
         <target state="final">TSconfig</target>
@@ -463,6 +471,10 @@
         <source>Folder</source>
         <target state="final">Ordner</target>
       </trans-unit>
+      <trans-unit id="doktype.I.2" resname="doktype.I.2" approved="yes">
+        <source>Recycler</source>
+        <target state="final">Papierkorb</target>
+      </trans-unit>
       <trans-unit id="title" resname="title" approved="yes">
         <source>Page title</source>
         <target state="final">Seitentitel</target>
@@ -478,10 +490,6 @@
       <trans-unit id="pages.slug" resname="pages.slug" approved="yes">
         <source>URL Segment</source>
         <target state="final">URL-Segment</target>
-      </trans-unit>
-      <trans-unit id="pages.description" resname="pages.description" approved="yes">
-        <source>Description for search engines</source>
-        <target state="final">Beschreibung für Suchmaschinen</target>
       </trans-unit>
       <trans-unit id="be_users" resname="be_users" approved="yes">
         <source>Backend user</source>
