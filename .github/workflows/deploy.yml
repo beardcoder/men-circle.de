@@ -47,5 +47,5 @@ jobs:
           server: mens-circle.de
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /mens-circle.de/httpdocs
+          server-dir: /mens-circle.de/httpdocs/
           local-dir: ./
