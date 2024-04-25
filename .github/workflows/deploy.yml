@@ -42,7 +42,7 @@ jobs:
         run: npm run build
 
       - name: Deploy over FTP
-        uses: SamKirkland/FTP-Deploy-Action@3.2.0
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: mens-circle.de
           username: ${{ secrets.FTP_USERNAME }}
