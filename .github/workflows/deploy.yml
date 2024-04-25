@@ -19,8 +19,6 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Cache Composer dependencies
         uses: actions/cache@v3
@@ -44,10 +42,11 @@ jobs:
         run: npm run build
 
       - name: "Deploy"
-        uses: milanmk/actions-file-deployer@master
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          remote-protocol: "sftp"
-          remote-host: "mens-circle.de"
-          remote-user: "hosting203243"
-          ssh-private-key: ${{ secrets.PRIVATE_KEY }}
-          remote-path: "/mens-circle.de/httpdocs"
+          username: 'hosting203243'
+          server: 'mens-circle.de'
+          ssh_private_key: ${{ secrets.PRIVATE_KEY }}
+          local_path: './*'
+          remote_path: '/mens-circle.de/httpdocs'
+          sftpArgs: '-o ConnectTimeout=5'
