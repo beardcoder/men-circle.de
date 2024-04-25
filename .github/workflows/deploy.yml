@@ -41,12 +41,11 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: "Deploy"
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      - name: Deploy over FTP
+        uses: SamKirkland/FTP-Deploy-Action@3.2.0
         with:
-          username: 'hosting203243'
-          server: 'mens-circle.de'
-          ssh_private_key: ${{ secrets.PRIVATE_KEY }}
-          local_path: './*'
-          remote_path: '/mens-circle.de/httpdocs'
-          sftpArgs: '-o ConnectTimeout=5'
+          server: mens-circle.de
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /mens-circle.de/httpdocs
+          local-dir: .
