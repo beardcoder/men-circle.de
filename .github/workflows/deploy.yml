@@ -31,7 +31,7 @@ jobs:
         uses: php-actions/composer@v6
         with:
           dev: no
-          args: --no-progress --no-interaction --optimize-autoloader --apcu-autoloader --no-progress
+          args: --no-progress --no-interaction --optimize-autoloader --no-progress --ignore-platform-reqs
 
       - name: Set up Node
         uses: actions/setup-node@v4
