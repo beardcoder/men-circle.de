@@ -1,0 +1,54 @@
+name: Deploy Files
+
+on:
+  push:
+    branches:
+      - feature/typo3
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: /tmp/composer-cache
+          key: "${{ runner.os }}-${{ hashFiles('**/composer.lock') }}"
+      - name: Install dependencies
+        uses: php-actions/composer@v6
+        with:
+          dev: no
+          args: --no-progress --no-interaction --optimize-autoloader --no-progress --ignore-platform-reqs
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+
+      - name: Sync files to server
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avzr --delete --exclude=".env" --exclude=".github" --exclude=".git" --exclude=".ddev" --exclude="node_modules"
+          path: ./
+          remote_path: /home/viking/html/mens-circle.de
+          remote_host: mens-circle.de
+          remote_user: viking
+          remote_key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Post deploy
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: mens-circle.de
+          username: viking
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: |
+            cd /home/viking/html/mens-circle.de
