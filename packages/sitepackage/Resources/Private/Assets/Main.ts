@@ -1,6 +1,7 @@
 import "@fontsource-variable/jost";
 import "./Main.css";
 import "leaflet/dist/leaflet.css";
+//@ts-ignore
 import AOS from "simple-aos";
 
 import("flowbite").then(({ initFlowbite }) => {
