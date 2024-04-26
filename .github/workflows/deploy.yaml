@@ -37,7 +37,7 @@ jobs:
       - name: Sync files to server
         uses: burnett01/rsync-deployments@7.0.1
         with:
-          switches: -avzr --delete --exclude=".env" --exclude=".github" --exclude=".git" --exclude=".ddev" --exclude="node_modules" --exclude="fileadmin"
+          switches: -avzr --delete --exclude=".env" --exclude=".github" --exclude=".git" --exclude=".ddev" --exclude="node_modules" --exclude="fileadmin" --exclude="config/system/additional.php"
           path: ./
           remote_path: /home/viking/html/mens-circle.de
           remote_host: mens-circle.de
