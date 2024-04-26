@@ -1,12 +1,14 @@
 import "@fontsource-variable/jost";
 import "./Main.css";
 import "leaflet/dist/leaflet.css";
+import AOS from "simple-aos";
 
 import("flowbite").then(({ initFlowbite }) => {
   initFlowbite();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  AOS.init({ once: true });
   const mapEle = document.getElementById("map");
   if (mapEle) {
     import("leaflet").then((L) => {

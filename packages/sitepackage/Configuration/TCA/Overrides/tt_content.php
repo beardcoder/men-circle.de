@@ -55,21 +55,19 @@ call_user_func(function () {
     GeneralUtility::makeInstance(Registry::class)->configureContainer(
         (
         new ContainerConfiguration(
-            '3cols', // CType
-            '3 Column Container With Header', // label
+            'features', // CType
+            'Features Container', // label
             '', // description
             [
                 [
                     ['name' => 'Header', 'colPos' => 210, 'colspan' => 3]
                 ],
                 [
-                    ['name' => 'Left', 'colPos' => 200],
-                    ['name' => 'Middle', 'colPos' => 201],
-                    ['name' => 'Right', 'colPos' => 202],
+                    ['name' => 'Features', 'colPos' => 200],
                 ],
             ] // grid configuration
         )
-        )->setIcon('container-3col')
+        )->setIcon('container-1col')
     );
 
 });

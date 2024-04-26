@@ -15,6 +15,7 @@
     "@fontsource-variable/jost": "^5.0.18",
     "flowbite": "^2.3.0",
     "flowbite-typography": "^1.0.3",
-    "leaflet": "^1.9.4"
+    "leaflet": "^1.9.4",
+    "simple-aos": "^4.2.0"
   }
 }

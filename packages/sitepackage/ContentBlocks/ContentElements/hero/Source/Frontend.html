@@ -10,7 +10,7 @@
                 {data.header}
             </h1>
             <div class="format mb-12 mt-8 max-w-3xl text-2xl text-white">
-                {data.bodytext}
+                {data.bodytext -> f:format.raw()}
             </div>
             <f:if condition="{data.link}">
                 <f:link.typolink

@@ -1,6 +1,6 @@
-tt_content.3cols < lib.contentElement
-tt_content.3cols {
-    templateName = 3Cols
+tt_content.features < lib.contentElement
+tt_content.features {
+    templateName = Features
     templateRootPaths {
         10 = EXT:sitepackage/Resources/Private/Templates/Containers
     }
@@ -9,25 +9,13 @@ tt_content.3cols {
         210 = B13\Container\DataProcessing\ContainerProcessor
         210 {
             colPos = 210
-            as = children_210
+            as = header
         }
 
         200 = B13\Container\DataProcessing\ContainerProcessor
         200 {
             colPos = 200
-            as = children_200
-        }
-
-        201 = B13\Container\DataProcessing\ContainerProcessor
-        201 {
-            colPos = 201
-            as = children_201
-        }
-
-        202 = B13\Container\DataProcessing\ContainerProcessor
-        202 {
-            colPos = 202
-            as = children_202
+            as = features
         }
     }
 }

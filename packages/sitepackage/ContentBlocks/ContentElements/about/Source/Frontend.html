@@ -1,0 +1,43 @@
+<html
+    data-namespace-typo3-fluid="true"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:i="http://typo3.org/ns/B13/Picture/ViewHelpers"
+>
+<div class="max-w-[100vw] overflow-hidden text-stone-800 dark:text-stone-100 bg-white dark:bg-stone-800 md:flex">
+
+    <div class="flex w-full flex-1 md:w-1/2">
+        <div class="mx-auto my-auto max-w-2xl px-6 py-20">
+            <h2
+                class="mb-4 text-4xl font-extrabold tracking-tight text-stone-900 dark:text-white"
+                data-aos="fade-up"
+            >
+                {data.header}
+                <span class="text-primary block">{data.subheader}</span>
+            </h2>
+            <div
+                class="format lg:format-lg dark:format-invert max-w-none"
+                data-aos="fade-up"
+            >
+                {data.bodytext -> f:format.html()}
+            </div>
+            <f:if condition="{data.link}">
+                <div data-aos="fade-up">
+                    <f:link.typolink
+                        class="bg-primary-500 hover:bg-primary-600 focus:ring-primary-300 dark:focus:ring-primary-900 font-medium uppercase text-white focus:outline-none focus:ring-4 transition inline-block px-6 py-3.5 text-base"
+                        parameter="{data.link}"
+                    >
+                        {data.link_title}
+                    </f:link.typolink>
+                </div>
+            </f:if>
+        </div>
+    </div>
+    <div class="w-full md:w-1/2">
+        <i:image
+            alt="{data.image.0.alternative}" class="w-full h-full object-cover object-center" image="{data.image.0}"
+            maxHeight="1280" maxWidth="1280"
+            variants="400, 800"
+        />
+    </div>
+</div>
+</html>
