@@ -29,7 +29,7 @@ plugin.tx_picture {
 page = PAGE
 page {
     typeNum = 0
-    shortcutIcon = EXT:sitepackage/Resources/Public/Icons/favicon.ico
+    shortcutIcon = /favicon.ico
 
     10 = FLUIDTEMPLATE
     10 {
