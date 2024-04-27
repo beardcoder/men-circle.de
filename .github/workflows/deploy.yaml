@@ -52,3 +52,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
             cd /home/viking/html/mens-circle.de
+            vendor/bin/typo3 install:fixfolderstructure
+            vendor/bin/typo3 database:updateschema
+            vendor/bin/typo3 cache:flush
+            vendor/bin/typo3 language:update

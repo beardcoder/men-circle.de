@@ -1,5 +1,7 @@
 #####
 #
+# Example .htaccess file for TYPO3 CMS - for use with Apache Webserver
+#
 # This file includes settings for the following configuration options:
 #
 # - Compression
@@ -9,8 +11,6 @@
 # - Rewriting and Access
 # - Miscellaneous
 # - PHP optimisation
-# - EXT:seo sitemap redirect
-# - EXT:news sitemap redirect (boilerplate)
 #
 # If you want to use it, you have to copy it to the root folder of your TYPO3 installation (if its
 # not there already) and rename it to '.htaccess'. To make .htaccess files work, you might need to
@@ -33,13 +33,13 @@
 # *) Set $GLOBALS['TYPO3_CONF_VARS']['FE']['compressionLevel'] = 9 together with the TypoScript properties
 #    config.compressJs and config.compressCss for GZIP compression of Frontend JS and CSS files.
 
-<FilesMatch "\.js\.gz">
-	AddType "text/javascript" .gz
-</FilesMatch>
-<FilesMatch "\.css\.gz">
-	AddType "text/css" .gz
-</FilesMatch>
-AddEncoding gzip .gz
+#<FilesMatch "\.js\.gz">
+#	AddType "text/javascript" .gz
+#</FilesMatch>
+#<FilesMatch "\.css\.gz">
+#	AddType "text/css" .gz
+#</FilesMatch>
+#AddEncoding x-gzip .gz
 
 <IfModule mod_deflate.c>
 	# Force compression for mangled `Accept-Encoding` request headers
@@ -307,7 +307,7 @@ AddDefaultCharset utf-8
 
 	# Access block for folders
 	RewriteRule _(?:recycler|temp)_/ - [F]
-	RewriteRule assets/templates/.*\.(?:txt|ts)$ - [F]
+	RewriteRule fileadmin/templates/.*\.(?:txt|ts)$ - [F]
 	RewriteRule ^(?:vendor|typo3_src|typo3temp/var) - [F]
 	RewriteRule (?:typo3conf/ext|typo3/sysext|typo3/ext)/[^/]+/(?:Configuration|Resources/Private|Tests?|Documentation|docs?)/ - [F]
 
@@ -320,7 +320,7 @@ AddDefaultCharset utf-8
 
 	# Stop rewrite processing, if we are in any other known directory
 	# NOTE: Add your additional local storages here
-	RewriteRule ^(?:assets/|typo3conf/|typo3temp/|uploads/) - [L]
+	RewriteRule ^(?:fileadmin/|typo3conf/|typo3temp/|uploads/) - [L]
 
 	# If the file/symlink/directory does not exist but is below /typo3/, redirect to the TYPO3 Backend entry point.
 	RewriteCond %{REQUEST_FILENAME} !-f
@@ -390,24 +390,6 @@ Options -MultiViews
 FileETag None
 
 ### End: Miscellaneous ###
-
-
-### Begin: EXT:seo sitemap redirect ###
-
-<IfModule mod_alias.c>
-	Redirect 301 /sitemap.xml /?type=1533906435
-</IfModule>
-
-### End: EXT:seo sitemap redirect ###
-
-
-### Begin: EXT:news sitemap redirect ###
-
-#<IfModule mod_alias.c>
-#	Redirect 301 /news-sitemap.xml /?type=1426844832
-#</IfModule>
-
-### End: EXT:news sitemap redirect ###
 
 
 # Add your own rules here.

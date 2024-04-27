@@ -1,5 +1,5 @@
 {
-  "name": "typo3/cms-base-distribution",
+  "name": "menscircle/site",
   "description": "TYPO3 CMS Base Distribution",
   "license": "GPL-2.0-or-later",
   "type": "project",
@@ -33,7 +33,6 @@
     "nng/nnhelpers": "*",
     "praetorius/vite-asset-collector": "^1.9",
     "typo3/cms-backend": "^12.0.0",
-    "typo3/cms-belog": "^12.0.0",
     "typo3/cms-beuser": "^12.0.0",
     "typo3/cms-core": "^12.0.0",
     "typo3/cms-extbase": "^12.0.0",
@@ -41,17 +40,22 @@
     "typo3/cms-filelist": "^12.0.0",
     "typo3/cms-fluid": "^12.0.0",
     "typo3/cms-fluid-styled-content": "^12.0.0",
-    "typo3/cms-form": "^12.0.0",
+    "typo3/cms-form": "^12.4",
     "typo3/cms-frontend": "^12.0.0",
     "typo3/cms-impexp": "^12.0.0",
     "typo3/cms-info": "^12.0.0",
     "typo3/cms-install": "^12.0.0",
     "typo3/cms-reactions": "^12.0.0",
     "typo3/cms-rte-ckeditor": "^12.0.0",
+    "typo3/cms-scheduler": "^12.4",
     "typo3/cms-seo": "^12.0.0",
-    "typo3/cms-setup": "^12.0.0",
     "typo3/cms-t3editor": "^12.0.0",
     "typo3/cms-tstemplate": "^12.0.0",
     "typo3/cms-viewpage": "^12.0.0"
+  },
+  "require-dev": {
+    "typo3/cms-belog": "^12.4",
+    "typo3/cms-lowlevel": "^12.4",
+    "typo3/cms-setup": "^12.4"
   }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac36fc94ad00b0bd03b9b8adb87cb909",
+    "content-hash": "01cd6a5227a042bb3574eb6713e1bd02",
     "packages": [
         {
             "name": "b13/container",
@@ -5977,64 +5977,6 @@
             "time": "2024-04-09T13:09:18+00:00"
         },
         {
-            "name": "typo3/cms-belog",
-            "version": "v12.4.14",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/TYPO3-CMS/belog.git",
-                "reference": "3aada0cee13e2be576ebc9cd65f66f69c056d3c4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/belog/zipball/3aada0cee13e2be576ebc9cd65f66f69c056d3c4",
-                "reference": "3aada0cee13e2be576ebc9cd65f66f69c056d3c4",
-                "shasum": ""
-            },
-            "require": {
-                "typo3/cms-core": "12.4.14"
-            },
-            "conflict": {
-                "typo3/cms": "*"
-            },
-            "type": "typo3-cms-framework",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "12.4.x-dev"
-                },
-                "typo3/cms": {
-                    "Package": {
-                        "partOfFactoryDefault": true
-                    },
-                    "extension-key": "belog"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "TYPO3\\CMS\\Belog\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "TYPO3 Core Team",
-                    "email": "typo3cms@typo3.org",
-                    "role": "Developer"
-                }
-            ],
-            "description": "TYPO3 CMS Log - View logs from the sys_log table in the TYPO3 backend modules System>Log",
-            "homepage": "https://typo3.org",
-            "support": {
-                "chat": "https://typo3.org/help",
-                "docs": "https://docs.typo3.org",
-                "issues": "https://forge.typo3.org",
-                "source": "https://github.com/typo3/typo3"
-            },
-            "time": "2024-04-09T13:09:18+00:00"
-        },
-        {
             "name": "typo3/cms-beuser",
             "version": "v12.4.14",
             "source": {
@@ -7095,6 +7037,61 @@
             "time": "2024-04-09T13:09:18+00:00"
         },
         {
+            "name": "typo3/cms-scheduler",
+            "version": "v12.4.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/scheduler.git",
+                "reference": "287ec280e72aba9fce3c2191fe372bedb882de35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/scheduler/zipball/287ec280e72aba9fce3c2191fe372bedb882de35",
+                "reference": "287ec280e72aba9fce3c2191fe372bedb882de35",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "12.4.14"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "12.4.x-dev"
+                },
+                "typo3/cms": {
+                    "extension-key": "scheduler"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Scheduler\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TYPO3 CMS Scheduler - Schedule tasks to run once or periodically at a specific time.",
+            "homepage": "https://typo3.org",
+            "support": {
+                "chat": "https://typo3.org/help",
+                "docs": "https://docs.typo3.org/c/typo3/cms-scheduler/main/en-us",
+                "issues": "https://forge.typo3.org",
+                "source": "https://github.com/typo3/typo3"
+            },
+            "time": "2024-04-09T13:09:18+00:00"
+        },
+        {
             "name": "typo3/cms-seo",
             "version": "v12.4.14",
             "source": {
@@ -7152,64 +7149,6 @@
             "support": {
                 "chat": "https://typo3.org/help",
                 "docs": "https://docs.typo3.org/c/typo3/cms-seo/main/en-us",
-                "issues": "https://forge.typo3.org",
-                "source": "https://github.com/typo3/typo3"
-            },
-            "time": "2024-04-09T13:09:18+00:00"
-        },
-        {
-            "name": "typo3/cms-setup",
-            "version": "v12.4.14",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/TYPO3-CMS/setup.git",
-                "reference": "be58d940502f5bb560cc7ac1a85b6f79a4f05ade"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/setup/zipball/be58d940502f5bb560cc7ac1a85b6f79a4f05ade",
-                "reference": "be58d940502f5bb560cc7ac1a85b6f79a4f05ade",
-                "shasum": ""
-            },
-            "require": {
-                "typo3/cms-core": "12.4.14"
-            },
-            "conflict": {
-                "typo3/cms": "*"
-            },
-            "type": "typo3-cms-framework",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "12.4.x-dev"
-                },
-                "typo3/cms": {
-                    "Package": {
-                        "partOfFactoryDefault": true
-                    },
-                    "extension-key": "setup"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "TYPO3\\CMS\\Setup\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "TYPO3 Core Team",
-                    "email": "typo3cms@typo3.org",
-                    "role": "Developer"
-                }
-            ],
-            "description": "TYPO3 CMS Setup - Allows users to edit a limited set of options for their user profile, including preferred language, their name and email address.",
-            "homepage": "https://typo3.org",
-            "support": {
-                "chat": "https://typo3.org/help",
-                "docs": "https://docs.typo3.org",
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
@@ -7550,7 +7489,182 @@
             "time": "2022-06-03T18:03:27+00:00"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "typo3/cms-belog",
+            "version": "v12.4.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/belog.git",
+                "reference": "3aada0cee13e2be576ebc9cd65f66f69c056d3c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/belog/zipball/3aada0cee13e2be576ebc9cd65f66f69c056d3c4",
+                "reference": "3aada0cee13e2be576ebc9cd65f66f69c056d3c4",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "12.4.14"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "12.4.x-dev"
+                },
+                "typo3/cms": {
+                    "Package": {
+                        "partOfFactoryDefault": true
+                    },
+                    "extension-key": "belog"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Belog\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TYPO3 CMS Log - View logs from the sys_log table in the TYPO3 backend modules System>Log",
+            "homepage": "https://typo3.org",
+            "support": {
+                "chat": "https://typo3.org/help",
+                "docs": "https://docs.typo3.org",
+                "issues": "https://forge.typo3.org",
+                "source": "https://github.com/typo3/typo3"
+            },
+            "time": "2024-04-09T13:09:18+00:00"
+        },
+        {
+            "name": "typo3/cms-lowlevel",
+            "version": "v12.4.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/lowlevel.git",
+                "reference": "b66a492be6e12108287a9a7be1d5c081b2200066"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/lowlevel/zipball/b66a492be6e12108287a9a7be1d5c081b2200066",
+                "reference": "b66a492be6e12108287a9a7be1d5c081b2200066",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "12.4.14"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "12.4.x-dev"
+                },
+                "typo3/cms": {
+                    "Package": {
+                        "partOfFactoryDefault": true
+                    },
+                    "extension-key": "lowlevel"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Lowlevel\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TYPO3 CMS Lowlevel - Technical analysis of the system. This includes raw database search, checking relations, counting pages and records etc.",
+            "homepage": "https://typo3.org",
+            "support": {
+                "chat": "https://typo3.org/help",
+                "docs": "https://docs.typo3.org",
+                "issues": "https://forge.typo3.org",
+                "source": "https://github.com/typo3/typo3"
+            },
+            "time": "2024-04-09T13:09:18+00:00"
+        },
+        {
+            "name": "typo3/cms-setup",
+            "version": "v12.4.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/setup.git",
+                "reference": "be58d940502f5bb560cc7ac1a85b6f79a4f05ade"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/setup/zipball/be58d940502f5bb560cc7ac1a85b6f79a4f05ade",
+                "reference": "be58d940502f5bb560cc7ac1a85b6f79a4f05ade",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "12.4.14"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "12.4.x-dev"
+                },
+                "typo3/cms": {
+                    "Package": {
+                        "partOfFactoryDefault": true
+                    },
+                    "extension-key": "setup"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Setup\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TYPO3 CMS Setup - Allows users to edit a limited set of options for their user profile, including preferred language, their name and email address.",
+            "homepage": "https://typo3.org",
+            "support": {
+                "chat": "https://typo3.org/help",
+                "docs": "https://docs.typo3.org",
+                "issues": "https://forge.typo3.org",
+                "source": "https://github.com/typo3/typo3"
+            },
+            "time": "2024-04-09T13:09:18+00:00"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {

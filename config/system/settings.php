@@ -1,5 +1,4 @@
 <?php
-
 return [
     'BE' => [
         'debug' => true,
@@ -56,6 +55,9 @@ return [
             'googleGeoApiKey' => '',
             'saltingKey' => '',
             'showMod' => '1',
+        ],
+        'scheduler' => [
+            'maxLifetime' => '1440',
         ],
         'staticfilecache' => [
             'backendDisplayMode' => 'both',
