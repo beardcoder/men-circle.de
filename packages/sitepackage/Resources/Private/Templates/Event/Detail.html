@@ -31,6 +31,8 @@
                     {event.startDate -> f:format.date(format: 'd.m.Y H:i')}
                 </time>
             </h1>
+
+            <f:render arguments="{_all}" partial="Event/Registration" />
             <div
                 class="mt-8 text-sm"
                 data-fade="left"

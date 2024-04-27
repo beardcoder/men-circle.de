@@ -39,8 +39,8 @@ CREATE TABLE tx_sitepackage_domain_model_event
 CREATE TABLE tx_sitepackage_domain_model_eventregistration
 (
     event     int(10) unsigned default '0' not null,
-    firstname varchar(255) default '' not null,
-    lastname  varchar(255) default '' not null,
+    first_name varchar(255) default '' not null,
+    last_name  varchar(255) default '' not null,
     email     varchar(255) default '' not null,
     fe_user   int(10) unsigned default '0' not null,
 );

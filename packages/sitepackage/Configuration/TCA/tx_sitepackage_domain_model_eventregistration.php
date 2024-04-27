@@ -1,16 +1,21 @@
 <?php
 
+use MensCircle\Sitepackage\Services\LangService;
 use MensCircle\Sitepackage\Services\TcaBuilderService;
 use nn\t3;
 
 $tca = [
-    'ctrl' => TcaBuilderService::makeCtrl('tx_sitepackage_domain_model_event_registration', 'firstname,lastname', 'firstname', 'firstname,lastname'),
+    'ctrl' => TcaBuilderService::makeCtrl(
+        'tx_sitepackage_domain_model_eventregistration',
+        'first_name',
+        'first_name',
+        'first_name'
+    ),
     'types' => [
         '1' => [
-            'showitem' =>
-                '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
-                    ,
-                 --div--;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event_registration.tabs.access,
+            'showitem' => '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
+            first_name, last_name, email, fe_user,
+                 --div--;'.LangService::transDb('tx_sitepackage_domain_model_eventregistration.tabs.access').',
                     --palette--;;hidden,
                     --palette--;;access,',
         ],
@@ -18,11 +23,11 @@ $tca = [
     'palettes' => [
         'hidden' => [
             'showitem' => '
-                hidden;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event_registration.hidden
+                hidden;'.LangService::transDb('tx_sitepackage_domain_model_eventregistration.hidden').'
             ',
         ],
         'access' => [
-            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event_registration.palettes.access',
+            'label' => LangService::transDb('tx_sitepackage_domain_model_eventregistration.palettes.access'),
             'showitem' => '
                 starttime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel,
                 endtime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel,
@@ -35,14 +40,14 @@ $tca = [
         'tx_sitepackage_domain_model_event_registration',
         true,
         [
-            'tt_content' => [
-                'exclude' => true,
+            'event' => [
                 'config' => [
                     'type' => 'passthrough',
+                    'foreign_table' => 'tx_sitepackage_domain_model_event',
                 ],
             ],
-            'firstname' => [
-                'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_eventregistration.firstname',
+            'first_name' => [
+                'label' => LangService::transDb('tx_sitepackage_domain_model_eventregistration.first_name'),
                 'config' => [
                     'type' => 'input',
                     'size' => 40,
@@ -50,14 +55,43 @@ $tca = [
                     'eval' => 'trim',
                     'required' => true,
                 ],
-            ], 'lastname' => [
-                'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_eventregistration.lastname',
+            ],
+            'last_name' => [
+                'label' => LangService::transDb('tx_sitepackage_domain_model_eventregistration.last_name'),
                 'config' => [
                     'type' => 'input',
                     'size' => 40,
                     'max' => 255,
                     'eval' => 'trim',
                     'required' => true,
+                ],
+            ],
+            'email' => [
+                'label' => LangService::transDb('tx_sitepackage_domain_model_eventregistration.email'),
+                'config' => [
+                    'type' => 'input',
+                    'size' => 40,
+                    'max' => 255,
+                    'eval' => 'trim',
+                    'required' => true,
+                ],
+            ],
+            'fe_user' => [
+                'exclude' => true,
+                'label' => LangService::transDb('tx_sitepackage_domain_model_eventregistration.fe_user'),
+                'config' => [
+                    'type' => 'group',
+                    'allowed' => 'fe_users',
+                    'foreign_table' => 'fe_users',
+                    'size' => 1,
+                    'minitems' => 0,
+                    'maxitems' => 1,
+                    'default' => 0,
+                    'suggestOptions' => [
+                        'default' => [
+                            'additionalSearchFields' => 'first_name, last_name, email',
+                        ],
+                    ],
                 ],
             ],
         ]

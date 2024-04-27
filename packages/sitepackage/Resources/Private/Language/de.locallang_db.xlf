@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns:t3="http://typo3.org/schemas/xliff" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="de" original="" datatype="plaintext" date="2024-03-28T20:16:27+01:00">
+    <file source-language="en" target-language="de" original="" datatype="plaintext" date="2024-04-27T22:41:45+02:00">
         <body>
             <trans-unit id="tx_sitepackage_domain_model_event" resname="tx_sitepackage_domain_model_event">
                 <source>Event</source>
@@ -66,11 +66,19 @@
                 <source>Zip</source>
                 <target>PLZ</target>
             </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_eventregistration.firstname" resname="tx_sitepackage_domain_model_eventregistration.firstname">
+            <trans-unit id="tx_sitepackage_domain_model_eventregistration.email" resname="tx_sitepackage_domain_model_eventregistration.email">
+                <source>Email</source>
+                <target>E-Mail</target>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_eventregistration.fe_user" resname="tx_sitepackage_domain_model_eventregistration.fe_user">
+                <source>User</source>
+                <target>Benutzer</target>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_eventregistration.first_name" resname="tx_sitepackage_domain_model_eventregistration.first_name">
                 <source>Firstname</source>
                 <target>Vorname</target>
             </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_eventregistration.lastname" resname="tx_sitepackage_domain_model_eventregistration.lastname">
+            <trans-unit id="tx_sitepackage_domain_model_eventregistration.last_name" resname="tx_sitepackage_domain_model_eventregistration.last_name">
                 <source>Lastname</source>
                 <target>Nachname</target>
             </trans-unit>

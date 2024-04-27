@@ -10,7 +10,9 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 call_user_func(function () {
     $extensionKey = 'sitepackage';
-    $signature = static fn (string $plugin): string => strtolower(sprintf('%s_%s', str_replace('_', '', $extensionKey), $plugin));
+    $signature = static fn (string $plugin): string => strtolower(
+        sprintf('%s_%s', str_replace('_', '', $extensionKey), $plugin)
+    );
 
     ExtensionManagementUtility::addTcaSelectItemGroup(
         'tt_content',
@@ -50,7 +52,12 @@ call_user_func(function () {
     );
 
     $GLOBALS['TCA']['tt_content']['types'][$signature('EventList')] = $GLOBALS['TCA']['tt_content']['types']['header'];
-    ExtensionManagementUtility::addToAllTCAtypes('tt_content', 'pi_flexform, pages', $signature('EventList'), 'after:subheader');
+    ExtensionManagementUtility::addToAllTCAtypes(
+        'tt_content',
+        'pi_flexform, pages',
+        $signature('EventList'),
+        'after:subheader'
+    );
 
     GeneralUtility::makeInstance(Registry::class)->configureContainer(
         (
@@ -60,7 +67,7 @@ call_user_func(function () {
             '', // description
             [
                 [
-                    ['name' => 'Header', 'colPos' => 210, 'colspan' => 3]
+                    ['name' => 'Header', 'colPos' => 210, 'colspan' => 3],
                 ],
                 [
                     ['name' => 'Features', 'colPos' => 200],
@@ -69,5 +76,4 @@ call_user_func(function () {
         )
         )->setIcon('container-1col')
     );
-
 });

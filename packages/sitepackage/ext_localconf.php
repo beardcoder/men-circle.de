@@ -1,7 +1,6 @@
 <?php
-/***************
- * Add default RTE configuration
- */
+
+// Add default RTE configuration
 
 use MensCircle\Sitepackage\Controller\EventController;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -11,10 +10,10 @@ call_user_func(
     static function () {
         $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['sitepackage'] = 'EXT:sitepackage/Configuration/RTE/Default.yaml';
 
-        /***************
-         * PageTS
-         */
-        ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:sitepackage/Configuration/TsConfig/Page/All.tsconfig">');
+        // PageTS
+        ExtensionManagementUtility::addPageTSConfig(
+            '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:sitepackage/Configuration/TsConfig/Page/All.tsconfig">'
+        );
 
         ExtensionUtility::configurePlugin(
             'Sitepackage',
@@ -27,8 +26,8 @@ call_user_func(
         ExtensionUtility::configurePlugin(
             'Sitepackage',
             'EventDetail',
-            [EventController::class => 'detail'],
-            [],
+            [EventController::class => ['detail', 'registration']],
+            [EventController::class => ['registration']],
             ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
         );
     }

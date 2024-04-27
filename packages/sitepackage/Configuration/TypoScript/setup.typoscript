@@ -247,7 +247,7 @@ plugin.tx_sitepackage {
     }
 
     persistence {
-        storagePid = {$plugin.tx_sitepackage.persistence.storagePid}
+        storagePid = 2
     }
 
     settings {

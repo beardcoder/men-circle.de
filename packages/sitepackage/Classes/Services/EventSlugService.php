@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace MensCircle\Sitepackage\Services;
 
 use TYPO3\CMS\Backend\Form\FormDataProvider\TcaSlug;
-use TYPO3\CMS\Core\Site\Entity\Site;
 
 class EventSlugService
 {
@@ -16,8 +15,6 @@ class EventSlugService
 
     public function getPrefix(array $parameters, TcaSlug $reference): string
     {
-        /** @var Site $site */
-        $site = $parameters['site'];
-        return $site->getConfiguration()['base'] . '/events';
+        return '';
     }
 }

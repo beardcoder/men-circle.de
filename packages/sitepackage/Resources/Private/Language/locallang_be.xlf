@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns:t3="http://typo3.org/schemas/xliff" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" original="messages" datatype="plaintext" date="2024-03-29T20:09:52+01:00">
+    <file source-language="en" original="messages" datatype="plaintext" date="2024-04-27T22:17:40+02:00">
         <header>
             <authorName>Markus Sommer</authorName>
             <authorEmail>markus@letsbenow.de</authorEmail>
@@ -41,6 +41,18 @@
             </trans-unit>
             <trans-unit id="tt_content.CType.I.stage.description" resname="tt_content.CType.I.stage.description">
                 <source>Big image with text</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_eventregistration.email" resname="tx_sitepackage_domain_model_eventregistration.email">
+                <source>Email</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_eventregistration.fe_user" resname="tx_sitepackage_domain_model_eventregistration.fe_user">
+                <source>User</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_eventregistration.first_name" resname="tx_sitepackage_domain_model_eventregistration.first_name">
+                <source>Firstname</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_eventregistration.last_name" resname="tx_sitepackage_domain_model_eventregistration.last_name">
+                <source>Lastname</source>
             </trans-unit>
             <trans-unit id="tx_sitepackage_feature.columns.bodytext" resname="tx_sitepackage_feature.columns.bodytext">
                 <source>Text</source>

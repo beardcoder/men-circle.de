@@ -4,20 +4,15 @@ declare(strict_types=1);
 
 namespace MensCircle\Sitepackage\Domain\Model;
 
-use TYPO3\CMS\Extbase\Annotation\Validate;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
-class EventRegistration extends AbstractEntity
+class FrontendUser extends AbstractEntity
 {
-    public ?Event $event;
-    #[Validate(['validator' => 'NotEmpty'])]
-    public string $firstName;
-    #[Validate(['validator' => 'NotEmpty'])]
-    public string $lastName;
-    #[Validate(['validator' => 'NotEmpty'])]
-    #[Validate(['validator' => 'EmailAddress'])]
-    public string $email;
-    public ?FrontendUser $feUser;
+    protected string $firstName = '';
+    protected string $lastName = '';
+    protected string $email = '';
+    protected string $username = '';
+    protected string $password = '';
 
     public function getFirstName(): string
     {
@@ -49,13 +44,23 @@ class EventRegistration extends AbstractEntity
         $this->email = $email;
     }
 
-    public function getFeUser(): ?FrontendUser
+    public function getUsername(): string
     {
-        return $this->feUser;
+        return $this->username;
     }
 
-    public function setFeUser(?FrontendUser $feUser): void
+    public function setUsername(string $username): void
     {
-        $this->feUser = $feUser;
+        $this->username = $username;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
     }
 }

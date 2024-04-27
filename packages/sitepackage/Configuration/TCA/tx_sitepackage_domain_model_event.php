@@ -14,11 +14,15 @@ $tca = [
                 '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general',
                 'title, description, image, slug',
                 '--palette--;;date',
-                '--palette--;;addres',
-                implode(',', ['--div--;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.tabs.registration', 'registration']),
-                implode(',', [
-                    '--div--;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.tabs.access', '--palette--;;hidden', '--palette--;;access',
-                ]),
+                '--palette--;;address',
+                implode(
+                    ',',
+                    ['--div--;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.tabs.registration', 'registration']
+                ),
+                implode(
+                    ',',
+                    ['--div--;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.tabs.access', '--palette--;;hidden', '--palette--;;access']
+                ),
             ]),
         ],
     ],
@@ -75,14 +79,14 @@ $tca = [
                     'eval' => 'uniqueInPid',
                     'size' => 50,
                     'appearance' => [
-                        'prefix' => EventSlugService::class . '->getPrefix',
+                        'prefix' => EventSlugService::class.'->getPrefix',
                     ],
                     'generatorOptions' => [
                         'fields' => ['title', 'start_date'],
                         'replacements' => [
                             '/' => '-',
                         ],
-                        'postModifiers' => [EventSlugService::class . '->modifySlug'],
+                        'postModifiers' => [EventSlugService::class.'->modifySlug'],
                     ],
                     'fallbackCharacter' => '-',
                     'default' => '',
