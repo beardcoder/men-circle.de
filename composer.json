@@ -28,6 +28,7 @@
     "contentblocks/content-blocks": "^0.7.3",
     "helhum/dotenv-connector": "^3.1",
     "helhum/typo3-console": "^8.1",
+    "in2code/luxletter": "^26.1",
     "lochmueller/staticfilecache": "^14.0",
     "mens-circle/sitepackage": "@dev",
     "nng/nnhelpers": "*",
