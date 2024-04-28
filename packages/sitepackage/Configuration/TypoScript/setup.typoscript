@@ -29,7 +29,7 @@ plugin.tx_picture {
 page = PAGE
 page {
     typeNum = 0
-    shortcutIcon = /favicon.ico
+    shortcutIcon = favicon.ico
 
     10 = FLUIDTEMPLATE
     10 {
@@ -96,6 +96,7 @@ page {
         viewport = {$page.meta.viewport}
         robots = {$page.meta.robots}
         apple-mobile-web-app-capable = {$page.meta.apple-mobile-web-app-capable}
+        language = {$page.meta.language}
         description = {$page.meta.description}
         description {
             override.field = description

@@ -46,6 +46,17 @@ return [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
         ],
+        'luxletter' => [
+            'addTypeNumToNumberLocation' => '1562349004',
+            'addUnsubscribeUrlToMailHeader' => '1',
+            'asynchronousQueueStorage' => '0',
+            'embedImagesInNewsletter' => '0',
+            'limitToContext' => '',
+            'multiLanguageMode' => '1',
+            'multiLanguageNewsletterPageDoktype' => '11',
+            'receiverAction' => '1',
+            'rewriteLinksInNewsletter' => '1',
+        ],
         'nnhelpers' => [
             'autoCreateFilemounts' => '1',
             'clearAllCaches' => '0',

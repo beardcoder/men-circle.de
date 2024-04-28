@@ -20,20 +20,23 @@ styles {
 ### PAGE ###
 ############
 page {
-     fluidtemplate {
+    fluidtemplate {
         layoutRootPath = EXT:sitepackage/Resources/Private/Layouts/Page/
         partialRootPath = EXT:sitepackage/Resources/Private/Partials/Page/
         templateRootPath = EXT:sitepackage/Resources/Private/Templates/Page/
     }
+
     meta {
         description =
-        author =
+        author = Markus Sommer
         keywords =
         viewport = width=device-width, initial-scale=1
         robots = index,follow
         apple-mobile-web-app-capable = no
         compatible = IE=edge
+        language = de
     }
+
     tracking {
         google {
             trackingID =
