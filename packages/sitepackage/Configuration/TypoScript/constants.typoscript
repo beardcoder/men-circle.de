@@ -54,6 +54,6 @@ config {
     removeDefaultJS = 0
     admPanel = 1
     prefixLocalAnchors = all
-    headerComment = build by sitepackagebuilder.com
+    headerComment = Build with ❤️ and mindfulness in Bavaria
     sendCacheHeaders = 1
 }
