@@ -513,67 +513,67 @@ RewriteRule ^.*\.sfc$ %{ENV:CWD}index.php?eID=sfc_manifest [QSA,L]
    </IfModule>
 </FilesMatch>
 
-# if there are same problems with ForceType, please try the AddType alternative
-# Set proper content type gzipped html
+# if there are same problems with #ForceType, please try the AddType alternative
+# Set proper content type gzipped ml
 <FilesMatch "\.gzip$">
-   ForceType text/html
-   # AddType "text/html" .gzip
+   #ForceType text/html
+   AddType "text/html" .gzip
 </FilesMatch>
 <FilesMatch "\.js\.gzip$">
-   ForceType text/javascript
-   # AddType "text/javascript" .gzip
+   #ForceType text/javascript
+   AddType "text/javascript" .gzip
 </FilesMatch>
 <FilesMatch "\.js\.gz$">
-   ForceType text/javascript
-   # AddType "text/javascript" .gzip
+   #ForceType text/javascript
+   AddType "text/javascript" .gzip
 </FilesMatch>
 <FilesMatch "\.css\.gzip$">
-   ForceType text/css
-   # AddType "text/css" .gzip
+   #ForceType text/css
+   AddType "text/css" .gzip
 </FilesMatch>
 <FilesMatch "\.css\.gz$">
-   ForceType text/css
-   # AddType "text/css" .gzip
+   #ForceType text/css
+   AddType "text/css" .gzip
 </FilesMatch>
 <FilesMatch "\.xml\.gzip$">
-   ForceType text/xml
-   # AddType "text/xml" .gzip
+   #ForceType text/xml
+   AddType "text/xml" .gzip
 </FilesMatch>
 <FilesMatch "\.rss\.gzip$">
-   ForceType text/xml
-   # AddType "text/xml" .gzip
+   #ForceType text/xml
+   AddType "text/xml" .gzip
 </FilesMatch>
 <FilesMatch "\.gz$">
-   ForceType text/html
-   # AddType "text/html" .gz
+   #ForceType text/html
+   AddType "text/html" .gz
 </FilesMatch>
 <FilesMatch "\.js\.gz$">
-        ForceType text/javascript
-        # AddType "text/javascript" .gz
+    #ForceType text/javascript
+    AddType "text/javascript" .gz
 </FilesMatch>
 <FilesMatch "\.css\.gz$">
-        ForceType text/css
-        # AddType "text/css" .gz
+    #ForceType text/css
+    AddType "text/css" .gz
 </FilesMatch>
 <FilesMatch "\.xml\.gz$">
-   ForceType text/xml
-   # AddType "text/xml" .gz
+   #ForceType text/xml
+   AddType "text/xml" .gz
 </FilesMatch>
 <FilesMatch "\.rss\.gz$">
-   ForceType text/xml
-   # AddType "text/xml" .gz
+   #ForceType text/xml
+   AddType "text/xml" .gz
 </FilesMatch>
 <FilesMatch "\.br$">
-   ForceType text/html
-   # AddType "text/html" .br
+   #ForceType text/html
+   AddType "text/html" .br
 </FilesMatch>
 <FilesMatch "\.xml\.br$">
-   ForceType text/xml
-   # AddType "text/xml" .br
+   #ForceType text/xml
+   AddType "text/xml" .br
 </FilesMatch>
 <FilesMatch "\.rss\.br$">
-   ForceType text/xml
-   # AddType "text/xml" .br
+   #ForceType text/xml
+   AddType "text/xml" .br
 </FilesMatch>
 
 # Avoid .br files being delivered with Content-Language: br headers

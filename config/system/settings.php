@@ -1,4 +1,5 @@
 <?php
+
 return [
     'BE' => [
         'debug' => true,
@@ -77,11 +78,11 @@ return [
             'clearCacheForAllDomains' => '1',
             'debugHeaders' => '0',
             'disableInDevelopment' => '0',
-            'enableGeneratorBrotli' => '0',
+            'enableGeneratorBrotli' => '1',
             'enableGeneratorGzip' => '1',
             'enableGeneratorManifest' => '0',
             'enableGeneratorPhp' => '0',
-            'enableGeneratorPlain' => '0',
+            'enableGeneratorPlain' => '1',
             'hashUriInCache' => '0',
             'htaccessTemplateName' => 'EXT:staticfilecache/Resources/Private/Templates/Htaccess.html',
             'inlineAssetsFileSize' => '50000',
