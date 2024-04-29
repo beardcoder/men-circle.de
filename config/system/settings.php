@@ -8,6 +8,7 @@ return [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
         ],
+        'compressionLevel' => 9,
     ],
     'DB' => [
         'Connections' => [
@@ -38,8 +39,8 @@ return [
             'backendFavicon' => '',
             'backendLogo' => '',
             'loginBackgroundImage' => '',
-            'loginFootnote' => '',
-            'loginHighlightColor' => '',
+            'loginFootnote' => '© 2023-2024 Build with ❤️ and mindfulness in Bavaria',
+            'loginHighlightColor' => '#B76F2B',
             'loginLogo' => '',
             'loginLogoAlt' => '',
         ],
@@ -73,14 +74,14 @@ return [
         ],
         'staticfilecache' => [
             'backendDisplayMode' => 'both',
-            'boostMode' => '0',
+            'boostMode' => '1',
             'cacheTagsEnable' => '0',
             'clearCacheForAllDomains' => '1',
             'debugHeaders' => '0',
             'disableInDevelopment' => '0',
-            'enableGeneratorBrotli' => '1',
+            'enableGeneratorBrotli' => '0',
             'enableGeneratorGzip' => '1',
-            'enableGeneratorManifest' => '0',
+            'enableGeneratorManifest' => '1',
             'enableGeneratorPhp' => '0',
             'enableGeneratorPlain' => '1',
             'hashUriInCache' => '0',
@@ -114,7 +115,8 @@ return [
         ],
     ],
     'FE' => [
-        'debug' => true,
+        'debug' => false,
+        'compressionLevel' => 9,
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],

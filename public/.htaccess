@@ -33,13 +33,13 @@
 # *) Set $GLOBALS['TYPO3_CONF_VARS']['FE']['compressionLevel'] = 9 together with the TypoScript properties
 #    config.compressJs and config.compressCss for GZIP compression of Frontend JS and CSS files.
 
-#<FilesMatch "\.js\.gz">
-#	AddType "text/javascript" .gz
-#</FilesMatch>
-#<FilesMatch "\.css\.gz">
-#	AddType "text/css" .gz
-#</FilesMatch>
-#AddEncoding x-gzip .gz
+<FilesMatch "\.js\.gz">
+	AddType "text/javascript" .gz
+</FilesMatch>
+<FilesMatch "\.css\.gz">
+	AddType "text/css" .gz
+</FilesMatch>
+AddEncoding x-gzip .gz
 
 <IfModule mod_deflate.c>
 	# Force compression for mangled `Accept-Encoding` request headers
@@ -83,6 +83,7 @@
 			image/bmp \
 			image/svg+xml \
 			image/vnd.microsoft.icon \
+			image/webp \
 			image/x-icon \
 			text/cache-manifest \
 			text/css \
