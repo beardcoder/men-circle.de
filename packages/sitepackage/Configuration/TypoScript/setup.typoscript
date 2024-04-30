@@ -230,6 +230,7 @@ config {
     compressCss = 0
     concatenateJs = 0
     concatenateCss = 0
+    spamProtectEmailAddresses = 2
 }
 
 plugin.tx_sitepackage {

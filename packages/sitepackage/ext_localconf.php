@@ -1,6 +1,6 @@
 <?php
+declare(strict_types=1);
 
-// Add default RTE configuration
 
 use MensCircle\Sitepackage\Controller\EventController;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -12,7 +12,7 @@ call_user_func(
 
         // PageTS
         ExtensionManagementUtility::addPageTSConfig(
-            '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:sitepackage/Configuration/TsConfig/Page/All.tsconfig">'
+            '@import "EXT:sitepackage/Configuration/TsConfig/Page/All.tsconfig"'
         );
 
         ExtensionUtility::configurePlugin(

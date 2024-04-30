@@ -1,9 +1,9 @@
 <?php
-
 declare(strict_types=1);
 
 namespace MensCircle\Sitepackage\Domain\Model;
 
+use DateTime;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
@@ -15,8 +15,8 @@ class Event extends AbstractEntity
     public string $slug;
     public string $title;
     public string $description;
-    public ?\DateTime $startDate;
-    public ?\DateTime $endDate;
+    public ?DateTime $startDate;
+    public ?DateTime $endDate;
     public string $place;
     public string $address;
     public string $zip;

@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace MensCircle\Sitepackage\Controller;
@@ -17,10 +16,12 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class EventController extends ActionController
 {
     public function __construct(
-        private EventRepository $eventRepository,
+        private EventRepository             $eventRepository,
         private EventRegistrationRepository $eventRegistrationRepository,
-        private FrontendUserRepository $frontendUserRepository
-    ) {}
+        private FrontendUserRepository      $frontendUserRepository
+    )
+    {
+    }
 
     public function listAction()
     {
@@ -47,27 +48,6 @@ class EventController extends ActionController
         $this->setRegistrationFieldValuesToArguments();
     }
 
-    public function registrationAction(EventRegistration $eventRegistration)
-    {
-        $feUser = $this->frontendUserRepository->findOneByEmail($eventRegistration->getEmail());
-        if (!$feUser) {
-            /** @var FrontendUser $feUser */
-            $feUser = GeneralUtility::makeInstance(FrontendUser::class);
-            $feUser->setEmail($eventRegistration->getEmail());
-            $feUser->setFirstName($eventRegistration->getFirstName());
-            $feUser->setLastName($eventRegistration->getLastName());
-            $feUser->setUsername($eventRegistration->getEmail());
-            $feUser->setPassword(Uuid::v4()->toHex());
-            $feUser->setPassword(Uuid::v4()->toHex());
-            $this->frontendUserRepository->add($feUser);
-        }
-
-        $eventRegistration->setFeUser($feUser);
-        $this->eventRegistrationRepository->add($eventRegistration);
-
-        return $this->redirect('detail', null, null, ['event' => $eventRegistration->event]);
-    }
-
     protected function setRegistrationFieldValuesToArguments(): void
     {
         $arguments = $this->request->getArguments();
@@ -76,7 +56,7 @@ class EventController extends ActionController
         }
 
         /** @var Event $event */
-        $event = $this->eventRepository->findByUid((int) $this->request->getArgument('event'));
+        $event = $this->eventRepository->findByUid((int)$this->request->getArgument('event'));
         if (!is_a($event, Event::class)) {
             return;
         }
@@ -88,8 +68,28 @@ class EventController extends ActionController
         $propertyMapping->allowProperties('event');
         $propertyMapping->allowCreationForSubProperty('event');
         $propertyMapping->allowModificationForSubProperty('event');
-        $arguments['eventRegistration']['event'] = (int) $this->request->getArgument('event');
+        $arguments['eventRegistration']['event'] = (int)$this->request->getArgument('event');
 
         $this->request = $this->request->withArguments($arguments);
+    }
+
+    public function registrationAction(EventRegistration $eventRegistration)
+    {
+        $feUser = $this->frontendUserRepository->findOneByEmail($eventRegistration->getEmail());
+        if (!$feUser) {
+            /** @var FrontendUser $feUser */
+            $feUser = GeneralUtility::makeInstance(FrontendUser::class);
+            $feUser->setEmail($eventRegistration->getEmail());
+            $feUser->setFirstName($eventRegistration->getFirstName());
+            $feUser->setLastName($eventRegistration->getLastName());
+            $feUser->setUsername($eventRegistration->getEmail());
+            $feUser->setPassword(Uuid::v4()->toHex());
+            $this->frontendUserRepository->add($feUser);
+        }
+
+        $eventRegistration->setFeUser($feUser);
+        $this->eventRegistrationRepository->add($eventRegistration);
+
+        return $this->redirect('detail', null, null, ['event' => $eventRegistration->event]);
     }
 }
