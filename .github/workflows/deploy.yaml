@@ -3,7 +3,7 @@ name: Deploy Files
 on:
   push:
     branches:
-      - feature/typo3
+      - main
 
 jobs:
   deploy:
@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Cache Composer dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: /tmp/composer-cache
           key: "${{ runner.os }}-${{ hashFiles('**/composer.lock') }}"
@@ -34,15 +34,16 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Sync files to server
-        uses: burnett01/rsync-deployments@7.0.1
+      - name: Deploy to server
+        uses: easingthemes/ssh-deploy@main
         with:
-          switches: -avzr --delete --exclude=".env" --exclude=".github" --exclude=".git" --exclude=".ddev" --exclude="node_modules" --exclude="fileadmin" --exclude="config/system/additional.php"
-          path: ./
-          remote_path: /home/viking/html/mens-circle.de
-          remote_host: mens-circle.de
-          remote_user: viking
-          remote_key: ${{ secrets.PRIVATE_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          ARGS: "-rlgoDzvc -i"
+          SOURCE: "./"
+          REMOTE_HOST: mens-circle.de
+          REMOTE_USER: viking
+          TARGET: /home/viking/html/mens-circle.de
+          EXCLUDE: ".env, .github, .git, .ddev, node_modules, fileadmin, config/system/additional.php"
 
       - name: Post deploy
         uses: appleboy/ssh-action@v0.1.10
