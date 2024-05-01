@@ -44,15 +44,7 @@ jobs:
           REMOTE_USER: viking
           TARGET: /home/viking/html/mens-circle.de
           EXCLUDE: ".env, .github, .git, .ddev, node_modules, fileadmin, config/system/additional.php, DOCKER_ENV, output.log, Dockerfile-php-build, docker_tag"
-
-      - name: Post deploy
-        uses: appleboy/ssh-action@v0.1.10
-        with:
-          host: mens-circle.de
-          username: viking
-          key: ${{ secrets.PRIVATE_KEY }}
-          script: |
-            cd /home/viking/html/mens-circle.de
+          SCRIPT_AFTER: |
             vendor/bin/typo3 install:fixfolderstructure
             vendor/bin/typo3 database:updateschema
             vendor/bin/typo3 cache:flush
