@@ -266,7 +266,7 @@ plugin.tx_seo {
                     provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
                     config {
                         table = tx_sitepackage_domain_model_event
-                        sortField = sorting
+                        sortField = start_date
                         lastModifiedField = tstamp
                         pid = 2
                         recursive = 0
