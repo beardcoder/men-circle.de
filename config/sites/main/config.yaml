@@ -1,12 +1,10 @@
 base: 'https://mens-circle.de'
 baseVariants:
-  -
-    base: 'https://mens-circle.ddev.site/'
+  - base: 'https://mens-circle.ddev.site/'
     condition: 'applicationContext == "Development/Local"'
 disableStaticFileCache: false
 languages:
-  -
-    title: Deutsch
+  - title: Deutsch
     enabled: true
     languageId: 0
     base: /
@@ -15,14 +13,18 @@ languages:
     flag: de
 rootPageId: 1
 routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    map:
+      /: 0
+      sitemap.xml: 1533906435
   EventDetail:
     type: Extbase
     extension: Sitepackage
     namespace: tx_sitepackage_eventdetail
     plugin: EventDetail
     routes:
-      -
-        routePath: '/{event_title}'
+      - routePath: '/{event_title}'
         _controller: 'Event::detail'
         _arguments:
           event_title: event
