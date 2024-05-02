@@ -256,3 +256,35 @@ plugin.tx_sitepackage {
         singleViewPageUid = {$plugin.tx_sitepackage.settings.singleViewPageUid}
     }
 }
+
+
+plugin.tx_seo {
+    config {
+        xmlSitemap {
+            sitemaps {
+                events {
+                    provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
+                    config {
+                        table = tx_sitepackage_domain_model_event
+                        sortField = sorting
+                        lastModifiedField = tstamp
+                        additionalWhere = AND (no_index = 0 OR no_follow = 0)
+                        pid = 2
+                        recursive = 0
+                        url {
+                            pageId = 3
+                            fieldToParameterMap {
+                                uid = tx_sitepackage_eventdetail[event]
+                            }
+
+                            additionalGetParameters {
+                                tx_sitepackage_eventdetail.controller = Event
+                                tx_sitepackage_eventdetail.action = detail
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
