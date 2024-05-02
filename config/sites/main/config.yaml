@@ -1,4 +1,4 @@
-base: 'https://mens-circle.de'
+base: 'https://mens-circle.de/'
 baseVariants:
   - base: 'https://mens-circle.ddev.site/'
     condition: 'applicationContext == "Development/Local"'
