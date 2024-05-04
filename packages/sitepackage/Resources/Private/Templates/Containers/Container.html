@@ -1,0 +1,16 @@
+<html
+    data-namespace-typo3-fluid="true"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+>
+<f:layout name="ContentElements/Dark" />
+
+<f:section name="Main">
+    <div class="mx-auto max-w-screen-xl px-6 py-8 sm:py-24 lg:px-6">
+        <div class="space-y-8">
+            <f:for as="item" each="{items}">
+                {item.renderedContent -> f:format.raw()}
+            </f:for>
+        </div>
+    </div>
+</f:section>
+</html>

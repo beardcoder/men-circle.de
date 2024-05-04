@@ -4,12 +4,15 @@ import defaultTheme from "tailwindcss/defaultTheme";
 import typography from "flowbite-typography";
 // @ts-ignore
 import flowbite from "flowbite/plugin";
+import forms from '@tailwindcss/forms';
+
 
 export default {
   content: [
     "./packages/sitepackage/**/*.html",
     "./packages/sitepackage/**/*.ts",
     "./packages/sitepackage/**/*.js",
+    "./packages/sitepackage/**/*.yaml",
     "./node_modules/flowbite/**/*.js",
   ],
   darkMode: "media",
@@ -74,5 +77,5 @@ export default {
       },
     },
   },
-  plugins: [typography, flowbite],
+  plugins: [typography, flowbite, forms],
 } satisfies Config;

@@ -75,4 +75,19 @@ call_user_func(function () {
         )
         )->setIcon('container-1col')
     );
+
+    GeneralUtility::makeInstance(Registry::class)->configureContainer(
+        (
+        new ContainerConfiguration(
+            'container', // CType
+            'Container', // label
+            '', // description
+            [
+                [
+                    ['name' => 'Elemente', 'colPos' => 200],
+                ],
+            ] // grid configuration
+        )
+        )->setIcon('container-1col')
+    );
 });

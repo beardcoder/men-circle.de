@@ -17,6 +17,7 @@
 @import 'EXT:sitepackage/Configuration/TypoScript/Containers/*.typoscript'
 
 @import 'EXT:picture/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:form/Configuration/TypoScript/setup.typoscript'
 
 
 plugin.tx_picture {
@@ -231,6 +232,14 @@ config {
     concatenateJs = 0
     concatenateCss = 0
     spamProtectEmailAddresses = 2
+
+    pageTitleProviders {
+        events {
+            provider = MensCircle\Sitepackage\PageTitle\EventPageTitleProvider
+            before = record
+            after = altPageTitle
+        }
+    }
 }
 
 plugin.tx_sitepackage {
@@ -288,12 +297,18 @@ plugin.tx_seo {
     }
 }
 
-config {
-    pageTitleProviders {
-        events {
-            provider = MensCircle\Sitepackage\PageTitle\EventPageTitleProvider
-            before = record
-            after = altPageTitle
+plugin.tx_form {
+    settings {
+        yamlConfigurations {
+            100 = EXT:sitepackage/Configuration/Forms.yaml
+        }
+    }
+}
+
+module.tx_form {
+    settings {
+        yamlConfigurations {
+            100 = EXT:sitepackage/Configuration/Forms.yaml
         }
     }
 }
