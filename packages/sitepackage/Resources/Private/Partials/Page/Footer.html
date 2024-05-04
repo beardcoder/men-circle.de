@@ -5,18 +5,17 @@
     <div class="mx-auto max-w-screen-xl text-center">
         <p class="my-6"></p>
         <ul class="mb-6 flex flex-wrap items-center justify-center dark:text-white space-x-8 uppercase">
-            <li class="first">
-                <a href="/">Home</a>
-            </li>
-            <li>
-                <a href="mailto:markus@mens-circle.de">Kontakt</a>
-            </li>
-            <li>
-                <a href="/impressum">Impressum</a>
-            </li>
-            <li class="last">
-                <a href="https://www.instagram.com/markus.sommer/">Instagram</a>
-            </li>
+            <f:for each="{footernavigation}" as="item">
+                <li>
+                    <a
+                      href="{item.link}"
+                      target="{item.target}"
+                      title="{item.title}"
+                    >
+                        {item.title}
+                    </a>
+                </li>
+            </f:for>
         </ul>
         <div class="text-sm sm:text-center">
             © 2023-2024 Build with ❤️ and mindfulness in Bavaria

@@ -90,6 +90,21 @@ page {
                 includeSpacer = 1
                 as = mainnavigation
             }
+
+            20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            20 {
+                levels = 2
+                includeSpacer = 1
+                as = mainnavigation
+            }
+
+            50 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            50 {
+                special = directory
+                special.value = 6
+                levels = 1
+                as = footernavigation
+            }
         }
     }
 
