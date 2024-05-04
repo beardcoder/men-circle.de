@@ -5,7 +5,7 @@ mod {
     web_layout {
         BackendLayouts {
             home {
-                title = LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:backend_layout.default
+                title = LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:backend_layout.home
                 config {
                     backend_layout {
                         colCount = 1
