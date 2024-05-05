@@ -13,16 +13,20 @@ use MensCircle\Sitepackage\Domain\Repository\FrontendUserRepository;
 use MensCircle\Sitepackage\PageTitle\EventPageTitleProvider;
 use Symfony\Component\Uid\Uuid;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class EventController extends ActionController
 {
     public function __construct(
-        private EventRepository $eventRepository,
-        private EventRegistrationRepository $eventRegistrationRepository,
-        private FrontendUserRepository $frontendUserRepository,
+        private EventRepository                 $eventRepository,
+        private EventRegistrationRepository     $eventRegistrationRepository,
+        private FrontendUserRepository          $frontendUserRepository,
         private readonly EventPageTitleProvider $titleProvider
-    ) {}
+    )
+    {
+    }
 
     public function listAction()
     {
@@ -34,7 +38,7 @@ class EventController extends ActionController
     public function detailAction(Event $event, ?EventRegistration $eventRegistration = null)
     {
         $eventRegistrationToAssign = $eventRegistration ?? GeneralUtility::makeInstance(EventRegistration::class);
-        $this->titleProvider->setTitle($event->title.' am '.$event->startDate->format('d.m.Y'));
+        $this->titleProvider->setTitle($event->title . ' am ' . $event->startDate->format('d.m.Y'));
 
         $this->view->assign('event', $event);
         $this->view->assign('eventRegistration', $eventRegistrationToAssign);
@@ -67,7 +71,11 @@ class EventController extends ActionController
         $eventRegistration->setFeUser($feUser);
         $this->eventRegistrationRepository->add($eventRegistration);
 
-        return $this->redirect('detail', null, null, ['event' => $eventRegistration->event]);
+        $this->addFlashMessage(LocalizationUtility::translate(
+            'registration.success', 'sitepackage', [$eventRegistration->event->startDate->format('d.m.Y')])
+        );
+
+        return (new ForwardResponse('detail'))->withArguments(['event' => $eventRegistration->event]);
     }
 
     protected function setRegistrationFieldValuesToArguments(): void
@@ -78,7 +86,7 @@ class EventController extends ActionController
         }
 
         /** @var Event $event */
-        $event = $this->eventRepository->findByUid((int) $this->request->getArgument('event'));
+        $event = $this->eventRepository->findByUid((int)$this->request->getArgument('event'));
         if (!is_a($event, Event::class)) {
             return;
         }
@@ -90,7 +98,7 @@ class EventController extends ActionController
         $propertyMapping->allowProperties('event');
         $propertyMapping->allowCreationForSubProperty('event');
         $propertyMapping->allowModificationForSubProperty('event');
-        $arguments['eventRegistration']['event'] = (int) $this->request->getArgument('event');
+        $arguments['eventRegistration']['event'] = (int)$this->request->getArgument('event');
 
         $this->request = $this->request->withArguments($arguments);
     }
