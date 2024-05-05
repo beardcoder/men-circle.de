@@ -17,6 +17,7 @@
     "flowbite": "^2.3.0",
     "flowbite-typography": "^1.0.3",
     "leaflet": "^1.9.4",
-    "simple-aos": "^4.2.0"
+    "simple-aos": "^4.2.0",
+    "ukiyojs": "^4.2.0"
   }
 }
