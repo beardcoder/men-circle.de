@@ -1,0 +1,7 @@
+<f:layout name="SystemEmail" />
+<f:section name="Title">Registrierung von {eventRegistration.name} zum Event am {eventRegistration.event.startDate -> f:format.date(format: 'd.m.Y H:i')}</f:section>
+<f:section name="Main">{introduction}
+
+Vorname: {eventRegistration.firstName}
+Nachname: {eventRegistration.lastName}
+E-Mail: {eventRegistration.email}</f:section>

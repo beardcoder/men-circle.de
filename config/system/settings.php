@@ -153,6 +153,9 @@ return [
         'transport_smtp_password' => '',
         'transport_smtp_server' => '',
         'transport_smtp_username' => '',
+        'templateRootPaths' => [
+            500 => 'EXT:sitepackage/Resources/Private/Templates/Email'
+        ]
     ],
     'SYS' => [
         'caching' => [

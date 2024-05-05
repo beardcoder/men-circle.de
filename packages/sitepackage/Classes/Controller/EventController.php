@@ -11,10 +11,15 @@ use MensCircle\Sitepackage\Domain\Repository\EventRegistrationRepository;
 use MensCircle\Sitepackage\Domain\Repository\EventRepository;
 use MensCircle\Sitepackage\Domain\Repository\FrontendUserRepository;
 use MensCircle\Sitepackage\PageTitle\EventPageTitleProvider;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Uid\Uuid;
+use TYPO3\CMS\Core\Mail\FluidEmail;
+use TYPO3\CMS\Core\Mail\MailerInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class EventController extends ActionController
@@ -54,6 +59,10 @@ class EventController extends ActionController
         $this->setRegistrationFieldValuesToArguments();
     }
 
+    /**
+     * @throws TransportExceptionInterface
+     * @throws IllegalObjectTypeException
+     */
     public function registrationAction(EventRegistration $eventRegistration)
     {
         $feUser = $this->frontendUserRepository->findOneByEmail($eventRegistration->getEmail());
@@ -75,7 +84,9 @@ class EventController extends ActionController
             'registration.success', 'sitepackage', [$eventRegistration->event->startDate->format('d.m.Y')])
         );
 
-        return (new ForwardResponse('detail'))->withArguments(['event' => $eventRegistration->event]);
+        $this->sendMailToAdminOnRegistration($eventRegistration);
+
+        return (new ForwardResponse('detail'))->withArguments(['event' => $eventRegistration->event, 'success' => true]);
     }
 
     protected function setRegistrationFieldValuesToArguments(): void
@@ -101,5 +112,21 @@ class EventController extends ActionController
         $arguments['eventRegistration']['event'] = (int)$this->request->getArgument('event');
 
         $this->request = $this->request->withArguments($arguments);
+    }
+
+    /**
+     * @throws TransportExceptionInterface
+     */
+    private function sendMailToAdminOnRegistration(EventRegistration $eventRegistration): void
+    {
+        $email = new FluidEmail();
+        $email
+            ->to('hallo@mens-circle.de')
+            ->from(new Address('hallo@mens-circle.de', 'Men\'s Circle Website'))
+            ->subject('Neue Anmeldung von' . $eventRegistration->getName())
+            ->format(FluidEmail::FORMAT_BOTH) // send HTML and plaintext mail
+            ->setTemplate('MailToAdminOnRegistration')
+            ->assign('eventRegistration', $eventRegistration);
+        GeneralUtility::makeInstance(MailerInterface::class)->send($email);
     }
 }

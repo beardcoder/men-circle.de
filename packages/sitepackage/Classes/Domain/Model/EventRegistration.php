@@ -33,6 +33,11 @@ class EventRegistration extends AbstractEntity
         return $this->lastName;
     }
 
+    public function getName(): string
+    {
+        return $this->firstName . ' ' . $this->lastName;
+    }
+
     public function setLastName(string $lastName): void
     {
         $this->lastName = $lastName;
