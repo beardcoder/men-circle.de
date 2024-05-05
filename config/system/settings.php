@@ -1,14 +1,13 @@
 <?php
-
 return [
     'BE' => [
+        'compressionLevel' => 9,
         'debug' => true,
         'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$SG1DcUpaRmlUNWhQSk9hbw$80/3AsTzsp0+iK/uuXY739fJWzCvCetYZKw375Jd00Y',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
         ],
-        'compressionLevel' => 9,
     ],
     'DB' => [
         'Connections' => [
@@ -38,10 +37,10 @@ return [
         'backend' => [
             'backendFavicon' => '',
             'backendLogo' => '',
-            'loginBackgroundImage' => '',
+            'loginBackgroundImage' => 'EXT:sitepackage/Resources/Public/Images/Background.jpg',
             'loginFootnote' => '© 2023-2024 Build with ❤️ and mindfulness in Bavaria',
-            'loginHighlightColor' => '#B76F2B',
-            'loginLogo' => '',
+            'loginHighlightColor' => '#b76f2b',
+            'loginLogo' => 'EXT:sitepackage/Resources/Public/Images/logo-small.png',
             'loginLogoAlt' => '',
         ],
         'extensionmanager' => [
@@ -115,8 +114,8 @@ return [
         ],
     ],
     'FE' => [
-        'debug' => false,
         'compressionLevel' => 9,
+        'debug' => false,
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
             'options' => [],
@@ -147,15 +146,15 @@ return [
         ],
     ],
     'MAIL' => [
+        'templateRootPaths' => [
+            500 => 'EXT:sitepackage/Resources/Private/Templates/Email',
+        ],
         'transport' => 'sendmail',
         'transport_sendmail_command' => '/usr/local/bin/mailpit sendmail -t --smtp-addr 127.0.0.1:1025',
         'transport_smtp_encrypt' => '',
         'transport_smtp_password' => '',
         'transport_smtp_server' => '',
         'transport_smtp_username' => '',
-        'templateRootPaths' => [
-            500 => 'EXT:sitepackage/Resources/Private/Templates/Email'
-        ]
     ],
     'SYS' => [
         'caching' => [
