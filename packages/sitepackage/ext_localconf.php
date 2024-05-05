@@ -30,5 +30,13 @@ call_user_func(
             [EventController::class => ['registration']],
             ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
         );
+
+        $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['backend'] = [
+            'backendLogo' => 'EXT:sitepackage/Resources/Public/Images/logo-white.svg',
+            'loginBackgroundImage' => 'EXT:sitepackage/Resources/Public/Images/Background.jpg',
+            'loginLogo' => 'EXT:sitepackage/Resources/Public/Images/logo-small.png',
+            'loginHighlightColor' => '#b76f2b',
+            'loginFootnote' => '© 2023-2024 Build with ❤️ and mindfulness in Bavaria',
+        ];
     }
 );

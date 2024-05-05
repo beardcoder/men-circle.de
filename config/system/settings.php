@@ -36,11 +36,6 @@ return [
     'EXTENSIONS' => [
         'backend' => [
             'backendFavicon' => '',
-            'backendLogo' => '',
-            'loginBackgroundImage' => 'EXT:sitepackage/Resources/Public/Images/Background.jpg',
-            'loginFootnote' => '© 2023-2024 Build with ❤️ and mindfulness in Bavaria',
-            'loginHighlightColor' => '#b76f2b',
-            'loginLogo' => 'EXT:sitepackage/Resources/Public/Images/logo-small.png',
             'loginLogoAlt' => '',
         ],
         'extensionmanager' => [
