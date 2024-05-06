@@ -17,7 +17,6 @@ use Symfony\Component\Uid\Uuid;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\MailerInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -25,13 +24,11 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class EventController extends ActionController
 {
     public function __construct(
-        private EventRepository                 $eventRepository,
-        private EventRegistrationRepository     $eventRegistrationRepository,
-        private FrontendUserRepository          $frontendUserRepository,
+        private EventRepository $eventRepository,
+        private EventRegistrationRepository $eventRegistrationRepository,
+        private FrontendUserRepository $frontendUserRepository,
         private readonly EventPageTitleProvider $titleProvider
-    )
-    {
-    }
+    ) {}
 
     public function listAction()
     {
@@ -43,7 +40,7 @@ class EventController extends ActionController
     public function detailAction(Event $event, ?EventRegistration $eventRegistration = null)
     {
         $eventRegistrationToAssign = $eventRegistration ?? GeneralUtility::makeInstance(EventRegistration::class);
-        $this->titleProvider->setTitle($event->title . ' am ' . $event->startDate->format('d.m.Y'));
+        $this->titleProvider->setTitle($event->title.' am '.$event->startDate->format('d.m.Y'));
 
         $this->view->assign('event', $event);
         $this->view->assign('eventRegistration', $eventRegistrationToAssign);
@@ -80,13 +77,17 @@ class EventController extends ActionController
         $eventRegistration->setFeUser($feUser);
         $this->eventRegistrationRepository->add($eventRegistration);
 
-        $this->addFlashMessage(LocalizationUtility::translate(
-            'registration.success', 'sitepackage', [$eventRegistration->event->startDate->format('d.m.Y')])
+        $this->addFlashMessage(
+            LocalizationUtility::translate(
+                'registration.success',
+                'sitepackage',
+                [$eventRegistration->event->startDate->format('d.m.Y')]
+            )
         );
 
         $this->sendMailToAdminOnRegistration($eventRegistration);
 
-        return (new ForwardResponse('detail'))->withArguments(['event' => $eventRegistration->event, 'success' => true]);
+        return $this->redirect('detail', null, null, ['event' => $eventRegistration->event])->withHeader('no-cache', 1);
     }
 
     protected function setRegistrationFieldValuesToArguments(): void
@@ -97,7 +98,7 @@ class EventController extends ActionController
         }
 
         /** @var Event $event */
-        $event = $this->eventRepository->findByUid((int)$this->request->getArgument('event'));
+        $event = $this->eventRepository->findByUid((int) $this->request->getArgument('event'));
         if (!is_a($event, Event::class)) {
             return;
         }
@@ -109,7 +110,7 @@ class EventController extends ActionController
         $propertyMapping->allowProperties('event');
         $propertyMapping->allowCreationForSubProperty('event');
         $propertyMapping->allowModificationForSubProperty('event');
-        $arguments['eventRegistration']['event'] = (int)$this->request->getArgument('event');
+        $arguments['eventRegistration']['event'] = (int) $this->request->getArgument('event');
 
         $this->request = $this->request->withArguments($arguments);
     }
@@ -123,10 +124,11 @@ class EventController extends ActionController
         $email
             ->to('hallo@mens-circle.de')
             ->from(new Address('hallo@mens-circle.de', 'Men\'s Circle Website'))
-            ->subject('Neue Anmeldung von' . $eventRegistration->getName())
+            ->subject('Neue Anmeldung von'.$eventRegistration->getName())
             ->format(FluidEmail::FORMAT_BOTH) // send HTML and plaintext mail
             ->setTemplate('MailToAdminOnRegistration')
-            ->assign('eventRegistration', $eventRegistration);
+            ->assign('eventRegistration', $eventRegistration)
+        ;
         GeneralUtility::makeInstance(MailerInterface::class)->send($email);
     }
 }
