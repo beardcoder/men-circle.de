@@ -87,7 +87,12 @@ class EventController extends ActionController
 
         $this->sendMailToAdminOnRegistration($eventRegistration);
 
-        return $this->redirect('detail', null, null, ['event' => $eventRegistration->event])->withHeader('no-cache', 1);
+        return $this->redirect('detail', null, null, ['event' => $eventRegistration->event])
+            ->withHeader('no-cache', 1)
+            ->withHeader('Pragma', 'no-cache')
+            ->withHeader('Cache-Control', 'no-cache, no-store')
+            ->withHeader('X-SFC-Cachable', '0')
+        ;
     }
 
     protected function setRegistrationFieldValuesToArguments(): void
