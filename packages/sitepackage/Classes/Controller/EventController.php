@@ -18,6 +18,7 @@ use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\MailerInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -87,11 +88,14 @@ class EventController extends ActionController
 
         $this->sendMailToAdminOnRegistration($eventRegistration);
 
-        return $this->redirect('detail', null, null, ['event' => $eventRegistration->event])
-            ->withHeader('Pragma', 'no-cache')
-            ->withHeader('Cache-Control', 'no-cache, no-store')
-            ->withHeader('X-SFC-Cachable', '0')
-        ;
+        $redirectUrl =  $this->uriBuilder->reset()->setTargetPageUid(3)->setNoCache(true)->uriFor(
+            'detail',
+            [
+                'event' => $eventRegistration->event->getUid(),
+            ],
+        );
+
+        return $this->redirectToUri($redirectUrl);
     }
 
     protected function setRegistrationFieldValuesToArguments(): void
