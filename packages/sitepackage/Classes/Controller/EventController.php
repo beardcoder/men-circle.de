@@ -18,7 +18,6 @@ use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\MailerInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -41,7 +40,7 @@ class EventController extends ActionController
     public function detailAction(Event $event, ?EventRegistration $eventRegistration = null)
     {
         $eventRegistrationToAssign = $eventRegistration ?? GeneralUtility::makeInstance(EventRegistration::class);
-        $this->titleProvider->setTitle($event->title.' am '.$event->startDate->format('d.m.Y'));
+        $this->titleProvider->setTitle($event->title . ' am ' . $event->startDate->format('d.m.Y'));
 
         $this->view->assign('event', $event);
         $this->view->assign('eventRegistration', $eventRegistrationToAssign);
@@ -106,7 +105,7 @@ class EventController extends ActionController
         }
 
         /** @var Event $event */
-        $event = $this->eventRepository->findByUid((int) $this->request->getArgument('event'));
+        $event = $this->eventRepository->findByUid((int)$this->request->getArgument('event'));
         if (!is_a($event, Event::class)) {
             return;
         }
@@ -118,7 +117,7 @@ class EventController extends ActionController
         $propertyMapping->allowProperties('event');
         $propertyMapping->allowCreationForSubProperty('event');
         $propertyMapping->allowModificationForSubProperty('event');
-        $arguments['eventRegistration']['event'] = (int) $this->request->getArgument('event');
+        $arguments['eventRegistration']['event'] = (int)$this->request->getArgument('event');
 
         $this->request = $this->request->withArguments($arguments);
     }
@@ -132,7 +131,7 @@ class EventController extends ActionController
         $email
             ->to('hallo@mens-circle.de')
             ->from(new Address('hallo@mens-circle.de', 'Men\'s Circle Website'))
-            ->subject('Neue Anmeldung von'.$eventRegistration->getName())
+            ->subject('Neue Anmeldung von' . $eventRegistration->getName())
             ->format(FluidEmail::FORMAT_BOTH) // send HTML and plaintext mail
             ->setTemplate('MailToAdminOnRegistration')
             ->assign('eventRegistration', $eventRegistration)

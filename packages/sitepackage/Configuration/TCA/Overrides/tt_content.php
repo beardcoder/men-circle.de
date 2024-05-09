@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use B13\Container\Tca\ContainerConfiguration;
@@ -9,7 +10,7 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 call_user_func(function () {
     $extensionKey = 'sitepackage';
-    $signature = static fn (string $plugin): string => strtolower(
+    $signature = static fn(string $plugin): string => strtolower(
         sprintf('%s_%s', str_replace('_', '', $extensionKey), $plugin)
     );
 

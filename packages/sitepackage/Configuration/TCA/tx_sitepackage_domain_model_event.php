@@ -79,14 +79,14 @@ $tca = [
                     'eval' => 'uniqueInPid',
                     'size' => 50,
                     'appearance' => [
-                        'prefix' => EventSlugService::class.'->getPrefix',
+                        'prefix' => EventSlugService::class . '->getPrefix',
                     ],
                     'generatorOptions' => [
                         'fields' => ['title', 'start_date'],
                         'replacements' => [
                             '/' => '-',
                         ],
-                        'postModifiers' => [EventSlugService::class.'->modifySlug'],
+                        'postModifiers' => [EventSlugService::class . '->modifySlug'],
                     ],
                     'fallbackCharacter' => '-',
                     'default' => '',

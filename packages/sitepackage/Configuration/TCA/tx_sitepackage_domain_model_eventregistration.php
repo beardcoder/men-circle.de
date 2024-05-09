@@ -15,7 +15,7 @@ $tca = [
         '1' => [
             'showitem' => '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
             first_name, last_name, email, fe_user,
-                 --div--;'.LangService::transDb('tx_sitepackage_domain_model_eventregistration.tabs.access').',
+                 --div--;' . LangService::transDb('tx_sitepackage_domain_model_eventregistration.tabs.access') . ',
                     --palette--;;hidden,
                     --palette--;;access,',
         ],
@@ -23,7 +23,7 @@ $tca = [
     'palettes' => [
         'hidden' => [
             'showitem' => '
-                hidden;'.LangService::transDb('tx_sitepackage_domain_model_eventregistration.hidden').'
+                hidden;' . LangService::transDb('tx_sitepackage_domain_model_eventregistration.hidden') . '
             ',
         ],
         'access' => [
