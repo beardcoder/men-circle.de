@@ -7,8 +7,7 @@
 ################
 #### HELPER ####
 ################
-@import 'EXT:sitepackage/Configuration/TypoScript/Helper/DynamicContent.typoscript'
-@import 'EXT:sitepackage/Configuration/TypoScript/Helper/ContentElements.typoscript'
+@import 'EXT:sitepackage/Configuration/TypoScript/Helper/*.typoscript'
 
 #################
 #### Content ####

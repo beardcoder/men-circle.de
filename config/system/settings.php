@@ -1,5 +1,4 @@
 <?php
-
 return [
     'BE' => [
         'compressionLevel' => 9,
@@ -37,7 +36,7 @@ return [
     'EXTENSIONS' => [
         'backend' => [
             'backendFavicon' => '',
-            'backendLogo' => 'EXT:sitepackage/Resources/Public/Images/logo-small.png',
+            'backendLogo' => 'EXT:sitepackage/Resources/Public/Images/logo-white.svg',
             'loginBackgroundImage' => 'EXT:sitepackage/Resources/Public/Images/Background.jpg',
             'loginFootnote' => '© 2023-2024 Build with ❤️ and mindfulness in Bavaria',
             'loginHighlightColor' => '#b76f2b',

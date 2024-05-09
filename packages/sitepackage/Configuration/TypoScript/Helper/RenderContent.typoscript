@@ -1,0 +1,6 @@
+lib.renderContent = RECORDS
+lib.renderContent {
+    tables = tt_content
+    source.field = contentUid
+    dontCheckPid = 1
+}
