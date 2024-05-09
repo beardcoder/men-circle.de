@@ -4,37 +4,37 @@
             <h1
                 class="mb-4 text-center text-4xl font-bold tracking-tight text-stone-900 dark:text-white lg:text-5xl"
                 data-aos="fade-up"
-            >{data.header}</h1>
+            >{data.header -> f:format.html()}</h1>
         </f:case>
         <f:case value="2">
             <h2
                 class="mb-4 text-center text-4xl font-bold tracking-tight text-stone-900 dark:text-white lg:text-5xl"
                 data-aos="fade-up"
-            >{data.header}</h2>
+            >{data.header -> f:format.html()}</h2>
         </f:case>
         <f:case value="3">
             <h3
                 class="mb-4 text-center text-4xl font-bold tracking-tight text-stone-900 dark:text-white lg:text-5xl"
                 data-aos="fade-up"
-            >{data.header}</h3>
+            >{data.header -> f:format.html()}</h3>
         </f:case>
         <f:case value="4">
             <h4
                 class="mb-4 text-center text-4xl font-bold tracking-tight text-stone-900 dark:text-white lg:text-5xl"
                 data-aos="fade-up"
-            >{data.header}</h4>
+            >{data.header -> f:format.html()}</h4>
         </f:case>
         <f:case value="5">
             <h5
                 class="mb-4 text-center text-4xl font-bold tracking-tight text-stone-900 dark:text-white lg:text-5xl"
                 data-aos="fade-up"
-            >{data.header}</h5>
+            >{data.header -> f:format.html()}</h5>
         </f:case>
         <f:case value="6">
             <h6
                 class="mb-4 text-center text-4xl font-bold tracking-tight text-stone-900 dark:text-white lg:text-5xl"
                 data-aos="fade-up"
-            >{data.header}</h6>
+            >{data.header -> f:format.html()}</h6>
         </f:case>
         <f:case value="100">
             <f:comment> -- do not show header --</f:comment>

@@ -5,11 +5,11 @@
 >
 <section class="relative w-full">
     <div class="relative z-10 flex max-w-[100vw] items-center pb-24 pt-40 xl:aspect-video">
-        <div class="mx-auto max-w-5xl px-6">
-            <h1 class="font-header text-4xl font-black uppercase text-white sm:text-4xl md:text-8xl md:leading-none">
-                {data.header}
+        <div class="mx-auto max-w-screen-xl w-full px-6">
+            <h1 class="font-header font-black uppercase text-white text-[8vw] leading-none">
+                {data.header -> f:format.html()}
             </h1>
-            <div class="format mb-12 mt-8 max-w-3xl text-2xl text-white">
+            <div class="format mb-12 mt-8 max-w-3xl text-xl text-white">
                 {data.bodytext -> f:format.raw()}
             </div>
             <f:if condition="{data.link}">

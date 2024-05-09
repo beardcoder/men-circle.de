@@ -1,4 +1,5 @@
 import "@fontsource-variable/jost";
+import "@fontsource/nothing-you-could-do";
 import "./Main.css";
 import "leaflet/dist/leaflet.css";
 //@ts-ignore
@@ -11,18 +12,13 @@ import("flowbite").then(({ initFlowbite }) => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  new Ukiyo('.parallax', {
-      scale: 1.2, // 1~2 is recommended
-      speed: 1.6, // 1~2 is recommended
-      willChange: true,
-      wrapperClass: "ukiyo-wrapper",
-      externalRAF: false
-  })
+  new Ukiyo('.parallax')
 
   AOS.init({ once: true });
 
   const mapEle = document.getElementById("map");
   if (mapEle) {
+    //@ts-ignore
     import("leaflet").then((L) => {
       const map = L.map("map", {
         zoomControl: false,

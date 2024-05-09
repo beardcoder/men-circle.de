@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
-// @ts-ignore
 import defaultTheme from "tailwindcss/defaultTheme";
+// @ts-ignore
 import typography from "flowbite-typography";
 // @ts-ignore
 import flowbite from "flowbite/plugin";
@@ -44,6 +44,7 @@ export default {
       },
       fontFamily: {
         sans: ['"Jost Variable"', ...defaultTheme.fontFamily.sans],
+        special: ['"Nothing You Could Do"', ...defaultTheme.fontFamily.serif],
       },
       colors: {
         primary: {

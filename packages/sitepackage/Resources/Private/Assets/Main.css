@@ -12,3 +12,13 @@ html, body {
         filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
     }
 }
+
+h1 span {
+    @apply font-special text-[0.5em] align-super;
+}
+
+h2, h3, h4, h5, h6 {
+    span {
+        @apply text-primary
+    }
+}
