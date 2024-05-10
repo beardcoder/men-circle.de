@@ -1,14 +1,16 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<html data-namespace-typo3-fluid="true"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers">
 <formvh:renderRenderable renderable="{element}">
-    <f:render partial="Field/Field" arguments="{element: element}" contentAs="elementContent">
+    <f:render arguments="{element: element}" contentAs="elementContent" partial="Field/Field">
         <f:form.textarea
-            property="{element.identifier}"
-            id="{element.uniqueIdentifier}"
+            additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}"
             class="{element.properties.elementClassAttribute} form-control focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light block w-full border border-stone-300 bg-stone-50 p-2.5 text-sm text-stone-900 shadow-sm dark:border-stone-600 dark:bg-stone-700 dark:text-white dark:placeholder-stone-400"
-            rows="{element.properties.rows}"
             cols="{element.properties.cols}"
             errorClass="{element.properties.elementErrorClassAttribute}"
-            additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}"
+            id="{element.uniqueIdentifier}"
+            property="{element.identifier}"
+            rows="{element.properties.rows}"
         />
     </f:render>
 </formvh:renderRenderable>

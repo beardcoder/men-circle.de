@@ -20,7 +20,7 @@
 
 
 plugin.tx_picture {
-    addWebp = 1
+  addWebp = 1
 }
 
 ##############
@@ -28,183 +28,185 @@ plugin.tx_picture {
 ##############
 page = PAGE
 page {
-    typeNum = 0
-    shortcutIcon = favicon.ico
+  typeNum = 0
+  shortcutIcon = favicon.ico
 
-    10 = FLUIDTEMPLATE
-    10 {
-        # Template names will be generated automatically by converting the applied
-        # backend_layout, there is no explicit mapping necessary anymore.
-        #
-        # BackendLayout Key
-        # subnavigation_right_2_columns -> SubnavigationRight2Columns.html
-        #
-        # Backend Record
-        # uid: 1 -> 1.html
-        #
-        # Database Entry
-        # value: -1 -> None.html
-        # value: pagets__subnavigation_right_2_columns -> SubnavigationRight2Columns.html
-        templateName = TEXT
-        templateName {
-            cObject = TEXT
-            cObject {
-                data = pagelayout
-                required = 1
-                case = uppercamelcase
-                split {
-                    token = pagets__
-                    cObjNum = 1
-                    1.current = 1
-                }
+  10 = FLUIDTEMPLATE
+  10 {
+    # Template names will be generated automatically by converting the applied
+    # backend_layout, there is no explicit mapping necessary anymore.
+    #
+    # BackendLayout Key
+    # subnavigation_right_2_columns -> SubnavigationRight2Columns.html
+    #
+    # Backend Record
+    # uid: 1 -> 1.html
+    #
+    # Database Entry
+    # value: -1 -> None.html
+    # value: pagets__subnavigation_right_2_columns -> SubnavigationRight2Columns.html
+    templateName = TEXT
+    templateName {
+      cObject = TEXT
+      cObject {
+        data = pagelayout
+        required = 1
+        case = uppercamelcase
+        split {
+          token = pagets__
+          cObjNum = 1
+          1.current = 1
+        }
+      }
+
+      ifEmpty = Default
+    }
+
+    templateRootPaths {
+      0 = EXT:sitepackage/Resources/Private/Templates/Page/
+      1 = {$page.fluidtemplate.templateRootPath}
+    }
+
+    partialRootPaths {
+      0 = EXT:sitepackage/Resources/Private/Partials/Page/
+      1 = {$page.fluidtemplate.partialRootPath}
+    }
+
+    layoutRootPaths {
+      0 = EXT:sitepackage/Resources/Private/Layouts/Page/
+      1 = {$page.fluidtemplate.layoutRootPath}
+    }
+
+    dataProcessing {
+      10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+      10 {
+        references.fieldName = media
+      }
+
+      20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      20 {
+        levels = 2
+        includeSpacer = 1
+        as = mainnavigation
+      }
+
+      20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      20 {
+        levels = 2
+        includeSpacer = 1
+        as = mainnavigation
+      }
+
+      50 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      50 {
+        special = directory
+        special.value = 6
+        levels = 1
+        as = footernavigation
+      }
+    }
+  }
+
+  meta {
+    viewport = {$page.meta.viewport}
+    robots = {$page.meta.robots}
+    apple-mobile-web-app-capable = {$page.meta.apple-mobile-web-app-capable}
+    language = {$page.meta.language}
+    description = {$page.meta.description}
+    description {
+      override.field = description
+    }
+
+    author = {$page.meta.author}
+    author {
+      override.field = author
+    }
+
+    keywords = {$page.meta.keywords}
+    keywords {
+      override.field = keywords
+    }
+
+    X-UA-Compatible = {$page.meta.compatible}
+    X-UA-Compatible {
+      attribute = http-equiv
+    }
+
+    # OpenGraph Tags
+    og:title {
+      attribute = property
+      field = title
+    }
+
+    og:language = {$page.meta.language}
+
+    og:site_name {
+      attribute = property
+      data = TSFE:tmpl|setup|sitetitle
+    }
+
+    og:description = {$page.meta.description}
+    og:description {
+      attribute = property
+      field = description
+    }
+
+    og:image {
+      attribute = property
+      stdWrap.cObject = FILES
+      stdWrap.cObject {
+        references {
+          data = levelfield:-1, media, slide
+        }
+
+        maxItems = 1
+        renderObj = COA
+        renderObj {
+          10 = IMG_RESOURCE
+          10 {
+            file {
+              import.data = file:current:uid
+              treatIdAsReference = 1
+              width = 1280c
+              height = 720c
             }
 
-            ifEmpty = Default
-        }
-
-        templateRootPaths {
-            0 = EXT:sitepackage/Resources/Private/Templates/Page/
-            1 = {$page.fluidtemplate.templateRootPath}
-        }
-
-        partialRootPaths {
-            0 = EXT:sitepackage/Resources/Private/Partials/Page/
-            1 = {$page.fluidtemplate.partialRootPath}
-        }
-
-        layoutRootPaths {
-            0 = EXT:sitepackage/Resources/Private/Layouts/Page/
-            1 = {$page.fluidtemplate.layoutRootPath}
-        }
-
-        dataProcessing {
-            10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
-            10 {
-                references.fieldName = media
+            stdWrap {
+              typolink {
+                parameter.data = TSFE:lastImgResourceInfo|3
+                returnLast = url
+                forceAbsoluteUrl = 1
+              }
             }
-
-            20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
-            20 {
-                levels = 2
-                includeSpacer = 1
-                as = mainnavigation
-            }
-
-            20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
-            20 {
-                levels = 2
-                includeSpacer = 1
-                as = mainnavigation
-            }
-
-            50 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
-            50 {
-                special = directory
-                special.value = 6
-                levels = 1
-                as = footernavigation
-            }
+          }
         }
+      }
     }
+  }
 
-    meta {
-        viewport = {$page.meta.viewport}
-        robots = {$page.meta.robots}
-        apple-mobile-web-app-capable = {$page.meta.apple-mobile-web-app-capable}
-        language = {$page.meta.language}
-        description = {$page.meta.description}
-        description {
-            override.field = description
-        }
+  includeCSSLibs {
 
-        author = {$page.meta.author}
-        author {
-            override.field = author
-        }
+  }
 
-        keywords = {$page.meta.keywords}
-        keywords {
-            override.field = keywords
-        }
+  includeCSS {
 
-        X-UA-Compatible = {$page.meta.compatible}
-        X-UA-Compatible {
-            attribute = http-equiv
-        }
+  }
 
-        # OpenGraph Tags
-        og:title {
-            attribute = property
-            field = title
-        }
+  includeJSLibs {
 
-        og:site_name {
-            attribute = property
-            data = TSFE:tmpl|setup|sitetitle
-        }
+  }
 
-        og:description = {$page.meta.description}
-        og:description {
-            attribute = property
-            field = description
-        }
+  includeJS {
 
-        og:image {
-            attribute = property
-            stdWrap.cObject = FILES
-            stdWrap.cObject {
-                references {
-                    data = levelfield:-1, media, slide
-                }
+  }
 
-                maxItems = 1
-                renderObj = COA
-                renderObj {
-                    10 = IMG_RESOURCE
-                    10 {
-                        file {
-                            import.data = file:current:uid
-                            treatIdAsReference = 1
-                            width = 1280c
-                            height = 720c
-                        }
+  includeJSFooterlibs {
 
-                        stdWrap {
-                            typolink {
-                                parameter.data = TSFE:lastImgResourceInfo|3
-                                returnLast = url
-                                forceAbsoluteUrl = 1
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+  }
 
-    includeCSSLibs {
+  includeJSFooter {
 
-    }
-
-    includeCSS {
-
-    }
-
-    includeJSLibs {
-
-    }
-
-    includeJS {
-
-    }
-
-    includeJSFooterlibs {
-
-    }
-
-    includeJSFooter {
-
-    }
+  }
 }
 
 
@@ -214,115 +216,115 @@ page {
 
 ################
 config {
-    absRefPrefix = auto
-    no_cache = {$config.no_cache}
-    uniqueLinkVars = 1
-    pageTitleFirst = 1
-    linkVars = L
-    prefixLocalAnchors = {$config.prefixLocalAnchors}
-    renderCharset = utf-8
-    metaCharset = utf-8
-    doctype = html5
-    removeDefaultJS = {$config.removeDefaultJS}
-    inlineStyle2TempFile = 1
-    admPanel = {$config.admPanel}
-    debug = 0
-    cache_period = 86400
-    sendCacheHeaders = {$config.sendCacheHeaders}
-    intTarget =
-    extTarget =
-    disablePrefixComment = 1
-    index_enable = 1
-    index_externals = 1
-    index_metatags = 1
-    headerComment = {$config.headerComment}
+  absRefPrefix = auto
+  no_cache = {$config.no_cache}
+  uniqueLinkVars = 1
+  pageTitleFirst = 1
+  linkVars = L
+  prefixLocalAnchors = {$config.prefixLocalAnchors}
+  renderCharset = utf-8
+  metaCharset = utf-8
+  doctype = html5
+  removeDefaultJS = {$config.removeDefaultJS}
+  inlineStyle2TempFile = 1
+  admPanel = {$config.admPanel}
+  debug = 0
+  cache_period = 86400
+  sendCacheHeaders = {$config.sendCacheHeaders}
+  intTarget =
+  extTarget =
+  disablePrefixComment = 1
+  index_enable = 1
+  index_externals = 1
+  index_metatags = 1
+  headerComment = {$config.headerComment}
 
-    // Disable Image Upscaling
-    noScaleUp = 1
+  // Disable Image Upscaling
+  noScaleUp = 1
 
-    // Compression and Concatenation of CSS and JS Files
-    compressJs = 0
-    compressCss = 0
-    concatenateJs = 0
-    concatenateCss = 0
-    spamProtectEmailAddresses = 2
+  // Compression and Concatenation of CSS and JS Files
+  compressJs = 0
+  compressCss = 0
+  concatenateJs = 0
+  concatenateCss = 0
+  spamProtectEmailAddresses = 2
 
-    pageTitleProviders {
-        events {
-            provider = MensCircle\Sitepackage\PageTitle\EventPageTitleProvider
-            before = record
-            after = altPageTitle
-        }
+  pageTitleProviders {
+    events {
+      provider = MensCircle\Sitepackage\PageTitle\EventPageTitleProvider
+      before = record
+      after = altPageTitle
     }
+  }
 }
 
 plugin.tx_sitepackage {
-    view {
-        templateRootPaths {
-            0 = EXT:sitepackage/Resources/Private/Templates/Event
-        }
-
-        partialRootPaths {
-            0 = EXT:sitepackage/Resources/Private/Partials/Event
-        }
-
-        layoutRootPaths {
-            0 = EXT:sitepackage/Resources/Private/Layouts/Event
-        }
+  view {
+    templateRootPaths {
+      0 = EXT:sitepackage/Resources/Private/Templates/Event
     }
 
-    persistence {
-        storagePid = 2
+    partialRootPaths {
+      0 = EXT:sitepackage/Resources/Private/Partials/Event
     }
 
-    settings {
-        singleViewPageUid = {$plugin.tx_sitepackage.settings.singleViewPageUid}
+    layoutRootPaths {
+      0 = EXT:sitepackage/Resources/Private/Layouts/Event
     }
+  }
+
+  persistence {
+    storagePid = 2
+  }
+
+  settings {
+    singleViewPageUid = {$plugin.tx_sitepackage.settings.singleViewPageUid}
+  }
 }
 
 
 plugin.tx_seo {
-    config {
-        xmlSitemap {
-            sitemaps {
-                events {
-                    provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
-                    config {
-                        table = tx_sitepackage_domain_model_event
-                        sortField = start_date
-                        lastModifiedField = tstamp
-                        pid = 2
-                        recursive = 0
-                        url {
-                            pageId = 3
-                            fieldToParameterMap {
-                                uid = tx_sitepackage_eventdetail[event]
-                            }
+  config {
+    xmlSitemap {
+      sitemaps {
+        events {
+          provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
+          config {
+            table = tx_sitepackage_domain_model_event
+            sortField = start_date
+            lastModifiedField = tstamp
+            pid = 2
+            recursive = 0
+            url {
+              pageId = 3
+              fieldToParameterMap {
+                uid = tx_sitepackage_eventdetail[event]
+              }
 
-                            additionalGetParameters {
-                                tx_sitepackage_eventdetail.controller = Event
-                                tx_sitepackage_eventdetail.action = detail
-                            }
-                        }
-                    }
-                }
+              additionalGetParameters {
+                tx_sitepackage_eventdetail.controller = Event
+                tx_sitepackage_eventdetail.action = detail
+              }
             }
+          }
         }
+      }
     }
+  }
 }
 
 plugin.tx_form {
-    settings {
-        yamlConfigurations {
-            100 = EXT:sitepackage/Configuration/Forms.yaml
-        }
+  settings {
+    yamlConfigurations {
+      100 = EXT:sitepackage/Configuration/Forms.yaml
     }
+  }
 }
 
 module.tx_form {
-    settings {
-        yamlConfigurations {
-            100 = EXT:sitepackage/Configuration/Forms.yaml
-        }
+  settings {
+    yamlConfigurations {
+      100 = EXT:sitepackage/Configuration/Forms.yaml
     }
+  }
 }

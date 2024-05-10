@@ -1,4 +1,3 @@
-
 renderingOptions:
   submitButtonLabel: Absenden
   fluidAdditionalAttributes:
@@ -8,8 +7,7 @@ label: Kontakt
 type: Form
 prototypeName: standard
 finishers:
-  -
-    options:
+  - options:
       subject: 'Nachricht von: {name}'
       recipients:
         hallo@mens-circle.de: 'Markus Sommer'
@@ -21,22 +19,19 @@ finishers:
         language: default
       title: 'E-Mail von Mens Circle'
     identifier: EmailToReceiver
-  -
-    options:
+  - options:
       message: 'Vielen dank Für deine Nachticht. Ich melde mich bei dir.'
       contentElementUid: ''
     identifier: Confirmation
 renderables:
-  -
-    renderingOptions:
+  - renderingOptions:
       previousButtonLabel: 'Vorherige Seite'
       nextButtonLabel: 'Nächster Schritt'
     identifier: page-1
     label: ''
     type: Page
     renderables:
-      -
-        defaultValue: ''
+      - defaultValue: ''
         identifier: name
         label: Name
         type: Text
@@ -44,10 +39,8 @@ renderables:
           fluidAdditionalAttributes:
             placeholder: Name
         validators:
-          -
-            identifier: NotEmpty
-      -
-        defaultValue: ''
+          - identifier: NotEmpty
+      - defaultValue: ''
         identifier: email
         label: E-Mail
         type: Text
@@ -56,12 +49,9 @@ renderables:
             placeholder: 'Email address'
             required: required
         validators:
-          -
-            identifier: NotEmpty
-          -
-            identifier: EmailAddress
-      -
-        defaultValue: ''
+          - identifier: NotEmpty
+          - identifier: EmailAddress
+      - defaultValue: ''
         identifier: message
         label: Nachricht
         type: Textarea
@@ -70,5 +60,4 @@ renderables:
             placeholder: ''
             required: required
         validators:
-          -
-            identifier: NotEmpty
+          - identifier: NotEmpty

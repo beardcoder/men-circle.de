@@ -1,14 +1,16 @@
 <html
-    data-namespace-typo3-fluid="true"
-    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-    xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
+  data-namespace-typo3-fluid="true"
+  xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+  xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
 >
 <vac:asset.vite entry="EXT:sitepackage/Resources/Private/Assets/Main.ts" />
-<div class="overflow-y-auto overflow-x-hidden text-base text-stone-800 lg:text-lg">
-    <f:render partial="Header" arguments="{ mainnavigation: mainnavigation, dark: 1 }" />
+<f:spaceless>
+  <div class="overflow-y-auto overflow-x-hidden text-base text-stone-800 lg:text-lg">
+    <f:render arguments="{ mainnavigation: mainnavigation, dark: 1 }" partial="Header" />
     <main>
-        <f:render section="Main" />
+      <f:render section="Main" />
     </main>
-    <f:render partial="Footer" arguments="{_all}" />
-</div>
+    <f:render arguments="{_all}" partial="Footer" />
+  </div>
+</f:spaceless>
 </html>

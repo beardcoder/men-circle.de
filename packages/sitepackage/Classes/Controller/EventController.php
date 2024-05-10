@@ -16,19 +16,24 @@ use Symfony\Component\Mime\Address;
 use Symfony\Component\Uid\Uuid;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\MailerInterface;
+use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
+use TYPO3\CMS\Extbase\Service\ImageService;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class EventController extends ActionController
 {
     public function __construct(
-        private EventRepository $eventRepository,
-        private EventRegistrationRepository $eventRegistrationRepository,
-        private FrontendUserRepository $frontendUserRepository,
-        private readonly EventPageTitleProvider $titleProvider
-    ) {}
+        private EventRepository                 $eventRepository,
+        private EventRegistrationRepository     $eventRegistrationRepository,
+        private FrontendUserRepository          $frontendUserRepository,
+        private readonly EventPageTitleProvider $titleProvider,
+        private readonly ImageService           $imageService
+    )
+    {
+    }
 
     public function listAction()
     {
@@ -40,7 +45,24 @@ class EventController extends ActionController
     public function detailAction(Event $event, ?EventRegistration $eventRegistration = null)
     {
         $eventRegistrationToAssign = $eventRegistration ?? GeneralUtility::makeInstance(EventRegistration::class);
-        $this->titleProvider->setTitle($event->title . ' am ' . $event->startDate->format('d.m.Y'));
+        $pageTitle = $event->title . ' am ' . $event->startDate->format('d.m.Y');
+        $this->titleProvider->setTitle($pageTitle);
+
+        $metaTagManager = GeneralUtility::makeInstance(MetaTagManagerRegistry::class)->getManagerForProperty('og:title');
+        $metaTagManager->addProperty('og:title', $pageTitle);
+        $metaTagManager->addProperty('og:description', $event->description);
+        $metaTagManager->addProperty('og:image', $this->imageService->getImageUri(
+            $event->getImage()->getOriginalResource(),
+            true
+        ));
+
+
+        $metaTagManager->addProperty('og:url', $this->uriBuilder->reset()->setTargetPageUid(3)->uriFor(
+            'detail',
+            [
+                'event' => $event->getUid(),
+            ],
+        ));
 
         $this->view->assign('event', $event);
         $this->view->assign('eventRegistration', $eventRegistrationToAssign);
@@ -54,6 +76,31 @@ class EventController extends ActionController
     public function initializeRegistrationAction(): void
     {
         $this->setRegistrationFieldValuesToArguments();
+    }
+
+    protected function setRegistrationFieldValuesToArguments(): void
+    {
+        $arguments = $this->request->getArguments();
+        if (!isset($arguments['event'])) {
+            return;
+        }
+
+        /** @var Event $event */
+        $event = $this->eventRepository->findByUid((int)$this->request->getArgument('event'));
+        if (!is_a($event, Event::class)) {
+            return;
+        }
+
+        $registrationMvcArgument = $this->arguments->getArgument('eventRegistration');
+        $propertyMapping = $registrationMvcArgument->getPropertyMappingConfiguration();
+
+        // Set event to registration (required for validation)
+        $propertyMapping->allowProperties('event');
+        $propertyMapping->allowCreationForSubProperty('event');
+        $propertyMapping->allowModificationForSubProperty('event');
+        $arguments['eventRegistration']['event'] = (int)$this->request->getArgument('event');
+
+        $this->request = $this->request->withArguments($arguments);
     }
 
     /**
@@ -87,7 +134,7 @@ class EventController extends ActionController
 
         $this->sendMailToAdminOnRegistration($eventRegistration);
 
-        $redirectUrl =  $this->uriBuilder->reset()->setTargetPageUid(3)->setNoCache(true)->uriFor(
+        $redirectUrl = $this->uriBuilder->reset()->setTargetPageUid(3)->setNoCache(true)->uriFor(
             'detail',
             [
                 'event' => $eventRegistration->event->getUid(),
@@ -95,31 +142,6 @@ class EventController extends ActionController
         );
 
         return $this->redirectToUri($redirectUrl);
-    }
-
-    protected function setRegistrationFieldValuesToArguments(): void
-    {
-        $arguments = $this->request->getArguments();
-        if (!isset($arguments['event'])) {
-            return;
-        }
-
-        /** @var Event $event */
-        $event = $this->eventRepository->findByUid((int)$this->request->getArgument('event'));
-        if (!is_a($event, Event::class)) {
-            return;
-        }
-
-        $registrationMvcArgument = $this->arguments->getArgument('eventRegistration');
-        $propertyMapping = $registrationMvcArgument->getPropertyMappingConfiguration();
-
-        // Set event to registration (required for validation)
-        $propertyMapping->allowProperties('event');
-        $propertyMapping->allowCreationForSubProperty('event');
-        $propertyMapping->allowModificationForSubProperty('event');
-        $arguments['eventRegistration']['event'] = (int)$this->request->getArgument('event');
-
-        $this->request = $this->request->withArguments($arguments);
     }
 
     /**
@@ -134,8 +156,7 @@ class EventController extends ActionController
             ->subject('Neue Anmeldung von' . $eventRegistration->getName())
             ->format(FluidEmail::FORMAT_BOTH) // send HTML and plaintext mail
             ->setTemplate('MailToAdminOnRegistration')
-            ->assign('eventRegistration', $eventRegistration)
-        ;
+            ->assign('eventRegistration', $eventRegistration);
         GeneralUtility::makeInstance(MailerInterface::class)->send($email);
     }
 }
