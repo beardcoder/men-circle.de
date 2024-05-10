@@ -13,5 +13,5 @@ fields:
     useExistingField: true
     type: File
     minitems: 1
-    maxitems: 1
+    maxitems: 2
     allowed: common-image-types

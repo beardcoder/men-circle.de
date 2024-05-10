@@ -23,11 +23,28 @@
         </div>
     </div>
     <div class="absolute inset-0 w-full after:absolute after:inset-0 after:bg-black after:bg-opacity-40">
-        <i:image
-            alt="{data.image.0.alternative}" class="w-full h-full object-cover object-center parallax" image="{data.image.0}"
-            maxHeight="1600" maxWidth="2560"
-            variants="800, 1000"
-        />
+        <div class="absolute inset-0 w-full">
+            <i:image
+                alt="{data.image.0.alternative}"
+                class="w-full h-full object-cover object-center parallax"
+                image="{data.image.0}"
+                maxHeight="1600"
+                maxWidth="2560"
+                variants="800, 1000"
+            />
+        </div>
+        <f:if condition="{data.image.1}">
+            <div class="absolute inset-0 w-full">
+                <i:image
+                    alt="{data.image.1.alternative}"
+                    class="w-full h-full object-cover object-center"
+                    image="{data.image.1}"
+                    maxHeight="1600"
+                    maxWidth="2560"
+                    variants="800, 1000"
+                />
+            </div>
+        </f:if>
     </div>
 </section>
 </html>
