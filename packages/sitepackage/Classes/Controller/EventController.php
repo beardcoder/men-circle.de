@@ -60,7 +60,7 @@ class EventController extends ActionController
         $metaTagManager->addProperty('og:image:height', '600');
         $metaTagManager->addProperty('og:image:alt', $event->getImage()->getOriginalResource()->getAlternative());
 
-        $metaTagManager->addProperty('og:url', $this->uriBuilder->reset()->setTargetPageUid(3)->uriFor(
+        $metaTagManager->addProperty('og:url', $this->uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(3)->uriFor(
             'detail',
             [
                 'event' => $event->getUid(),
