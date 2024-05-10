@@ -26,14 +26,12 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class EventController extends ActionController
 {
     public function __construct(
-        private EventRepository                 $eventRepository,
-        private EventRegistrationRepository     $eventRegistrationRepository,
-        private FrontendUserRepository          $frontendUserRepository,
+        private EventRepository $eventRepository,
+        private EventRegistrationRepository $eventRegistrationRepository,
+        private FrontendUserRepository $frontendUserRepository,
         private readonly EventPageTitleProvider $titleProvider,
-        private readonly ImageService           $imageService
-    )
-    {
-    }
+        private readonly ImageService $imageService
+    ) {}
 
     public function listAction()
     {
