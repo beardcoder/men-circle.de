@@ -1,10 +1,12 @@
 <html
-  data-namespace-typo3-fluid="true"
-  xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:mc="http://typo3.org/ns/MensCircle/Sitepackage/ViewHelpers"
+    xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
 >
-<f:spaceless>
-  <section class="max-w-[100vw] overflow-hidden text-stone-800 dark:text-stone-100">
-    <f:render optional="true" section="Main" />
-  </section>
-</f:spaceless>
+<mc:htmlMin>
+    <section class="max-w-[100vw] overflow-hidden text-stone-800 dark:text-stone-100">
+        <f:render optional="true" section="Main" />
+    </section>
+</mc:htmlMin>
 </html>
