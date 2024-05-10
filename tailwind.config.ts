@@ -2,10 +2,9 @@ import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
 // @ts-ignore
 import typography from "flowbite-typography";
-// @ts-ignore
 import flowbite from "flowbite/plugin";
-import forms from '@tailwindcss/forms';
-
+// @ts-ignore
+import forms from "@tailwindcss/forms";
 
 export default {
   content: [
@@ -45,6 +44,9 @@ export default {
       fontFamily: {
         sans: ['"Jost Variable"', ...defaultTheme.fontFamily.sans],
         special: ['"Nothing You Could Do"', ...defaultTheme.fontFamily.serif],
+      },
+      fontSize: {
+        fluid: "clamp(2.5rem, -0.5718rem + 11.7021vw, 9.375rem)",
       },
       colors: {
         primary: {
