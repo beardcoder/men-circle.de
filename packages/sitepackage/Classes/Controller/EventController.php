@@ -26,12 +26,14 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class EventController extends ActionController
 {
     public function __construct(
-        private EventRepository $eventRepository,
-        private EventRegistrationRepository $eventRegistrationRepository,
-        private FrontendUserRepository $frontendUserRepository,
+        private EventRepository                 $eventRepository,
+        private EventRegistrationRepository     $eventRegistrationRepository,
+        private FrontendUserRepository          $frontendUserRepository,
         private readonly EventPageTitleProvider $titleProvider,
-        private readonly ImageService $imageService
-    ) {}
+        private readonly ImageService           $imageService
+    )
+    {
+    }
 
     public function listAction()
     {
@@ -48,7 +50,7 @@ class EventController extends ActionController
 
         $processedImage = $this->imageService->applyProcessingInstructions(
             $event->getImage()->getOriginalResource(),
-            ['width' => '300c', 'height' => '300c']
+            ['width' => '600c', 'height' => '600c']
         );
         $imageUri = $this->imageService->getImageUri($processedImage, true);
 
