@@ -58,6 +58,9 @@ class EventController extends ActionController
         $metaTagManager->addProperty('og:title', $pageTitle);
         $metaTagManager->addProperty('og:description', $event->description);
         $metaTagManager->addProperty('og:image', $imageUri);
+        $metaTagManager->addProperty('og:image:width', '600');
+        $metaTagManager->addProperty('og:image:height', '600');
+        $metaTagManager->addProperty('og:image:alt', $event->getImage()->getOriginalResource()->getAlternative());
 
         $metaTagManager->addProperty('og:url', $this->uriBuilder->reset()->setTargetPageUid(3)->uriFor(
             'detail',
