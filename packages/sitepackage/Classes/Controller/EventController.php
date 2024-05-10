@@ -26,14 +26,12 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class EventController extends ActionController
 {
     public function __construct(
-        private EventRepository                 $eventRepository,
-        private EventRegistrationRepository     $eventRegistrationRepository,
-        private FrontendUserRepository          $frontendUserRepository,
+        private EventRepository $eventRepository,
+        private EventRegistrationRepository $eventRegistrationRepository,
+        private FrontendUserRepository $frontendUserRepository,
         private readonly EventPageTitleProvider $titleProvider,
-        private readonly ImageService           $imageService
-    )
-    {
-    }
+        private readonly ImageService $imageService
+    ) {}
 
     public function listAction()
     {
@@ -48,14 +46,16 @@ class EventController extends ActionController
         $pageTitle = $event->title . ' am ' . $event->startDate->format('d.m.Y');
         $this->titleProvider->setTitle($pageTitle);
 
+        $processedImage = $this->imageService->applyProcessingInstructions(
+            $event->getImage()->getOriginalResource(),
+            ['width' => '300c', 'height' => '300c']
+        );
+        $imageUri = $this->imageService->getImageUri($processedImage, true);
+
         $metaTagManager = GeneralUtility::makeInstance(MetaTagManagerRegistry::class)->getManagerForProperty('og:title');
         $metaTagManager->addProperty('og:title', $pageTitle);
         $metaTagManager->addProperty('og:description', $event->description);
-        $metaTagManager->addProperty('og:image', $this->imageService->getImageUri(
-            $event->getImage()->getOriginalResource(),
-            true
-        ));
-
+        $metaTagManager->addProperty('og:image', $imageUri);
 
         $metaTagManager->addProperty('og:url', $this->uriBuilder->reset()->setTargetPageUid(3)->uriFor(
             'detail',
