@@ -11,12 +11,15 @@ use MensCircle\Sitepackage\Domain\Repository\EventRegistrationRepository;
 use MensCircle\Sitepackage\Domain\Repository\EventRepository;
 use MensCircle\Sitepackage\Domain\Repository\FrontendUserRepository;
 use MensCircle\Sitepackage\PageTitle\EventPageTitleProvider;
+use Spatie\SchemaOrg\EventStatusType;
+use Spatie\SchemaOrg\Schema;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Uid\Uuid;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\MailerInterface;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
+use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
@@ -67,10 +70,64 @@ class EventController extends ActionController
             ],
         ));
 
+        $this->buildSchema($event);
         $this->view->assign('event', $event);
         $this->view->assign('eventRegistration', $eventRegistrationToAssign);
 
         return $this->htmlResponse();
+    }
+
+    private function buildSchema(Event $event): void
+    {
+        $eventUrl = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(3)->uriFor(
+            'detail',
+            [
+                'event' => $event->getUid(),
+            ],
+        );
+
+        $processedImage = $this->imageService->applyProcessingInstructions(
+            $event->getImage()->getOriginalResource(),
+            ['width' => '600c', 'height' => '600c']
+        );
+        $imageUri = $this->imageService->getImageUri($processedImage, true);
+        $baseUrl = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(1)->buildFrontendUri();
+        $schema = Schema::event()
+            ->name($event->title . ' am ' . $event->startDate->format('d.m.Y'))
+            ->description($event->description)
+            ->image($imageUri)
+            ->startDate($event->startDate)
+            ->endDate($event->endDate)
+            ->eventAttendanceMode('https://schema.org/OfflineEventAttendanceMode')
+            ->eventStatus(EventStatusType::EventRescheduled)
+            ->location(
+                Schema::place()
+                    ->name($event->place)
+                    ->address(
+                        Schema::postalAddress()
+                            ->streetAddress($event->address)
+                            ->addressLocality($event->city)
+                            ->postalCode($event->zip)
+                            ->addressCountry('DE'),
+                    ),
+            )
+            ->offers(
+                Schema::offer()
+                    ->validFrom($event->crdate)
+                    ->price(0)
+                    ->availability('https://schema.org/InStock')
+                    ->url($eventUrl)
+                    ->priceCurrency('EUR'),
+            )
+            ->organizer(Schema::person()->name('Markus Sommer')->url($baseUrl))
+            ->performer(Schema::person()->name('Markus Sommer')->url($baseUrl));
+
+        $this->getPageRenderer()->addHeaderData($schema->toScript());
+    }
+
+    protected function getPageRenderer(): PageRenderer
+    {
+        return GeneralUtility::makeInstance(PageRenderer::class);
     }
 
     /**
