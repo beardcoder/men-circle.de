@@ -36,6 +36,7 @@
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.42",
+    "ssch/typo3-rector": "^2.5",
     "symfony/var-dumper": "^7.0",
     "typo3/cms-belog": ">=12.4.14",
     "typo3/cms-lowlevel": ">=12.4.14",

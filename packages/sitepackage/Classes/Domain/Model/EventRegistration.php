@@ -9,7 +9,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class EventRegistration extends AbstractEntity
 {
-    public ?Event $event;
+    public ?Event $event = null;
     #[Validate(['validator' => 'NotEmpty'])]
     public string $firstName;
     #[Validate(['validator' => 'NotEmpty'])]
@@ -17,7 +17,7 @@ class EventRegistration extends AbstractEntity
     #[Validate(['validator' => 'NotEmpty'])]
     #[Validate(['validator' => 'EmailAddress'])]
     public string $email;
-    public ?FrontendUser $feUser;
+    public ?FrontendUser $feUser = null;
 
     public function getFirstName(): string
     {

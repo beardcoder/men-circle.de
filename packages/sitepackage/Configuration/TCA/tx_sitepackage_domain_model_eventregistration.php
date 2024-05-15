@@ -4,7 +4,7 @@ use MensCircle\Sitepackage\Services\LangService;
 use MensCircle\Sitepackage\Services\TcaBuilderService;
 use nn\t3;
 
-$tca = [
+return [
     'ctrl' => TcaBuilderService::makeCtrl(
         'tx_sitepackage_domain_model_eventregistration',
         'first_name',
@@ -97,5 +97,3 @@ $tca = [
         ]
     ),
 ];
-
-return $tca;

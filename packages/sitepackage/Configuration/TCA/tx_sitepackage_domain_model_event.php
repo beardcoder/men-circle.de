@@ -6,7 +6,7 @@ use nn\t3;
 
 use function Symfony\Component\Clock\now;
 
-$tca = [
+return [
     'ctrl' => TcaBuilderService::makeCtrl('tx_sitepackage_domain_model_event', 'title', 'title', 'title'),
     'types' => [
         '1' => [
@@ -203,5 +203,3 @@ $tca = [
         ]
     ),
 ];
-
-return $tca;

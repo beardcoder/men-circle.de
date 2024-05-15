@@ -16,14 +16,9 @@ class HtmlMinViewHelper extends AbstractViewHelper
      */
     protected $escapeOutput = false;
 
-    /**
-     * @param array $arguments
-     * @param \Closure $childClosure
-     * @param RenderingContextInterface $renderingContext
-     * @return string
-     */
+    #[\Override]
     public static function renderStatic(array $arguments, \Closure $childClosure, RenderingContextInterface $renderingContext)
     {
-        return Factory::construct()->compress((string)$childClosure());
+        return Factory::construct()->compress((string) $childClosure());
     }
 }

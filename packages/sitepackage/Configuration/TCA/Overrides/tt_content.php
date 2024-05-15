@@ -8,7 +8,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
-call_user_func(function () {
+call_user_func(function (): void {
     $extensionKey = 'sitepackage';
     $signature = static fn(string $plugin): string => strtolower(
         sprintf('%s_%s', str_replace('_', '', $extensionKey), $plugin)

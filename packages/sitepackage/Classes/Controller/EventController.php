@@ -29,21 +29,21 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class EventController extends ActionController
 {
     public function __construct(
-        private EventRepository $eventRepository,
-        private EventRegistrationRepository $eventRegistrationRepository,
-        private FrontendUserRepository $frontendUserRepository,
+        private readonly EventRepository $eventRepository,
+        private readonly EventRegistrationRepository $eventRegistrationRepository,
+        private readonly FrontendUserRepository $frontendUserRepository,
         private readonly EventPageTitleProvider $titleProvider,
         private readonly ImageService $imageService
     ) {}
 
-    public function listAction()
+    public function listAction(): \Psr\Http\Message\ResponseInterface
     {
         $this->view->assign('events', $this->eventRepository->findNextEvents());
 
         return $this->htmlResponse();
     }
 
-    public function detailAction(Event $event, ?EventRegistration $eventRegistration = null)
+    public function detailAction(Event $event, ?EventRegistration $eventRegistration = null): \Psr\Http\Message\ResponseInterface
     {
         $eventRegistrationToAssign = $eventRegistration ?? GeneralUtility::makeInstance(EventRegistration::class);
         $pageTitle = $event->title . ' am ' . $event->startDate->format('d.m.Y');
@@ -147,7 +147,7 @@ class EventController extends ActionController
 
         /** @var Event $event */
         $event = $this->eventRepository->findByUid((int)$this->request->getArgument('event'));
-        if (!is_a($event, Event::class)) {
+        if (!$event instanceof \MensCircle\Sitepackage\Domain\Model\Event) {
             return;
         }
 
@@ -167,10 +167,10 @@ class EventController extends ActionController
      * @throws TransportExceptionInterface
      * @throws IllegalObjectTypeException
      */
-    public function registrationAction(EventRegistration $eventRegistration)
+    public function registrationAction(EventRegistration $eventRegistration): \Psr\Http\Message\ResponseInterface
     {
-        $feUser = $this->frontendUserRepository->findOneByEmail($eventRegistration->getEmail());
-        if (!$feUser) {
+        $feUser = $this->frontendUserRepository->findOneBy(['email' => $eventRegistration->getEmail()]);
+        if ($feUser === null) {
             /** @var FrontendUser $feUser */
             $feUser = GeneralUtility::makeInstance(FrontendUser::class);
             $feUser->setEmail($eventRegistration->getEmail());

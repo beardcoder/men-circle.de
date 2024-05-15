@@ -15,9 +15,9 @@ class Event extends AbstractEntity
     public string $slug;
     public string $title;
     public string $description;
-    public ?\DateTime $startDate;
-    public ?\DateTime $endDate;
-    public ?\DateTime $crdate;
+    public ?\DateTime $startDate = null;
+    public ?\DateTime $endDate = null;
+    public ?\DateTime $crdate = null;
     public string $place;
     public string $address;
     public string $zip;
