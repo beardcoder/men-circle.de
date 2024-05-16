@@ -36,6 +36,7 @@
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.42",
+    "phpro/grumphp-shim": "^2.5",
     "ssch/typo3-rector": "^2.5",
     "symfony/var-dumper": "^7.0",
     "typo3/cms-belog": ">=12.4.14",
@@ -55,7 +56,8 @@
       "ergebnis/composer-normalize": true,
       "helhum/dotenv-connector": true,
       "typo3/class-alias-loader": true,
-      "typo3/cms-composer-installers": true
+      "typo3/cms-composer-installers": true,
+      "phpro/grumphp-shim": true
     },
     "platform": {
       "php": "8.3"

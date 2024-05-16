@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0e986981417a81d4c5a7f363eab1bd5",
+    "content-hash": "e517255f9cc0c8a53dcd05c9b8ea5a63",
     "packages": [
         {
             "name": "b13/container",
@@ -235,16 +235,16 @@
         },
         {
             "name": "contentblocks/content-blocks",
-            "version": "0.7.10",
+            "version": "0.7.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nhovratov/content-blocks.git",
-                "reference": "c5050eea988faf8bca0c11f4fe79b5f79e625b27"
+                "reference": "cc759fc3e167978bc638da46511d2bbd41e37b3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nhovratov/content-blocks/zipball/c5050eea988faf8bca0c11f4fe79b5f79e625b27",
-                "reference": "c5050eea988faf8bca0c11f4fe79b5f79e625b27",
+                "url": "https://api.github.com/repos/nhovratov/content-blocks/zipball/cc759fc3e167978bc638da46511d2bbd41e37b3e",
+                "reference": "cc759fc3e167978bc638da46511d2bbd41e37b3e",
                 "shasum": ""
             },
             "require": {
@@ -316,7 +316,7 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2024-05-07T14:49:33+00:00"
+            "time": "2024-05-15T16:46:07+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -9374,17 +9374,76 @@
             "time": "2024-01-17T16:50:36+00:00"
         },
         {
-            "name": "phpstan/phpstan",
-            "version": "1.11.0",
+            "name": "phpro/grumphp-shim",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "666cb1703742cea9cc80fee631f0940e1592fa6e"
+                "url": "https://github.com/phpro/grumphp-shim.git",
+                "reference": "37d705a7f83619785e8bee914a425cd872e7bf8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/666cb1703742cea9cc80fee631f0940e1592fa6e",
-                "reference": "666cb1703742cea9cc80fee631f0940e1592fa6e",
+                "url": "https://api.github.com/repos/phpro/grumphp-shim/zipball/37d705a7f83619785e8bee914a425cd872e7bf8a",
+                "reference": "37d705a7f83619785e8bee914a425cd872e7bf8a",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "~2.0",
+                "ext-json": "*",
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0"
+            },
+            "replace": {
+                "phpro/grumphp": "self.version"
+            },
+            "require-dev": {
+                "humbug/box": "^3.16"
+            },
+            "bin": [
+                "grumphp",
+                "grumphp.phar"
+            ],
+            "type": "composer-plugin",
+            "extra": {
+                "class": "GrumPHP\\Composer\\GrumPHPPlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "GrumPHP\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Toon Verwerft",
+                    "email": "toon.verwerft@phpro.be"
+                },
+                {
+                    "name": "Community",
+                    "homepage": "https://github.com/phpro/grumphp/graphs/contributors"
+                }
+            ],
+            "description": "GrumPHP Phar distribution",
+            "support": {
+                "issues": "https://github.com/phpro/grumphp-shim/issues",
+                "source": "https://github.com/phpro/grumphp-shim/tree/v2.5.0"
+            },
+            "time": "2024-02-09T09:26:45+00:00"
+        },
+        {
+            "name": "phpstan/phpstan",
+            "version": "1.10.67",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpstan.git",
+                "reference": "16ddbe776f10da6a95ebd25de7c1dbed397dc493"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/16ddbe776f10da6a95ebd25de7c1dbed397dc493",
+                "reference": "16ddbe776f10da6a95ebd25de7c1dbed397dc493",
                 "shasum": ""
             },
             "require": {
@@ -9429,7 +9488,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-05-13T06:02:22+00:00"
+            "time": "2024-04-16T07:22:02+00:00"
         },
         {
             "name": "rector/rector",
@@ -9492,16 +9551,16 @@
         },
         {
             "name": "ssch/typo3-rector",
-            "version": "v2.5.0",
+            "version": "v2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3-rector.git",
-                "reference": "386e86753f2c88833b0cb6b8b0f3e7a5b65422ae"
+                "reference": "d4e7804d2eea497e471089eb823d66a85dfcaf39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/386e86753f2c88833b0cb6b8b0f3e7a5b65422ae",
-                "reference": "386e86753f2c88833b0cb6b8b0f3e7a5b65422ae",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/d4e7804d2eea497e471089eb823d66a85dfcaf39",
+                "reference": "d4e7804d2eea497e471089eb823d66a85dfcaf39",
                 "shasum": ""
             },
             "require": {
@@ -9520,6 +9579,9 @@
                 "symfony/polyfill-php81": "^1.28.0",
                 "symfony/string": "^5.4 || ^6.4 || ^7.0",
                 "webmozart/assert": "^1.11.0"
+            },
+            "conflict": {
+                "phpstan/phpstan": ">=1.11.0"
             },
             "require-dev": {
                 "ergebnis/composer-normalize": "^2.42.0",
@@ -9604,7 +9666,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-18T12:44:27+00:00"
+            "time": "2024-05-16T13:45:27+00:00"
         },
         {
             "name": "symfony/polyfill-php81",
