@@ -11,5 +11,6 @@ grumphp:
     paths: [ ]
   tasks:
     phpcs: ~
+    phpcsfixer: ~
   testsuites: [ ]
   extensions: [ ]
