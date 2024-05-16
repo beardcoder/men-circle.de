@@ -11,9 +11,10 @@ use MensCircle\Sitepackage\Domain\Repository\EventRegistrationRepository;
 use MensCircle\Sitepackage\Domain\Repository\EventRepository;
 use MensCircle\Sitepackage\Domain\Repository\FrontendUserRepository;
 use MensCircle\Sitepackage\PageTitle\EventPageTitleProvider;
+use PhpStaticAnalysis\Attributes\Throws;
+use Psr\Http\Message\ResponseInterface;
 use Spatie\SchemaOrg\EventStatusType;
 use Spatie\SchemaOrg\Schema;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Uid\Uuid;
 use TYPO3\CMS\Core\Mail\FluidEmail;
@@ -22,7 +23,6 @@ use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Service\ImageService;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -36,14 +36,14 @@ class EventController extends ActionController
         private readonly ImageService $imageService
     ) {}
 
-    public function listAction(): \Psr\Http\Message\ResponseInterface
+    public function listAction(): ResponseInterface
     {
         $this->view->assign('events', $this->eventRepository->findNextEvents());
 
         return $this->htmlResponse();
     }
 
-    public function detailAction(Event $event, ?EventRegistration $eventRegistration = null): \Psr\Http\Message\ResponseInterface
+    public function detailAction(Event $event, ?EventRegistration $eventRegistration = null): ResponseInterface
     {
         $eventRegistrationToAssign = $eventRegistration ?? GeneralUtility::makeInstance(EventRegistration::class);
         $pageTitle = $event->title . ' am ' . $event->startDate->format('d.m.Y');
@@ -147,7 +147,7 @@ class EventController extends ActionController
 
         /** @var Event $event */
         $event = $this->eventRepository->findByUid((int)$this->request->getArgument('event'));
-        if (!$event instanceof \MensCircle\Sitepackage\Domain\Model\Event) {
+        if (!$event instanceof Event) {
             return;
         }
 
@@ -163,11 +163,9 @@ class EventController extends ActionController
         $this->request = $this->request->withArguments($arguments);
     }
 
-    /**
-     * @throws TransportExceptionInterface
-     * @throws IllegalObjectTypeException
-     */
-    public function registrationAction(EventRegistration $eventRegistration): \Psr\Http\Message\ResponseInterface
+    #[Throws('TransportExceptionInterface')]
+    #[Throws('IllegalObjectTypeException')]
+    public function registrationAction(EventRegistration $eventRegistration): ResponseInterface
     {
         $feUser = $this->frontendUserRepository->findOneBy(['email' => $eventRegistration->getEmail()]);
         if ($feUser === null) {
@@ -204,9 +202,7 @@ class EventController extends ActionController
         return $this->redirectToUri($redirectUrl);
     }
 
-    /**
-     * @throws TransportExceptionInterface
-     */
+    #[Throws('TransportExceptionInterface')]
     private function sendMailToAdminOnRegistration(EventRegistration $eventRegistration): void
     {
         $email = new FluidEmail();

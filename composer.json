@@ -13,6 +13,7 @@
     "lochmueller/staticfilecache": "^14.0",
     "mens-circle/sitepackage": "@dev",
     "nng/nnhelpers": "*",
+    "php-static-analysis/attributes": "^0.2.2",
     "praetorius/vite-asset-collector": "^1.9",
     "spatie/schema-org": "^3.23",
     "typo3/cms-adminpanel": ">=12.4.14",
@@ -36,6 +37,7 @@
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.42",
+    "php-static-analysis/rector-rule": "^0.2.2",
     "phpro/grumphp-shim": "^2.5",
     "ssch/typo3-rector": "^2.5",
     "symfony/var-dumper": "^7.0",
@@ -55,9 +57,9 @@
     "allow-plugins": {
       "ergebnis/composer-normalize": true,
       "helhum/dotenv-connector": true,
+      "phpro/grumphp-shim": true,
       "typo3/class-alias-loader": true,
-      "typo3/cms-composer-installers": true,
-      "phpro/grumphp-shim": true
+      "typo3/cms-composer-installers": true
     },
     "platform": {
       "php": "8.3"

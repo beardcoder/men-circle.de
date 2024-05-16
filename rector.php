@@ -13,11 +13,11 @@ use Ssch\TYPO3Rector\CodeQuality\General\ExtEmConfRector;
 use Ssch\TYPO3Rector\Configuration\Typo3Option;
 use Ssch\TYPO3Rector\Set\Typo3LevelSetList;
 use Ssch\TYPO3Rector\Set\Typo3SetList;
+use PhpStaticAnalysis\RectorRule\Set\PhpStaticAnalysisSetList;
 
 return RectorConfig::configure()
     ->withPaths([
-        __DIR__.'/config',
-        __DIR__.'/packages',
+        __DIR__ . '/packages',
     ])
     // uncomment to reach your current PHP version
     // ->withPhpSets()
@@ -26,10 +26,12 @@ return RectorConfig::configure()
         SetList::EARLY_RETURN,
         SetList::TYPE_DECLARATION,
         SetList::CODE_QUALITY,
+        SetList::PHP_83,
         Typo3SetList::CODE_QUALITY,
         Typo3SetList::GENERAL,
         Typo3LevelSetList::UP_TO_TYPO3_12,
         LevelSetList::UP_TO_PHP_83,
+        PhpStaticAnalysisSetList::ANNOTATIONS_TO_ATTRIBUTES
     ])
     // To have a better analysis from PHPStan, we teach it here some more things
     ->withPHPStanConfigs([
@@ -46,10 +48,7 @@ return RectorConfig::configure()
     ])
     // If you use withImportNames(), you should consider excluding some TYPO3 files.
     ->withSkip([
-        // @see https://github.com/sabbelasichon/typo3-rector/issues/2536
-        __DIR__.'/**/Configuration/ExtensionBuilder/*',
         NameImportingPostRector::class => [
             'ClassAliasMap.php',
         ],
-    ])
-;
+    ]);

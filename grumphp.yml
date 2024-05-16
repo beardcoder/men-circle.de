@@ -4,15 +4,12 @@ grumphp:
     max_workers: 32
   fixer:
     enabled: true
-    fix_by_default: false
+    fix_by_default: true
   environment:
     files: [ ]
     variables: { }
     paths: [ ]
   tasks:
-    phpcs: ~
-    phpcsfixer: ~
-    rector: ~
     composer_normalize: ~
     yamllint: ~
   testsuites: [ ]
