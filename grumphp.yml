@@ -12,5 +12,8 @@ grumphp:
   tasks:
     phpcs: ~
     phpcsfixer: ~
+    rector: ~
+    composer_normalize: ~
+    yamllint: ~
   testsuites: [ ]
   extensions: [ ]
