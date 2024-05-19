@@ -12,7 +12,7 @@ return [
         '1' => [
             'showitem' => implode(',', [
                 '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general',
-                'title, description, image, slug',
+                'title, description, image, slug, cancelled',
                 '--palette--;;date',
                 '--palette--;;address',
                 implode(
@@ -182,6 +182,19 @@ return [
                     'max' => 11,
                     'default' => '0.00',
                     'eval' => 'trim',
+                ],
+            ],
+
+            'cancelled' => [
+                'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.cancelled',
+                'config' => [
+                    'type' => 'check',
+                    'renderType' => 'checkboxToggle',
+                    'items' => [
+                        [
+                            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.cancelled',
+                        ],
+                    ],
                 ],
             ],
 

@@ -34,6 +34,8 @@ CREATE TABLE tx_sitepackage_domain_model_event
     latitude     decimal(9, 6) default '0.000000' not null,
 
     registration int(10) unsigned default '0' not null,
+
+		cancelled int(10) unsigned default '0' not null,
 );
 
 CREATE TABLE tx_sitepackage_domain_model_eventregistration
