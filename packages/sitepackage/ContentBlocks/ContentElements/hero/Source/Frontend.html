@@ -36,10 +36,23 @@
         <f:if condition="{data.image.1}">
             <div class="absolute inset-0 w-full">
                 <i:image
-                    additionalAttributes="{ 'data-u-speed': '-1', 'data-u-scale': '1.2' }"
+                    additionalAttributes="{ 'data-u-speed': '0.2', 'data-u-scale': '1.2' }"
                     alt="{data.image.1.alternative}"
                     class="w-full h-full object-cover object-center parallax"
                     image="{data.image.1}"
+                    maxHeight="1600"
+                    maxWidth="2560"
+                    variants="800, 1000"
+                />
+            </div>
+        </f:if>
+        <f:if condition="{data.image.2}">
+            <div class="absolute inset-0 w-full">
+                <i:image
+                    additionalAttributes="{ 'data-u-speed': '0', 'data-u-scale': '1.2' }"
+                    alt="{data.image.2.alternative}"
+                    class="w-full h-full object-cover object-center parallax"
+                    image="{data.image.2}"
                     maxHeight="1600"
                     maxWidth="2560"
                     variants="800, 1000"
