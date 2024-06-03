@@ -6,6 +6,7 @@ use PhpStaticAnalysis\Attributes\Type;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
+use voku\helper\HtmlMin;
 use WyriHaximus\HtmlCompress\Factory;
 
 class HtmlMinViewHelper extends AbstractViewHelper
@@ -16,8 +17,11 @@ class HtmlMinViewHelper extends AbstractViewHelper
     protected $escapeOutput = false;
 
     #[\Override]
-    public static function renderStatic(array $arguments, \Closure $childClosure, RenderingContextInterface $renderingContext)
+    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext): string
     {
-        return Factory::construct()->compress((string)$childClosure());
+        $htmlMin = new HtmlMin();
+        $htmlMin->doRemoveComments(false);
+
+        return Factory::construct()->withHtmlMin($htmlMin)->compress((string) $renderChildrenClosure());
     }
 }

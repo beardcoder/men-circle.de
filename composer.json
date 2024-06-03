@@ -1,69 +1,69 @@
 {
-  "name": "menscircle/site",
-  "description": "TYPO3 CMS Base Distribution",
-  "license": "GPL-2.0-or-later",
-  "type": "project",
-  "require": {
-    "b13/container": "^2.3.6",
-    "b13/picture": "^2.0.4",
-    "contentblocks/content-blocks": "^0.7.13",
-    "helhum/dotenv-connector": "^3.1",
-    "helhum/typo3-console": "^8.1.1",
-    "in2code/luxletter": "^26.1",
-    "lochmueller/staticfilecache": "^14.0.1",
-    "mens-circle/sitepackage": "@dev",
-    "nng/nnhelpers": ">=2.0.4",
-    "php-static-analysis/attributes": "^0.2.2",
-    "praetorius/vite-asset-collector": "^1.9",
-    "spatie/schema-org": "^3.23",
-    "typo3/cms-adminpanel": ">=12.4.14",
-    "typo3/cms-beuser": ">=12.4.14",
-    "typo3/cms-fluid-styled-content": ">=12.4.14",
-    "typo3/cms-form": ">=12.4.14",
-    "typo3/cms-impexp": ">=12.4.14",
-    "typo3/cms-linkvalidator": ">=12.4.14",
-    "typo3/cms-reactions": ">=12.4.14",
-    "typo3/cms-recycler": ">=12.4.14",
-    "typo3/cms-redirects": ">=12.4.14",
-    "typo3/cms-reports": ">=12.4.14",
-    "typo3/cms-rte-ckeditor": ">=12.4.14",
-    "typo3/cms-scheduler": ">=12.4.14",
-    "typo3/cms-seo": ">=12.4.14",
-    "typo3/cms-t3editor": ">=12.4.14",
-    "typo3/cms-tstemplate": ">=12.4.14",
-    "typo3/cms-viewpage": ">=12.4.14",
-    "typo3/minimal": "12.4.0",
-    "wyrihaximus/html-compress": "^1.3.1"
-  },
-  "require-dev": {
-    "ergebnis/composer-normalize": "^2.42",
-    "php-static-analysis/rector-rule": "^0.2.2",
-    "phpro/grumphp-shim": "^2.5",
-    "ssch/typo3-rector": "^2.6",
-    "symfony/var-dumper": "^7.0.7",
-    "typo3/cms-belog": ">=12.4.14",
-    "typo3/cms-lowlevel": ">=12.4.14",
-    "typo3/cms-setup": ">=12.4.14"
-  },
-  "repositories": [
-    {
-      "type": "path",
-      "url": "./packages/*/"
-    }
-  ],
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "config": {
-    "allow-plugins": {
-      "ergebnis/composer-normalize": true,
-      "helhum/dotenv-connector": true,
-      "phpro/grumphp-shim": true,
-      "typo3/class-alias-loader": true,
-      "typo3/cms-composer-installers": true
-    },
-    "platform": {
-      "php": "8.3"
-    },
-    "sort-packages": true
-  }
+	"name": "menscircle/site",
+	"description": "TYPO3 CMS Base Distribution",
+	"license": "GPL-2.0-or-later",
+	"type": "project",
+	"require": {
+		"b13/container": "^2.3.6",
+		"b13/picture": "^2.0.4",
+		"contentblocks/content-blocks": "^0.7.13",
+		"helhum/dotenv-connector": "^3.1",
+		"helhum/typo3-console": "^8.1.1",
+		"in2code/luxletter": "^26.1",
+		"lochmueller/staticfilecache": "^14.0.1",
+		"mens-circle/sitepackage": "@dev",
+		"nng/nnhelpers": ">=2.0.4",
+		"php-static-analysis/attributes": "^0.2.2",
+		"praetorius/vite-asset-collector": "^1.9",
+		"spatie/schema-org": "^3.23",
+		"typo3/cms-adminpanel": ">=12.4.14",
+		"typo3/cms-beuser": ">=12.4.14",
+		"typo3/cms-fluid-styled-content": ">=12.4.14",
+		"typo3/cms-form": ">=12.4.14",
+		"typo3/cms-impexp": ">=12.4.14",
+		"typo3/cms-linkvalidator": ">=12.4.14",
+		"typo3/cms-reactions": ">=12.4.14",
+		"typo3/cms-recycler": ">=12.4.14",
+		"typo3/cms-redirects": ">=12.4.14",
+		"typo3/cms-reports": ">=12.4.14",
+		"typo3/cms-rte-ckeditor": ">=12.4.14",
+		"typo3/cms-scheduler": ">=12.4.14",
+		"typo3/cms-seo": ">=12.4.14",
+		"typo3/cms-t3editor": ">=12.4.14",
+		"typo3/cms-tstemplate": ">=12.4.14",
+		"typo3/cms-viewpage": ">=12.4.14",
+		"typo3/minimal": "12.4.0",
+		"wyrihaximus/html-compress": "^4.2.1"
+	},
+	"require-dev": {
+		"ergebnis/composer-normalize": "^2.42",
+		"php-static-analysis/rector-rule": "^0.2.2",
+		"phpro/grumphp-shim": "^2.5",
+		"ssch/typo3-rector": "^2.6",
+		"symfony/var-dumper": "^7.0.7",
+		"typo3/cms-belog": ">=12.4.14",
+		"typo3/cms-lowlevel": ">=12.4.14",
+		"typo3/cms-setup": ">=12.4.14"
+	},
+	"repositories": [
+		{
+			"type": "path",
+			"url": "./packages/*/"
+		}
+	],
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"config": {
+		"allow-plugins": {
+			"ergebnis/composer-normalize": true,
+			"helhum/dotenv-connector": true,
+			"phpro/grumphp-shim": true,
+			"typo3/class-alias-loader": true,
+			"typo3/cms-composer-installers": true
+		},
+		"platform": {
+			"php": "8.3"
+		},
+		"sort-packages": true
+	}
 }
