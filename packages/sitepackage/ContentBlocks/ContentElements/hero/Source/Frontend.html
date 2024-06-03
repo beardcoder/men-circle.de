@@ -7,7 +7,7 @@
     <div class="relative z-10 flex max-w-[100vw] items-center pb-24 pt-40 xl:aspect-video">
         <div class="mx-auto max-w-screen-xl w-full px-6">
             <h1 class="font-header font-black uppercase text-white text-fluid leading-none">
-                {data.header -> f:format.html()}
+                {data.header -> f:format.raw()}
             </h1>
             <div class="format mb-12 mt-8 max-w-3xl text-xl text-white">
                 {data.bodytext -> f:format.raw()}
