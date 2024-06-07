@@ -193,7 +193,12 @@ page {
   }
 
   includeJSLibs {
-
+    topwire = EXT:topwire/Resources/Public/JavaScript/topwire.js
+    topwire.type = module
+    topwire.async = 1
+    topwire.defer = 1
+    topwire.disableCompression = 1
+    topwire.excludeFromConcatenation = 1
   }
 
   includeJS {
