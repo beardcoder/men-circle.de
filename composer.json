@@ -6,7 +6,7 @@
 	"require": {
 		"b13/container": "^2.3.6",
 		"b13/picture": "^2.0.4",
-		"contentblocks/content-blocks": "^0.7.13",
+		"contentblocks/content-blocks": "^0.7.14",
 		"helhum/dotenv-connector": "^3.1",
 		"helhum/typo3-console": "^8.1.1",
 		"in2code/luxletter": "^26.1",
@@ -34,14 +34,14 @@
 		"typo3/cms-tstemplate": ">=12.4.14",
 		"typo3/cms-viewpage": ">=12.4.14",
 		"typo3/minimal": "12.4.0",
-		"wyrihaximus/html-compress": "^4.2.1"
+		"wyrihaximus/html-compress": "^4.3"
 	},
 	"require-dev": {
 		"ergebnis/composer-normalize": "^2.42",
 		"php-static-analysis/rector-rule": "^0.2.2",
 		"phpro/grumphp-shim": "^2.5",
 		"ssch/typo3-rector": "^2.6",
-		"symfony/var-dumper": "^7.0.7",
+		"symfony/var-dumper": "^7.1.1",
 		"typo3/cms-belog": ">=12.4.14",
 		"typo3/cms-lowlevel": ">=12.4.14",
 		"typo3/cms-setup": ">=12.4.14"
