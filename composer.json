@@ -39,7 +39,7 @@
 	"require-dev": {
 		"ergebnis/composer-normalize": "^2.42",
 		"php-static-analysis/rector-rule": "^0.2.2",
-		"phpro/grumphp-shim": "^2.5",
+		"phpro/grumphp-shim": "^2.6",
 		"ssch/typo3-rector": "^2.6",
 		"symfony/var-dumper": "^7.1.1",
 		"typo3/cms-belog": ">=12.4.14",
