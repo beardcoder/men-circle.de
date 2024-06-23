@@ -10,7 +10,7 @@ import('flowbite').then(({ initFlowbite }) => {
     initFlowbite();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+function init() {
     new Ukiyo('.parallax', {
         willChange: true,
     });
@@ -49,4 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
             ).addTo(map);
         });
     }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    init();
+});
+
+document.addEventListener('turbo:load', () => {
+    init();
 });
