@@ -22,8 +22,10 @@ return RectorConfig::configure()
     // uncomment to reach your current PHP version
     // ->withPhpSets()
     ->withPhpVersion(PhpVersion::PHP_83)
+    ->withPhpSets(php83: true)
     ->withSets([
         SetList::EARLY_RETURN,
+        SetList::INSTANCEOF,
         SetList::TYPE_DECLARATION,
         SetList::CODE_QUALITY,
         SetList::NAMING,

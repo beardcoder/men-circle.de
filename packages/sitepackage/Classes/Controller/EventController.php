@@ -19,6 +19,7 @@ use Symfony\Component\Mime\Address;
 use Symfony\Component\Uid\Uuid;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\MailerInterface;
+use TYPO3\CMS\Core\MetaTag\MetaTagManagerInterface;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -55,7 +56,12 @@ class EventController extends ActionController
         );
         $imageUri = $this->imageService->getImageUri($processedFile, true);
 
-        $metaTagManager = GeneralUtility::makeInstance(MetaTagManagerRegistry::class)->getManagerForProperty('og:title');
+        $metaTagManagerRegistry = GeneralUtility::makeInstance(MetaTagManagerRegistry::class);
+        assert($metaTagManagerRegistry instanceof MetaTagManagerRegistry);
+
+        $metaTagManager = $metaTagManagerRegistry->getManagerForProperty('og:title');
+        assert($metaTagManager instanceof MetaTagManagerInterface);
+
         $metaTagManager->addProperty('og:title', $pageTitle);
         $metaTagManager->addProperty('og:description', $event->description);
         $metaTagManager->addProperty('og:image', $imageUri);
@@ -169,13 +175,7 @@ class EventController extends ActionController
     {
         $feUser = $this->frontendUserRepository->findOneBy(['email' => $eventRegistration->getEmail()]);
         if ($feUser === null) {
-            /** @var FrontendUser $feUser */
-            $feUser = GeneralUtility::makeInstance(FrontendUser::class);
-            $feUser->setEmail($eventRegistration->getEmail());
-            $feUser->setFirstName($eventRegistration->getFirstName());
-            $feUser->setLastName($eventRegistration->getLastName());
-            $feUser->setUsername($eventRegistration->getEmail());
-            $feUser->setPassword(Uuid::v4()->toHex());
+            $feUser = $this->mapRegistrationToFeUser($eventRegistration);
             $this->frontendUserRepository->add($feUser);
         }
 
@@ -202,6 +202,21 @@ class EventController extends ActionController
         return $this->redirectToUri($redirectUrl);
     }
 
+    private function mapRegistrationToFeUser(EventRegistration $eventRegistration): FrontendUser
+    {
+        $frontendUser = GeneralUtility::makeInstance(FrontendUser::class);
+        assert($frontendUser instanceof FrontendUser);
+
+        $frontendUser->setEmail($eventRegistration->getEmail());
+        $frontendUser->setFirstName($eventRegistration->getFirstName());
+        $frontendUser->setLastName($eventRegistration->getLastName());
+        $frontendUser->setUsername($eventRegistration->getEmail());
+        $frontendUser->setPassword(Uuid::v4()->toHex());
+
+        return $frontendUser;
+    }
+
+    #[Throws('TransportExceptionInterface')]
     #[Throws('TransportExceptionInterface')]
     private function sendMailToAdminOnRegistration(EventRegistration $eventRegistration): void
     {
@@ -213,6 +228,9 @@ class EventController extends ActionController
             ->format(FluidEmail::FORMAT_BOTH) // send HTML and plaintext mail
             ->setTemplate('MailToAdminOnRegistration')
             ->assign('eventRegistration', $eventRegistration);
-        GeneralUtility::makeInstance(MailerInterface::class)->send($fluidEmail);
+        $mailer = GeneralUtility::makeInstance(MailerInterface::class);
+        assert($mailer instanceof MailerInterface);
+
+        $mailer->send($fluidEmail);
     }
 }
