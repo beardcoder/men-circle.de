@@ -11,8 +11,8 @@ trait StoragePageAgnosticTrait
 {
     public function initializeObject(): void
     {
-        $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
-        $querySettings->setRespectStoragePage(false);
-        $this->setDefaultQuerySettings($querySettings);
+        $typo3QuerySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
+        $typo3QuerySettings->setRespectStoragePage(false);
+        $this->setDefaultQuerySettings($typo3QuerySettings);
     }
 }

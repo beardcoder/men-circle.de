@@ -59,8 +59,8 @@ class EventRegistration extends AbstractEntity
         return $this->feUser;
     }
 
-    public function setFeUser(?FrontendUser $feUser): void
+    public function setFeUser(?FrontendUser $frontendUser): void
     {
-        $this->feUser = $feUser;
+        $this->feUser = $frontendUser;
     }
 }

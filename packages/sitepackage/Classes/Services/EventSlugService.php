@@ -13,7 +13,7 @@ class EventSlugService
         return date('d-m-Y', strtotime((string)$params['record']['start_date']));
     }
 
-    public function getPrefix(array $parameters, TcaSlug $reference): string
+    public function getPrefix(array $parameters, TcaSlug $tcaSlug): string
     {
         return '';
     }

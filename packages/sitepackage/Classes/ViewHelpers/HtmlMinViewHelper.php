@@ -22,6 +22,6 @@ class HtmlMinViewHelper extends AbstractViewHelper
         $htmlMin = new HtmlMin();
         $htmlMin->doRemoveComments(false);
 
-        return Factory::construct()->withHtmlMin($htmlMin)->compress((string) $renderChildrenClosure());
+        return Factory::construct()->withHtmlMin($htmlMin)->compress((string)$renderChildrenClosure());
     }
 }

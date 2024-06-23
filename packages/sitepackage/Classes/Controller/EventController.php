@@ -32,7 +32,7 @@ class EventController extends ActionController
         private readonly EventRepository $eventRepository,
         private readonly EventRegistrationRepository $eventRegistrationRepository,
         private readonly FrontendUserRepository $frontendUserRepository,
-        private readonly EventPageTitleProvider $titleProvider,
+        private readonly EventPageTitleProvider $eventPageTitleProvider,
         private readonly ImageService $imageService
     ) {}
 
@@ -47,13 +47,13 @@ class EventController extends ActionController
     {
         $eventRegistrationToAssign = $eventRegistration ?? GeneralUtility::makeInstance(EventRegistration::class);
         $pageTitle = $event->title . ' am ' . $event->startDate->format('d.m.Y');
-        $this->titleProvider->setTitle($pageTitle);
+        $this->eventPageTitleProvider->setTitle($pageTitle);
 
-        $processedImage = $this->imageService->applyProcessingInstructions(
+        $processedFile = $this->imageService->applyProcessingInstructions(
             $event->getImage()->getOriginalResource(),
             ['width' => '600c', 'height' => '600c']
         );
-        $imageUri = $this->imageService->getImageUri($processedImage, true);
+        $imageUri = $this->imageService->getImageUri($processedFile, true);
 
         $metaTagManager = GeneralUtility::makeInstance(MetaTagManagerRegistry::class)->getManagerForProperty('og:title');
         $metaTagManager->addProperty('og:title', $pageTitle);
@@ -86,11 +86,11 @@ class EventController extends ActionController
             ],
         );
 
-        $processedImage = $this->imageService->applyProcessingInstructions(
+        $processedFile = $this->imageService->applyProcessingInstructions(
             $event->getImage()->getOriginalResource(),
             ['width' => '600c', 'height' => '600c']
         );
-        $imageUri = $this->imageService->getImageUri($processedImage, true);
+        $imageUri = $this->imageService->getImageUri($processedFile, true);
         $baseUrl = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(1)->buildFrontendUri();
         $schema = Schema::event()
             ->name($event->title . ' am ' . $event->startDate->format('d.m.Y'))
@@ -152,12 +152,12 @@ class EventController extends ActionController
         }
 
         $registrationMvcArgument = $this->arguments->getArgument('eventRegistration');
-        $propertyMapping = $registrationMvcArgument->getPropertyMappingConfiguration();
+        $mvcPropertyMappingConfiguration = $registrationMvcArgument->getPropertyMappingConfiguration();
 
         // Set event to registration (required for validation)
-        $propertyMapping->allowProperties('event');
-        $propertyMapping->allowCreationForSubProperty('event');
-        $propertyMapping->allowModificationForSubProperty('event');
+        $mvcPropertyMappingConfiguration->allowProperties('event');
+        $mvcPropertyMappingConfiguration->allowCreationForSubProperty('event');
+        $mvcPropertyMappingConfiguration->allowModificationForSubProperty('event');
         $arguments['eventRegistration']['event'] = (int)$this->request->getArgument('event');
 
         $this->request = $this->request->withArguments($arguments);
@@ -205,14 +205,14 @@ class EventController extends ActionController
     #[Throws('TransportExceptionInterface')]
     private function sendMailToAdminOnRegistration(EventRegistration $eventRegistration): void
     {
-        $email = new FluidEmail();
-        $email
+        $fluidEmail = new FluidEmail();
+        $fluidEmail
             ->to('hallo@mens-circle.de')
             ->from(new Address('hallo@mens-circle.de', 'Men\'s Circle Website'))
             ->subject('Neue Anmeldung von' . $eventRegistration->getName())
             ->format(FluidEmail::FORMAT_BOTH) // send HTML and plaintext mail
             ->setTemplate('MailToAdminOnRegistration')
             ->assign('eventRegistration', $eventRegistration);
-        GeneralUtility::makeInstance(MailerInterface::class)->send($email);
+        GeneralUtility::makeInstance(MailerInterface::class)->send($fluidEmail);
     }
 }

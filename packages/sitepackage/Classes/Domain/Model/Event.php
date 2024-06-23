@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace MensCircle\Sitepackage\Domain\Model;
 
-use DateTime;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
@@ -16,9 +15,9 @@ class Event extends AbstractEntity
     public string $slug;
     public string $title;
     public string $description;
-    public ?DateTime $startDate = null;
-    public ?DateTime $endDate = null;
-    public ?DateTime $crdate = null;
+    public ?\DateTime $startDate = null;
+    public ?\DateTime $endDate = null;
+    public ?\DateTime $crdate = null;
     public string $place;
     public string $address;
     public string $zip;
@@ -44,9 +43,9 @@ class Event extends AbstractEntity
         return $this->registration;
     }
 
-    public function setRegistration(ObjectStorage $registration): void
+    public function setRegistration(ObjectStorage $objectStorage): void
     {
-        $this->registration = $registration;
+        $this->registration = $objectStorage;
     }
 
     public function getImage(): ?FileReference
@@ -60,9 +59,9 @@ class Event extends AbstractEntity
         return $this->image;
     }
 
-    public function setImage(FileReference $image): void
+    public function setImage(FileReference $fileReference): void
     {
-        $this->image = $image;
+        $this->image = $fileReference;
     }
 
     public function isCancelled(): bool
