@@ -13,7 +13,6 @@
 		"lochmueller/staticfilecache": "^14.0.1",
 		"mens-circle/sitepackage": "@dev",
 		"nng/nnhelpers": ">=2.0.4",
-		"php-static-analysis/attributes": "^0.2.2",
 		"praetorius/vite-asset-collector": "^1.9",
 		"spatie/schema-org": "^3.23",
 		"topwire/topwire": "^1.0@dev",
@@ -38,7 +37,8 @@
 	},
 	"require-dev": {
 		"ergebnis/composer-normalize": "^2.42",
-		"php-static-analysis/rector-rule": "^0.2.2",
+		"php-static-analysis/attributes": "^0.3.0",
+		"php-static-analysis/rector-rule": "^0.3.0",
 		"phpro/grumphp-shim": "^2.6",
 		"ssch/typo3-rector": "^2.6",
 		"symfony/var-dumper": "^7.1.1",
