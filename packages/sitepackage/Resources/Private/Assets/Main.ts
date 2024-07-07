@@ -13,6 +13,8 @@ import('flowbite').then(({ initFlowbite }) => {
 function init() {
     new Ukiyo('.parallax', {
         willChange: true,
+        scale: 1.3,
+        speed: 1.3,
     });
 
     AOS.init({ once: true });
