@@ -10,10 +10,12 @@ use MensCircle\Sitepackage\Domain\Model\FrontendUser;
 use MensCircle\Sitepackage\Domain\Repository\EventRegistrationRepository;
 use MensCircle\Sitepackage\Domain\Repository\EventRepository;
 use MensCircle\Sitepackage\Domain\Repository\FrontendUserRepository;
+use MensCircle\Sitepackage\Enum\EventStatusEnum;
 use MensCircle\Sitepackage\PageTitle\EventPageTitleProvider;
 use PhpStaticAnalysis\Attributes\Throws;
 use Psr\Http\Message\ResponseInterface;
 use Spatie\SchemaOrg\EventStatusType;
+use Spatie\SchemaOrg\ItemAvailability;
 use Spatie\SchemaOrg\Schema;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Uid\Uuid;
@@ -30,12 +32,14 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class EventController extends ActionController
 {
     public function __construct(
-        private readonly EventRepository $eventRepository,
+        private readonly EventRepository             $eventRepository,
         private readonly EventRegistrationRepository $eventRegistrationRepository,
-        private readonly FrontendUserRepository $frontendUserRepository,
-        private readonly EventPageTitleProvider $eventPageTitleProvider,
-        private readonly ImageService $imageService
-    ) {}
+        private readonly FrontendUserRepository      $frontendUserRepository,
+        private readonly EventPageTitleProvider      $eventPageTitleProvider,
+        private readonly ImageService                $imageService
+    )
+    {
+    }
 
     public function listAction(): ResponseInterface
     {
@@ -96,6 +100,16 @@ class EventController extends ActionController
             $event->getImage()->getOriginalResource(),
             ['width' => '600c', 'height' => '600c']
         );
+
+        $place = $event->isOffline() ? Schema::place()
+            ->name($event->place)
+            ->address(
+                Schema::postalAddress()
+                    ->streetAddress($event->address)
+                    ->addressLocality($event->city)
+                    ->postalCode($event->zip)
+                    ->addressCountry('DE'),
+            ) : Schema::place()->url($event->callUrl);
         $imageUri = $this->imageService->getImageUri($processedFile, true);
         $baseUrl = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(1)->buildFrontendUri();
         $schema = Schema::event()
@@ -104,24 +118,14 @@ class EventController extends ActionController
             ->image($imageUri)
             ->startDate($event->startDate)
             ->endDate($event->endDate)
-            ->eventAttendanceMode('https://schema.org/OfflineEventAttendanceMode')
-            ->eventStatus(EventStatusType::EventRescheduled)
-            ->location(
-                Schema::place()
-                    ->name($event->place)
-                    ->address(
-                        Schema::postalAddress()
-                            ->streetAddress($event->address)
-                            ->addressLocality($event->city)
-                            ->postalCode($event->zip)
-                            ->addressCountry('DE'),
-                    ),
-            )
+            ->eventAttendanceMode($event->getRealAttendanceMode()->getDescription())
+            ->eventStatus(EventStatusEnum::EventScheduled->value)
+            ->location($place)
             ->offers(
                 Schema::offer()
                     ->validFrom($event->crdate)
                     ->price(0)
-                    ->availability('https://schema.org/InStock')
+                    ->availability(ItemAvailability::InStock)
                     ->url($eventUrl)
                     ->priceCurrency('EUR'),
             )

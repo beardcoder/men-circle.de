@@ -1,7 +1,7 @@
 <?php
 
-use MensCircle\Sitepackage\Services\LangService;
-use MensCircle\Sitepackage\Services\TcaBuilderService;
+use MensCircle\Sitepackage\Service\LangService;
+use MensCircle\Sitepackage\Service\TcaBuilderService;
 use nn\t3;
 
 return [

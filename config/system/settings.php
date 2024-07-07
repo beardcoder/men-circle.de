@@ -1,5 +1,4 @@
 <?php
-
 return [
     'BE' => [
         'compressionLevel' => 9,

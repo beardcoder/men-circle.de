@@ -36,12 +36,12 @@
 		"wyrihaximus/html-compress": "^4.3"
 	},
 	"require-dev": {
-		"ergebnis/composer-normalize": "^2.42",
+		"ergebnis/composer-normalize": "^2.43",
 		"php-static-analysis/attributes": "^0.3.0",
 		"php-static-analysis/rector-rule": "^0.3.0",
 		"phpro/grumphp-shim": "^2.6",
-		"ssch/typo3-rector": "^2.6",
-		"symfony/var-dumper": "^7.1.1",
+		"ssch/typo3-rector": "^2.6.2",
+		"symfony/var-dumper": "^7.1.2",
 		"typo3/cms-belog": ">=12.4.14",
 		"typo3/cms-lowlevel": ">=12.4.14",
 		"typo3/cms-setup": ">=12.4.14"

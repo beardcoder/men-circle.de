@@ -1,18 +1,38 @@
 <?php
 
-use MensCircle\Sitepackage\Services\EventSlugService;
-use MensCircle\Sitepackage\Services\TcaBuilderService;
+use MensCircle\Sitepackage\Enum\EventAttendanceModeEnum;
+use MensCircle\Sitepackage\Service\EventSlugService;
 use nn\t3;
 
 use function Symfony\Component\Clock\now;
 
 return [
-    'ctrl' => TcaBuilderService::makeCtrl('tx_sitepackage_domain_model_event', 'title', 'title', 'title'),
+    'ctrl' => [
+        'title' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event',
+        'label' => 'title',
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
+        'delete' => 'deleted',
+        'default_sortby' => 'title',
+        'iconfile' => 'EXT:sitepackage/Resources/Public/Icons/tx_sitepackage_domain_model_event.svg',
+        'searchFields' => 'title',
+        'enablecolumns' =>
+            [
+                'fe_group' => 'fe_group',
+                'disabled' => 'hidden',
+                'starttime' => 'starttime',
+                'endtime' => 'endtime',
+            ],
+        'transOrigPointerField' => 'l10n_parent',
+        'transOrigDiffSourceField' => 'l10n_diffsource',
+        'languageField' => 'sys_language_uid',
+        'translationSource' => 'l10n_source',
+    ],
     'types' => [
         '1' => [
             'showitem' => implode(',', [
                 '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general',
-                'title, description, image, slug, cancelled',
+                'title, description, attendance_mode, image, call_url, slug, cancelled',
                 '--palette--;;date',
                 '--palette--;;address',
                 implode(
@@ -71,9 +91,9 @@ return [
             ],
 
             'slug' => [
-                'exclude' => true,
                 'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:pages.slug',
                 'displayCond' => 'VERSION:IS:false',
+                'exclude' => true,
                 'config' => [
                     'type' => 'slug',
                     'eval' => 'uniqueInPid',
@@ -94,8 +114,8 @@ return [
             ],
 
             'place' => [
-                'exclude' => true,
                 'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.place',
+                'displayCond' => 'FIELD:attendance_mode:=:0',
                 'config' => [
                     'type' => 'input',
                     'size' => 40,
@@ -105,9 +125,22 @@ return [
                 ],
             ],
 
-            'address' => [
+            'call_url' => [
+                'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.call_url.label',
+                'displayCond' => 'FIELD:attendance_mode:=:1',
                 'exclude' => true,
+                'config' => [
+                    'type' => 'input',
+                    'size' => 40,
+                    'max' => 255,
+                    'eval' => 'trim',
+                ],
+            ],
+
+            'address' => [
                 'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.address',
+                'displayCond' => 'FIELD:attendance_mode:=:0',
+                'exclude' => true,
                 'config' => [
                     'type' => 'input',
                     'size' => 40,
@@ -118,10 +151,8 @@ return [
             ],
 
             'start_date' => [
-                'exclude' => true,
-                'l10n_mode' => 'exclude',
-                'l10n_display' => 'defaultAsReadonly',
                 'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.startdate',
+                'exclude' => true,
                 'config' => [
                     'type' => 'datetime',
                     'default' => now()->getTimestamp(),
@@ -129,10 +160,8 @@ return [
                 ],
             ],
             'end_date' => [
-                'exclude' => true,
-                'l10n_mode' => 'exclude',
-                'l10n_display' => 'defaultAsReadonly',
                 'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.enddate',
+                'exclude' => true,
                 'config' => [
                     'type' => 'datetime',
                     'default' => now()->getTimestamp(),
@@ -141,18 +170,18 @@ return [
             ],
 
             'zip' => [
-                'exclude' => true,
-                'l10n_mode' => 'exclude',
-                'l10n_display' => 'defaultAsReadonly',
                 'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.zip',
+                'displayCond' => 'FIELD:attendance_mode:=:0',
+                'exclude' => true,
                 'config' => [
                     'type' => 'input',
                     'size' => 4,
                 ],
             ],
             'city' => [
-                'exclude' => true,
                 'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.city',
+                'displayCond' => 'FIELD:attendance_mode:=:0',
+                'exclude' => true,
                 'config' => [
                     'type' => 'input',
                     'size' => 30,
@@ -163,8 +192,9 @@ return [
                 ],
             ],
             'longitude' => [
-                'exclude' => true,
                 'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.longitude',
+                'displayCond' => 'FIELD:attendance_mode:=:0',
+                'exclude' => true,
                 'config' => [
                     'type' => 'input',
                     'size' => 11,
@@ -174,8 +204,9 @@ return [
                 ],
             ],
             'latitude' => [
-                'exclude' => true,
                 'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.latitude',
+                'displayCond' => 'FIELD:attendance_mode:=:0',
+                'exclude' => true,
                 'config' => [
                     'type' => 'input',
                     'size' => 11,
@@ -199,8 +230,8 @@ return [
             ],
 
             'registration' => [
-                'exclude' => true,
                 'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.registrations',
+                'exclude' => true,
                 'config' => [
                     'type' => 'inline',
                     'foreign_table' => 'tx_sitepackage_domain_model_eventregistration',
@@ -211,6 +242,16 @@ return [
                         'levelLinksPosition' => 'bottom',
                         'useSortable' => 1,
                     ],
+                ],
+            ],
+
+            'attendance_mode' => [
+                'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.attendance_mode.label',
+                'onChange' => 'reload',
+                'config' => [
+                    'type' => 'select',
+                    'renderType' => 'selectSingle',
+                    'items' => EventAttendanceModeEnum::selects(),
                 ],
             ],
         ]

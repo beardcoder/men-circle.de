@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MensCircle\Sitepackage\Services;
+namespace MensCircle\Sitepackage\Service;
 
 use TYPO3\CMS\Backend\Form\FormDataProvider\TcaSlug;
 

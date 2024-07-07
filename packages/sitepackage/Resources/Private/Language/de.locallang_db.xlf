@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xliff version="1.2" xmlns:t3="http://typo3.org/schemas/xliff" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="de" original="" datatype="plaintext" date="2024-05-19T10:40:36+02:00">
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" original="" datatype="plaintext" date="2024-07-07T11:31:50+02:00">
         <body>
             <trans-unit id="tx_sitepackage_domain_model_event" resname="tx_sitepackage_domain_model_event">
                 <source>Event</source>
@@ -9,6 +9,10 @@
             <trans-unit id="tx_sitepackage_domain_model_event.address" resname="tx_sitepackage_domain_model_event.address">
                 <source>Address</source>
                 <target>Adresse</target>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.cancelled" resname="tx_sitepackage_domain_model_event.cancelled">
+                <source>Cancelled</source>
+                <target>Abgesagt</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.city" resname="tx_sitepackage_domain_model_event.city">
                 <source>City</source>
@@ -62,6 +66,18 @@
                 <source>Title</source>
                 <target>Titel</target>
             </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.attendance_mode.label" resname="tx_sitepackage_domain_model_event.attendance_mode.label">
+                <source>Type</source>
+                <target>Art</target>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.attendance_mode.options.offline" resname="tx_sitepackage_domain_model_event.attendance_mode.options.offline">
+                <source>Offline</source>
+                <target>Vor Ort (Offline)</target>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.attendance_mode.options.online" resname="tx_sitepackage_domain_model_event.attendance_mode.options.online">
+                <source>Online</source>
+                <target>Virtuell (Online)</target>
+            </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.zip" resname="tx_sitepackage_domain_model_event.zip">
                 <source>Zip</source>
                 <target>PLZ</target>
@@ -82,9 +98,9 @@
                 <source>Lastname</source>
                 <target>Nachname</target>
             </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_event.cancelled" resname="tx_sitepackage_domain_model_event.cancelled">
-                <source>Cancelled</source>
-                <target>Abgesagt</target>
+            <trans-unit id="tx_sitepackage_domain_model_event.call_url.label" resname="tx_sitepackage_domain_model_event.call_url.label">
+                <source>Call URL</source>
+                <target>Anruf URL</target>
             </trans-unit>
         </body>
     </file>
