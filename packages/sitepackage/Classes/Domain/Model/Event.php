@@ -88,4 +88,19 @@ class Event extends AbstractEntity
     {
         return $this->cancelled;
     }
+
+    public function getLongTitle(): string
+    {
+        return $this->title . ' am ' . $this->startDate->format('d.m.Y');
+    }
+
+    public function getStartDate(): ?DateTime
+    {
+        return $this->startDate;
+    }
+
+    public function getEndDate(): ?DateTime
+    {
+        return $this->endDate;
+    }
 }

@@ -28,6 +28,10 @@ routeEnhancers:
         _controller: 'Event::detail'
         _arguments:
           event_title: event
+      - routePath: '/{event_title}/ical'
+        _controller: 'Event::iCal'
+        _arguments:
+          event_title: event
     defaultController: 'Event::detail'
     aspects:
       event_title:

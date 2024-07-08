@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace MensCircle\Sitepackage\Controller;
 
+use DateTime;
+use DateTimeZone;
 use MensCircle\Sitepackage\Domain\Model\Event;
 use MensCircle\Sitepackage\Domain\Model\EventRegistration;
 use MensCircle\Sitepackage\Domain\Model\FrontendUser;
@@ -13,12 +15,18 @@ use MensCircle\Sitepackage\Domain\Repository\FrontendUserRepository;
 use MensCircle\Sitepackage\Enum\EventStatusEnum;
 use MensCircle\Sitepackage\PageTitle\EventPageTitleProvider;
 use PhpStaticAnalysis\Attributes\Throws;
+use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\ResponseInterface;
-use Spatie\SchemaOrg\EventStatusType;
+use Psr\Http\Message\StreamInterface;
+use Spatie\IcalendarGenerator\Components\Calendar;
+use Spatie\IcalendarGenerator\Components\Event as CalendarEvent;
 use Spatie\SchemaOrg\ItemAvailability;
 use Spatie\SchemaOrg\Schema;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Uid\Uuid;
+use TYPO3\CMS\Core\Http\PropagateResponseException;
+use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\MailerInterface;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerInterface;
@@ -73,18 +81,23 @@ class EventController extends ActionController
         $metaTagManager->addProperty('og:image:height', '600');
         $metaTagManager->addProperty('og:image:alt', $event->getImage()->getOriginalResource()->getAlternative());
 
-        $metaTagManager->addProperty('og:url', $this->uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(3)->uriFor(
-            'detail',
-            [
-                'event' => $event->getUid(),
-            ],
-        ));
+        $metaTagManager->addProperty('og:url', $this->getUrlForEvent($event));
 
         $this->buildSchema($event);
         $this->view->assign('event', $event);
         $this->view->assign('eventRegistration', $eventRegistrationToAssign);
 
         return $this->htmlResponse();
+    }
+
+    private function getUrlForEvent(Event $event): string
+    {
+        return $this->uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(3)->uriFor(
+            'detail',
+            [
+                'event' => $event->getUid(),
+            ],
+        );
     }
 
     private function buildSchema(Event $event): void
@@ -219,8 +232,7 @@ class EventController extends ActionController
 
         return $frontendUser;
     }
-
-    #[Throws('TransportExceptionInterface')]
+    
     #[Throws('TransportExceptionInterface')]
     private function sendMailToAdminOnRegistration(EventRegistration $eventRegistration): void
     {
@@ -236,5 +248,35 @@ class EventController extends ActionController
         assert($mailer instanceof MailerInterface);
 
         $mailer->send($fluidEmail);
+    }
+
+    /**
+     * @throws PropagateResponseException
+     */
+    public function iCalAction(Event $event): MessageInterface
+    {
+        $processedFile = $this->imageService->applyProcessingInstructions(
+            $event->getImage()->getOriginalResource(),
+            ['width' => '600c', 'height' => '600c']
+        );
+        $imageUri = $this->imageService->getImageUri($processedFile, true);
+
+        $calEvent = CalendarEvent::create()
+            ->name($event->getLongTitle())
+            ->description($event->description)
+            ->url($this->getUrlForEvent($event))
+            ->image($imageUri)
+            ->startsAt(new DateTime($event->startDate->format('d.m.Y H:i'), new DateTimeZone('Europe/Berlin')))
+            ->endsAt(new DateTime($event->endDate->format('d.m.Y H:i'), new DateTimeZone('Europe/Berlin')))
+            ->organizer('markus@letsbenow.de', 'Markus Sommer');
+
+        $calendar = Calendar::create($event->getLongTitle())->event($calEvent);
+
+        $response = $this->responseFactory->createResponse()
+            ->withHeader('Cache-Control', 'private')
+            ->withHeader('Content-Disposition', 'attachment; filename="calendar.ics"')
+            ->withHeader('Content-Type', 'text/calendar; charset=utf-8')
+            ->withBody($this->streamFactory->createStream($calendar->get()));
+        throw new PropagateResponseException($response, 200);
     }
 }

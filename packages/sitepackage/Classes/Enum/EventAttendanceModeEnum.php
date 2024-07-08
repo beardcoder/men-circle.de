@@ -25,7 +25,6 @@ enum EventAttendanceModeEnum: int
             EventAttendanceModeEnum::OFFLINE => EventAttendanceModeEnumeration::OfflineEventAttendanceMode,
             EventAttendanceModeEnum::ONLINE => EventAttendanceModeEnumeration::OnlineEventAttendanceMode,
         };
-
     }
 
 }
