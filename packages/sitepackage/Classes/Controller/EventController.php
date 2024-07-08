@@ -14,7 +14,6 @@ use MensCircle\Sitepackage\Domain\Repository\EventRepository;
 use MensCircle\Sitepackage\Domain\Repository\FrontendUserRepository;
 use MensCircle\Sitepackage\Enum\EventStatusEnum;
 use MensCircle\Sitepackage\PageTitle\EventPageTitleProvider;
-use PhpStaticAnalysis\Attributes\Throws;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
@@ -232,8 +231,7 @@ class EventController extends ActionController
 
         return $frontendUser;
     }
-    
-    #[Throws('TransportExceptionInterface')]
+
     private function sendMailToAdminOnRegistration(EventRegistration $eventRegistration): void
     {
         $fluidEmail = new FluidEmail();
