@@ -43,7 +43,7 @@
             >
 
                 <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Veranstaltungsdaten:</h2>
-                <f:if condition="{event.isOffline}">
+                <f:if condition="{event.offline}">
                     <f:then>
                         <f:render arguments="{_all}" partial="Event/Address" />
                     </f:then>
@@ -68,7 +68,7 @@
     </div>
 </section>
 <f:cObject data="{contentUid: 3}" typoscriptObjectPath="lib.renderContent" />
-<f:if condition="{event.isOffline}">
+<f:if condition="{event.offline}">
     <section class="aspect-square lg:aspect-auto">
         <div
             class="aspect-square lg:aspect-[16/5]"
