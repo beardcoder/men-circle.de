@@ -26,7 +26,7 @@
                 class="mb-4 text-4xl font-bold tracking-tight text-stone-900 dark:text-white"
                 data-fade="left"
             >
-                Anmeldung zum {f:if(condition: '{event.isOnline}', then: 'Online ')}Männerkreis am
+                Anmeldung zum {event.title} am
                 <time datetime="{event.startDate -> f:format.date(format: 'c')}">
                     {event.startDate -> f:format.date(format: 'd.m.Y H:i')}
                 </time>
