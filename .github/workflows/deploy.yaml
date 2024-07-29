@@ -40,7 +40,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           ARGS: "-rlgoDzvc -i"
           SOURCE: "./"
-          REMOTE_HOST: mens-circle.de
+          REMOTE_HOST: spica.uberspace.de
           REMOTE_USER: viking
           TARGET: /home/viking/html/mens-circle.de
           EXCLUDE: ".env, .github, .git, .ddev, node_modules, fileadmin, config/system/additional.php, DOCKER_ENV, output.log, Dockerfile-php-build, docker_tag"
