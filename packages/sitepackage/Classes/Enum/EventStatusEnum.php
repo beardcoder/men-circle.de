@@ -2,9 +2,6 @@
 
 namespace MensCircle\Sitepackage\Enum;
 
-use Spatie\SchemaOrg\EventAttendanceModeEnumeration;
-use Spatie\SchemaOrg\EventStatusType;
-
 enum EventStatusEnum: string
 {
     /**

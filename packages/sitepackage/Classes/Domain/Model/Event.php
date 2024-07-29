@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace MensCircle\Sitepackage\Domain\Model;
 
-use DateTime;
 use MensCircle\Sitepackage\Enum\EventAttendanceModeEnum;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
@@ -17,9 +16,9 @@ class Event extends AbstractEntity
     public string $slug;
     public string $title;
     public string $description;
-    public ?DateTime $startDate = null;
-    public ?DateTime $endDate = null;
-    public ?DateTime $crdate = null;
+    public ?\DateTime $startDate = null;
+    public ?\DateTime $endDate = null;
+    public ?\DateTime $crdate = null;
     public string $place;
     public string $address;
     public string $zip;
