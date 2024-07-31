@@ -82,6 +82,10 @@
                 <source>Feature</source>
                 <target>Vorteil</target>
             </trans-unit>
+			<trans-unit id="content_element.text" resname="content_element.text">
+				<source>Text</source>
+				<target>Text</target>
+			</trans-unit>
         </body>
     </file>
 </xliff>

@@ -1,0 +1,14 @@
+mod.wizards.newContentElement.wizardItems.sitepackage {
+  elements {
+    menscircle_text {
+      title = LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:content_element.text
+      description = LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:content_element.text.description
+      iconIdentifier = content-sitepackage-text
+      tt_content_defValues {
+        CType = menscircle_text
+      }
+    }
+  }
+
+  show := addToList(menscircle_text)
+}
