@@ -2,27 +2,29 @@
     data-namespace-typo3-fluid="true"
     xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
 >
-<f:variable name="logo"
-            value="{f:if(condition: dark, then: 'EXT:sitepackage/Resources/Public/Images/logo-white.svg',else:'EXT:sitepackage/Resources/Public/Images/logo-black.svg')}"></f:variable>
+<f:variable
+    name="logo"
+    value="{f:if(condition: dark, then: 'EXT:sitepackage/Resources/Public/Images/logo-white.svg',else:'EXT:sitepackage/Resources/Public/Images/logo-black.svg')}"
+></f:variable>
 <f:variable name="textClass">{f:if(condition: dark, then: 'text-white', else: 'text-black dark:text-white')}
 </f:variable>
 
 <header class="absolute top-0 z-20 h-32 w-full md:h-20">
     <div class="mx-auto flex h-20 max-w-screen-xl flex-col items-center px-2 py-2 md:flex-row">
-        <a class="block h-16 w-16" href="/">
+        <a class="flex flex-col md:flex-row items-center justify-center" href="/">
             <f:image
                 alt="logo"
-                class="text-white h-full w-auto dark:hidden"
+                class="text-white w-auto dark:hidden h-16"
                 height="500"
                 src="{logo}"
                 width="500"
             />
             <f:image
                 alt="logo"
-                class="text-white hidden h-full w-auto dark:block" height="500"
+                class="text-white hidden w-auto dark:block h-16" height="500"
                 src="EXT:sitepackage/Resources/Public/Images/logo-white.svg" width="500"
             />
-            <span class="sr-only">Startseite</span>
+            <span class="text-white font-black font-header ml-2 text-2xl">Männerkreis Niederbayern</span>
         </a>
         <nav class="{textClass} mx-auto md:mr-0">
             <ul class="mt-2 flex space-x-8 text-xl font-bold uppercase md:mr-0 md:mt-0">

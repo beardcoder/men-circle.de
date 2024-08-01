@@ -4,7 +4,7 @@
     xmlns:i="http://typo3.org/ns/B13/Picture/ViewHelpers"
 >
 <section class="relative w-full">
-    <div class="relative z-10 flex max-w-[100vw] items-center pb-24 pt-40 xl:aspect-video">
+    <div class="relative z-10 flex max-w-[100vw] items-center pb-24 pt-40 min-h-screen">
         <div class="mx-auto max-w-screen-xl w-full px-6">
             <h1 class="font-header font-black uppercase text-white text-fluid leading-none">
                 {data.header -> f:format.raw()}
@@ -25,41 +25,14 @@
     <div class="absolute inset-0 w-full after:absolute after:inset-0 after:bg-black after:bg-opacity-40">
         <div class="absolute inset-0 w-full">
             <i:image
-                additionalAttributes="{ 'data-u-speed': '1.6' }"
                 alt="{data.image.0.alternative}"
-                class="w-full h-full object-cover object-center parallax"
+                class="w-full h-full object-cover object-center"
                 image="{data.image.0}"
                 maxHeight="1600"
                 maxWidth="2560"
                 variants="800, 1000"
             />
         </div>
-        <f:if condition="{data.image.1}">
-            <div class="absolute inset-0 w-full">
-                <i:image
-                    additionalAttributes="{ 'data-u-speed': '1.2' }"
-                    alt="{data.image.1.alternative}"
-                    class="w-full h-full object-cover object-center parallax"
-                    image="{data.image.1}"
-                    maxHeight="1600"
-                    maxWidth="2560"
-                    variants="800, 1000"
-                />
-            </div>
-        </f:if>
-        <f:if condition="{data.image.2}">
-            <div class="absolute inset-0 w-full">
-                <i:image
-                    additionalAttributes="{ 'data-u-speed': '1.0' }"
-                    alt="{data.image.2.alternative}"
-                    class="w-full h-full object-cover object-center parallax"
-                    image="{data.image.2}"
-                    maxHeight="1600"
-                    maxWidth="2560"
-                    variants="800, 1000"
-                />
-            </div>
-        </f:if>
     </div>
 </section>
 </html>
