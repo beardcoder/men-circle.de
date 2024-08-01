@@ -1,0 +1,31 @@
+.text-wrapper {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    max-width: 100vw;
+    overflow: hidden;
+    background-color: rgb(245 245 244);
+    color: rgb(41 37 36);
+}
+
+.text-wrapper {
+    max-width: 100vw;
+    overflow: hidden;
+    color: var(--font-color);
+    background-color: var(--bg-color);
+}
+
+.text-inner {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1280px; /* Corresponding to max-w-screen-xl */
+    display: flex;
+    align-items: center;
+    gap: 4rem; /* Corresponding to gap-16 (16 * 0.25rem = 4rem) */
+    padding: 2rem 1.5rem;
+}
+
+@media (min-width: 1024px) {
+    .text-inner {
+        padding: 4rem 1.5rem;
+    }
+}

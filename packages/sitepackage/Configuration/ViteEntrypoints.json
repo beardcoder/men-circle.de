@@ -1,3 +1,4 @@
 [
-	"../Resources/Private/Assets/Main.ts"
+	"../Resources/Private/Assets/Main.ts",
+	"../ContentBlocks/ContentElements/*/Assets/Frontend.ts"
 ]
