@@ -4,9 +4,11 @@
 
 :root {
     --font-color: #292524;
+    --color--primary: #B76F2B;
     --bg-color: #f5f5f4;
-    --bg-color--light: #ffffff;
+    --bg-color--light: #fff;
     --font-header: "Jost Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
     @media (prefers-color-scheme: dark) {
         --font-color: #f5f5f4;
         --bg-color: #1c1917;
@@ -39,30 +41,18 @@ h2, h3, h4, h5, h6 {
 }
 
 .c-button {
-    background-color: #3b82f6; /* Corresponding to bg-primary-500 (example color) */
-    color: #ffffff; /* Corresponding to text-white */
-    font-weight: 500; /* Corresponding to font-medium */
-    text-transform: uppercase; /* Corresponding to uppercase */
-    border: none; /* Removing default border */
-    outline: none; /* Removing default outline */
-    padding: 0.875rem 1.5rem; /* Corresponding to px-6 py-3.5 (3.5 * 0.25rem = 0.875rem) */
-    font-size: 1rem; /* Corresponding to text-base */
-    display: inline-block; /* Corresponding to inline-block */
-    transition: background-color 0.3s, ring 0.3s; /* Corresponding to transition */
+    background-color: #3b82f6;
+    border: none;
+    color: #fff;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+    padding: 0.875rem 1.5rem;
+    text-transform: uppercase;
+    transition: background-color 0.3s, ring 0.3s;
 }
 
 .c-button:hover {
-    background-color: #2563eb; /* Corresponding to hover:bg-primary-600 (example color) */
-}
-
-.c-button:focus {
-    outline: none; /* Ensuring outline is removed */
-    ring: 4px solid rgba(59, 130, 246, 0.3); /* Corresponding to focus:ring-primary-300 (example color) */
-}
-
-/* Dark mode specific styles */
-@media (prefers-color-scheme: dark) {
-    .c-button:focus {
-        ring: 4px solid rgba(37, 99, 235, 0.9); /* Corresponding to dark:focus:ring-primary-900 (example color) */
-    }
+    background-color: #2563eb;
 }
