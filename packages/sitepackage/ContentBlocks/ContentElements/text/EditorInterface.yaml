@@ -1,0 +1,12 @@
+name: mens-circle/text
+typeName: menscircle_text
+group: common
+prefixFields: true
+prefixType: full
+fields:
+  - identifier: TYPO3/Header
+    type: Basic
+  - identifier: bodytext
+    type: Textarea
+    useExistingField: true
+    enableRichtext: true

@@ -10,8 +10,4 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:sitepackage/Resources/Public/Icons/tx-sitepackage-plugin-event-list.svg',
     ],
-    'content-sitepackage-text' => [
-        'provider' => SvgIconProvider::class,
-        'source' => 'EXT:sitepackage/Resources/Public/Icons/Content/Text.svg',
-    ],
 ];

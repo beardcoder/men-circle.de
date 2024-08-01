@@ -66,9 +66,6 @@
             <trans-unit id="tx_sitepackage_feature.title" resname="tx_sitepackage_feature.title">
                 <source>Feature</source>
             </trans-unit>
-            <trans-unit id="content_element.text" resname="content_element.text">
-                <source>Text</source>
-            </trans-unit>
         </body>
     </file>
 </xliff>
