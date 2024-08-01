@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html, body {
     @apply bg-white dark:bg-stone-800 dark:text-stone-100;
 }
@@ -21,4 +20,8 @@ h2, h3, h4, h5, h6 {
     span {
         @apply text-primary
     }
+}
+
+* {
+    text-wrap: balance;
 }
