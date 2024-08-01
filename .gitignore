@@ -4,12 +4,13 @@ nbproject
 /var/*
 !/var/labels
 /vendor
-/public/*
 !/public/.htaccess
 !/public/typo3conf
 /public/typo3conf/*
 !/public/typo3conf/LocalConfiguration.php
 !/public/typo3conf/AdditionalConfiguration.php
 node_modules
-public
+/public
 .php-cs-fixer.cache
+!Resources/Public/Icons/*
+.dumps
