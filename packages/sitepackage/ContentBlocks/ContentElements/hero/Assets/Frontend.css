@@ -1,0 +1,59 @@
+.c-hero {
+    position: relative; /* Corresponding to relative */
+    width: 100%; /* Corresponding to w-full */
+}
+
+.c-hero__content {
+    position: relative; /* Corresponding to relative */
+    z-index: 10; /* Corresponding to z-10 */
+    display: flex; /* Corresponding to flex */
+    max-width: 100vw; /* Corresponding to max-w-[100vw] */
+    align-items: center; /* Corresponding to items-center */
+    padding-bottom: 6rem; /* Corresponding to pb-24 (24 * 0.25rem = 6rem) */
+    padding-top: 10rem; /* Corresponding to pt-40 (40 * 0.25rem = 10rem) */
+    min-height: 100vh; /* Corresponding to min-h-screen */
+}
+
+.c-hero__image {
+    position: absolute; /* Corresponding to absolute */
+    inset: 0; /* Corresponding to inset-0 */
+    width: 100%; /* Corresponding to w-full */
+}
+
+.c-hero__image::after {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Corresponding to after:absolute */
+    inset: 0; /* Corresponding to after:inset-0 */
+    background-color: rgba(0, 0, 0, 0.4); /* Corresponding to after:bg-black and after:bg-opacity-40 */
+}
+
+.c-hero__image-inner {
+    position: absolute; /* Corresponding to absolute */
+    inset: 0; /* Corresponding to inset-0 */
+    width: 100%; /* Corresponding to w-full */
+}
+
+.c-hero__image-element {
+    width: 100%; /* Corresponding to w-full */
+    height: 100%; /* Corresponding to h-full */
+    object-fit: cover; /* Corresponding to object-cover */
+    object-position: center; /* Corresponding to object-center */
+}
+
+.c-hero__text {
+    margin-left: auto; /* Corresponding to mx-auto */
+    margin-right: auto; /* Corresponding to mx-auto */
+    max-width: 1280px; /* Corresponding to max-w-screen-xl (screen-xl is typically 1280px) */
+    width: 100%; /* Corresponding to w-full */
+    padding-left: 1.5rem; /* Corresponding to px-6 (6 * 0.25rem = 1.5rem) */
+    padding-right: 1.5rem; /* Corresponding to px-6 (6 * 0.25rem = 1.5rem) */
+}
+
+.c-hero__header {
+    font-family: var(--font-header);
+    font-weight: 900; /* Corresponding to font-black */
+    text-transform: uppercase; /* Corresponding to uppercase */
+    color: #ffffff; /* Corresponding to text-white */
+    font-size: clamp(1rem, 2vw + 1rem, 2.5rem); /* Corresponding to text-fluid, adjust the values as needed */
+    line-height: 1; /* Corresponding to leading-none */
+}

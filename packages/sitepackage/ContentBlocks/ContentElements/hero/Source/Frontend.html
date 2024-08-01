@@ -2,11 +2,15 @@
     data-namespace-typo3-fluid="true"
     xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
     xmlns:i="http://typo3.org/ns/B13/Picture/ViewHelpers"
+    xmlns:mc="http://typo3.org/ns/MensCircle/Sitepackage/ViewHelpers"
+    xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
 >
-<section class="relative w-full">
-    <div class="relative z-10 flex max-w-[100vw] items-center pb-24 pt-40 min-h-screen">
-        <div class="mx-auto max-w-screen-xl w-full px-6">
-            <h1 class="font-header font-black uppercase text-white text-fluid leading-none">
+<vac:asset.vite entry="EXT:sitepackage/ContentBlocks/ContentElements/hero/Assets/Frontend.ts" />
+
+<section class="c-hero">
+    <div class="c-hero__content">
+        <div class="c-hero__text">
+            <h1 class="c-hero__header">
                 {data.header -> f:format.raw()}
             </h1>
             <div class="format mb-12 mt-8 max-w-3xl text-xl text-white">
@@ -14,7 +18,7 @@
             </div>
             <f:if condition="{data.link}">
                 <f:link.typolink
-                    class="bg-primary-500 hover:bg-primary-600 focus:ring-primary-300 dark:focus:ring-primary-900 font-medium uppercase text-white focus:outline-none focus:ring-4 transition inline-block px-6 py-3.5 text-base"
+                    class="c-button"
                     parameter="{data.link}"
                 >
                     {data.link_title}
@@ -22,11 +26,11 @@
             </f:if>
         </div>
     </div>
-    <div class="absolute inset-0 w-full after:absolute after:inset-0 after:bg-black after:bg-opacity-40">
-        <div class="absolute inset-0 w-full">
+    <div class="c-hero__image">
+        <div class="c-hero__image-inner">
             <i:image
                 alt="{data.image.0.alternative}"
-                class="w-full h-full object-cover object-center"
+                class="c-hero__image-element"
                 image="{data.image.0}"
                 maxHeight="1600"
                 maxWidth="2560"
