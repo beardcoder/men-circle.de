@@ -1,20 +1,11 @@
-.text-wrapper {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-    max-width: 100vw;
-    overflow: hidden;
-    background-color: rgb(245 245 244);
-    color: rgb(41 37 36);
-}
-
-.text-wrapper {
+.c-text {
     max-width: 100vw;
     overflow: hidden;
     color: var(--font-color);
     background-color: var(--bg-color);
 }
 
-.text-inner {
+.c-text__wrapper {
     margin-left: auto;
     margin-right: auto;
     max-width: 1280px; /* Corresponding to max-w-screen-xl */
@@ -22,10 +13,42 @@
     align-items: center;
     gap: 4rem; /* Corresponding to gap-16 (16 * 0.25rem = 4rem) */
     padding: 2rem 1.5rem;
-}
 
-@media (min-width: 1024px) {
-    .text-inner {
+    @media (min-width: 1024px) {
         padding: 4rem 1.5rem;
     }
 }
+
+
+.c-text__inner {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 56rem; /* Corresponding to max-w-4xl (4 * 14rem = 56rem) */
+
+    @media (min-width: 640px) {
+        font-size: 1.125rem; /* Corresponding to sm:text-lg (1.125rem = 18px) */
+        line-height: 1.75rem; /* Corresponding to sm:text-lg */
+    }
+}
+
+.c-text__header {
+    margin-bottom: 1rem; /* Corresponding to mb-4 (4 * 0.25rem = 1rem) */
+    text-align: center; /* Corresponding to text-center */
+    font-size: 2.25rem; /* Corresponding to text-4xl (2.25rem = 36px) */
+    font-weight: 700; /* Corresponding to font-bold */
+    letter-spacing: -0.025em; /* Corresponding to tracking-tight */
+    color: #292524; /* Corresponding to text-stone-900 */
+
+    @media (prefers-color-scheme: dark) {
+        color: #ffffff; /* Corresponding to dark:text-white */
+    }
+
+    @media (min-width: 1024px) {
+        font-size: 3rem; /* Corresponding to lg:text-5xl (3rem = 48px) */
+    }
+}
+
+
+
+
+

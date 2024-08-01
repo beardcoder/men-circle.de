@@ -5,12 +5,11 @@
     xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
 >
 <vac:asset.vite entry="EXT:sitepackage/ContentBlocks/ContentElements/text/Assets/Frontend.ts" />
-
-<section class="text-wrapper">
-    <div class="text-inner">
-        <div class="mx-auto max-w-4xl sm:text-lg">
+<section class="c-text">
+    <div class="c-text__wrapper">
+        <div class="c-text__inner">
             <h2
-                class="mb-4 text-center text-4xl font-bold tracking-tight text-stone-900 dark:text-white lg:text-5xl"
+                class="c-text__header"
                 data-aos="fade-up"
             >
                 {data.header -> f:format.raw()}
