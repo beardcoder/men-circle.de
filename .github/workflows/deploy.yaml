@@ -21,8 +21,9 @@ jobs:
       - name: Install dependencies
         uses: php-actions/composer@v6
         with:
+          php_version: "8.3"
           dev: no
-          args: --no-progress --no-interaction --optimize-autoloader --no-progress --ignore-platform-reqs
+          args: --no-progress --no-interaction --optimize-autoloader
 
       - name: Set up Node
         uses: actions/setup-node@v4
