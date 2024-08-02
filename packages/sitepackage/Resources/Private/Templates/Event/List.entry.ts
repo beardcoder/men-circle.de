@@ -1,1 +1,0 @@
-import './List.entry.css';

@@ -3,11 +3,9 @@
     margin: 0 auto; /* mx-auto */
     max-inline-size: 1280px; /* max-w-screen-xl */
     padding: 2rem 1.5rem; /* px-6 py-8 */
-}
 
-@media (width >= 640px) {
-    .o-event-list {
-        padding-block: 4rem; /* sm:py-16 */ /* sm:py-16 */
+    @media (width >= 640px) {
+        padding-block: 6rem;
     }
 }
 

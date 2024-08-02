@@ -9,8 +9,8 @@
 <f:layout name="Default" />
 
 <f:section name="Main">
-
-    <vac:asset.vite entry="EXT:sitepackage/Resources/Private/Templates/Event/List.entry.ts" />
+<f:if condition="{events}">
+    <vac:asset.vite entry="EXT:sitepackage/Resources/Private/Templates/Event/List.entry.css" />
     <div class="o-event-list">
         <f:render arguments="{layout: 2}" contentAs="header" partial="ContentElements/Header">Nächste Veranstaltungen
         </f:render>
@@ -20,5 +20,6 @@
             </f:for>
         </div>
     </div>
+</f:if>
 </f:section>
 </html>

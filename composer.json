@@ -10,7 +10,7 @@
 		"helhum/dotenv-connector": "^3.1",
 		"lochmueller/staticfilecache": "^14.0.1",
 		"mens-circle/sitepackage": "@dev",
-		"praetorius/vite-asset-collector": "^1.9",
+		"praetorius/vite-asset-collector": "^1.10",
 		"spatie/icalendar-generator": "^2.8",
 		"spatie/schema-org": "^3.23",
 		"topwire/topwire": "^1.0@dev",

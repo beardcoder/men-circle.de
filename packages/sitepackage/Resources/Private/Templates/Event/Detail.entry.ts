@@ -1,4 +1,3 @@
-import './Detail.entry.css';
 import 'leaflet/dist/leaflet.css';
 
 const mapEle = document.getElementById('map');

@@ -13,8 +13,8 @@
     max-inline-size: 1280px;
     padding: 2rem 1.5rem;
 
-    @media (width >= 768px) {
-        padding: 4rem 1.5rem;
+    @media (width >= 640px) {
+        padding-block: 6rem;
     }
 }
 
