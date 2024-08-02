@@ -9,29 +9,31 @@
 <f:variable name="textClass">{f:if(condition: dark, then: 'text-white', else: 'text-black dark:text-white')}
 </f:variable>
 
-<header class="absolute top-0 z-20 h-32 w-full md:h-20">
-    <div class="mx-auto flex h-20 max-w-screen-xl flex-col items-center px-2 py-2 md:flex-row">
-        <a class="flex flex-col md:flex-row items-center justify-center" href="/">
+<header class="o-header">
+    <div class="o-header__container">
+        <a class="o-header__logo-link" href="/">
             <f:image
                 alt="logo"
-                class="text-white w-auto dark:hidden h-16"
+                class="o-header__logo o-header__logo--dark-hidden"
                 height="500"
                 src="{logo}"
                 width="500"
             />
             <f:image
                 alt="logo"
-                class="text-white hidden w-auto dark:block h-16" height="500"
-                src="EXT:sitepackage/Resources/Public/Images/logo-white.svg" width="500"
+                class="o-header__logo o-header__logo--dark-visible"
+                height="500"
+                src="EXT:sitepackage/Resources/Public/Images/logo-white.svg"
+                width="500"
             />
-            <span class="text-white font-black font-header ml-2 text-2xl">Männerkreis Niederbayern</span>
+            <span class="o-header__title">Männerkreis Niederbayern</span>
         </a>
-        <nav class="{textClass} mx-auto md:mr-0">
-            <ul class="mt-2 flex space-x-8 text-xl font-bold uppercase md:mr-0 md:mt-0">
-                <li class="active first"><a href="/">Home</a></li>
+        <nav class="o-header__nav {textClass}">
+            <ul class="o-header__nav-list">
+                <li class="o-header__nav-item o-header__nav-item--active"><a href="/">Home</a></li>
 
                 <f:for as="mainnavigationItem" each="{mainnavigation}">
-                    <li>
+                    <li class="o-header__nav-item">
                         <a
                             href="{mainnavigationItem.link}"
                             target="{mainnavigationItem.target}"

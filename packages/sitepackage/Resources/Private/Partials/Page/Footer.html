@@ -1,12 +1,13 @@
 <html
     data-namespace-typo3-fluid="true"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
 >
-<footer class="bg-secondary p-4 text-white md:p-8 lg:p-10">
-    <div class="mx-auto max-w-screen-xl text-center">
-        <p class="my-6"></p>
-        <ul class="mb-6 flex flex-wrap items-center justify-center dark:text-white space-x-8 uppercase">
+<footer class="o-footer">
+    <div class="o-footer__container">
+        <p class="o-footer__text"></p>
+        <ul class="o-footer__nav">
             <f:for as="item" each="{footernavigation}">
-                <li>
+                <li class="o-footer__nav-item">
                     <a
                         href="{item.link}"
                         target="{item.target}"
@@ -17,7 +18,7 @@
                 </li>
             </f:for>
         </ul>
-        <div class="text-sm sm:text-center">
+        <div class="o-footer__copyright">
             © 2023-2024 Build with ❤️ and mindfulness in Bavaria
         </div>
     </div>

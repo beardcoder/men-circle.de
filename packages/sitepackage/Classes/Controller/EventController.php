@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace MensCircle\Sitepackage\Controller;
 
-use DateTime;
-use DateTimeZone;
 use MensCircle\Sitepackage\Domain\Model\Event;
 use MensCircle\Sitepackage\Domain\Model\EventRegistration;
 use MensCircle\Sitepackage\Domain\Model\FrontendUser;
@@ -16,16 +14,13 @@ use MensCircle\Sitepackage\Enum\EventStatusEnum;
 use MensCircle\Sitepackage\PageTitle\EventPageTitleProvider;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\StreamInterface;
 use Spatie\IcalendarGenerator\Components\Calendar;
 use Spatie\IcalendarGenerator\Components\Event as CalendarEvent;
 use Spatie\SchemaOrg\ItemAvailability;
 use Spatie\SchemaOrg\Schema;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Uid\Uuid;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
-use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\MailerInterface;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerInterface;
@@ -39,14 +34,12 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class EventController extends ActionController
 {
     public function __construct(
-        private readonly EventRepository             $eventRepository,
+        private readonly EventRepository $eventRepository,
         private readonly EventRegistrationRepository $eventRegistrationRepository,
-        private readonly FrontendUserRepository      $frontendUserRepository,
-        private readonly EventPageTitleProvider      $eventPageTitleProvider,
-        private readonly ImageService                $imageService
-    )
-    {
-    }
+        private readonly FrontendUserRepository $frontendUserRepository,
+        private readonly EventPageTitleProvider $eventPageTitleProvider,
+        private readonly ImageService $imageService
+    ) {}
 
     public function listAction(): ResponseInterface
     {
@@ -264,8 +257,8 @@ class EventController extends ActionController
             ->description($event->description)
             ->url($this->getUrlForEvent($event))
             ->image($imageUri)
-            ->startsAt(new DateTime($event->startDate->format('d.m.Y H:i'), new DateTimeZone('Europe/Berlin')))
-            ->endsAt(new DateTime($event->endDate->format('d.m.Y H:i'), new DateTimeZone('Europe/Berlin')))
+            ->startsAt(new \DateTime($event->startDate->format('d.m.Y H:i'), new \DateTimeZone('Europe/Berlin')))
+            ->endsAt(new \DateTime($event->endDate->format('d.m.Y H:i'), new \DateTimeZone('Europe/Berlin')))
             ->organizer('markus@letsbenow.de', 'Markus Sommer');
 
         $calendar = Calendar::create($event->getLongTitle())->event($calEvent);
