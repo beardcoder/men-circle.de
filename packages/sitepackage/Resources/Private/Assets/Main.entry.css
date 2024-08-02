@@ -3,7 +3,6 @@
 
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
 :root {
     --font-color: #292524;
@@ -136,4 +135,8 @@ a {
 .form {
     margin-inline: auto;
     max-inline-size: 28rem;
+}
+
+.max-w-none {
+    max-inline-size: none;
 }
