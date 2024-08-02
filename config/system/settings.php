@@ -47,16 +47,6 @@ return [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
         ],
-        'nnhelpers' => [
-            'autoCreateFilemounts' => '1',
-            'clearAllCaches' => '0',
-            'deeplApiKey' => '',
-            'deeplApiUrl' => 'https://api-free.deepl.com/v2/translate',
-            'devModeEnabled' => '0',
-            'googleGeoApiKey' => '',
-            'saltingKey' => '',
-            'showMod' => '1',
-        ],
         'scheduler' => [
             'maxLifetime' => '1440',
         ],
@@ -175,6 +165,10 @@ return [
         'displayErrors' => 1,
         'encryptionKey' => '7bf24e59234ae81bb2875eac483d6a45ff37b012bbca68ddc75eb5dd9d94718bdf647f1f363466ba3317e8a5377a3b37',
         'exceptionalErrors' => 12290,
+        'features' => [
+            'security.backend.htmlSanitizeRte' => true,
+            'security.usePasswordPolicyForFrontendUsers' => true,
+        ],
         'sitename' => 'Men\'s Circle Niederbayern',
         'systemMaintainers' => [
             1,
