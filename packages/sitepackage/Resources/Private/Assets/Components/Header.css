@@ -102,6 +102,6 @@
     /* Add styles for the active navigation item if needed */
 }
 
-.o-header__nav-item:first-child {
-    /* Add styles for the first navigation item if needed */
+.o-header__nav-item a {
+    color: #fff;
 }

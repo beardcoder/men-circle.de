@@ -44,19 +44,27 @@ h2, h3, h4, h5, h6 {
     text-wrap: balance;
 }
 
+a {
+    color: var(--color--primary);
+}
+
 .c-button {
-    background-color: #3b82f6;
+    background-color: var(--color--primary);
     border: none;
     color: #fff;
     display: inline-block;
     font-size: 1rem;
     font-weight: 500;
     outline: none;
-    padding: 0.875rem 1.5rem;
+    padding: 0.5rem 1rem;
     text-transform: uppercase;
     transition: background-color 0.3s, ring 0.3s;
 }
 
+.c-button--large {
+    padding: 0.875rem 1.5rem;
+}
+
 .c-button:hover {
-    background-color: #2563eb;
+    background-color: rgb(var(--color--primary) 0.5);
 }
