@@ -11,27 +11,6 @@
     }
 }
 
-.o-event-list__title {
-    color: var(--font-color); /* text-stone-900 */
-    font-size: 2.25rem; /* text-4xl */
-    font-weight: bold; /* font-bold */
-    letter-spacing: -0.025em; /* tracking-tight */
-    margin-block-end: 1rem; /* mb-4 */
-    text-align: start; /* default alignment */
-}
-
-@media (width >= 768px) {
-    .o-event-list__title {
-        text-align: center; /* md:text-center */
-    }
-}
-
-@media (width >= 1024px) {
-    .o-event-list__title {
-        font-size: 3rem; /* lg:text-5xl */
-    }
-}
-
 .o-event-list__items {
     display: flex; /* flex */
     flex-wrap: wrap; /* flex-wrap */

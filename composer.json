@@ -8,7 +8,6 @@
 		"b13/picture": "^2.0.4",
 		"contentblocks/content-blocks": "^0.7.14",
 		"helhum/dotenv-connector": "^3.1",
-		"helhum/typo3-console": "^8.1.1",
 		"lochmueller/staticfilecache": "^14.0.1",
 		"mens-circle/sitepackage": "@dev",
 		"nng/nnhelpers": ">=2.0.4",
@@ -37,6 +36,7 @@
 	},
 	"require-dev": {
 		"ergebnis/composer-normalize": "^2.43",
+		"helhum/typo3-console": "^8.1.1",
 		"php-static-analysis/attributes": "^0.3.0",
 		"php-static-analysis/rector-rule": "^0.3.0",
 		"phpro/grumphp-shim": "^2.6",

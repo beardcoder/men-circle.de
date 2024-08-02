@@ -5,16 +5,12 @@
     xmlns:mc="http://typo3.org/ns/MensCircle/Sitepackage/ViewHelpers"
     xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
 >
-<vac:asset.vite entry="EXT:sitepackage/ContentBlocks/ContentElements/text/Assets/Frontend.entry.css" />
+<vac:asset.vite entry="EXT:sitepackage/ContentBlocks/ContentElements/text/Assets/Frontend.entry.ts" />
+
 <section class="c-text">
     <div class="c-text__wrapper">
         <div class="c-text__inner">
-            <h2
-                class="c-text__header"
-                data-aos="fade-up"
-            >
-                {data.header -> f:format.raw()}
-            </h2>
+            <f:render arguments="{layout: 2, header: data.header}" partial="Header"></f:render>
             <div class="format lg:format-lg dark:format-invert max-w-none" data-aos="fade-up">
                 {data.bodytext -> f:format.html()}
             </div>
