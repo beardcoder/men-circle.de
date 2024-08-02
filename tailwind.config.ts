@@ -2,9 +2,6 @@ import type { Config } from 'tailwindcss';
 import defaultTheme from 'tailwindcss/defaultTheme';
 // @ts-ignore
 import typography from 'flowbite-typography';
-import flowbite from 'flowbite/plugin';
-// @ts-ignore
-import forms from '@tailwindcss/forms';
 
 export default {
     content: [
@@ -82,5 +79,5 @@ export default {
             },
         },
     },
-    plugins: [typography, flowbite, forms],
+    plugins: [typography],
 } satisfies Config;
