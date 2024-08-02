@@ -12,7 +12,6 @@ export default {
         './packages/sitepackage/**/*.ts',
         './packages/sitepackage/**/*.js',
         './packages/sitepackage/**/*.yaml',
-        './node_modules/flowbite/**/*.js',
     ],
     darkMode: 'media',
     theme: {
