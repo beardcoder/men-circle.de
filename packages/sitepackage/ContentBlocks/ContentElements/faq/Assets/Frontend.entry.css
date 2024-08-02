@@ -3,12 +3,17 @@
     color: var(--font-color);
     max-inline-size: 100vi;
     overflow: hidden;
+
 }
 
 .c-faq__container {
     margin: 0 auto;
     max-inline-size: 1200px;
     padding: 2rem 1.5rem;
+
+    @media (width >= 768px) {
+        padding: 4rem 1.5rem;
+    }
 }
 
 .c-faq__title {
