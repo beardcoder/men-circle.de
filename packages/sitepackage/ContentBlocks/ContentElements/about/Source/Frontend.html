@@ -9,13 +9,10 @@
 <div class="c-about">
     <div class="c-about__content about__content--half">
         <div class="c-about__text-container">
-            <h2
-                class="c-about__header"
-                data-aos="fade-right"
-            >
+            <f:render arguments="{layout: 2}" contentAs="header" partial="Header">
                 {data.header}
                 <span class="c-about__subheader">{data.subheader}</span>
-            </h2>
+            </f:render>
             <div
                 class="format lg:format-lg dark:format-invert max-w-none"
                 data-aos="fade-right"

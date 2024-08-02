@@ -8,37 +8,37 @@
     <f:switch expression="{layout}">
         <f:case value="1">
             <h1
-                class="c-header c-header--center c-header--large"
+                class="c-header c-header--h1 {f:if(condition: center, then: 'c-header--center')}"
                 data-aos="fade-up"
             >{header -> f:sanitize.html()}</h1>
         </f:case>
         <f:case value="2">
             <h2
-                class="c-header c-header--center c-header--large"
+                class="c-header c-header--h2 {f:if(condition: center, then: 'c-header--center')}"
                 data-aos="fade-up"
             >{header -> f:sanitize.html()}</h2>
         </f:case>
         <f:case value="3">
             <h3
-                class="c-header c-header--center c-header--large"
+                class="c-header c-header--h3 {f:if(condition: center, then: 'c-header--center')}"
                 data-aos="fade-up"
             >{header -> f:sanitize.html()}</h3>
         </f:case>
         <f:case value="4">
             <h4
-                class="c-header c-header--center c-header--large"
+                class="c-header c-header--h4 {f:if(condition: center, then: 'c-header--center')}"
                 data-aos="fade-up"
             >{header -> f:sanitize.html()}</h4>
         </f:case>
         <f:case value="5">
             <h5
-                class="c-header c-header--center c-header--large"
+                class="c-header c-header--h5 {f:if(condition: center, then: 'c-header--center')}"
                 data-aos="fade-up"
             >{header -> f:sanitize.html()}</h5>
         </f:case>
         <f:case value="6">
             <h6
-                class="c-header c-header--center c-header--large"
+                class="c-header c-header--h6 {f:if(condition: center, then: 'c-header--center')}"
                 data-aos="fade-up"
             >{header -> f:sanitize.html()}</h6>
         </f:case>
@@ -47,12 +47,7 @@
         </f:case>
         <f:defaultCase>
             <f:if condition="{default}">
-                <f:render
-                    arguments="{
-                    header: header,
-                    layout: default
-                    }" partial="Header"
-                />
+                <f:render arguments="{ header: header, layout: 2 }" partial="Header" />
             </f:if>
         </f:defaultCase>
     </f:switch>

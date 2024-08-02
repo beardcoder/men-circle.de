@@ -96,6 +96,11 @@ return [
             'validFallbackHeaders' => 'Content-Type,Content-Language,Content-Security-Policy,Link,X-SFC-Tags',
             'validHtaccessHeaders' => 'Content-Type,Content-Language,Content-Security-Policy,Link,X-SFC-Tags',
         ],
+        'vite_asset_collector' => [
+            'defaultManifest' => '_assets/vite/.vite/manifest.json',
+            'devServerUri' => 'auto',
+            'useDevServer' => 'auto',
+        ],
     ],
     'FE' => [
         'compressionLevel' => 9,
