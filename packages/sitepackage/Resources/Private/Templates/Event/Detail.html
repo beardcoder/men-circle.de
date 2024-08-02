@@ -2,76 +2,58 @@
     data-namespace-typo3-fluid="true"
     xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
     xmlns:i="http://typo3.org/ns/B13/Picture/ViewHelpers"
+    xmlns:mc="http://typo3.org/ns/MensCircle/Sitepackage/ViewHelpers"
+    xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
 >
-<section class="relative grid min-h-screen overflow-hidden lg:grid-cols-2">
-    <div
-        class="pointer-events-none absolute left-1/2 top-[850px] z-10 h-32 w-32 -translate-x-1/2 -translate-y-1/2 lg:top-1/2"
-    >
-        <div
-            class="bg-secondary rounded-full"
-            data-aos="fade-up"
-        >
+<vac:asset.vite entry="EXT:sitepackage/Resources/Private/Templates/Event/Detail.entry.css" />
+<section class="c-event-detail">
+    <div class="c-event-detail__logo-container">
+        <div class="c-event-detail__logo" data-aos="fade-up">
             <f:image
                 alt="logo"
-                class="h-full w-auto"
+                class="c-event-detail__logo-img"
                 height="500"
                 src="EXT:sitepackage/Resources/Public/Images/logo-white.svg"
                 width="500"
             />
         </div>
     </div>
-    <div class="mx-auto my-auto flex h-[850px] max-w-xl px-8 py-20 lg:h-auto lg:px-20">
-        <div class="mx-auto my-auto">
-            <h1
-                class="mb-4 text-4xl font-bold tracking-tight text-stone-900 dark:text-white"
-                data-fade="left"
-            >
-                Anmeldung zum {event.title} am
-                <time datetime="{event.startDate -> f:format.date(format: 'c')}">
-                    {event.startDate -> f:format.date(format: 'd.m.Y H:i')}
-                </time>
-            </h1>
-            <f:if condition="{event.cancelled}">
+    <div class="c-event-detail__content">
+        <h1 class="c-event-detail__title" data-fade="left">
+            Anmeldung zum {event.title} am
+            <time datetime="{event.startDate -> f:format.date(format: 'c')}">
+                {event.startDate -> f:format.date(format: 'd.m.Y H:i')}
+            </time>
+        </h1>
+        <f:if condition="{event.cancelled}">
+            <f:else>
+                <f:render section="message"></f:render>
+                <f:render arguments="{_all}" partial="Event/Registration" />
+            </f:else>
+        </f:if>
+        <div class="c-event-detail__details" data-fade="left">
+            <h2 class="c-event-detail__details-heading">Veranstaltungsdaten:</h2>
+            <f:if condition="{event.offline}">
+                <f:then>
+                    <f:render arguments="{_all}" partial="Event/Address" />
+                </f:then>
                 <f:else>
-                    <f:render section="message"></f:render>
-                    <f:render arguments="{_all}" partial="Event/Registration" />
+                    <f:render arguments="{_all}" partial="Event/Url" />
                 </f:else>
             </f:if>
-            <div
-                class="mt-8 text-sm"
-                data-fade="left"
-            >
-
-                <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Veranstaltungsdaten:</h2>
-                <f:if condition="{event.offline}">
-                    <f:then>
-                        <f:render arguments="{_all}" partial="Event/Address" />
-                    </f:then>
-                    <f:else>
-                        <f:render arguments="{_all}" partial="Event/Url" />
-                    </f:else>
-                </f:if>
-            </div>
         </div>
     </div>
-    <div class="h-[500px] lg:h-auto">
-        <div
-            class="h-full"
-            data-fade="right"
-        >
-            <i:image
-                alt="{event.image.alternative}"
-                class="w-full h-full object-cover object-center parallax"
-                image="{event.image}"
-            />
+    <div class="c-event-detail__image-container">
+        <div class="c-event-detail__image" data-fade="right">
+            <i:image alt="{event.image.alternative}" class="c-event-detail__image-img" image="{event.image}" />
         </div>
     </div>
 </section>
 <f:cObject data="{contentUid: 3}" typoscriptObjectPath="lib.renderContent" />
 <f:if condition="{event.offline}">
-    <section class="aspect-square lg:aspect-auto">
+    <section class="c-event-detail__map aspect-square">
         <div
-            class="aspect-square lg:aspect-[16/5]"
+            class="c-event-detail__map-inner aspect-square"
             data-lat="{event.latitude}"
             data-long="{event.longitude}"
             data-popup="{event.place} - {event.address}, {event.plz} {event.city}"
@@ -82,12 +64,9 @@
 
 <f:section name="message">
     <f:flashMessages as="flashMessages">
-        <div class="space-y-2">
+        <div class="c-event-detail__message space-y-2">
             <f:for as="flashMessage" each="{flashMessages}">
-                <div
-                    class="p-4 mb-4 text-sm text-green-800 bg-green-50 dark:bg-gray-800 dark:text-green-400"
-                    role="alert"
-                >
+                <div class="c-event-detail__message-item" role="alert">
                     <span class="font-medium">{flashMessage.message}</span>
                 </div>
             </f:for>

@@ -93,12 +93,12 @@ class Event extends AbstractEntity
         return $this->title . ' am ' . $this->startDate->format('d.m.Y');
     }
 
-    public function getStartDate(): ?DateTime
+    public function getStartDate(): ?\DateTime
     {
         return $this->startDate;
     }
 
-    public function getEndDate(): ?DateTime
+    public function getEndDate(): ?\DateTime
     {
         return $this->endDate;
     }

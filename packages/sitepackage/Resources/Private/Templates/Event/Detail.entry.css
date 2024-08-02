@@ -1,0 +1,129 @@
+/* Base Styles */
+.c-event-detail {
+    background-color: var(--bg-color--light);
+    display: grid;
+    gap: 0;
+    grid-template-columns: 1fr;
+    min-block-size: 100vb;
+    overflow: hidden;
+    position: relative;
+}
+
+.c-event-detail__logo-container {
+    block-size: 32px;
+    inline-size: 32px;
+    inset-block-start: calc(850px);
+    inset-inline-start: 50%;
+    pointer-events: none;
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 10;
+}
+
+.c-event-detail__logo {
+    background-color: #2b2b2b; /* bg-secondary */
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.c-event-detail__logo img {
+    block-size: 100%;
+    inline-size: auto;
+}
+
+.c-event-detail__content {
+    block-size: 850px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    max-inline-size: 600px;
+    padding: 8px;
+}
+
+.c-event-detail__title {
+    color: var(--font-color); /* text-stone-900 */
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-block-end: 20px;
+}
+
+.c-event-detail__title time {
+    font-size: inherit;
+    font-weight: normal;
+}
+
+.c-event-detail__message {
+    background-color: var(--bg-color); /* dark:bg-gray-700 */
+    color: var(--font-color); /* dark:text-gray-100 */
+    font-size: 0.875rem;
+    margin-block-start: 32px;
+    text-align: center;
+}
+
+.c-event-detail__details {
+    font-size: 0.875rem;
+    margin-block-start: 32px;
+    text-align: center;
+}
+
+.c-event-detail__details h2 {
+    color: var(--font-color);
+    font-size: 1.125rem;
+    font-weight: bold;
+    margin-block-end: 10px;
+}
+
+.c-event-detail__details p {
+    color: #6b7280; /* text-gray-500 */
+    margin: 0;
+}
+
+.c-event-detail__image-container {
+    block-size: 500px;
+}
+
+.c-event-detail__image {
+    block-size: 100%;
+    inline-size: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (width >= 1024px) {
+    .c-event-detail {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .c-event-detail__logo-container {
+        inset-block-start: 50%;
+        inset-inline-start: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .c-event-detail__content {
+        block-size: auto;
+        padding: 20px;
+    }
+
+    .c-event-detail__title {
+        font-size: 3rem;
+    }
+
+    .c-event-detail__details {
+        text-align: start;
+    }
+
+    .c-event-detail__details h2 {
+        font-size: 1.25rem;
+    }
+}
+
+.c-event-detail__message-item {
+    background-color: #D1FAE5; /* bg-green-50 */
+    color: #1F9D55; /* text-green-800 */
+    font-size: 0.875rem; /* text-sm */
+    margin-block-end: 1rem; /* mb-4 */
+    padding: 1rem; /* p-4 */
+}

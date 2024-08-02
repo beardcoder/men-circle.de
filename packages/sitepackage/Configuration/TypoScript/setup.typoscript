@@ -333,3 +333,9 @@ module.tx_form {
     }
   }
 }
+
+lib.contentBlock {
+  partialRootPaths {
+    100 = EXT:sitepackage/Resources/Private/Partials/ContentElements/
+  }
+}

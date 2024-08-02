@@ -1,6 +1,5 @@
 import '@fontsource-variable/jost';
 import '@fontsource/nothing-you-could-do';
-import './Main.css';
 import 'leaflet/dist/leaflet.css';
 //@ts-ignore
 import AOS from 'simple-aos';
