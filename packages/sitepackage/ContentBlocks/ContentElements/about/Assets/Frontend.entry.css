@@ -1,6 +1,6 @@
-/* About Component */
+
 .c-about {
-    background-color: var(--bg-color--light); /* bg-white */
+    background-color: var(--bg-color--light);
     color: var(--font-color);
     max-inline-size: 100vi;
     overflow: hidden;
@@ -11,7 +11,6 @@
 }
 
 
-/* About Content */
 .c-about__content {
     display: flex;
     flex: 1;
@@ -43,28 +42,27 @@
 }
 
 .c-about__subheader {
-    color: var(--color--primary); /* text-primary */
+    color: var(--color--primary);
     display: block;
 }
 
 .c-about__body {
     color: var(--font-color);
-    max-inline-size: none; /* max-w-none */
+    max-inline-size: none;
 
     @media (width >= 1024px) {
-        font-size: 1.125rem; /* lg:format-lg */
-        line-height: 1.75rem; /* lg:format-lg */
+        font-size: 1.125rem;
+        line-height: 1.75rem;
     }
 }
 
-
 .c-about__link-container {
-    margin-block-start: 1rem; /* Adjust as necessary */
+    margin-block-start: 1rem;
 }
 
 .c-about__image {
-    block-size: 100%; /* h-full */
-    inline-size: 100%; /* w-full */
-    object-fit: cover; /* object-cover */
-    object-position: center; /* object-center */
+    block-size: 100%;
+    inline-size: 100%;
+    object-fit: cover;
+    object-position: center;
 }

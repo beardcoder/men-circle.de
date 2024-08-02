@@ -2,41 +2,41 @@
     data-namespace-typo3-fluid="true"
     xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
     xmlns:i="http://typo3.org/ns/B13/Picture/ViewHelpers"
+    xmlns:mc="http://typo3.org/ns/MensCircle/Sitepackage/ViewHelpers"
+    xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
 >
-<div
-    class="flex w-full md:w-1/2 items-center bg-white border border-stone-200 shadow flex-row hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-800 dark:hover:bg-stone-700"
-    data-aos="fade-up"
->
+<vac:asset.vite entry="EXT:sitepackage/Resources/Private/Partials/Event/Item.entry.css" />
+<div class="c-event-item" data-aos="fade-up">
     <f:link.action
         action="detail"
         arguments="{ event:event }"
-        class="flex w-full"
+        class="c-event-item__link"
         pageUid="{settings.detailPid as integer}"
     >
         <i:image
             alt="{event.image.alternative}"
-            class="object-cover h-full object-center"
+            class="c-event-item__image"
             height="200c"
             image="{event.image}"
             width="200c"
         />
-        <div class="flex flex-col justify-between p-4 leading-normal">
-            <h5 class="text-2xl font-bold tracking-tight text-stone-900 dark:text-white">
+        <div class="c-event-item__content">
+            <h5 class="c-event-item__title">
                 {event.title}
             </h5>
             <time
-                class="text-base mb-2"
+                class="c-event-item__time"
                 datetime="{event.startDate -> f:format.date(format: 'c')}"
             >
                 {event.startDate -> f:format.date(format: 'd.m.Y H:i')}
             </time>
 
-            <ul class="max-w-md list-inside space-y-1 text-gray-500 dark:text-gray-400 text-sm">
+            <ul class="c-event-item__list">
                 <f:if condition="{event.offline}">
-                    <li class="flex items-center">
+                    <li class="c-event-item__list-item">
                         <svg
                             aria-hidden="true"
-                            class="me-2 h-3.5 w-3.5 flex-shrink-0 text-gray-500 dark:text-gray-400"
+                            class="c-event-item__icon"
                             fill="currentColor"
                             viewBox="0 0 14 20"
                             xmlns="http://www.w3.org/2000/svg"
@@ -48,10 +48,10 @@
                         {event.place} - {event.address}
                     </li>
                 </f:if>
-                <li class="flex items-center">
+                <li class="c-event-item__list-item">
                     <svg
                         aria-hidden="true"
-                        class="me-2 h-3.5 w-3.5 flex-shrink-0 text-gray-500 dark:text-gray-400"
+                        class="c-event-item__icon"
                         fill="currentColor"
                         viewBox="0 0 14 18"
                         xmlns="http://www.w3.org/2000/svg"
@@ -62,10 +62,10 @@
                     </svg>
                     Markus Sommer
                 </li>
-                <li class="flex items-center">
+                <li class="c-event-item__list-item">
                     <svg
                         aria-hidden="true"
-                        class="me-2 h-3.5 w-3.5 flex-shrink-0 text-gray-500 dark:text-gray-400"
+                        class="c-event-item__icon"
                         fill="none"
                         viewBox="0 0 14 18"
                         xmlns="http://www.w3.org/2000/svg"
@@ -89,4 +89,5 @@
         </div>
     </f:link.action>
 </div>
+
 </html>

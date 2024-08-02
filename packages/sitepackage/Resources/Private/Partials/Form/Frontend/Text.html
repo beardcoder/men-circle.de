@@ -5,7 +5,7 @@
     <f:render arguments="{element: element}" contentAs="elementContent" partial="Field/Field">
         <f:form.textfield
             additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}"
-            class="{element.properties.elementClassAttribute} form-control focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light block w-full border border-stone-300 bg-stone-50 p-2.5 text-sm text-stone-900 shadow-sm dark:border-stone-600 dark:bg-stone-700 dark:text-white dark:placeholder-stone-400"
+            class="form__control"
             errorClass="{element.properties.elementErrorClassAttribute}"
             id="{element.uniqueIdentifier}"
             property="{element.identifier}"

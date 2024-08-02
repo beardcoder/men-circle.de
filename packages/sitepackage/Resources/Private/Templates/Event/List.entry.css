@@ -1,8 +1,8 @@
-/* Event List Component */
+
 .o-event-list {
-    margin: 0 auto; /* mx-auto */
-    max-inline-size: 1280px; /* max-w-screen-xl */
-    padding: 2rem 1.5rem; /* px-6 py-8 */
+    margin: 0 auto;
+    max-inline-size: 1280px;
+    padding: 2rem 1.5rem;
 
     @media (width >= 640px) {
         padding-block: 6rem;
@@ -10,7 +10,7 @@
 }
 
 .o-event-list__items {
-    display: flex; /* flex */
-    flex-wrap: wrap; /* flex-wrap */
-    margin: 2rem 0; /* my-8 */
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2rem 0;
 }

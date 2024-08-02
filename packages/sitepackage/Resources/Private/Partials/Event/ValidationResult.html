@@ -1,9 +1,9 @@
 <html data-namespace-typo3-fluid="true" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
 <f:form.validationResults for="eventRegistration.{property}">
     <f:if condition="{validationResults.flattenedErrors}">
-        <div class="mt-1">
+        <div class="c-event-url__error-container">
             <f:for as="error" each="{validationResults.errors}">
-                <div class="text-sm text-red-600">
+                <div class="c-event-url__error-message">
                     {error.message}
                 </div>
             </f:for>

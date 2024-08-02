@@ -2,12 +2,12 @@
     data-namespace-typo3-fluid="true"
     xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
 >
-<ul class="max-w-md list-inside space-y-1 text-gray-500 dark:text-gray-400">
+<ul class="c-event-url__list">
     <f:if condition="{event.call_url}">
-        <li class="flex items-center">
+        <li class="c-event-url__item">
             <svg
                 aria-hidden="true"
-                class="me-2 h-3.5 w-3.5 flex-shrink-0 text-gray-500 dark:text-gray-400"
+                class="c-event-url__icon"
                 fill="currentColor"
                 viewBox="0 0 14 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -19,10 +19,10 @@
             {event.call_url}
         </li>
     </f:if>
-    <li class="flex items-center">
+    <li class="c-event-url__item">
         <svg
             aria-hidden="true"
-            class="me-2 h-3.5 w-3.5 flex-shrink-0 text-gray-500 dark:text-gray-400"
+            class="c-event-url__icon"
             fill="currentColor"
             viewBox="0 0 14 18"
             xmlns="http://www.w3.org/2000/svg"
@@ -33,10 +33,10 @@
         </svg>
         Markus Sommer
     </li>
-    <li class="flex items-center">
+    <li class="c-event-url__item">
         <svg
             aria-hidden="true"
-            class="me-2 h-3.5 w-3.5 flex-shrink-0 text-gray-500 dark:text-gray-400"
+            class="c-event-url__icon"
             fill="currentColor"
             viewBox="0 0 20 16"
             xmlns="http://www.w3.org/2000/svg"
@@ -49,16 +49,16 @@
             />
         </svg>
         <a
-            class="text-primary underline"
+            class="c-event-url__link"
             href="mailto:markus@letsbenow.de"
         >
             markus@letsbenow.de
         </a>
     </li>
-    <li class="flex items-center">
+    <li class="c-event-url__item">
         <svg
             aria-hidden="true"
-            class="me-2 h-3.5 w-3.5 flex-shrink-0 text-gray-500 dark:text-gray-400"
+            class="c-event-url__icon"
             fill="none"
             viewBox="0 0 14 18"
             xmlns="http://www.w3.org/2000/svg"
@@ -78,10 +78,10 @@
             0
         </f:format.currency>
     </li>
-    <li class="flex items-center">
+    <li class="c-event-url__item">
         <svg
             aria-hidden="true"
-            class="me-2 h-3.5 w-3.5 flex-shrink-0 text-gray-500 dark:text-gray-400"
+            class="c-event-url__icon"
             fill="none"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -94,8 +94,8 @@
                 stroke-width="2"
             />
         </svg>
-        <f:link.action action="iCal" additionalAttributes="{ download: 'download' }" arguments="{event: event}">Kalender
-            Download
+        <f:link.action action="iCal" additionalAttributes="{ download: 'download' }" arguments="{event: event}">
+            Kalender Download
         </f:link.action>
     </li>
 </ul>

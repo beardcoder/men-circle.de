@@ -1,7 +1,7 @@
 renderingOptions:
   submitButtonLabel: Absenden
   fluidAdditionalAttributes:
-    class: 'max-w-md mx-auto'
+    class: 'form'
 identifier: kontakt
 label: Kontakt
 type: Form

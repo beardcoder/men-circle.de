@@ -49,9 +49,15 @@
 
 .c-hero__header {
     color: #fff;
-    font-family: var(--font-header);
     font-size: clamp(2.5rem, -0.5718rem + 6vi, 5rem);
     font-weight: 900;
     line-height: 1;
     text-transform: uppercase;
+}
+
+.c-hero__body {
+    color: #fff;
+    font-size: 1.25rem;
+    margin-block: 2rem 3rem;
+    max-inline-size: 48rem;
 }
