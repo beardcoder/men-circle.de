@@ -1,8 +1,17 @@
-<div data-aos="fade-up">
-    <h3 class="mb-2 text-xl font-bold dark:text-white">
+<html
+    data-namespace-typo3-fluid="true"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:i="http://typo3.org/ns/B13/Picture/ViewHelpers"
+    xmlns:mc="http://typo3.org/ns/MensCircle/Sitepackage/ViewHelpers"
+    xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
+>
+<vac:asset.vite entry="EXT:sitepackage/ContentBlocks/ContentElements/feature/Assets/Frontend.entry.ts" />
+<div data-aos="fade-up" class="c-feature">
+    <h3 class="c-feature__header">
         {data.header}
     </h3>
-    <p>
+    <p class="c-feature__content">
         {data.bodytext}
     </p>
 </div>
+</html>
