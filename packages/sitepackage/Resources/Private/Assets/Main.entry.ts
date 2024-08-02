@@ -1,9 +1,8 @@
 import './Main.entry.css';
-import 'aos/dist/aos.css';
 import '@fontsource-variable/jost';
 
 //@ts-ignore
-import AOS from 'aos';
+import AOS from 'simple-aos';
 
 function init() {
     AOS.init({ once: true });
