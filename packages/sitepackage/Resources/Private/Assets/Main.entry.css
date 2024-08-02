@@ -1,6 +1,5 @@
 @import url("./Components/Header.css");
 @import url("./Components/Footer.css");
-@import url("./Components/Event/List.css");
 
 @tailwind base;
 @tailwind components;
