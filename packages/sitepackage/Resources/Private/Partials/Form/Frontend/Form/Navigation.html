@@ -6,7 +6,7 @@
             <f:if condition="{form.previousPage}">
                 <span class="btn-group previous">
                     <f:form.button
-                        class="bg-primary-500 hover:bg-primary-600 focus:ring-primary-300 dark:focus:ring-primary-900 font-medium uppercase text-white focus:outline-none focus:ring-4 transition px-5 py-2.5 text-sm"
+                        class="c-button"
                         formnovalidate="formnovalidate"
                         property="__currentPage"
                         value="{form.previousPage.index}">{formvh:translateElementProperty(element: form.currentPage, renderingOptionProperty: 'previousButtonLabel')}</f:form.button>
@@ -16,7 +16,7 @@
                 <f:then>
                     <span class="btn-group next">
                         <f:form.button
-                            class="bg-primary-500 hover:bg-primary-600 focus:ring-primary-300 dark:focus:ring-primary-900 font-medium uppercase text-white focus:outline-none focus:ring-4 transition px-5 py-2.5 text-sm"
+                            class="c-button"
                             property="__currentPage"
                             value="{form.nextPage.index}">{formvh:translateElementProperty(element: form.currentPage, renderingOptionProperty: 'nextButtonLabel')}</f:form.button>
                     </span>
@@ -24,7 +24,7 @@
                 <f:else>
                     <span class="btn-group next submit">
                         <f:form.button
-                            class="bg-primary-500 hover:bg-primary-600 focus:ring-primary-300 dark:focus:ring-primary-900 font-medium uppercase text-white focus:outline-none focus:ring-4 transition px-5 py-2.5 text-sm"
+                            class="c-button"
                             property="__currentPage"
                             value="{form.pages -> f:count()}">
                             {formvh:translateElementProperty(element: form, renderingOptionProperty: 'submitButtonLabel')}
