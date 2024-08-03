@@ -3,6 +3,8 @@ import '@fontsource-variable/jost';
 const animateElements = () => {
     const elements = document.querySelectorAll('[data-animate]');
 
+    elements.forEach(element => element.classList.add('animate-on-scroll'))
+
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
