@@ -15,12 +15,12 @@
             </f:render>
             <div
                 class="format lg:format-lg dark:format-invert max-w-none"
-                data-aos="fade-right"
+                data-animate="fadeUp"
             >
                 {data.bodytext -> f:format.html()}
             </div>
             <f:if condition="{data.link}">
-                <div data-aos="fade-right">
+                <div data-animate="fadeUp">
                     <f:link.typolink
                         class="button"
                         parameter="{data.link}"
@@ -35,7 +35,7 @@
         <i:image
             alt="{data.image.0.alternative}"
             class="about__image"
-            data-aos="fade-left"
+            data-animate="fadeUp"
             image="{data.image.0}"
             maxHeight="1280"
             maxWidth="1280"

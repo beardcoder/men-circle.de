@@ -1,17 +1,31 @@
-import './Main.entry.css';
 import '@fontsource-variable/jost';
 
-//@ts-ignore
-import AOS from 'simple-aos';
+const animateElements = () => {
+    const elements = document.querySelectorAll('[data-animate]');
 
-function init() {
-    AOS.init({ once: true });
-}
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.1,
+        },
+    );
+
+    elements.forEach((element) => {
+        observer.observe(element);
+    });
+};
 
 document.addEventListener('DOMContentLoaded', () => {
-    init();
+    animateElements();
 });
 
 document.addEventListener('turbo:load', () => {
-    init();
+    animateElements();
 });

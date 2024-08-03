@@ -6,6 +6,7 @@
 @import './Components/Page.css';
 @import './Components/Header.css';
 @import './Components/Footer.css';
+@import './Components/Animate.css';
 
 @tailwind base;
 @tailwind components;

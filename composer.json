@@ -5,7 +5,6 @@
 	"type": "project",
 	"require": {
 		"b13/container": "^2.3.6",
-		"b13/http2": "^2.0",
 		"b13/picture": "^2.0.4",
 		"contentblocks/content-blocks": "^0.7.14",
 		"helhum/dotenv-connector": "^3.1",

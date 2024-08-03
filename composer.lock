@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "427417e3e1825b4f84f4068c14dd30cd",
+    "content-hash": "a49dfa2c88c4c206d64d7236e174e78a",
     "packages": [
         {
             "name": "b13/container",
@@ -68,61 +68,6 @@
                 "source": "https://github.com/b13/container/tree/2.3.6"
             },
             "time": "2024-03-28T17:28:19+00:00"
-        },
-        {
-            "name": "b13/http2",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/b13/http2.git",
-                "reference": "be5c8792c17faa4722f51eadda25e65192b8172a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/b13/http2/zipball/be5c8792c17faa4722f51eadda25e65192b8172a",
-                "reference": "be5c8792c17faa4722f51eadda25e65192b8172a",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.4 || ^8.0",
-                "psr/http-server-middleware": "^1.0",
-                "typo3/cms-core": "^10.0 || ^11.0 || ^12.0",
-                "typo3/cms-frontend": "^10.0 || ^11.0 || ^12.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~7.0",
-                "squizlabs/php_codesniffer": "^2.3",
-                "typo3/tailor": "^1.4.0"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "http2"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "B13\\Http2\\": "Classes"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Benni Mack",
-                    "email": "benni@b13.com",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "Speed up TYPO3 rendering via HTTP/2 Server Push",
-            "homepage": "https://b13.com",
-            "support": {
-                "issues": "https://github.com/b13/http2/issues",
-                "source": "https://github.com/b13/http2/tree/2.0.0"
-            },
-            "time": "2023-02-24T13:20:35+00:00"
         },
         {
             "name": "b13/picture",
