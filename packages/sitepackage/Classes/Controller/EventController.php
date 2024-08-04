@@ -252,7 +252,7 @@ class EventController extends ActionController
         );
         $imageUri = $this->imageService->getImageUri($processedFile, true);
 
-        $calEvent = CalendarEvent::create()
+        $calendarEvent = CalendarEvent::create()
             ->name($event->getLongTitle())
             ->description($event->description)
             ->url($this->getUrlForEvent($event))
@@ -261,7 +261,7 @@ class EventController extends ActionController
             ->endsAt(new \DateTime($event->endDate->format('d.m.Y H:i'), new \DateTimeZone('Europe/Berlin')))
             ->organizer('markus@letsbenow.de', 'Markus Sommer');
 
-        $calendar = Calendar::create($event->getLongTitle())->event($calEvent);
+        $calendar = Calendar::create($event->getLongTitle())->event($calendarEvent);
 
         $response = $this->responseFactory->createResponse()
             ->withHeader('Cache-Control', 'private')

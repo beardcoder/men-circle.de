@@ -11,12 +11,10 @@ enum EventAttendanceModeEnum: int
 
     public static function selects(): array
     {
-        return array_map(function ($case) {
-            return [
-                'value' => $case->value,
-                'label' => sprintf('LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.attendance_mode.options.%s', strtolower($case->name)),
-            ];
-        }, self::cases());
+        return array_map(static fn ($case): array => [
+            'value' => $case->value,
+            'label' => sprintf('LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.attendance_mode.options.%s', strtolower($case->name)),
+        ], self::cases());
     }
 
     public function getDescription(): EventAttendanceModeEnumeration|string

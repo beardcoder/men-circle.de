@@ -47,6 +47,10 @@ return [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
         ],
+        'redirects' => [
+            'showCheckIntegrityInfoInReports' => '1',
+            'showCheckIntegrityInfoInReportsSeconds' => '86400',
+        ],
         'scheduler' => [
             'maxLifetime' => '1440',
         ],
@@ -103,8 +107,6 @@ return [
     'GFX' => [
         'imagefile_ext' => 'gif,jpg,jpeg,tif,tiff,bmp,pcx,tga,png,pdf,ai,svg,webp',
         'processor' => 'GraphicsMagick',
-        'processor_allowTemporaryMasksAsPng' => false,
-        'processor_colorspace' => 'RGB',
         'processor_effects' => false,
         'processor_enabled' => true,
         'processor_path' => '/usr/bin/',
@@ -167,7 +169,6 @@ return [
         'exceptionalErrors' => 12290,
         'features' => [
             'security.backend.htmlSanitizeRte' => true,
-            'security.usePasswordPolicyForFrontendUsers' => true,
         ],
         'sitename' => 'Men\'s Circle Niederbayern',
         'systemMaintainers' => [

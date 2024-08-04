@@ -140,11 +140,6 @@ page {
 
     og:language = {$page.meta.language}
 
-    og:site_name {
-      attribute = property
-      data = TSFE:tmpl|setup|sitetitle
-    }
-
     og:description = {$page.meta.description}
     og:description {
       attribute = property
