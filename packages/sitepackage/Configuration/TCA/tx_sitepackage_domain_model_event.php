@@ -12,7 +12,7 @@ return [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'delete' => 'deleted',
-        'default_sortby' => 'title',
+        'default_sortby' => 'start_date',
         'iconfile' => 'EXT:sitepackage/Resources/Public/Icons/tx_sitepackage_domain_model_event.svg',
         'searchFields' => 'title',
         'enablecolumns' => [
