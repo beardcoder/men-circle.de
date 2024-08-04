@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace MensCircle\Sitepackage\Controller;
 
+use DateTime;
+use DateTimeZone;
 use MensCircle\Sitepackage\Domain\Model\Event;
 use MensCircle\Sitepackage\Domain\Model\EventRegistration;
 use MensCircle\Sitepackage\Domain\Model\FrontendUser;
@@ -34,12 +36,14 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class EventController extends ActionController
 {
     public function __construct(
-        private readonly EventRepository $eventRepository,
+        private readonly EventRepository             $eventRepository,
         private readonly EventRegistrationRepository $eventRegistrationRepository,
-        private readonly FrontendUserRepository $frontendUserRepository,
-        private readonly EventPageTitleProvider $eventPageTitleProvider,
-        private readonly ImageService $imageService
-    ) {}
+        private readonly FrontendUserRepository      $frontendUserRepository,
+        private readonly EventPageTitleProvider      $eventPageTitleProvider,
+        private readonly ImageService                $imageService
+    )
+    {
+    }
 
     public function listAction(): ResponseInterface
     {
@@ -75,7 +79,7 @@ class EventController extends ActionController
 
         $metaTagManager->addProperty('og:url', $this->getUrlForEvent($event));
 
-        $this->buildSchema($event);
+        $this->getPageRenderer()->addHeaderData($event->buildSchema());
         $this->view->assign('event', $event);
         $this->view->assign('eventRegistration', $eventRegistrationToAssign);
 
@@ -90,54 +94,6 @@ class EventController extends ActionController
                 'event' => $event->getUid(),
             ],
         );
-    }
-
-    private function buildSchema(Event $event): void
-    {
-        $eventUrl = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(3)->uriFor(
-            'detail',
-            [
-                'event' => $event->getUid(),
-            ],
-        );
-
-        $processedFile = $this->imageService->applyProcessingInstructions(
-            $event->getImage()->getOriginalResource(),
-            ['width' => '600c', 'height' => '600c']
-        );
-
-        $place = $event->isOffline() ? Schema::place()
-            ->name($event->place)
-            ->address(
-                Schema::postalAddress()
-                    ->streetAddress($event->address)
-                    ->addressLocality($event->city)
-                    ->postalCode($event->zip)
-                    ->addressCountry('DE'),
-            ) : Schema::place()->url($event->callUrl);
-        $imageUri = $this->imageService->getImageUri($processedFile, true);
-        $baseUrl = $this->uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(1)->buildFrontendUri();
-        $schema = Schema::event()
-            ->name($event->title . ' am ' . $event->startDate->format('d.m.Y'))
-            ->description($event->description)
-            ->image($imageUri)
-            ->startDate($event->startDate)
-            ->endDate($event->endDate)
-            ->eventAttendanceMode($event->getRealAttendanceMode()->getDescription())
-            ->eventStatus(EventStatusEnum::EventScheduled->value)
-            ->location($place)
-            ->offers(
-                Schema::offer()
-                    ->validFrom($event->crdate)
-                    ->price(0)
-                    ->availability(ItemAvailability::InStock)
-                    ->url($eventUrl)
-                    ->priceCurrency('EUR'),
-            )
-            ->organizer(Schema::person()->name('Markus Sommer')->url($baseUrl))
-            ->performer(Schema::person()->name('Markus Sommer')->url($baseUrl));
-
-        $this->getPageRenderer()->addHeaderData($schema->toScript());
     }
 
     protected function getPageRenderer(): PageRenderer
@@ -257,8 +213,8 @@ class EventController extends ActionController
             ->description($event->description)
             ->url($this->getUrlForEvent($event))
             ->image($imageUri)
-            ->startsAt(new \DateTime($event->startDate->format('d.m.Y H:i'), new \DateTimeZone('Europe/Berlin')))
-            ->endsAt(new \DateTime($event->endDate->format('d.m.Y H:i'), new \DateTimeZone('Europe/Berlin')))
+            ->startsAt(new DateTime($event->startDate->format('d.m.Y H:i'), new DateTimeZone('Europe/Berlin')))
+            ->endsAt(new DateTime($event->endDate->format('d.m.Y H:i'), new DateTimeZone('Europe/Berlin')))
             ->organizer('markus@letsbenow.de', 'Markus Sommer');
 
         $calendar = Calendar::create($event->getLongTitle())->event($calendarEvent);

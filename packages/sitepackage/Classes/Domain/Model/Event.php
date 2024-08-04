@@ -4,21 +4,28 @@ declare(strict_types=1);
 
 namespace MensCircle\Sitepackage\Domain\Model;
 
+use DateTime;
 use MensCircle\Sitepackage\Enum\EventAttendanceModeEnum;
+use MensCircle\Sitepackage\Enum\EventStatusEnum;
+use Spatie\SchemaOrg\ItemAvailability;
+use Spatie\SchemaOrg\Schema;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Service\ImageService;
 
 class Event extends AbstractEntity
 {
     public string $slug;
     public string $title;
     public string $description;
-    public ?\DateTime $startDate = null;
-    public ?\DateTime $endDate = null;
-    public ?\DateTime $crdate = null;
+    public ?DateTime $startDate = null;
+    public ?DateTime $endDate = null;
+    public ?DateTime $crdate = null;
     public string $place;
     public string $address;
     public string $zip;
@@ -62,9 +69,68 @@ class Event extends AbstractEntity
         return EventAttendanceModeEnum::from($this->attendanceMode);
     }
 
-    public function isOffline(): bool
+    public function isCancelled(): bool
     {
-        return $this->getRealAttendanceMode() === EventAttendanceModeEnum::OFFLINE;
+        return $this->cancelled;
+    }
+
+    public function getLongTitle(): string
+    {
+        return $this->title . ' am ' . $this->startDate->format('d.m.Y');
+    }
+
+    public function buildSchema()
+    {
+        $uriBuilder = GeneralUtility::makeInstance(UriBuilder::class);
+        assert($uriBuilder instanceof UriBuilder);
+
+        $thisUrl = $uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(3)->uriFor(
+            'detail',
+            [
+                'event' => $this->uid,
+            ],
+        );
+
+        $imageService = GeneralUtility::makeInstance(ImageService::class);
+        assert($imageService instanceof ImageService);
+
+        $processedFile = $imageService->applyProcessingInstructions(
+            $this->getImage()->getOriginalResource(),
+            ['width' => '600c', 'height' => '600c']
+        );
+
+        $place = $this->isOffline() ? Schema::place()
+            ->name($this->place)
+            ->address(
+                Schema::postalAddress()
+                    ->streetAddress($this->address)
+                    ->addressLocality($this->city)
+                    ->postalCode($this->zip)
+                    ->addressCountry('DE'),
+            ) : Schema::place()->url($this->callUrl);
+        $imageUri = $imageService->getImageUri($processedFile, true);
+        $baseUrl = $uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(1)->buildFrontendUri();
+        $schema = Schema::event()
+            ->name($this->title . ' am ' . $this->startDate->format('d.m.Y'))
+            ->description($this->description)
+            ->image($imageUri)
+            ->startDate($this->startDate)
+            ->endDate($this->endDate)
+            ->eventAttendanceMode($this->getRealAttendanceMode()->getDescription())
+            ->eventStatus(EventStatusEnum::EventScheduled->value)
+            ->location($place)
+            ->offers(
+                Schema::offer()
+                    ->validFrom($this->crdate)
+                    ->price(0)
+                    ->availability(ItemAvailability::InStock)
+                    ->url($thisUrl)
+                    ->priceCurrency('EUR'),
+            )
+            ->organizer(Schema::person()->name('Markus Sommer')->url($baseUrl))
+            ->performer(Schema::person()->name('Markus Sommer')->url($baseUrl));
+
+        return $schema;
     }
 
     public function getImage(): ?FileReference
@@ -78,28 +144,8 @@ class Event extends AbstractEntity
         return $this->image;
     }
 
-    public function setImage(FileReference $fileReference): void
+    public function isOffline(): bool
     {
-        $this->image = $fileReference;
-    }
-
-    public function isCancelled(): bool
-    {
-        return $this->cancelled;
-    }
-
-    public function getLongTitle(): string
-    {
-        return $this->title . ' am ' . $this->startDate->format('d.m.Y');
-    }
-
-    public function getStartDate(): ?\DateTime
-    {
-        return $this->startDate;
-    }
-
-    public function getEndDate(): ?\DateTime
-    {
-        return $this->endDate;
+        return $this->getRealAttendanceMode() === EventAttendanceModeEnum::OFFLINE;
     }
 }
