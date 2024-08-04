@@ -1,13 +1,16 @@
 <html
     data-namespace-typo3-fluid="true"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
     xmlns:i="http://typo3.org/ns/B13/Picture/ViewHelpers"
+    xmlns:mc="http://typo3.org/ns/MensCircle/Sitepackage/ViewHelpers"
+    xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
 >
 <div>
     <p>{data.bodytext}</p>
 </div>
-<i:image
-    loading="lazy"
-    alt="{data.image.0.alternative}" image="{data.image.0}"
+<f:image
+    alt="{data.image.0.alternative}"
+    image="{data.image.0}"
     maxHeight="200"
 />
 </html>
