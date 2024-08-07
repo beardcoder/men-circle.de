@@ -5,19 +5,18 @@
 <footer class="o-footer">
     <div class="o-footer__container">
         <p class="o-footer__text"></p>
-        <ul class="o-footer__nav">
+        <nav class="o-footer__nav">
             <f:for as="item" each="{footernavigation}">
-                <li class="o-footer__nav-item">
-                    <a
-                        href="{item.link}"
-                        target="{item.target}"
-                        title="{item.title}"
-                    >
-                        {item.title}
-                    </a>
-                </li>
+                <a
+                    class="o-footer__nav-item"
+                    href="{item.link}"
+                    target="{item.target}"
+                    title="{item.title}"
+                >
+                    {item.title}
+                </a>
             </f:for>
-        </ul>
+        </nav>
         <div class="o-footer__copyright">
             © 2023-2024 Build with ❤️ and mindfulness in Bavaria
         </div>

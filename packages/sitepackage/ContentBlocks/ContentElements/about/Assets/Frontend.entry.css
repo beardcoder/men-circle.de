@@ -62,6 +62,7 @@
 
 .c-about__image {
     block-size: 100%;
+    display: block;
     inline-size: 100%;
     object-fit: cover;
     object-position: center;

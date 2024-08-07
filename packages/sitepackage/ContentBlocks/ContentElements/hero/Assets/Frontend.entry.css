@@ -1,13 +1,15 @@
 .c-hero {
+    block-size: 100%;
+    display: flex;
     inline-size: 100%;
+    max-inline-size: 100vi;
+    min-block-size: 100vb;
     position: relative;
 }
 
 .c-hero__content {
     align-items: center;
     display: flex;
-    max-inline-size: 100vi;
-    min-block-size: 100vb;
     padding-block: 10rem 6rem;
     position: relative;
     z-index: 10;

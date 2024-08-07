@@ -2,7 +2,7 @@
 return [
     'BE' => [
         'compressionLevel' => 9,
-        'debug' => true,
+        'debug' => false,
         'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$SG1DcUpaRmlUNWhQSk9hbw$80/3AsTzsp0+iK/uuXY739fJWzCvCetYZKw375Jd00Y',
         'passwordHashing' => [
             'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
@@ -78,7 +78,7 @@ return [
                     'writerConfiguration' => [
                         'notice' => [
                             'TYPO3\CMS\Core\Log\Writer\FileWriter' => [
-                                'disabled' => false,
+                                'disabled' => true,
                             ],
                         ],
                     ],
@@ -123,10 +123,10 @@ return [
                 ],
             ],
         ],
-        'devIPmask' => '*',
-        'displayErrors' => 1,
+        'devIPmask' => '',
+        'displayErrors' => 0,
         'encryptionKey' => '7bf24e59234ae81bb2875eac483d6a45ff37b012bbca68ddc75eb5dd9d94718bdf647f1f363466ba3317e8a5377a3b37',
-        'exceptionalErrors' => 12290,
+        'exceptionalErrors' => 4096,
         'features' => [
             'security.backend.htmlSanitizeRte' => true,
         ],

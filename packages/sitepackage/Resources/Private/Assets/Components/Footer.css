@@ -38,8 +38,10 @@
     text-transform: uppercase;
 }
 
-.o-footer__nav-item a {
+
+.o-footer__nav-item {
     color: #fff;
+    text-decoration: none;
 }
 
 .o-footer__copyright {

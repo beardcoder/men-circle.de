@@ -5,12 +5,20 @@
 <f:variable
     name="logo"
     value="{f:if(condition: dark, then: 'EXT:sitepackage/Resources/Public/Images/logo-white.svg',else:'EXT:sitepackage/Resources/Public/Images/logo-black.svg')}"
-></f:variable>
-<f:variable name="textClass">{f:if(condition: dark, then: 'text-white', else: 'text-black dark:text-white')}
-</f:variable>
+/>
+<f:variable
+    name="textClass"
+    value="{f:if(condition: dark, then: 'o-header__container--dark',else:'o-header__container--light')}"
+/>
 
-<header class="o-header">
-    <div class="o-header__container">
+<f:variable
+    name="headerModifyer"
+    value="{f:if(condition: absolute, then: 'o-header--absolute')}"
+/>
+
+
+<header class="o-header {headerModifyer}">
+    <div class="o-header__container {textClass}">
         <a class="o-header__logo-link" href="/">
             <f:image
                 alt="logo"
@@ -20,31 +28,27 @@
                 width="500"
             />
             <f:image
-                loading="lazy"
                 alt="logo"
                 class="o-header__logo o-header__logo--dark-visible"
                 height="500"
+                loading="lazy"
                 src="EXT:sitepackage/Resources/Public/Images/logo-white.svg"
                 width="500"
             />
             <span class="o-header__title">Männerkreis Niederbayern</span>
         </a>
-        <nav class="o-header__nav {textClass}">
-            <ul class="o-header__nav-list">
-                <li class="o-header__nav-item o-header__nav-item--active"><a href="/">Home</a></li>
+        <nav class="o-header__nav">
+            <a href="/">Home</a>
 
-                <f:for as="mainnavigationItem" each="{mainnavigation}">
-                    <li class="o-header__nav-item">
-                        <a
-                            href="{mainnavigationItem.link}"
-                            target="{mainnavigationItem.target}"
-                            title="{mainnavigationItem.title}"
-                        >
-                            {mainnavigationItem.title}
-                        </a>
-                    </li>
-                </f:for>
-            </ul>
+            <f:for as="mainnavigationItem" each="{mainnavigation}">
+                <a
+                    href="{mainnavigationItem.link}"
+                    target="{mainnavigationItem.target}"
+                    title="{mainnavigationItem.title}"
+                >
+                    {mainnavigationItem.title}
+                </a>
+            </f:for>
         </nav>
     </div>
 </header>
