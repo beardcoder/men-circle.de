@@ -5,3 +5,8 @@
 .text-light {
     color: var(--font-color--light);
 }
+
+.block {
+    display: block;
+    inline-size: 100%;
+}

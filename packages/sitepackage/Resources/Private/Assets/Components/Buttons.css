@@ -4,9 +4,9 @@
     color: #fff;
     display: inline-block;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 700;
     outline: none;
-    padding: 0.5rem 1rem;
+    padding: 1rem 2rem;
     text-transform: uppercase;
     transition: background-color 0.3s, ring 0.3s;
 }
