@@ -290,6 +290,9 @@ AddDefaultCharset utf-8
 	RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
 	RewriteRule ^.*$ - [E=CWD:%2]
 
+	RewriteCond %{HTTP_HOST} !^mens-circle.de$
+	RewriteRule ^(.*)$ https://mens-circle.de/$1 [R=301,L]
+
 	# Rules to set ApplicationContext based on hostname
 	#RewriteCond %{HTTP_HOST} ^dev\.example\.com$
 	#RewriteRule .? - [E=TYPO3_CONTEXT:Development]
@@ -391,11 +394,3 @@ Options -MultiViews
 FileETag None
 
 ### End: Miscellaneous ###
-
-### SEO Redirect
-
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteCond %{HTTP_HOST} !^mens-circle.de$
-	RewriteRule ^(.*)$ https://mens-circle.de/$1 [R=301,L]
-</IfModule>
