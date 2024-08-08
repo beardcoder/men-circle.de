@@ -381,11 +381,5 @@ Options -MultiViews
 </IfModule>
 FileETag None
 
-<IfModule mod_headers.c>
-    Header unset X-Powered-By
-    Header always unset X-Powered-By
-</IfModule>
-
-ServerSignature Off
 
 ### End: Miscellaneous ###
