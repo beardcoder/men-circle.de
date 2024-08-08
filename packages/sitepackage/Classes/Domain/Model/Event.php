@@ -110,7 +110,7 @@ class Event extends AbstractEntity
             ) : Schema::place()->url($this->callUrl);
         $imageUri = $imageService->getImageUri($processedFile, true);
         $baseUrl = $uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(1)->buildFrontendUri();
-        $schema = Schema::event()
+        return Schema::event()
             ->name($this->title . ' am ' . $this->startDate->format('d.m.Y'))
             ->description($this->description)
             ->image($imageUri)
@@ -129,8 +129,6 @@ class Event extends AbstractEntity
             )
             ->organizer(Schema::person()->name('Markus Sommer')->url($baseUrl))
             ->performer(Schema::person()->name('Markus Sommer')->url($baseUrl));
-
-        return $schema;
     }
 
     public function getImage(): ?FileReference

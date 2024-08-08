@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MensCircle\Sitepackage\ViewHelpers;
 
-use Closure;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -17,7 +18,7 @@ class HtmlMinViewHelper extends AbstractViewHelper
     protected $escapeOutput = false;
 
     #[\Override]
-    public static function renderStatic(array $arguments, Closure $renderChildrenClosure, RenderingContextInterface $renderingContext): string
+    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext): string
     {
         $htmlMin = GeneralUtility::makeInstance(HtmlMin::class);
         assert($htmlMin instanceof HtmlMin);
