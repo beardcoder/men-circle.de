@@ -7,3 +7,16 @@ services:
 
   MensCircle\Sitepackage\:
     resource: '../Classes/*'
+
+  cache.static_cache:
+    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
+    factory: [ '@TYPO3\CMS\Core\Cache\CacheManager', 'getCache' ]
+    arguments: [ 'static_cache' ]
+
+  MensCircle\Sitepackage\Middleware\OutputCache:
+    arguments:
+      $cache: '@cache.static_cache'
+
+  MensCircle\Sitepackage\Middleware\StoreCache:
+    arguments:
+      $cache: '@cache.static_cache'

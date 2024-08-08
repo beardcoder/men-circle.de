@@ -32,5 +32,7 @@ call_user_func(
             'loginHighlightColor' => '#b76f2b',
             'loginFootnote' => '© 2023-2024 Build with ❤️ and mindfulness in Bavaria',
         ];
+
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['static_cache'] ??= [];
     }
 );
