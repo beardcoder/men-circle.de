@@ -16,5 +16,5 @@
 }
 
 .c-button:hover {
-    background-color: rgb(var(--color--primary) 0.5);
+    background-color: color-mix(in srgb, var(--color--primary) 40%, black);
 }
