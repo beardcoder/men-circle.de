@@ -7,7 +7,7 @@
     font-size: 1rem;
     font-weight: 700;
     outline: none;
-    padding: 1rem 2rem;
+    padding: 0.8rem 2rem;
     text-transform: uppercase;
     transition: background-color 0.3s, ring 0.3s;
 }

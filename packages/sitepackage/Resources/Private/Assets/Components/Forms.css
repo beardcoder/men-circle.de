@@ -8,13 +8,14 @@ input, textarea {
 }
 
 .form__control {
-    --padding: 0.625rem;
+    --padding: 0.8rem;
 
     background-color: var(--bg-color--light);
     border: 1px solid rgb(0 0 0 / 30%);
     box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
     color: var(--font-color);
     display: block;
+    font-size: 0.9rem;
     inline-size: calc(100% - (var(--padding) * 2));
     padding: var(--padding);
 }

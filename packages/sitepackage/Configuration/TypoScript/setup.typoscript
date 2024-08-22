@@ -33,33 +33,24 @@ page {
 
   10 = FLUIDTEMPLATE
   10 {
-    # Template names will be generated automatically by converting the applied
-    # backend_layout, there is no explicit mapping necessary anymore.
-    #
-    # BackendLayout Key
-    # subnavigation_right_2_columns -> SubnavigationRight2Columns.html
-    #
-    # Backend Record
-    # uid: 1 -> 1.html
-    #
-    # Database Entry
-    # value: -1 -> None.html
-    # value: pagets__subnavigation_right_2_columns -> SubnavigationRight2Columns.html
     templateName = TEXT
     templateName {
-      cObject = TEXT
+      cObject = CASE
       cObject {
-        data = pagelayout
-        required = 1
-        case = uppercamelcase
-        split {
-          token = pagets__
-          cObjNum = 1
-          1.current = 1
-        }
-      }
+        key.field = doktype
 
-      ifEmpty = Default
+        default = TEXT
+        default.value = Default
+
+        1724352539 = TEXT
+        1724352539.value = Home
+
+        1724352571 = TEXT
+        1724352571.value = Event
+
+        1724352888 = TEXT
+        1724352888.value = Default
+      }
     }
 
     templateRootPaths {
@@ -81,13 +72,6 @@ page {
       10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
       10 {
         references.fieldName = media
-      }
-
-      20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
-      20 {
-        levels = 2
-        includeSpacer = 1
-        as = mainnavigation
       }
 
       20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor

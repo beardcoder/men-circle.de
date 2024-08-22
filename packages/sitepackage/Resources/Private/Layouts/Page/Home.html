@@ -6,6 +6,8 @@
 >
 <vac:asset.vite entry="EXT:sitepackage/Resources/Private/Assets/Main.entry.ts" />
 <vac:asset.vite entry="EXT:sitepackage/Resources/Private/Assets/Main.entry.css" />
+<vac:asset.vite entry="EXT:sitepackage/Resources/Private/Assets/Home.entry.css" />
+<vac:asset.vite entry="EXT:sitepackage/Resources/Private/Assets/Home.entry.ts" />
 <div class="page">
     <f:render arguments="{ mainnavigation: mainnavigation, dark: 1, absolute: 1 }" partial="Header" />
     <main>
@@ -13,4 +15,52 @@
     </main>
     <f:render arguments="{_all}" partial="Footer" />
 </div>
+<dialog class="newsletter-dialog" data-component="newsletter-dialog">
+    <button class="newsletter-dialog__close" data-component="newsletter-dialog__close">
+        <svg height="100%" viewBox="0 0 1024 1024" width="100%">
+            <path
+                d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"
+                fill="#000000"
+            />
+        </svg>
+    </button>
+    <h2>Bleibe auf dem Laufenden mit unserem <span>Newsletter</span></h2>
+    <form action="https://list.mens-circle.de/subscription/form" class="form" method="post" target="_blank">
+        <div>
+            <input name="nonce" type="hidden" />
+            <div class="form__group">
+                <label class="form__label" for="listmonk-name">Name
+                    <span class="required">*</span></label>
+                <div class="input">
+                    <input
+                        autofocus
+                        class="form__control"
+                        id="listmonk-name"
+                        name="name"
+                        placeholder="Name"
+                        required
+                        type="text"
+                    />
+                </div>
+            </div>
+            <div class="form__group">
+                <label class="form__label" for="listmonk-email">E-Mail
+                    <span class="required">*</span></label>
+                <div class="input">
+                    <input
+                        class="form__control"
+                        id="listmonk-email"
+                        name="email"
+                        placeholder="E-Mail"
+                        required
+                        type="email"
+                    />
+                </div>
+            </div>
+
+            <input checked id="241e2" name="l" type="hidden" value="241e28da-c8f4-47a6-bfdd-4c71b45370aa" />
+            <button class="block c-button" type="submit">Anmelden</button>
+        </div>
+    </form>
+</dialog>
 </html>
