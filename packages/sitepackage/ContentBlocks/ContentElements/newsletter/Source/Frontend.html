@@ -1,0 +1,57 @@
+<html
+    data-namespace-typo3-fluid="true"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
+>
+<vac:asset.vite entry="EXT:sitepackage/ContentBlocks/ContentElements/newsletter/Assets/Frontend.entry.css" />
+
+<section class="c-newsletter">
+    <div class="c-newsletter__wrapper">
+        <div class="c-newsletter__inner">
+            <f:render arguments="{layout: 2, header: data.header}" partial="Header"></f:render>
+            <div data-animate="fadeUp">
+                <form method="post" action="https://list.mens-circle.de/subscription/form" class="form">
+                    <div>
+                        <input type="hidden" name="nonce" />
+                        <div class="form__group">
+                            <label class="form__label" for="listmonk-name">E-Mail
+                                <span class="required">*</span></label>
+                            <div class="input">
+                                <input
+                                    id="listmonk-name"
+                                    type="text"
+                                    name="name"
+                                    required
+                                    placeholder="Name"
+                                    class="form__control"
+                                />
+                            </div>
+                        </div>
+                        <div class="form__group">
+                            <label class="form__label" for="listmonk-email">E-Mail
+                                <span class="required">*</span></label>
+                            <div class="input">
+                                <input
+                                    id="listmonk-email"
+                                    type="email"
+                                    name="email"
+                                    required
+                                    placeholder="E-Mail"
+                                    class="form__control"
+                                />
+                            </div>
+                        </div>
+
+                        <input id="241e2" type="hidden" name="l" checked value="241e28da-c8f4-47a6-bfdd-4c71b45370aa" />
+                        <input type="submit" value="Abonnieren" />
+                            <button
+                            class="block c-button"
+                            type="submit"
+                        >Anmelden</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</html>
