@@ -9,52 +9,40 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\CMS\Core\Http\StreamFactory;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\SingletonInterface;
 use voku\helper\HtmlMin;
 use WyriHaximus\HtmlCompress\Factory;
 
-/**
- * Class HtmlCompress
- */
-class HtmlCompress implements MiddlewareInterface
+readonly class HtmlCompress implements MiddlewareInterface, SingletonInterface
 {
-    /**
-     * @param ServerRequestInterface $request
-     * @param RequestHandlerInterface $handler
-     * @return ResponseInterface
-     */
+    public function __construct(
+        private StreamFactory $streamFactory,
+        private HtmlMin $htmlMin
+    ) {}
+
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $response = $handler->handle($request);
-        if ($this->isTypeNumSet($request) === false) {
+        if (!$this->isTypeNumSet($request)) {
             $stream = $response->getBody();
             $stream->rewind();
             $content = $stream->getContents();
-            $newBody = (new StreamFactory())->createStream($this->compressHtml($content));
+            $newBody = $this->streamFactory->createStream($this->compressHtml($content));
             $response = $response->withBody($newBody);
         }
+
         return $response;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @return bool
-     */
     protected function isTypeNumSet(ServerRequestInterface $request): bool
     {
         return $request->getAttribute('routing')->getPageType() > 0;
     }
 
-    /**
-     * @param string $html
-     * @return string
-     */
     protected function compressHtml(string $html): string
     {
-        $htmlMin = GeneralUtility::makeInstance(HtmlMin::class);
-        assert($htmlMin instanceof HtmlMin);
+        $this->htmlMin->doRemoveComments(false);
 
-        $htmlMin->doRemoveComments(false);
-        return Factory::construct()->withHtmlMin($htmlMin)->compress($html);
+        return Factory::construct()->withHtmlMin($this->htmlMin)->compress($html);
     }
 }

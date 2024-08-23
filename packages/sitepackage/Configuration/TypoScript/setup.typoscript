@@ -61,6 +61,7 @@ page {
     partialRootPaths {
       0 = EXT:sitepackage/Resources/Private/Partials/Page/
       1 = {$page.fluidtemplate.partialRootPath}
+      100 = EXT:sitepackage/Resources/Private/Partials/Shared/
     }
 
     layoutRootPaths {
@@ -287,5 +288,6 @@ module.tx_form {
 lib.contentBlock {
   partialRootPaths {
     100 = EXT:sitepackage/Resources/Private/Partials/ContentElements/
+    110 = EXT:sitepackage/Resources/Private/Partials/Shared/
   }
 }
