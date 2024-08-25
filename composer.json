@@ -8,6 +8,7 @@
 		"b13/picture": "dev-master",
 		"contentblocks/content-blocks": "^0.8",
 		"helhum/dotenv-connector": "^3.1",
+		"lochmueller/staticfilecache": "dev-master#c874afd",
 		"mens-circle/sitepackage": "@dev",
 		"praetorius/vite-asset-collector": "^1.11",
 		"spatie/icalendar-generator": "^2.8.1",
