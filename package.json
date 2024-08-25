@@ -26,7 +26,7 @@
 		"@csstools/normalize.css": "^12.1.1",
 		"@fontsource-variable/jost": "^5.0.20",
 		"@fontsource/nothing-you-could-do": "^5.0.20",
-		"aos": "^3.0.0-beta.6",
+		"aos": "3.0.0-beta.6",
 		"leaflet": "^1.9.4",
 		"simple-aos": "^4.2.0",
 		"ukiyojs": "^4.2.0"
