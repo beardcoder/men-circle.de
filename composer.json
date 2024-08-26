@@ -9,7 +9,6 @@
 		"contentblocks/content-blocks": "^0.8",
 		"doctrine/dbal": "~4.0.5",
 		"helhum/dotenv-connector": "^3.1",
-		"lochmueller/staticfilecache": "dev-master",
 		"mens-circle/sitepackage": "@dev",
 		"praetorius/vite-asset-collector": "^1.11",
 		"spatie/icalendar-generator": "^2.8.1",
