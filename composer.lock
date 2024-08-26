@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1634b079aea401e473281c2b4b7889cc",
+    "content-hash": "d642f0e23623330735ea81fe0900599a",
     "packages": [
         {
             "name": "b13/container",
@@ -1403,12 +1403,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lochmueller/staticfilecache.git",
-                "reference": "67480c7c90a100404f6feb3e947a2b5797b44b5b"
+                "reference": "c874afd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lochmueller/staticfilecache/zipball/67480c7c90a100404f6feb3e947a2b5797b44b5b",
-                "reference": "67480c7c90a100404f6feb3e947a2b5797b44b5b",
+                "url": "https://api.github.com/repos/lochmueller/staticfilecache/zipball/c874afd",
+                "reference": "c874afd",
                 "shasum": ""
             },
             "require": {
