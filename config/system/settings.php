@@ -56,7 +56,7 @@ return [
         ],
         'staticfilecache' => [
             'backendDisplayMode' => 'both',
-            'boostMode' => '0',
+            'boostMode' => '1',
             'cacheTagsEnable' => '0',
             'clearCacheForAllDomains' => '1',
             'debugHeaders' => '0',
