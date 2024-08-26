@@ -9,11 +9,10 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\CMS\Core\Http\StreamFactory;
-use TYPO3\CMS\Core\SingletonInterface;
 use voku\helper\HtmlMin;
 use WyriHaximus\HtmlCompress\Factory;
 
-readonly class HtmlCompress implements MiddlewareInterface, SingletonInterface
+readonly class HtmlCompress implements MiddlewareInterface
 {
     public function __construct(
         private StreamFactory $streamFactory,
