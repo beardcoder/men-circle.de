@@ -1730,16 +1730,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v5.1.0",
+            "version": "v5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "683130c2ff8c2739f4822ff7ac5c873ec529abd1"
+                "reference": "23c79fbbfb725fb92af9bcf41065c8e9a0d49ddb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/683130c2ff8c2739f4822ff7ac5c873ec529abd1",
-                "reference": "683130c2ff8c2739f4822ff7ac5c873ec529abd1",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/23c79fbbfb725fb92af9bcf41065c8e9a0d49ddb",
+                "reference": "23c79fbbfb725fb92af9bcf41065c8e9a0d49ddb",
                 "shasum": ""
             },
             "require": {
@@ -1782,9 +1782,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v5.1.0"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v5.2.0"
             },
-            "time": "2024-07-01T20:03:41+00:00"
+            "time": "2024-09-15T16:40:33+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -2537,16 +2537,16 @@
         },
         {
             "name": "psr/log",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "79dff0b268932c640297f5208d6298f71855c03e"
+                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/79dff0b268932c640297f5208d6298f71855c03e",
-                "reference": "79dff0b268932c640297f5208d6298f71855c03e",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
+                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
                 "shasum": ""
             },
             "require": {
@@ -2581,9 +2581,9 @@
                 "psr-3"
             ],
             "support": {
-                "source": "https://github.com/php-fig/log/tree/3.0.1"
+                "source": "https://github.com/php-fig/log/tree/3.0.2"
             },
-            "time": "2024-08-21T13:31:24+00:00"
+            "time": "2024-09-11T13:17:53+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -9462,16 +9462,16 @@
         },
         {
             "name": "php-static-analysis/attributes",
-            "version": "0.3.0",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-static-analysis/attributes.git",
-                "reference": "43926939b5f294c9f2d685871056178f0c67ad86"
+                "reference": "75f5686e6314ddd3e6e37ce88c3801325ba97245"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-static-analysis/attributes/zipball/43926939b5f294c9f2d685871056178f0c67ad86",
-                "reference": "43926939b5f294c9f2d685871056178f0c67ad86",
+                "url": "https://api.github.com/repos/php-static-analysis/attributes/zipball/75f5686e6314ddd3e6e37ce88c3801325ba97245",
+                "reference": "75f5686e6314ddd3e6e37ce88c3801325ba97245",
                 "shasum": ""
             },
             "require": {
@@ -9511,28 +9511,34 @@
             "description": "Attributes used instead of PHPDocs for static analysis tools",
             "support": {
                 "issues": "https://github.com/php-static-analysis/attributes/issues",
-                "source": "https://github.com/php-static-analysis/attributes/tree/0.3.0"
+                "source": "https://github.com/php-static-analysis/attributes/tree/0.3.1"
             },
-            "time": "2024-03-05T11:44:26+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/carlos-granados",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-09-13T07:46:11+00:00"
         },
         {
             "name": "php-static-analysis/node-visitor",
-            "version": "0.3.0",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-static-analysis/node-visitor.git",
-                "reference": "463187795c41879ad6256a8db43cacb97df9461e"
+                "reference": "919f57ca466d9dedda852997d2ceaca15d128cc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-static-analysis/node-visitor/zipball/463187795c41879ad6256a8db43cacb97df9461e",
-                "reference": "463187795c41879ad6256a8db43cacb97df9461e",
+                "url": "https://api.github.com/repos/php-static-analysis/node-visitor/zipball/919f57ca466d9dedda852997d2ceaca15d128cc8",
+                "reference": "919f57ca466d9dedda852997d2ceaca15d128cc8",
                 "shasum": ""
             },
             "require": {
                 "nikic/php-parser": "^4 || ^5",
                 "php": ">=8.0",
-                "php-static-analysis/attributes": "^0.3.0 || dev-main"
+                "php-static-analysis/attributes": "^0.3.1 || dev-main"
             },
             "require-dev": {
                 "php-static-analysis/phpstan-extension": "dev-main",
@@ -9567,28 +9573,34 @@
             ],
             "support": {
                 "issues": "https://github.com/php-static-analysis/node-visitor/issues",
-                "source": "https://github.com/php-static-analysis/node-visitor/tree/0.3.0"
+                "source": "https://github.com/php-static-analysis/node-visitor/tree/0.3.1"
             },
-            "time": "2024-06-12T17:02:51+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/carlos-granados",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-09-12T17:15:47+00:00"
         },
         {
             "name": "php-static-analysis/rector-rule",
-            "version": "0.3.0",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-static-analysis/rector-rule.git",
-                "reference": "48e8ca8acae348ff5834d5e5014413473d261227"
+                "reference": "f123356b4c6a821b0b5ddca1bca6c719f59b901a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-static-analysis/rector-rule/zipball/48e8ca8acae348ff5834d5e5014413473d261227",
-                "reference": "48e8ca8acae348ff5834d5e5014413473d261227",
+                "url": "https://api.github.com/repos/php-static-analysis/rector-rule/zipball/f123356b4c6a821b0b5ddca1bca6c719f59b901a",
+                "reference": "f123356b4c6a821b0b5ddca1bca6c719f59b901a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
-                "php-static-analysis/attributes": "^0.3.0 || dev-main",
-                "php-static-analysis/node-visitor": "^0.3.0 || dev-main",
+                "php-static-analysis/attributes": "^0.3.1 || dev-main",
+                "php-static-analysis/node-visitor": "^0.3.1 || dev-main",
                 "rector/rector": "^0.19 || ^1.0"
             },
             "require-dev": {
@@ -9624,22 +9636,28 @@
             ],
             "support": {
                 "issues": "https://github.com/php-static-analysis/rector-rule/issues",
-                "source": "https://github.com/php-static-analysis/rector-rule/tree/0.3.0"
+                "source": "https://github.com/php-static-analysis/rector-rule/tree/0.3.1"
             },
-            "time": "2024-06-16T08:31:28+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/carlos-granados",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-09-12T21:03:27+00:00"
         },
         {
             "name": "phpro/grumphp-shim",
-            "version": "v2.7.0",
+            "version": "v2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpro/grumphp-shim.git",
-                "reference": "bf98880dc29493e7e82fc06cceb2f5bf2f5d94ee"
+                "reference": "b2932a5bf311d3aad5c8bf0a732b48e2d727ada9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpro/grumphp-shim/zipball/bf98880dc29493e7e82fc06cceb2f5bf2f5d94ee",
-                "reference": "bf98880dc29493e7e82fc06cceb2f5bf2f5d94ee",
+                "url": "https://api.github.com/repos/phpro/grumphp-shim/zipball/b2932a5bf311d3aad5c8bf0a732b48e2d727ada9",
+                "reference": "b2932a5bf311d3aad5c8bf0a732b48e2d727ada9",
                 "shasum": ""
             },
             "require": {
@@ -9683,9 +9701,9 @@
             "description": "GrumPHP Phar distribution",
             "support": {
                 "issues": "https://github.com/phpro/grumphp-shim/issues",
-                "source": "https://github.com/phpro/grumphp-shim/tree/v2.7.0"
+                "source": "https://github.com/phpro/grumphp-shim/tree/v2.8.0"
             },
-            "time": "2024-08-22T11:49:22+00:00"
+            "time": "2024-09-16T08:28:47+00:00"
         },
         {
             "name": "phpstan/phpstan",
