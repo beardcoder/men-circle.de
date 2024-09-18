@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace MensCircle\Sitepackage\Domain\Model;
 
-use DateTime;
 use MensCircle\Sitepackage\Enum\EventAttendanceModeEnum;
 use MensCircle\Sitepackage\Enum\EventStatusEnum;
+use Spatie\SchemaOrg\Event as EventSchema;
 use Spatie\SchemaOrg\ItemAvailability;
 use Spatie\SchemaOrg\Schema;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -23,9 +23,9 @@ class Event extends AbstractEntity
     public string $slug;
     public string $title;
     public string $description;
-    public ?DateTime $startDate = null;
-    public ?DateTime $endDate = null;
-    public ?DateTime $crdate = null;
+    public ?\DateTime $startDate = null;
+    public ?\DateTime $endDate = null;
+    public ?\DateTime $crdate = null;
     public string $place;
     public string $address;
     public string $zip;
@@ -79,17 +79,15 @@ class Event extends AbstractEntity
         return $this->title . ' am ' . $this->startDate->format('d.m.Y');
     }
 
-    public function buildSchema()
+    public function buildSchema(): EventSchema
     {
         $uriBuilder = GeneralUtility::makeInstance(UriBuilder::class);
         assert($uriBuilder instanceof UriBuilder);
 
-        $thisUrl = $uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(3)->uriFor(
-            'detail',
-            [
-                'event' => $this->uid,
-            ],
-        );
+        $thisUrl = $uriBuilder->reset()
+            ->setCreateAbsoluteUri(true)
+            ->setTargetPageUid(3)
+            ->uriFor('detail', ['event' => $this->uid]);
 
         $imageService = GeneralUtility::makeInstance(ImageService::class);
         assert($imageService instanceof ImageService);
@@ -106,12 +104,14 @@ class Event extends AbstractEntity
                     ->streetAddress($this->address)
                     ->addressLocality($this->city)
                     ->postalCode($this->zip)
-                    ->addressCountry('DE'),
+                    ->addressCountry('DE')
             ) : Schema::place()->url($this->callUrl);
+
         $imageUri = $imageService->getImageUri($processedFile, true);
         $baseUrl = $uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(1)->buildFrontendUri();
+
         return Schema::event()
-            ->name($this->title . ' am ' . $this->startDate->format('d.m.Y'))
+            ->name(sprintf('%s am %s', $this->title, $this->startDate->format('d.m.Y')))
             ->description($this->description)
             ->image($imageUri)
             ->startDate($this->startDate)
@@ -125,7 +125,7 @@ class Event extends AbstractEntity
                     ->price(0)
                     ->availability(ItemAvailability::InStock)
                     ->url($thisUrl)
-                    ->priceCurrency('EUR'),
+                    ->priceCurrency('EUR')
             )
             ->organizer(Schema::person()->name('Markus Sommer')->url($baseUrl))
             ->performer(Schema::person()->name('Markus Sommer')->url($baseUrl));

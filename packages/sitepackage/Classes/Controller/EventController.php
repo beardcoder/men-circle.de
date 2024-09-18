@@ -15,6 +15,7 @@ use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\ResponseInterface;
 use Spatie\IcalendarGenerator\Components\Calendar;
 use Spatie\IcalendarGenerator\Components\Event as CalendarEvent;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Uid\Uuid;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
@@ -25,6 +26,8 @@ use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException;
+use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Service\ImageService;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -95,13 +98,16 @@ class EventController extends ActionController
     }
 
     /**
-     * Set date format for field dateOfBirth.
+     * @throws NoSuchArgumentException
      */
     public function initializeRegistrationAction(): void
     {
         $this->setRegistrationFieldValuesToArguments();
     }
 
+    /**
+     * @throws NoSuchArgumentException
+     */
     protected function setRegistrationFieldValuesToArguments(): void
     {
         $arguments = $this->request->getArguments();
@@ -127,8 +133,10 @@ class EventController extends ActionController
         $this->request = $this->request->withArguments($arguments);
     }
 
-    #[Throws('TransportExceptionInterface')]
-    #[Throws('IllegalObjectTypeException')]
+    /**
+     * @throws IllegalObjectTypeException
+     * @throws TransportExceptionInterface
+     */
     public function registrationAction(EventRegistration $eventRegistration): ResponseInterface
     {
         $feUser = $this->frontendUserRepository->findOneBy(['email' => $eventRegistration->getEmail()]);
@@ -174,6 +182,9 @@ class EventController extends ActionController
         return $frontendUser;
     }
 
+    /**
+     * @throws TransportExceptionInterface
+     */
     private function sendMailToAdminOnRegistration(EventRegistration $eventRegistration): void
     {
         $fluidEmail = new FluidEmail();
@@ -192,6 +203,7 @@ class EventController extends ActionController
 
     /**
      * @throws PropagateResponseException
+     * @throws \Exception
      */
     public function iCalAction(Event $event): MessageInterface
     {

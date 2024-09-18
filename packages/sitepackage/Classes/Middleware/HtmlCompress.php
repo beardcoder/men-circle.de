@@ -19,10 +19,11 @@ readonly class HtmlCompress implements MiddlewareInterface
         private HtmlMin $htmlMin
     ) {}
 
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    #[\Override]
+    public function process(ServerRequestInterface $serverRequest, RequestHandlerInterface $requestHandler): ResponseInterface
     {
-        $response = $handler->handle($request);
-        if (!$this->isTypeNumSet($request)) {
+        $response = $requestHandler->handle($serverRequest);
+        if (!$this->isTypeNumSet($serverRequest)) {
             $stream = $response->getBody();
             $stream->rewind();
             $content = $stream->getContents();
@@ -33,9 +34,9 @@ readonly class HtmlCompress implements MiddlewareInterface
         return $response;
     }
 
-    protected function isTypeNumSet(ServerRequestInterface $request): bool
+    protected function isTypeNumSet(ServerRequestInterface $serverRequest): bool
     {
-        return $request->getAttribute('routing')->getPageType() > 0;
+        return $serverRequest->getAttribute('routing')->getPageType() > 0;
     }
 
     protected function compressHtml(string $html): string

@@ -13,7 +13,6 @@ use Ssch\TYPO3Rector\CodeQuality\General\ExtEmConfRector;
 use Ssch\TYPO3Rector\Configuration\Typo3Option;
 use Ssch\TYPO3Rector\Set\Typo3LevelSetList;
 use Ssch\TYPO3Rector\Set\Typo3SetList;
-use PhpStaticAnalysis\RectorRule\Set\PhpStaticAnalysisSetList;
 
 return RectorConfig::configure()
     ->withPaths([
