@@ -31,58 +31,21 @@ page {
   typeNum = 0
   shortcutIcon = favicon.ico
 
-  10 = FLUIDTEMPLATE
+  10 = PAGEVIEW
   10 {
-    templateName = TEXT
-    templateName {
-      cObject = CASE
-      cObject {
-        key.field = doktype
-
-        default = TEXT
-        default.value = Default
-
-        1724352539 = TEXT
-        1724352539.value = Home
-
-        1724352571 = TEXT
-        1724352571.value = Event
-
-        1724352888 = TEXT
-        1724352888.value = Default
-      }
-    }
-
-    templateRootPaths {
-      0 = EXT:sitepackage/Resources/Private/Templates/Page/
-      1 = {$page.fluidtemplate.templateRootPath}
-    }
-
-    partialRootPaths {
-      0 = EXT:sitepackage/Resources/Private/Partials/Page/
-      1 = {$page.fluidtemplate.partialRootPath}
-      100 = EXT:sitepackage/Resources/Private/Partials/Shared/
-    }
-
-    layoutRootPaths {
-      0 = EXT:sitepackage/Resources/Private/Layouts/Page/
-      1 = {$page.fluidtemplate.layoutRootPath}
+    paths {
+      100 = EXT:sitepackage/Resources/Private/Templates/
     }
 
     dataProcessing {
-      10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
-      10 {
-        references.fieldName = media
-      }
-
-      20 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      20 = menu
       20 {
         levels = 2
         includeSpacer = 1
         as = mainnavigation
       }
 
-      50 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+      50 = menu
       50 {
         special = directory
         special.value = 6
@@ -217,15 +180,15 @@ config {
 plugin.tx_sitepackage {
   view {
     templateRootPaths {
-      0 = EXT:sitepackage/Resources/Private/Templates/Event
+      0 = EXT:sitepackage/Resources/Private/Templates/Event/
     }
 
     partialRootPaths {
-      0 = EXT:sitepackage/Resources/Private/Partials/Event
+      0 = EXT:sitepackage/Resources/Private/Templates/Partials/Event/
     }
 
     layoutRootPaths {
-      0 = EXT:sitepackage/Resources/Private/Layouts/Event
+      0 = EXT:sitepackage/Resources/Private/Templates/Layouts/Event/
     }
   }
 
@@ -287,7 +250,7 @@ module.tx_form {
 
 lib.contentBlock {
   partialRootPaths {
-    100 = EXT:sitepackage/Resources/Private/Partials/ContentElements/
-    110 = EXT:sitepackage/Resources/Private/Partials/Shared/
+    100 = EXT:sitepackage/Resources/Private/Templates/Partials/ContentElements/
+    110 = EXT:sitepackage/Resources/Private/Templates/Partials/
   }
 }

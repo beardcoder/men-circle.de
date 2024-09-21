@@ -6,9 +6,9 @@ prototypes:
           templateRootPaths:
             20: 'EXT:sitepackage/Resources/Private/Templates/Form/Frontend/'
           partialRootPaths:
-            20: 'EXT:sitepackage/Resources/Private/Partials/Form/Frontend/'
+            20: 'EXT:sitepackage/Resources/Private/Templates/Partials/Form/Frontend/'
           layoutRootPaths:
-            20: 'EXT:sitepackage/Resources/Private/Layouts/Form/Frontend/'
+            20: 'EXT:sitepackage/Resources/Private/Templates/Layouts/Form/Frontend/'
 persistenceManager:
   allowedExtensionPaths:
     100: EXT:sitepackage/Resources/Private/Forms/

@@ -9,11 +9,11 @@
 #### FLUID STYLED CONTENT ####
 ##############################
 styles {
-    templates {
-        layoutRootPath = EXT:sitepackage/Resources/Private/Layouts/ContentElements/
-        partialRootPath = EXT:sitepackage/Resources/Private/Partials/ContentElements/
-        templateRootPath = EXT:sitepackage/Resources/Private/Templates/ContentElements/
-    }
+  templates {
+    templateRootPath = EXT:sitepackage/Resources/Private/Templates/ContentElements/
+    layoutRootPath = EXT:sitepackage/Resources/Private/Templates/Layouts/ContentElements/
+    partialRootPath = EXT:sitepackage/Resources/Private/Templates/Partials/ContentElements/
+  }
 }
 
 
@@ -21,29 +21,23 @@ styles {
 ### PAGE ###
 ############
 page {
-    fluidtemplate {
-        layoutRootPath = EXT:sitepackage/Resources/Private/Layouts/Page/
-        partialRootPath = EXT:sitepackage/Resources/Private/Partials/Page/
-        templateRootPath = EXT:sitepackage/Resources/Private/Templates/Page/
-    }
+  meta {
+    description =
+    author = Markus Sommer
+    keywords =
+    viewport = width=device-width, initial-scale=1
+    robots = index,follow
+    apple-mobile-web-app-capable = no
+    compatible = IE=edge
+    language = de
+  }
 
-    meta {
-        description =
-        author = Markus Sommer
-        keywords =
-        viewport = width=device-width, initial-scale=1
-        robots = index,follow
-        apple-mobile-web-app-capable = no
-        compatible = IE=edge
-        language = de
+  tracking {
+    google {
+      trackingID =
+      anonymizeIp = 1
     }
-
-    tracking {
-        google {
-            trackingID =
-            anonymizeIp = 1
-        }
-    }
+  }
 }
 
 
@@ -51,10 +45,10 @@ page {
 ### CONFIG ###
 ##############
 config {
-    no_cache = 0
-    removeDefaultJS = 0
-    admPanel = 1
-    prefixLocalAnchors = all
-    headerComment = Build with ❤️ and mindfulness in Bavaria
-    sendCacheHeaders = 1
+  no_cache = 0
+  removeDefaultJS = 1
+  admPanel = 1
+  prefixLocalAnchors = all
+  headerComment = Build with ❤️ and mindfulness in Bavaria
+  sendCacheHeaders = 1
 }
