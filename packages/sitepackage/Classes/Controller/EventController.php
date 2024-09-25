@@ -231,7 +231,7 @@ class EventController extends ActionController
 
         $response = $this->responseFactory->createResponse()
             ->withHeader('Cache-Control', 'private')
-            ->withHeader('Content-Disposition', 'attachment; filename="' . $event->getLongTitle() . '.ics"' . '"')
+            ->withHeader('Content-Disposition', 'attachment; filename="' . $event->getLongTitle() . '.ics"')
             ->withHeader('Content-Type', 'text/calendar; charset=utf-8')
             ->withBody($this->streamFactory->createStream($calendar->get()));
         throw new PropagateResponseException($response, 200);
