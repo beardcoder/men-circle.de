@@ -26,6 +26,7 @@
 		"typo3/cms-rte-ckeditor": ">=13.3",
 		"typo3/cms-scheduler": ">=13.3",
 		"typo3/cms-seo": ">=13.3",
+		"typo3/cms-setup": ">=13.3",
 		"typo3/cms-t3editor": ">=13.3",
 		"typo3/cms-tstemplate": ">=13.3",
 		"typo3/cms-viewpage": ">=13.3",
@@ -41,7 +42,6 @@
 		"ssch/typo3-rector": "dev-main",
 		"typo3/cms-belog": ">=13.3",
 		"typo3/cms-lowlevel": ">=13.3",
-		"typo3/cms-setup": ">=13.3",
 		"typo3/coding-standards": "^0.8.0"
 	},
 	"repositories": [
