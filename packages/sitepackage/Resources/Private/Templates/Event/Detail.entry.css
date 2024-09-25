@@ -209,27 +209,6 @@
     border-color: var(--color--primary);
 }
 
-.c-event-registration__submit {
-    background-color: var(--color--primary);
-    color: #fff;
-    display: block;
-    font-size: 0.875rem;
-    font-weight: 500;
-    inline-size: 100%;
-    padding: 0.625rem 1.25rem;
-    text-align: center;
-    text-transform: uppercase;
-    transition: background-color 0.3s;
-}
-
-.c-event-registration__submit:hover {
-    background-color: var(--color--primary);
-}
-
-.c-event-registration__submit:focus {
-    outline: none;
-}
-
 .c-event-url__list {
     color: #6b7280;
     list-style-position: inside;
