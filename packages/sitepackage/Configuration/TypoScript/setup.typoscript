@@ -185,10 +185,12 @@ plugin.tx_sitepackage {
 
     partialRootPaths {
       0 = EXT:sitepackage/Resources/Private/Templates/Partials/Event/
+      100 = EXT:sitepackage/Resources/Private/Templates/Partials/
     }
 
     layoutRootPaths {
       0 = EXT:sitepackage/Resources/Private/Templates/Layouts/Event/
+      100 = EXT:sitepackage/Resources/Private/Templates/Layouts/
     }
   }
 
