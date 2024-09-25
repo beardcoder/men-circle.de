@@ -75,7 +75,7 @@ class EventController extends ActionController
 
         $metaTagManager->addProperty('og:url', $this->getUrlForEvent($event));
 
-        $this->getPageRenderer()->addHeaderData($event->buildSchema());
+        $this->getPageRenderer()->addHeaderData($event->buildSchema($this->uriBuilder));
         $this->view->assign('event', $event);
         $this->view->assign('eventRegistration', $eventRegistrationToAssign);
 
