@@ -34,12 +34,14 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class EventController extends ActionController
 {
     public function __construct(
-        private readonly EventRepository $eventRepository,
+        private readonly EventRepository             $eventRepository,
         private readonly EventRegistrationRepository $eventRegistrationRepository,
-        private readonly FrontendUserRepository $frontendUserRepository,
-        private readonly EventPageTitleProvider $eventPageTitleProvider,
-        private readonly ImageService $imageService
-    ) {}
+        private readonly FrontendUserRepository      $frontendUserRepository,
+        private readonly EventPageTitleProvider      $eventPageTitleProvider,
+        private readonly ImageService                $imageService
+    )
+    {
+    }
 
     public function listAction(): ResponseInterface
     {
@@ -115,7 +117,6 @@ class EventController extends ActionController
             return;
         }
 
-        /** @var Event $event */
         $event = $this->eventRepository->findByUid((int)$this->request->getArgument('event'));
         if (!$event instanceof Event) {
             return;
@@ -218,15 +219,19 @@ class EventController extends ActionController
             ->description($event->description)
             ->url($this->getUrlForEvent($event))
             ->image($imageUri)
-            ->startsAt(new \DateTime($event->startDate->format('d.m.Y H:i'), new \DateTimeZone('Europe/Berlin')))
-            ->endsAt(new \DateTime($event->endDate->format('d.m.Y H:i'), new \DateTimeZone('Europe/Berlin')))
+            ->startsAt(new \DateTime($event->startDate->format('d.m.Y H:i')))
+            ->endsAt(new \DateTime($event->endDate->format('d.m.Y H:i')))
             ->organizer('markus@letsbenow.de', 'Markus Sommer');
+
+        if ($event->isOffline() && $event->latitude && $event->longitude) {
+            $calendarEvent->address($event->getFullAddress(), $event->place)->coordinates($event->latitude, $event->longitude);
+        }
 
         $calendar = Calendar::create($event->getLongTitle())->event($calendarEvent);
 
         $response = $this->responseFactory->createResponse()
             ->withHeader('Cache-Control', 'private')
-            ->withHeader('Content-Disposition', 'attachment; filename="calendar.ics"')
+            ->withHeader('Content-Disposition', 'attachment; filename="' . $event->getLongTitle() . '.ics"' . '"')
             ->withHeader('Content-Type', 'text/calendar; charset=utf-8')
             ->withBody($this->streamFactory->createStream($calendar->get()));
         throw new PropagateResponseException($response, 200);

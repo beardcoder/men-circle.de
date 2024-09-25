@@ -61,7 +61,7 @@ class Event extends AbstractEntity
 
     public function isOnline(): bool
     {
-        return EventAttendanceModeEnum::ONLINE === $this->getRealAttendanceMode();
+        return $this->getRealAttendanceMode() === EventAttendanceModeEnum::ONLINE;
     }
 
     public function getRealAttendanceMode(): EventAttendanceModeEnum
@@ -76,7 +76,7 @@ class Event extends AbstractEntity
 
     public function getLongTitle(): string
     {
-        return $this->title.' am '.$this->startDate->format('d.m.Y');
+        return $this->title . ' am ' . $this->startDate->format('d.m.Y');
     }
 
     public function buildSchema(UriBuilder $uriBuilder): EventSchema
@@ -84,8 +84,7 @@ class Event extends AbstractEntity
         $thisUrl = $uriBuilder->reset()
             ->setCreateAbsoluteUri(true)
             ->setTargetPageUid(3)
-            ->uriFor('detail', ['event' => $this->uid])
-        ;
+            ->uriFor('detail', ['event' => $this->uid]);
 
         $imageService = GeneralUtility::makeInstance(ImageService::class);
         assert($imageService instanceof ImageService);
@@ -126,8 +125,7 @@ class Event extends AbstractEntity
                     ->priceCurrency('EUR')
             )
             ->organizer(Schema::person()->name('Markus Sommer')->url($baseUrl))
-            ->performer(Schema::person()->name('Markus Sommer')->url($baseUrl))
-        ;
+            ->performer(Schema::person()->name('Markus Sommer')->url($baseUrl));
     }
 
     public function getImage(): ?FileReference
@@ -143,6 +141,11 @@ class Event extends AbstractEntity
 
     public function isOffline(): bool
     {
-        return EventAttendanceModeEnum::OFFLINE === $this->getRealAttendanceMode();
+        return $this->getRealAttendanceMode() === EventAttendanceModeEnum::OFFLINE;
+    }
+
+    public function getFullAddress(): string
+    {
+        return "$this->address, $this->zip $this->city, Deutschland";
     }
 }

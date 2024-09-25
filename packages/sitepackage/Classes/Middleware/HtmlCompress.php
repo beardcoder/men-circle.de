@@ -23,7 +23,7 @@ readonly class HtmlCompress implements MiddlewareInterface
     public function process(ServerRequestInterface $serverRequest, RequestHandlerInterface $requestHandler): ResponseInterface
     {
         $response = $requestHandler->handle($serverRequest);
-        if (!$this->isTypeNumSet($serverRequest)) {
+        if (!$this->isTypeNumSet($serverRequest) && !$this->isDownload($response)) {
             $stream = $response->getBody();
             $stream->rewind();
             $content = $stream->getContents();
@@ -37,6 +37,11 @@ readonly class HtmlCompress implements MiddlewareInterface
     protected function isTypeNumSet(ServerRequestInterface $serverRequest): bool
     {
         return $serverRequest->getAttribute('routing')->getPageType() > 0;
+    }
+
+    private function isDownload(ResponseInterface $response): bool
+    {
+        return $response->hasHeader('Content-Disposition') && str_starts_with($response->getHeaderLine('Content-Disposition'), 'attachment');
     }
 
     protected function compressHtml(string $html): string
