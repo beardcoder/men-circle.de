@@ -97,6 +97,10 @@
 }
 
 @media (width >= 1024px) {
+    .c-event-detail__image-container {
+        block-size: 100%;
+    }
+
     .c-event-detail {
         grid-template-columns: repeat(2, 1fr);
     }
