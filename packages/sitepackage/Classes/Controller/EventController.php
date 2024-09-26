@@ -34,14 +34,12 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class EventController extends ActionController
 {
     public function __construct(
-        private readonly EventRepository             $eventRepository,
+        private readonly EventRepository $eventRepository,
         private readonly EventRegistrationRepository $eventRegistrationRepository,
-        private readonly FrontendUserRepository      $frontendUserRepository,
-        private readonly EventPageTitleProvider      $eventPageTitleProvider,
-        private readonly ImageService                $imageService
-    )
-    {
-    }
+        private readonly FrontendUserRepository $frontendUserRepository,
+        private readonly EventPageTitleProvider $eventPageTitleProvider,
+        private readonly ImageService $imageService
+    ) {}
 
     public function listAction(): ResponseInterface
     {
@@ -84,54 +82,12 @@ class EventController extends ActionController
         return $this->htmlResponse();
     }
 
-    private function getUrlForEvent(Event $event): string
-    {
-        return $this->uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(3)->uriFor(
-            'detail',
-            [
-                'event' => $event->getUid(),
-            ],
-        );
-    }
-
-    protected function getPageRenderer(): PageRenderer
-    {
-        return GeneralUtility::makeInstance(PageRenderer::class);
-    }
-
     /**
      * @throws NoSuchArgumentException
      */
     public function initializeRegistrationAction(): void
     {
         $this->setRegistrationFieldValuesToArguments();
-    }
-
-    /**
-     * @throws NoSuchArgumentException
-     */
-    protected function setRegistrationFieldValuesToArguments(): void
-    {
-        $arguments = $this->request->getArguments();
-        if (!isset($arguments['event'])) {
-            return;
-        }
-
-        $event = $this->eventRepository->findByUid((int)$this->request->getArgument('event'));
-        if (!$event instanceof Event) {
-            return;
-        }
-
-        $registrationMvcArgument = $this->arguments->getArgument('eventRegistration');
-        $mvcPropertyMappingConfiguration = $registrationMvcArgument->getPropertyMappingConfiguration();
-
-        // Set event to registration (required for validation)
-        $mvcPropertyMappingConfiguration->allowProperties('event');
-        $mvcPropertyMappingConfiguration->allowCreationForSubProperty('event');
-        $mvcPropertyMappingConfiguration->allowModificationForSubProperty('event');
-        $arguments['eventRegistration']['event'] = (int)$this->request->getArgument('event');
-
-        $this->request = $this->request->withArguments($arguments);
     }
 
     /**
@@ -169,6 +125,86 @@ class EventController extends ActionController
         return $this->redirectToUri($redirectUrl);
     }
 
+    /**
+     * @throws PropagateResponseException
+     * @throws \Exception
+     */
+    public function iCalAction(Event $event): MessageInterface
+    {
+        $processedFile = $this->imageService->applyProcessingInstructions(
+            $event->getImage()->getOriginalResource(),
+            ['width' => '600c', 'height' => '600c']
+        );
+        $imageUri = $this->imageService->getImageUri($processedFile, true);
+
+        $calendarEvent = CalendarEvent::create()
+            ->name($event->getLongTitle())
+            ->description($event->description)
+            ->url($this->getUrlForEvent($event))
+            ->image($imageUri)
+            ->startsAt(new \DateTime($event->startDate->format('d.m.Y H:i')))
+            ->endsAt(new \DateTime($event->endDate->format('d.m.Y H:i')))
+            ->organizer('markus@letsbenow.de', 'Markus Sommer')
+        ;
+
+        if ($event->isOffline() && $event->latitude && $event->longitude) {
+            $calendarEvent->address($event->getFullAddress(), $event->place)->coordinates($event->latitude, $event->longitude);
+        }
+
+        $calendar = Calendar::create($event->getLongTitle())->event($calendarEvent);
+
+        $response = $this->responseFactory->createResponse()
+            ->withHeader('Cache-Control', 'private')
+            ->withHeader('Content-Disposition', 'attachment; filename="' . $event->getLongTitle() . '.ics"')
+            ->withHeader('Content-Type', 'text/calendar; charset=utf-8')
+            ->withBody($this->streamFactory->createStream($calendar->get()))
+        ;
+
+        throw new PropagateResponseException($response, 200);
+    }
+
+    protected function getPageRenderer(): PageRenderer
+    {
+        return GeneralUtility::makeInstance(PageRenderer::class);
+    }
+
+    /**
+     * @throws NoSuchArgumentException
+     */
+    protected function setRegistrationFieldValuesToArguments(): void
+    {
+        $arguments = $this->request->getArguments();
+        if (!isset($arguments['event'])) {
+            return;
+        }
+
+        $event = $this->eventRepository->findByUid((int)$this->request->getArgument('event'));
+        if (!$event instanceof Event) {
+            return;
+        }
+
+        $registrationMvcArgument = $this->arguments->getArgument('eventRegistration');
+        $mvcPropertyMappingConfiguration = $registrationMvcArgument->getPropertyMappingConfiguration();
+
+        // Set event to registration (required for validation)
+        $mvcPropertyMappingConfiguration->allowProperties('event');
+        $mvcPropertyMappingConfiguration->allowCreationForSubProperty('event');
+        $mvcPropertyMappingConfiguration->allowModificationForSubProperty('event');
+        $arguments['eventRegistration']['event'] = (int)$this->request->getArgument('event');
+
+        $this->request = $this->request->withArguments($arguments);
+    }
+
+    private function getUrlForEvent(Event $event): string
+    {
+        return $this->uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(3)->uriFor(
+            'detail',
+            [
+                'event' => $event->getUid(),
+            ],
+        );
+    }
+
     private function mapRegistrationToFeUser(EventRegistration $eventRegistration): FrontendUser
     {
         $frontendUser = GeneralUtility::makeInstance(FrontendUser::class);
@@ -192,48 +228,14 @@ class EventController extends ActionController
         $fluidEmail
             ->to('hallo@mens-circle.de')
             ->from(new Address('hallo@mens-circle.de', 'Men\'s Circle Website'))
-            ->subject('Neue Anmeldung von' . $eventRegistration->getName())
+            ->subject('Neue Anmeldung von ' . $eventRegistration->getName())
             ->format(FluidEmail::FORMAT_BOTH) // send HTML and plaintext mail
             ->setTemplate('MailToAdminOnRegistration')
-            ->assign('eventRegistration', $eventRegistration);
+            ->assign('eventRegistration', $eventRegistration)
+        ;
         $mailer = GeneralUtility::makeInstance(MailerInterface::class);
         assert($mailer instanceof MailerInterface);
 
         $mailer->send($fluidEmail);
-    }
-
-    /**
-     * @throws PropagateResponseException
-     * @throws \Exception
-     */
-    public function iCalAction(Event $event): MessageInterface
-    {
-        $processedFile = $this->imageService->applyProcessingInstructions(
-            $event->getImage()->getOriginalResource(),
-            ['width' => '600c', 'height' => '600c']
-        );
-        $imageUri = $this->imageService->getImageUri($processedFile, true);
-
-        $calendarEvent = CalendarEvent::create()
-            ->name($event->getLongTitle())
-            ->description($event->description)
-            ->url($this->getUrlForEvent($event))
-            ->image($imageUri)
-            ->startsAt(new \DateTime($event->startDate->format('d.m.Y H:i')))
-            ->endsAt(new \DateTime($event->endDate->format('d.m.Y H:i')))
-            ->organizer('markus@letsbenow.de', 'Markus Sommer');
-
-        if ($event->isOffline() && $event->latitude && $event->longitude) {
-            $calendarEvent->address($event->getFullAddress(), $event->place)->coordinates($event->latitude, $event->longitude);
-        }
-
-        $calendar = Calendar::create($event->getLongTitle())->event($calendarEvent);
-
-        $response = $this->responseFactory->createResponse()
-            ->withHeader('Cache-Control', 'private')
-            ->withHeader('Content-Disposition', 'attachment; filename="' . $event->getLongTitle() . '.ics"')
-            ->withHeader('Content-Type', 'text/calendar; charset=utf-8')
-            ->withBody($this->streamFactory->createStream($calendar->get()));
-        throw new PropagateResponseException($response, 200);
     }
 }
