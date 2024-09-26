@@ -114,7 +114,8 @@
 
     .c-event-detail__content {
         block-size: auto;
-        padding: 20px;
+        padding-block: 20px;
+        padding-inline: 20px 100px;
     }
 
     .c-event-detail__title {
@@ -274,4 +275,12 @@
     .c-event-url__error-message {
         color: #fc8181;
     }
+}
+
+.c-event-detail__map,
+.c-event-detail__map-inner {
+    aspect-ratio: 16 / 4;
+    inline-size: 100%;
+    max-inline-size: 100vi;
+    min-block-size: 300px;
 }
