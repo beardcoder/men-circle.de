@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f52a2559a100ed124029f03f505f80f7",
+    "content-hash": "dbc67759dfacc3fdcae54f28a3b6ede6",
     "packages": [
         {
             "name": "b13/container",
@@ -8551,6 +8551,68 @@
     ],
     "packages-dev": [
         {
+            "name": "b13/make",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/b13/make.git",
+                "reference": "180b227f46da8bc037eca042733ea5981aea75f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/b13/make/zipball/180b227f46da8bc037eca042733ea5981aea75f4",
+                "reference": "180b227f46da8bc037eca042733ea5981aea75f4",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "^10.0 || ^11.0 || ^12.0 || ^13.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.4",
+                "typo3/cms-core": "^11.5",
+                "typo3/coding-standards": "^0.5",
+                "typo3/tailor": "^1.4",
+                "typo3/testing-framework": "^7.0"
+            },
+            "default-branch": true,
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "make",
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": ".Build/Web"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "B13\\Make\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Bartsch",
+                    "email": "oliver.bartsch@b13.com"
+                }
+            ],
+            "description": "Kickstarter CLI tool for various TYPO3 functionalities",
+            "homepage": "https://b13.com",
+            "keywords": [
+                "cli",
+                "extensions",
+                "kickstarter",
+                "typo3"
+            ],
+            "support": {
+                "issues": "https://github.com/b13/make/issues",
+                "source": "https://github.com/b13/make/tree/main"
+            },
+            "time": "2024-08-13T09:24:35+00:00"
+        },
+        {
             "name": "clue/ndjson-react",
             "version": "v1.3.0",
             "source": {
@@ -11414,6 +11476,7 @@
         "b13/container": 20,
         "b13/picture": 20,
         "mens-circle/sitepackage": 20,
+        "b13/make": 20,
         "ssch/typo3-rector": 20
     },
     "prefer-stable": true,
