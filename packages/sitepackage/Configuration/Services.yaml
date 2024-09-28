@@ -1,13 +1,13 @@
 services:
-  # general settings
   _defaults:
     autowire: true
     autoconfigure: true
     public: false
-
   MensCircle\Sitepackage\:
     resource: '../Classes/*'
-
   voku\helper\HtmlMin:
     class: voku\helper\HtmlMin
     public: true
+  MensCircle\Sitepackage\Backend\Controller\MailController:
+    tags:
+      - backend.controller
