@@ -14,3 +14,4 @@ node_modules
 .php-cs-fixer.cache
 !Resources/Public/Icons/*
 .dumps
+config/system/additional.php
