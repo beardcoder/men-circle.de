@@ -229,6 +229,21 @@ return [
                 ],
             ],
         ],
+        'notification' => [
+            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.notification',
+            'exclude' => true,
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_sitepackage_domain_model_eventnotification',
+                'foreign_field' => 'event',
+                'maxitems' => 9999,
+                'appearance' => [
+                    'expandSingle' => 1,
+                    'levelLinksPosition' => 'bottom',
+                    'useSortable' => 1,
+                ],
+            ],
+        ],
         'attendance_mode' => [
             'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.attendance_mode.label',
             'onChange' => 'reload',

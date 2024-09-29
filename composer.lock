@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dbc67759dfacc3fdcae54f28a3b6ede6",
+    "content-hash": "fd0f9d73231e5ca295fb99c4777279fe",
     "packages": [
         {
             "name": "b13/container",
@@ -11322,6 +11322,123 @@
             "time": "2024-09-17T11:29:59+00:00"
         },
         {
+            "name": "typo3/cms-felogin",
+            "version": "v13.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/felogin.git",
+                "reference": "7e32ceaa83d78607617578c873654d3513e8779b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/felogin/zipball/7e32ceaa83d78607617578c873654d3513e8779b",
+                "reference": "7e32ceaa83d78607617578c873654d3513e8779b",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "13.3.0"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "13.3.x-dev"
+                },
+                "typo3/cms": {
+                    "Package": {
+                        "partOfFactoryDefault": true
+                    },
+                    "extension-key": "felogin"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\FrontendLogin\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TYPO3 CMS Frontend Login - A template-based plugin to log in website users in the TYPO3 frontend.",
+            "homepage": "https://typo3.org",
+            "support": {
+                "chat": "https://typo3.org/help",
+                "docs": "https://docs.typo3.org/c/typo3/cms-felogin/main/en-us",
+                "issues": "https://forge.typo3.org",
+                "source": "https://github.com/typo3/typo3"
+            },
+            "time": "2024-09-17T11:29:59+00:00"
+        },
+        {
+            "name": "typo3/cms-indexed-search",
+            "version": "v13.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/indexed_search.git",
+                "reference": "516d87a2eeadc5be7597347e17cb388990bc6794"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/indexed_search/zipball/516d87a2eeadc5be7597347e17cb388990bc6794",
+                "reference": "516d87a2eeadc5be7597347e17cb388990bc6794",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "13.3.0"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "suggest": {
+                "ext-exif": "Used to extract exif metadata 'COMMENT' and 'ImageDescription' of uploaded images",
+                "typo3/cms-scheduler": "For garbage collection of search statistics"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "13.3.x-dev"
+                },
+                "typo3/cms": {
+                    "extension-key": "indexed_search"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\IndexedSearch\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TYPO3 CMS Indexed Search - Provides indexing functionality for TYPO3 pages and records as well as files including PDF, Word, HTML and plain text.",
+            "homepage": "https://typo3.org",
+            "support": {
+                "chat": "https://typo3.org/help",
+                "docs": "https://docs.typo3.org/c/typo3/cms-indexed-search/main/en-us",
+                "issues": "https://forge.typo3.org",
+                "source": "https://github.com/typo3/typo3"
+            },
+            "time": "2024-09-17T11:29:59+00:00"
+        },
+        {
             "name": "typo3/cms-lowlevel",
             "version": "v13.3.0",
             "source": {
@@ -11371,6 +11488,71 @@
             ],
             "description": "TYPO3 CMS Lowlevel - Technical analysis of the system. This includes raw database search, checking relations, counting pages and records etc.",
             "homepage": "https://typo3.org",
+            "support": {
+                "chat": "https://typo3.org/help",
+                "docs": "https://docs.typo3.org",
+                "issues": "https://forge.typo3.org",
+                "source": "https://github.com/typo3/typo3"
+            },
+            "time": "2024-09-17T11:29:59+00:00"
+        },
+        {
+            "name": "typo3/cms-styleguide",
+            "version": "v13.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/styleguide.git",
+                "reference": "3b8517eece09f6e285a73e654e337f0811595fc5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/styleguide/zipball/3b8517eece09f6e285a73e654e337f0811595fc5",
+                "reference": "3b8517eece09f6e285a73e654e337f0811595fc5",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "13.3.0",
+                "typo3/cms-felogin": "13.3.0",
+                "typo3/cms-fluid-styled-content": "13.3.0",
+                "typo3/cms-form": "13.3.0",
+                "typo3/cms-indexed-search": "13.3.0",
+                "typo3/cms-seo": "13.3.0"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "styleguide"
+                },
+                "branch-alias": {
+                    "dev-main": "13.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Styleguide\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TYPO3 extension to showcase TYPO3 Backend capabilities",
+            "homepage": "https://typo3.org",
+            "keywords": [
+                "style guide",
+                "typo3",
+                "typo3 backend"
+            ],
             "support": {
                 "chat": "https://typo3.org/help",
                 "docs": "https://docs.typo3.org",

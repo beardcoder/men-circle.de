@@ -1,0 +1,7 @@
+.jodit_theme_dark {
+    --jd-color-dark: var(--typo3-input-bg);
+    --jd-dark-background-color: var(--typo3-input-bg);
+    --jd-color-background-default: var(--typo3-input-bg);
+    --jd-color-border: var(--typo3-input-border-color);
+    --jd-dark-toolbar-color: var(--typo3-input-bg);
+}

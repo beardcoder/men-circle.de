@@ -1,105 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="de" original="" datatype="plaintext" date="2024-07-07T11:31:50+02:00">
+    <file source-language="en" target-language="de" original="" datatype="plaintext" date="2024-09-29T12:50:06+02:00">
         <body>
             <trans-unit id="tx_sitepackage_domain_model_event" resname="tx_sitepackage_domain_model_event">
-                <source>Event</source>
+                <source></source>
                 <target>Veranstaltung</target>
             </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_eventnotification" resname="tx_sitepackage_domain_model_eventnotification">
+                <source></source>
+                <target>Benachrichtigung</target>
+            </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.address" resname="tx_sitepackage_domain_model_event.address">
-                <source>Address</source>
+                <source></source>
                 <target>Adresse</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.cancelled" resname="tx_sitepackage_domain_model_event.cancelled">
-                <source>Cancelled</source>
+                <source></source>
                 <target>Abgesagt</target>
             </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_eventnotification.subject" resname="tx_sitepackage_domain_model_eventnotification.subject">
+                <source></source>
+                <target>Betreff</target>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_eventnotification.message" resname="tx_sitepackage_domain_model_eventnotification.message">
+                <source></source>
+                <target>Nachricht</target>
+            </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.city" resname="tx_sitepackage_domain_model_event.city">
-                <source>City</source>
+                <source></source>
                 <target>Stadt</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.description" resname="tx_sitepackage_domain_model_event.description">
-                <source>Description</source>
+                <source></source>
                 <target>Beschreibung</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.enddate" resname="tx_sitepackage_domain_model_event.enddate">
-                <source>End date</source>
+                <source></source>
                 <target>End Datum</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.hidden" resname="tx_sitepackage_domain_model_event.hidden">
-                <source>Hidden</source>
+                <source></source>
+                <target>Versteckt</target>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_eventnotification.hidden" resname="tx_sitepackage_domain_model_eventnotification.hidden">
+                <source></source>
                 <target>Versteckt</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.latitude" resname="tx_sitepackage_domain_model_event.latitude">
-                <source>Latitude</source>
+                <source></source>
                 <target>Latitude</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.longitude" resname="tx_sitepackage_domain_model_event.longitude">
-                <source>Longitude</source>
+                <source></source>
                 <target>Longitude</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.palettes.access" resname="tx_sitepackage_domain_model_event.palettes.access">
-                <source>Access</source>
+                <source></source>
                 <target>Zugriff</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.place" resname="tx_sitepackage_domain_model_event.place">
-                <source>Place</source>
+                <source></source>
                 <target>Ort</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.registrations" resname="tx_sitepackage_domain_model_event.registrations">
-                <source>Registrations</source>
+                <source></source>
                 <target>Anmeldungen</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.startdate" resname="tx_sitepackage_domain_model_event.startdate">
-                <source>Start date</source>
+                <source></source>
                 <target>Start Datum</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.tabs.access" resname="tx_sitepackage_domain_model_event.tabs.access">
-                <source>Access</source>
+                <source></source>
+                <target>Zugriff</target>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_eventnotification.tabs.access" resname="tx_sitepackage_domain_model_eventnotification.tabs.access">
+                <source></source>
                 <target>Zugriff</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.tabs.registration" resname="tx_sitepackage_domain_model_event.tabs.registration">
-                <source>Registrations</source>
+                <source></source>
                 <target>Anmeldungen</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.title" resname="tx_sitepackage_domain_model_event.title">
-                <source>Title</source>
+                <source></source>
                 <target>Titel</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.attendance_mode.label" resname="tx_sitepackage_domain_model_event.attendance_mode.label">
-                <source>Type</source>
+                <source></source>
                 <target>Art</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.attendance_mode.options.offline" resname="tx_sitepackage_domain_model_event.attendance_mode.options.offline">
-                <source>Offline</source>
+                <source></source>
                 <target>Vor Ort (Offline)</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.attendance_mode.options.online" resname="tx_sitepackage_domain_model_event.attendance_mode.options.online">
-                <source>Online</source>
+                <source></source>
                 <target>Virtuell (Online)</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.zip" resname="tx_sitepackage_domain_model_event.zip">
-                <source>Zip</source>
+                <source></source>
                 <target>PLZ</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_eventregistration.email" resname="tx_sitepackage_domain_model_eventregistration.email">
-                <source>Email</source>
+                <source></source>
                 <target>E-Mail</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_eventregistration.fe_user" resname="tx_sitepackage_domain_model_eventregistration.fe_user">
-                <source>User</source>
+                <source></source>
                 <target>Benutzer</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_eventregistration.first_name" resname="tx_sitepackage_domain_model_eventregistration.first_name">
-                <source>Firstname</source>
+                <source></source>
                 <target>Vorname</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_eventregistration.last_name" resname="tx_sitepackage_domain_model_eventregistration.last_name">
-                <source>Lastname</source>
+                <source></source>
                 <target>Nachname</target>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.call_url.label" resname="tx_sitepackage_domain_model_event.call_url.label">
-                <source>Call URL</source>
+                <source></source>
                 <target>Anruf URL</target>
             </trans-unit>
         </body>

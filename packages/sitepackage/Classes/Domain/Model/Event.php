@@ -44,9 +44,15 @@ class Event extends AbstractEntity
     #[Extbase\ORM\Cascade(['value' => 'remove'])]
     protected ObjectStorage $registration;
 
+    /** @var ObjectStorage<EventRegistration> */
+    #[Extbase\ORM\Lazy()]
+    #[Extbase\ORM\Cascade(['value' => 'remove'])]
+    protected ObjectStorage $participants;
+
     public function __construct()
     {
         $this->registration = new ObjectStorage();
+        $this->participants = new ObjectStorage();
     }
 
     public function getRegistration(): ObjectStorage
@@ -147,5 +153,22 @@ class Event extends AbstractEntity
     public function getFullAddress(): string
     {
         return "$this->address, $this->zip $this->city, Deutschland";
+    }
+
+    public function getParticipants(): ObjectStorage
+    {
+        return $this->participants ?? $this->registration;
+    }
+
+    public function addParticipant(EventRegistration $participant): void
+    {
+        $this->participants->attach($participant);
+        $this->registration->attach($participant);
+    }
+
+    public function removeParticipant(EventRegistration $participant): void
+    {
+        $this->participants->detach($participant);
+        $this->registration->detach($participant);
     }
 }

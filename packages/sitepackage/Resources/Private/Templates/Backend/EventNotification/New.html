@@ -1,0 +1,29 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+    xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<f:layout name="Module" />
+
+<f:section name="Content">
+    <div class="container">
+        <h1>Neue E-Mail Senden</h1>
+        <f:form action="send" name="eventNotification" object="{eventNotification}">
+            <div class="form-group">
+                <label for="event" class="form-label">Event</label>
+                <f:form.select class="form-select" property="event" options="{events}" optionValueField="uid" optionLabelField="longTitle" id="event"></f:form.select>
+            </div>
+            <div class="form-group">
+                <label for="subject" class="form-label">Betreff</label>
+                <f:form.textfield type="text" class="form-control" id="subject" property="subject" />
+            <div class="form-group mt-2">
+                <label for="message" class="form-label">Nachricht</label>
+                <f:form.textarea property="message" required="1" id="message" class="form-control" rows="3"/>
+            </div>
+            <f:form.submit class="btn btn-primary" value="Absenden"></f:form.submit>
+        </f:form>
+    </div>
+</f:section>
+
+</html>
