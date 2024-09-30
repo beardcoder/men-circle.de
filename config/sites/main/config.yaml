@@ -41,3 +41,11 @@ routeEnhancers:
         tableName: tx_sitepackage_domain_model_event
         routeFieldName: slug
 websiteTitle: 'Men’s Circle Niederbayern'
+routes:
+  -
+    route: robots.txt
+    type: staticText
+    content: |
+      User-agent: *
+      Disallow:
+      Sitemap: https://mens-circle.de/sitemap.xml
