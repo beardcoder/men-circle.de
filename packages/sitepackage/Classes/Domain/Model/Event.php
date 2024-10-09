@@ -160,15 +160,15 @@ class Event extends AbstractEntity
         return $this->participants ?? $this->registration;
     }
 
-    public function addParticipant(EventRegistration $participant): void
+    public function addParticipant(EventRegistration $eventRegistration): void
     {
-        $this->participants->attach($participant);
-        $this->registration->attach($participant);
+        $this->participants->attach($eventRegistration);
+        $this->registration->attach($eventRegistration);
     }
 
-    public function removeParticipant(EventRegistration $participant): void
+    public function removeParticipant(EventRegistration $eventRegistration): void
     {
-        $this->participants->detach($participant);
-        $this->registration->detach($participant);
+        $this->participants->detach($eventRegistration);
+        $this->registration->detach($eventRegistration);
     }
 }

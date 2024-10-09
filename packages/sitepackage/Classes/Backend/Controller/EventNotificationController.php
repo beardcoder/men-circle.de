@@ -61,11 +61,9 @@ class EventNotificationController extends ActionController
         $event = $eventNotification->event;
         $eventNotification->setPid($event->getPid());
         $this->eventNotificationRepository->add($eventNotification);
-        $participants = $event->getParticipants();
+        $objectStorage = $event->getParticipants();
 
-        $emailAddresses = array_map(function (EventRegistration $participant) {
-            return new Address($participant->getEmail(), $participant->getName());
-        }, $participants->toArray());
+        $emailAddresses = array_map(fn(EventRegistration $eventRegistration): \Symfony\Component\Mime\Address => new Address($eventRegistration->getEmail(), $eventRegistration->getName()), $objectStorage->toArray());
 
         $fluidEmail = new FluidEmail();
         $fluidEmail
