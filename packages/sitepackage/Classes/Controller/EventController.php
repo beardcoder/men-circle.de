@@ -21,27 +21,32 @@ use Symfony\Component\Uid\Uuid;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\MailerInterface;
-use TYPO3\CMS\Core\MetaTag\MetaTagManagerInterface;
-use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use TYPO3\CMS\Extbase\Service\ImageService;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Seo\MetaTag\OpenGraphMetaTagManager;
 
 class EventController extends ActionController
 {
     public function __construct(
-        private readonly EventRepository             $eventRepository,
+        private readonly EventRepository $eventRepository,
         private readonly EventRegistrationRepository $eventRegistrationRepository,
-        private readonly FrontendUserRepository      $frontendUserRepository,
-        private readonly EventPageTitleProvider      $eventPageTitleProvider,
-        private readonly ImageService                $imageService,
-        private readonly PageRenderer $pageRenderer
+        private readonly FrontendUserRepository $frontendUserRepository,
+        private readonly EventPageTitleProvider $eventPageTitleProvider,
+        private readonly ImageService $imageService,
+        private readonly PageRenderer $pageRenderer,
+        private readonly OpenGraphMetaTagManager $openGraphMetaTagManager
     ) {}
 
+    /**
+     * @throws \DateMalformedStringException
+     * @throws InvalidQueryException
+     */
     public function listAction(): ResponseInterface
     {
         $this->view->assign('events', $this->eventRepository->findNextEvents());
@@ -95,12 +100,7 @@ class EventController extends ActionController
 
         $this->sendMailToAdminOnRegistration($eventRegistration);
 
-        $redirectUrl = $this->uriBuilder->reset()->setTargetPageUid(3)->setNoCache(true)->uriFor(
-            'detail',
-            [
-                'event' => $eventRegistration->event->getUid(),
-            ],
-        );
+        $redirectUrl = $this->uriBuilder->reset()->setTargetPageUid(3)->setNoCache(true)->uriFor('detail', ['event' => $eventRegistration->event->getUid()]);
 
         return $this->redirectToUri($redirectUrl);
     }
@@ -123,8 +123,7 @@ class EventController extends ActionController
             ->image($this->imageService->getImageUri($processedFile, true))
             ->startsAt(new \DateTime($event->startDate->format('d.m.Y H:i')))
             ->endsAt(new \DateTime($event->endDate->format('d.m.Y H:i')))
-            ->organizer('markus@letsbenow.de', 'Markus Sommer')
-        ;
+            ->organizer('markus@letsbenow.de', 'Markus Sommer');
 
         if ($event->isOffline() && $event->latitude && $event->longitude) {
             $calendarEvent->address($event->getFullAddress(), $event->place)->coordinates($event->latitude, $event->longitude);
@@ -136,8 +135,7 @@ class EventController extends ActionController
             ->withHeader('Cache-Control', 'private')
             ->withHeader('Content-Disposition', 'attachment; filename="' . $event->getLongTitle() . '.ics"')
             ->withHeader('Content-Type', 'text/calendar; charset=utf-8')
-            ->withBody($this->streamFactory->createStream($calendar->get()))
-        ;
+            ->withBody($this->streamFactory->createStream($calendar->get()));
 
         throw new PropagateResponseException($response, 200);
     }
@@ -171,12 +169,7 @@ class EventController extends ActionController
 
     private function getUrlForEvent(Event $event): string
     {
-        return $this->uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(3)->uriFor(
-            'detail',
-            [
-                'event' => $event->getUid(),
-            ],
-        );
+        return $this->uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(3)->uriFor('detail', ['event' => $event->getUid()]);
     }
 
     private function mapRegistrationToFeUser(EventRegistration $eventRegistration): FrontendUser
@@ -203,10 +196,10 @@ class EventController extends ActionController
             ->to('hallo@mens-circle.de')
             ->from(new Address('hallo@mens-circle.de', 'Men\'s Circle Website'))
             ->subject('Neue Anmeldung von ' . $eventRegistration->getName())
-            ->format(FluidEmail::FORMAT_BOTH) // send HTML and plaintext mail
+            ->format(FluidEmail::FORMAT_BOTH)
             ->setTemplate('MailToAdminOnRegistration')
-            ->assign('eventRegistration', $eventRegistration)
-        ;
+            ->assign('eventRegistration', $eventRegistration);
+
         $mailer = GeneralUtility::makeInstance(MailerInterface::class);
         assert($mailer instanceof MailerInterface);
 
@@ -215,31 +208,20 @@ class EventController extends ActionController
 
     /**
      * @param Event $event
-     * @return void
      */
     public function prepareSeoForEvent(Event $event): void
     {
-        $pageTitle = $event->title . ' am ' . $event->startDate->format('d.m.Y');
-        $this->eventPageTitleProvider->setTitle($pageTitle);
+        $this->eventPageTitleProvider->setTitle($event->getLongTitle());
 
-        $processedFile = $this->imageService->applyProcessingInstructions(
-            $event->getImage()->getOriginalResource(),
-            ['width' => '600c', 'height' => '600c']
-        );
+        $processedFile = $this->imageService->applyProcessingInstructions($event->getImage()->getOriginalResource(), ['width' => '600c', 'height' => '600c']);
         $imageUri = $this->imageService->getImageUri($processedFile, true);
 
-        $metaTagManagerRegistry = GeneralUtility::makeInstance(MetaTagManagerRegistry::class);
-        assert($metaTagManagerRegistry instanceof MetaTagManagerRegistry);
-
-        $metaTagManager = $metaTagManagerRegistry->getManagerForProperty('og:title');
-        assert($metaTagManager instanceof MetaTagManagerInterface);
-
-        $metaTagManager->addProperty('og:title', $pageTitle);
-        $metaTagManager->addProperty('og:description', $event->description);
-        $metaTagManager->addProperty('og:image', $imageUri);
-        $metaTagManager->addProperty('og:image:width', '600');
-        $metaTagManager->addProperty('og:image:height', '600');
-        $metaTagManager->addProperty('og:image:alt', $event->getImage()->getOriginalResource()->getAlternative());
-        $metaTagManager->addProperty('og:url', $this->getUrlForEvent($event));
+        $this->openGraphMetaTagManager->addProperty('og:title', $event->getLongTitle());
+        $this->openGraphMetaTagManager->addProperty('og:description', $event->description);
+        $this->openGraphMetaTagManager->addProperty('og:image', $imageUri, ['width' => 400, 'height' => 400]);
+        $this->openGraphMetaTagManager->addProperty('og:image:width', '600');
+        $this->openGraphMetaTagManager->addProperty('og:image:height', '600');
+        $this->openGraphMetaTagManager->addProperty('og:image:alt', $event->getImage()->getOriginalResource()->getAlternative());
+        $this->openGraphMetaTagManager->addProperty('og:url', $this->getUrlForEvent($event));
     }
 }

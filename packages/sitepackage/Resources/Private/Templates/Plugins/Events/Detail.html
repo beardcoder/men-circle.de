@@ -5,8 +5,8 @@
     xmlns:mc="http://typo3.org/ns/MensCircle/Sitepackage/ViewHelpers"
     xmlns:vac="http://typo3.org/ns/Praetorius/ViteAssetCollector/ViewHelpers"
 >
-<vac:asset.vite entry="EXT:sitepackage/Resources/Private/Templates/Event/Detail.entry.ts" />
-<vac:asset.vite entry="EXT:sitepackage/Resources/Private/Templates/Event/Detail.entry.css" />
+<vac:asset.vite entry="EXT:sitepackage/Resources/Private/Templates/Plugins/Events/Detail.entry.ts" />
+<vac:asset.vite entry="EXT:sitepackage/Resources/Private/Templates/Plugins/Events/Detail.entry.css" />
 <section class="c-event-detail">
     <div class="c-event-detail__logo-container">
         <div class="c-event-detail__logo" data-animate="fadeUp">
@@ -29,17 +29,17 @@
         <f:if condition="{event.cancelled}">
             <f:else>
                 <f:render section="message"></f:render>
-                <f:render arguments="{_all}" partial="Event/Registration" />
+                <f:render arguments="{_all}" partial="Events/Registration" />
             </f:else>
         </f:if>
         <div class="c-event-detail__details" data-fade="left">
             <h2 class="c-event-detail__details-heading">Veranstaltungsdaten:</h2>
             <f:if condition="{event.offline}">
                 <f:then>
-                    <f:render arguments="{_all}" partial="Event/Address" />
+                    <f:render arguments="{_all}" partial="Events/Address" />
                 </f:then>
                 <f:else>
-                    <f:render arguments="{_all}" partial="Event/Url" />
+                    <f:render arguments="{_all}" partial="Events/Url" />
                 </f:else>
             </f:if>
         </div>
