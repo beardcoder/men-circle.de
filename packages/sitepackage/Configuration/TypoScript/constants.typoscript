@@ -39,16 +39,3 @@ page {
     }
   }
 }
-
-
-##############
-### CONFIG ###
-##############
-config {
-  no_cache = 0
-  removeDefaultJS = 1
-  admPanel = 1
-  prefixLocalAnchors = all
-  headerComment = Build with ❤️ and mindfulness in Bavaria
-  sendCacheHeaders = 1
-}

@@ -3,6 +3,8 @@
 ######################
 @import 'EXT:fluid_styled_content/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:seo/Configuration/TypoScript/XmlSitemap/setup.typoscript'
+@import 'EXT:picture/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:form/Configuration/TypoScript/setup.typoscript'
 
 ################
 #### HELPER ####
@@ -14,14 +16,7 @@
 #################
 @import 'EXT:sitepackage/Configuration/TypoScript/ContentElements/*.typoscript'
 @import 'EXT:sitepackage/Configuration/TypoScript/Containers/*.typoscript'
-
-@import 'EXT:picture/Configuration/TypoScript/setup.typoscript'
-@import 'EXT:form/Configuration/TypoScript/setup.typoscript'
-
-
-plugin.tx_picture {
-  addWebp = 1
-}
+@import 'EXT:sitepackage/Configuration/TypoScript/Plugins/*.typoscript'
 
 ##############
 #### PAGE ####
@@ -40,7 +35,6 @@ page {
     dataProcessing {
       20 = menu
       20 {
-        levels = 2
         includeSpacer = 1
         as = mainnavigation
       }
@@ -131,41 +125,34 @@ page {
 
 ################
 #### CONFIG ####
-
-
 ################
 config {
   absRefPrefix = auto
-  no_cache = {$config.no_cache}
+  no_cache = 0
   uniqueLinkVars = 1
   pageTitleFirst = 1
   linkVars = L
-  prefixLocalAnchors = {$config.prefixLocalAnchors}
   renderCharset = utf-8
   metaCharset = utf-8
   doctype = html5
-  removeDefaultJS = {$config.removeDefaultJS}
+  removeDefaultJS = 1
   inlineStyle2TempFile = 1
-  admPanel = {$config.admPanel}
+  admPanel = 1
   debug = 0
   cache_period = 86400
-  sendCacheHeaders = {$config.sendCacheHeaders}
+  sendCacheHeaders = 1
   intTarget =
   extTarget =
   disablePrefixComment = 1
-  index_enable = 0
-  index_externals = 0
-  index_metatags = 0
-  headerComment = {$config.headerComment}
-
-  // Disable Image Upscaling
+  index_enable = 1
+  index_externals = 1
+  index_metatags = 1
+  headerComment = Build with ❤️ and mindfulness in Bavaria
   noScaleUp = 1
-
-  // Compression and Concatenation of CSS and JS Files
   compressJs = 1
-  compressCss = 1
-  concatenateJs = 1
-  concatenateCss = 1
+  compressCss =
+  concatenateJs = 0
+  concatenateCss = 0
   spamProtectEmailAddresses = 2
 
   pageTitleProviders {
@@ -173,79 +160,6 @@ config {
       provider = MensCircle\Sitepackage\PageTitle\EventPageTitleProvider
       before = record
       after = altPageTitle
-    }
-  }
-}
-
-plugin.tx_sitepackage {
-  view {
-    templateRootPaths {
-      0 = EXT:sitepackage/Resources/Private/Templates/Event/
-    }
-
-    partialRootPaths {
-      0 = EXT:sitepackage/Resources/Private/Templates/Partials/Event/
-      100 = EXT:sitepackage/Resources/Private/Templates/Partials/
-    }
-
-    layoutRootPaths {
-      0 = EXT:sitepackage/Resources/Private/Templates/Layouts/Event/
-      100 = EXT:sitepackage/Resources/Private/Templates/Layouts/
-    }
-  }
-
-  persistence {
-    storagePid = 2
-  }
-
-  settings {
-    singleViewPageUid = {$plugin.tx_sitepackage.settings.singleViewPageUid}
-  }
-}
-
-
-plugin.tx_seo {
-  config {
-    xmlSitemap {
-      sitemaps {
-        events {
-          provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
-          config {
-            table = tx_sitepackage_domain_model_event
-            sortField = start_date
-            lastModifiedField = tstamp
-            pid = 2
-            recursive = 0
-            url {
-              pageId = 3
-              fieldToParameterMap {
-                uid = tx_sitepackage_eventdetail[event]
-              }
-
-              additionalGetParameters {
-                tx_sitepackage_eventdetail.controller = Event
-                tx_sitepackage_eventdetail.action = detail
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-plugin.tx_form {
-  settings {
-    yamlConfigurations {
-      100 = EXT:sitepackage/Configuration/Forms.yaml
-    }
-  }
-}
-
-module.tx_form {
-  settings {
-    yamlConfigurations {
-      100 = EXT:sitepackage/Configuration/Forms.yaml
     }
   }
 }

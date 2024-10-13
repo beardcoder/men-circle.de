@@ -152,10 +152,10 @@ return [
     ],
     'MAIL' => [
         'layoutRootPaths' => [
-            500 => 'EXT:sitepackage/Resources/Private/Templates/Layouts/Email',
+            500 => 'EXT:sitepackage/Resources/Private/Templates/Layouts/Emails/',
         ],
         'templateRootPaths' => [
-            500 => 'EXT:sitepackage/Resources/Private/Templates/Email',
+            500 => 'EXT:sitepackage/Resources/Private/Templates/Emails/',
         ],
         'transport' => 'sendmail',
         'transport_sendmail_command' => '/usr/local/bin/mailpit sendmail -t --smtp-addr 127.0.0.1:1025',

@@ -1,0 +1,24 @@
+plugin.tx_sitepackage {
+  view {
+    templateRootPaths {
+      0 = EXT:sitepackage/Resources/Private/Templates/Plugins/Events/
+    }
+
+    partialRootPaths {
+      0 = EXT:sitepackage/Resources/Private/Templates/Partials/Events/
+      100 = EXT:sitepackage/Resources/Private/Templates/Partials/
+    }
+
+    layoutRootPaths {
+      0 = EXT:sitepackage/Resources/Private/Templates/Layouts/Events/
+    }
+  }
+
+  persistence {
+    storagePid = 2
+  }
+
+  settings {
+    singleViewPageUid = {$plugin.tx_sitepackage.settings.singleViewPageUid}
+  }
+}
