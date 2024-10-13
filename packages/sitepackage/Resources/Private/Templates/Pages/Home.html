@@ -3,7 +3,12 @@
     xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
 >
 <f:layout name="Pages/Home" />
+
 <f:section name="Main">
     <f:cObject data="{colPos: '0'}" typoscriptObjectPath="lib.dynamicContent" />
+</f:section>
+
+<f:section name="HeaderAssets">
+    <f:render partial="Pages/Favicon" />
 </f:section>
 </html>
