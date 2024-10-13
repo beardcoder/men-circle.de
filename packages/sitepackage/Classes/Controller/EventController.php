@@ -21,6 +21,7 @@ use Symfony\Component\Uid\Uuid;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\MailerInterface;
+use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -29,7 +30,6 @@ use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use TYPO3\CMS\Extbase\Service\ImageService;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use TYPO3\CMS\Seo\MetaTag\OpenGraphMetaTagManager;
 
 class EventController extends ActionController
 {
@@ -40,7 +40,7 @@ class EventController extends ActionController
         private readonly EventPageTitleProvider $eventPageTitleProvider,
         private readonly ImageService $imageService,
         private readonly PageRenderer $pageRenderer,
-        private readonly OpenGraphMetaTagManager $openGraphMetaTagManager
+        private readonly MetaTagManagerRegistry $metaTagManagerRegistry
     ) {}
 
     /**
@@ -206,22 +206,21 @@ class EventController extends ActionController
         $mailer->send($fluidEmail);
     }
 
-    /**
-     * @param Event $event
-     */
-    public function prepareSeoForEvent(Event $event): void
+    private function prepareSeoForEvent(Event $event): void
     {
         $this->eventPageTitleProvider->setTitle($event->getLongTitle());
 
         $processedFile = $this->imageService->applyProcessingInstructions($event->getImage()->getOriginalResource(), ['width' => '600c', 'height' => '600c']);
         $imageUri = $this->imageService->getImageUri($processedFile, true);
 
-        $this->openGraphMetaTagManager->addProperty('og:title', $event->getLongTitle());
-        $this->openGraphMetaTagManager->addProperty('og:description', $event->description);
-        $this->openGraphMetaTagManager->addProperty('og:image', $imageUri, ['width' => 400, 'height' => 400]);
-        $this->openGraphMetaTagManager->addProperty('og:image:width', '600');
-        $this->openGraphMetaTagManager->addProperty('og:image:height', '600');
-        $this->openGraphMetaTagManager->addProperty('og:image:alt', $event->getImage()->getOriginalResource()->getAlternative());
-        $this->openGraphMetaTagManager->addProperty('og:url', $this->getUrlForEvent($event));
+        $this->setPageMetaProperty('og:title', $event->getLongTitle());
+        $this->setPageMetaProperty('og:description', $event->description);
+        $this->setPageMetaProperty('og:image', $imageUri, ['width' => 600, 'height' => 600, 'alt' => $event->getImage()->getOriginalResource()->getAlternative()]);
+        $this->setPageMetaProperty('og:url', $this->getUrlForEvent($event));
+    }
+
+    private function setPageMetaProperty(string $property, string $value, array $additionalData = []): void
+    {
+        $this->metaTagManagerRegistry->getManagerForProperty($property)->addProperty($property, $value, $additionalData);
     }
 }
