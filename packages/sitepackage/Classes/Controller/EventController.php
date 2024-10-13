@@ -34,11 +34,12 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class EventController extends ActionController
 {
     public function __construct(
-        private readonly EventRepository $eventRepository,
+        private readonly EventRepository             $eventRepository,
         private readonly EventRegistrationRepository $eventRegistrationRepository,
-        private readonly FrontendUserRepository $frontendUserRepository,
-        private readonly EventPageTitleProvider $eventPageTitleProvider,
-        private readonly ImageService $imageService
+        private readonly FrontendUserRepository      $frontendUserRepository,
+        private readonly EventPageTitleProvider      $eventPageTitleProvider,
+        private readonly ImageService                $imageService,
+        private readonly PageRenderer $pageRenderer
     ) {}
 
     public function listAction(): ResponseInterface
@@ -51,31 +52,10 @@ class EventController extends ActionController
     public function detailAction(Event $event, ?EventRegistration $eventRegistration = null): ResponseInterface
     {
         $eventRegistrationToAssign = $eventRegistration ?? GeneralUtility::makeInstance(EventRegistration::class);
-        $pageTitle = $event->title . ' am ' . $event->startDate->format('d.m.Y');
-        $this->eventPageTitleProvider->setTitle($pageTitle);
+        $this->prepareSeoForEvent($event);
 
-        $processedFile = $this->imageService->applyProcessingInstructions(
-            $event->getImage()->getOriginalResource(),
-            ['width' => '600c', 'height' => '600c']
-        );
-        $imageUri = $this->imageService->getImageUri($processedFile, true);
+        $this->pageRenderer->addHeaderData($event->buildSchema($this->uriBuilder));
 
-        $metaTagManagerRegistry = GeneralUtility::makeInstance(MetaTagManagerRegistry::class);
-        assert($metaTagManagerRegistry instanceof MetaTagManagerRegistry);
-
-        $metaTagManager = $metaTagManagerRegistry->getManagerForProperty('og:title');
-        assert($metaTagManager instanceof MetaTagManagerInterface);
-
-        $metaTagManager->addProperty('og:title', $pageTitle);
-        $metaTagManager->addProperty('og:description', $event->description);
-        $metaTagManager->addProperty('og:image', $imageUri);
-        $metaTagManager->addProperty('og:image:width', '600');
-        $metaTagManager->addProperty('og:image:height', '600');
-        $metaTagManager->addProperty('og:image:alt', $event->getImage()->getOriginalResource()->getAlternative());
-
-        $metaTagManager->addProperty('og:url', $this->getUrlForEvent($event));
-
-        $this->getPageRenderer()->addHeaderData($event->buildSchema($this->uriBuilder));
         $this->view->assign('event', $event);
         $this->view->assign('eventRegistration', $eventRegistrationToAssign);
 
@@ -135,13 +115,12 @@ class EventController extends ActionController
             $event->getImage()->getOriginalResource(),
             ['width' => '600c', 'height' => '600c']
         );
-        $imageUri = $this->imageService->getImageUri($processedFile, true);
 
         $calendarEvent = CalendarEvent::create()
             ->name($event->getLongTitle())
             ->description($event->description)
             ->url($this->getUrlForEvent($event))
-            ->image($imageUri)
+            ->image($this->imageService->getImageUri($processedFile, true))
             ->startsAt(new \DateTime($event->startDate->format('d.m.Y H:i')))
             ->endsAt(new \DateTime($event->endDate->format('d.m.Y H:i')))
             ->organizer('markus@letsbenow.de', 'Markus Sommer')
@@ -161,11 +140,6 @@ class EventController extends ActionController
         ;
 
         throw new PropagateResponseException($response, 200);
-    }
-
-    protected function getPageRenderer(): PageRenderer
-    {
-        return GeneralUtility::makeInstance(PageRenderer::class);
     }
 
     /**
@@ -237,5 +211,35 @@ class EventController extends ActionController
         assert($mailer instanceof MailerInterface);
 
         $mailer->send($fluidEmail);
+    }
+
+    /**
+     * @param Event $event
+     * @return void
+     */
+    public function prepareSeoForEvent(Event $event): void
+    {
+        $pageTitle = $event->title . ' am ' . $event->startDate->format('d.m.Y');
+        $this->eventPageTitleProvider->setTitle($pageTitle);
+
+        $processedFile = $this->imageService->applyProcessingInstructions(
+            $event->getImage()->getOriginalResource(),
+            ['width' => '600c', 'height' => '600c']
+        );
+        $imageUri = $this->imageService->getImageUri($processedFile, true);
+
+        $metaTagManagerRegistry = GeneralUtility::makeInstance(MetaTagManagerRegistry::class);
+        assert($metaTagManagerRegistry instanceof MetaTagManagerRegistry);
+
+        $metaTagManager = $metaTagManagerRegistry->getManagerForProperty('og:title');
+        assert($metaTagManager instanceof MetaTagManagerInterface);
+
+        $metaTagManager->addProperty('og:title', $pageTitle);
+        $metaTagManager->addProperty('og:description', $event->description);
+        $metaTagManager->addProperty('og:image', $imageUri);
+        $metaTagManager->addProperty('og:image:width', '600');
+        $metaTagManager->addProperty('og:image:height', '600');
+        $metaTagManager->addProperty('og:image:alt', $event->getImage()->getOriginalResource()->getAlternative());
+        $metaTagManager->addProperty('og:url', $this->getUrlForEvent($event));
     }
 }
