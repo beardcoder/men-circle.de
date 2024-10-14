@@ -6,6 +6,10 @@
                 <source>Congratulations to you! Your registration for the event on %s was successful.</source>
                 <target>Herzlichen Glückwunsch! Deine Anmeldung für das Event am %s war erfolgreich.</target>
             </trans-unit>
+			<trans-unit id="event.not_found" resname="event.not_found">
+                <source>The event you requested does not exist. You have been redirected to the next available event.</source>
+                <target>Die von dir aufgerufene Veranstaltung existiert nicht. Du wurdest zur nächsten verfügbaren Veranstaltung weitergeleitet.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

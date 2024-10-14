@@ -39,7 +39,7 @@ class EventRepository extends Repository
      * @throws \DateMalformedStringException
      * @throws InvalidQueryException
      */
-    public function findNextUpcomingEvent(): Event
+    public function findNextUpcomingEvent(): ?Event
     {
         $query = $this->createQuery();
 

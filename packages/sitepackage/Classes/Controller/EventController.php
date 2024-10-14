@@ -23,6 +23,8 @@ use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\MailerInterface;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
 use TYPO3\CMS\Core\Page\PageRenderer;
+use TYPO3\CMS\Core\Site\Entity\Site;
+use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException;
@@ -34,13 +36,13 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class EventController extends ActionController
 {
     public function __construct(
-        private readonly EventRepository $eventRepository,
+        private readonly EventRepository             $eventRepository,
         private readonly EventRegistrationRepository $eventRegistrationRepository,
-        private readonly FrontendUserRepository $frontendUserRepository,
-        private readonly EventPageTitleProvider $eventPageTitleProvider,
-        private readonly ImageService $imageService,
-        private readonly PageRenderer $pageRenderer,
-        private readonly MetaTagManagerRegistry $metaTagManagerRegistry
+        private readonly FrontendUserRepository      $frontendUserRepository,
+        private readonly EventPageTitleProvider      $eventPageTitleProvider,
+        private readonly ImageService                $imageService,
+        private readonly PageRenderer                $pageRenderer,
+        private readonly MetaTagManagerRegistry      $metaTagManagerRegistry,
     ) {}
 
     /**
@@ -58,15 +60,26 @@ class EventController extends ActionController
      * @throws \DateMalformedStringException
      * @throws InvalidQueryException
      */
-    public function upcomingAction(): ResponseInterface
+    public function upcomingAction(?Event $event = null): ResponseInterface
     {
-        return $this->redirect(actionName: 'detail', arguments: ['event' => $this->eventRepository->findNextUpcomingEvent()]);
+        $upcomingEvent = $event ?? $this->eventRepository->findNextUpcomingEvent();
+
+        if (is_null($upcomingEvent)) {
+            return $this->handleEventNotFoundError();
+        }
+
+        return $this->redirect(actionName: 'detail', arguments: ['event' => $upcomingEvent]);
     }
 
 
-    public function detailAction(Event $event, ?EventRegistration $eventRegistration = null): ResponseInterface
+    public function detailAction(?Event $event = null, ?EventRegistration $eventRegistration = null): ResponseInterface
     {
         $eventRegistrationToAssign = $eventRegistration ?? GeneralUtility::makeInstance(EventRegistration::class);
+
+        if (is_null($event)) {
+            return $this->handleEventNotFoundError();
+        }
+
         $this->prepareSeoForEvent($event);
 
         $this->pageRenderer->addHeaderData($event->buildSchema($this->uriBuilder));
@@ -232,5 +245,31 @@ class EventController extends ActionController
     private function setPageMetaProperty(string $property, string $value, array $additionalData = []): void
     {
         $this->metaTagManagerRegistry->getManagerForProperty($property)->addProperty($property, $value, $additionalData);
+    }
+
+    /**
+     * @throws \DateMalformedStringException
+     * @throws InvalidQueryException
+     */
+    private function handleEventNotFoundError(): ResponseInterface
+    {
+        $upcomingEvent = $this->eventRepository->findNextUpcomingEvent();
+        if(is_null($upcomingEvent)) {
+            $site = $this->request->getAttribute('site');
+            assert($site instanceof Site);
+
+            return $this->redirectToUri($site->getBase(), 301);
+        }
+
+        $this->addFlashMessage(
+            LocalizationUtility::translate(
+                'event.not_found',
+                'sitepackage',
+            )
+        );
+
+        $redirectUrl = $this->uriBuilder->reset()->setTargetPageUid(3)->setNoCache(true)->uriFor('detail', ['event' => $upcomingEvent]);
+
+        return $this->redirectToUri($redirectUrl);
     }
 }

@@ -88,7 +88,7 @@ return [
             'exclude' => true,
             'config' => [
                 'type' => 'slug',
-                'eval' => 'uniqueInPid',
+                'eval' => 'unique',
                 'size' => 50,
                 'appearance' => [
                     'prefix' => EventSlugService::class . '->getPrefix',
