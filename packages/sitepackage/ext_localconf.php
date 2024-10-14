@@ -20,8 +20,8 @@ call_user_func(
         ExtensionUtility::configurePlugin(
             'Sitepackage',
             'EventDetail',
-            [EventController::class => ['detail', 'registration', 'iCal']],
-            [EventController::class => ['registration', 'iCal']],
+            [EventController::class => ['detail', 'registration', 'iCal', 'upcoming']],
+            [EventController::class => ['registration', 'iCal', 'upcoming']],
             ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
         );
 

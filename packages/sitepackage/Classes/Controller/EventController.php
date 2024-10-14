@@ -54,6 +54,16 @@ class EventController extends ActionController
         return $this->htmlResponse();
     }
 
+    /**
+     * @throws \DateMalformedStringException
+     * @throws InvalidQueryException
+     */
+    public function upcomingAction(): ResponseInterface
+    {
+        return $this->redirect(actionName: 'detail', arguments: ['event' => $this->eventRepository->findNextUpcomingEvent()]);
+    }
+
+
     public function detailAction(Event $event, ?EventRegistration $eventRegistration = null): ResponseInterface
     {
         $eventRegistrationToAssign = $eventRegistration ?? GeneralUtility::makeInstance(EventRegistration::class);

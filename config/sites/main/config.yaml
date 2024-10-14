@@ -26,6 +26,8 @@ routeEnhancers:
     namespace: tx_sitepackage_eventdetail
     plugin: EventDetail
     routes:
+      - routePath: '/next'
+        _controller: 'Event::upcoming'
       - routePath: '/{event_title}'
         _controller: 'Event::detail'
         _arguments:
