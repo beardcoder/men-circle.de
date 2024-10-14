@@ -25,8 +25,16 @@ page = PAGE
 page {
   typeNum = 0
   shortcutIcon = favicon.ico
-  headerData.1000 = FLUIDTEMPLATE
-  headerData.1000.file = EXT:sitepackage/Resources/Private/Templates/Favicon.html
+  headerData {
+
+    // Workaround to render favicons and additional meta data
+    // see: https://forge.typo3.org/issues/104772
+    1000 = FLUIDTEMPLATE
+    1000 {
+      file = EXT:sitepackage/Resources/Private/Templates/FavIcons.html
+      dataProcessing.10 = site
+    }
+  }
 
   10 = PAGEVIEW
   10 {
