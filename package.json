@@ -18,7 +18,7 @@
 		"stylelint-plugin-logical-css": "^1.2.1",
 		"stylelint-selector-bem-pattern": "^4.0.1",
 		"ts-node": "^10.9.2",
-		"vite": "^5.4.8",
+		"vite": "^5.4.9",
 		"vite-plugin-auto-origin": "^1.2.0",
 		"vite-plugin-typo3": "^1.0.1"
 	},
