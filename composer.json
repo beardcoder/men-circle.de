@@ -6,7 +6,7 @@
   "require": {
     "b13/container": "dev-master",
     "b13/picture": "dev-master",
-    "contentblocks/content-blocks": "^0.8",
+    "friendsoftypo3/content-blocks": "^0.8.2",
     "helhum/dotenv-connector": "^3.1",
     "mens-circle/sitepackage": "@dev",
     "praetorius/vite-asset-collector": "^1.11",
