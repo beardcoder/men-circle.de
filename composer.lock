@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d1646295529c6001d9b12f34760f2a9",
+    "content-hash": "c8b305455a6b3ce860cbd64bdf4492ba",
     "packages": [
         {
             "name": "b13/container",
@@ -12,16 +12,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/b13/container.git",
-                "reference": "dd9772da65812a585d72da9544750c63858e710f"
+                "reference": "e7960d15cd005b1a620eaa98ef6e52b81e3e299b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/b13/container/zipball/dd9772da65812a585d72da9544750c63858e710f",
-                "reference": "dd9772da65812a585d72da9544750c63858e710f",
+                "url": "https://api.github.com/repos/b13/container/zipball/e7960d15cd005b1a620eaa98ef6e52b81e3e299b",
+                "reference": "e7960d15cd005b1a620eaa98ef6e52b81e3e299b",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-backend": "^11.5 || ^12.4 || ^13.0"
+                "typo3/cms-backend": "^11.5 || ^12.4 || ^13.4"
             },
             "replace": {
                 "typo3-ter/container": "self.version"
@@ -35,10 +35,10 @@
                 "friendsofphp/php-cs-fixer": "^3.51",
                 "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "9.6 || ^10.5",
-                "typo3/cms-fluid-styled-content": "^11.5 || ^12.4 || ^13.0",
-                "typo3/cms-info": "^11.5 || ^12.4 || ^13.0",
-                "typo3/cms-install": "^11.5 || ^12.4 || ^13.0",
-                "typo3/cms-workspaces": "^11.5 || ^12.4 || ^13.0",
+                "typo3/cms-fluid-styled-content": "^11.5 || ^12.4 || ^13.4",
+                "typo3/cms-info": "^11.5 || ^12.4 || ^13.4",
+                "typo3/cms-install": "^11.5 || ^12.4 || ^13.4",
+                "typo3/cms-workspaces": "^11.5 || ^12.4 || ^13.4",
                 "typo3/coding-standards": "^0.5.5",
                 "typo3/testing-framework": "^7.0 || ^8.0"
             },
@@ -65,9 +65,9 @@
             "homepage": "https://b13.com",
             "support": {
                 "issues": "https://github.com/b13/container/issues",
-                "source": "https://github.com/b13/container/tree/master"
+                "source": "https://github.com/b13/container/tree/3.0.0"
             },
-            "time": "2024-10-15T05:55:10+00:00"
+            "time": "2024-10-15T13:55:52+00:00"
         },
         {
             "name": "b13/picture",
@@ -75,12 +75,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/b13/picture.git",
-                "reference": "bc97ae55dad26ad536bacb2a2ced48f9df2acbd1"
+                "reference": "2622749a960e6b17ef46c0a52b8208a17e1089fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/b13/picture/zipball/bc97ae55dad26ad536bacb2a2ced48f9df2acbd1",
-                "reference": "bc97ae55dad26ad536bacb2a2ced48f9df2acbd1",
+                "url": "https://api.github.com/repos/b13/picture/zipball/2622749a960e6b17ef46c0a52b8208a17e1089fb",
+                "reference": "2622749a960e6b17ef46c0a52b8208a17e1089fb",
                 "shasum": ""
             },
             "require": {
@@ -115,9 +115,9 @@
             "description": "Improved TYPO3 image ViewHelper creating picture elements with support for sizes, sources, additional image formats, etc.",
             "support": {
                 "issues": "https://github.com/b13/picture/issues",
-                "source": "https://github.com/b13/picture/tree/3.0.0"
+                "source": "https://github.com/b13/picture/tree/3.0.1"
             },
-            "time": "2024-08-02T18:21:51+00:00"
+            "time": "2024-10-15T15:48:47+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -1000,6 +1000,68 @@
                 "source": "https://github.com/typo3/typo3"
             },
             "time": "2024-09-10T16:44:28+00:00"
+        },
+        {
+            "name": "graham-campbell/result-type",
+            "version": "v1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrahamCampbell/Result-Type.git",
+                "reference": "3ba905c11371512af9d9bdd27d99b782216b6945"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrahamCampbell/Result-Type/zipball/3ba905c11371512af9d9bdd27d99b782216b6945",
+                "reference": "3ba905c11371512af9d9bdd27d99b782216b6945",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2.5 || ^8.0",
+                "phpoption/phpoption": "^1.9.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.5.39 || ^9.6.20 || ^10.5.28"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GrahamCampbell\\ResultType\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                }
+            ],
+            "description": "An Implementation Of The Result Type",
+            "keywords": [
+                "Graham Campbell",
+                "GrahamCampbell",
+                "Result Type",
+                "Result-Type",
+                "result"
+            ],
+            "support": {
+                "issues": "https://github.com/GrahamCampbell/Result-Type/issues",
+                "source": "https://github.com/GrahamCampbell/Result-Type/tree/v1.1.3"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/graham-campbell/result-type",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-07-20T21:45:45+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1960,6 +2022,81 @@
                 "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.8.2"
             },
             "time": "2024-02-23T11:10:43+00:00"
+        },
+        {
+            "name": "phpoption/phpoption",
+            "version": "1.9.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmittjoh/php-option.git",
+                "reference": "e3fac8b24f56113f7cb96af14958c0dd16330f54"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/e3fac8b24f56113f7cb96af14958c0dd16330f54",
+                "reference": "e3fac8b24f56113f7cb96af14958c0dd16330f54",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2.5 || ^8.0"
+            },
+            "require-dev": {
+                "bamarni/composer-bin-plugin": "^1.8.2",
+                "phpunit/phpunit": "^8.5.39 || ^9.6.20 || ^10.5.28"
+            },
+            "type": "library",
+            "extra": {
+                "bamarni-bin": {
+                    "bin-links": true,
+                    "forward-command": false
+                },
+                "branch-alias": {
+                    "dev-master": "1.9-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpOption\\": "src/PhpOption/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Johannes M. Schmitt",
+                    "email": "schmittjoh@gmail.com",
+                    "homepage": "https://github.com/schmittjoh"
+                },
+                {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                }
+            ],
+            "description": "Option Type for PHP",
+            "keywords": [
+                "language",
+                "option",
+                "php",
+                "type"
+            ],
+            "support": {
+                "issues": "https://github.com/schmittjoh/php-option/issues",
+                "source": "https://github.com/schmittjoh/php-option/tree/1.9.3"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/phpoption/phpoption",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-07-20T21:41:07+00:00"
         },
         {
             "name": "phpstan/phpdoc-parser",
@@ -4739,6 +4876,86 @@
             ],
             "support": {
                 "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.31.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-09-09T11:45:10+00:00"
+        },
+        {
+            "name": "symfony/polyfill-php80",
+            "version": "v1.31.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php80.git",
+                "reference": "60328e362d4c2c802a54fcbf04f9d3fb892b4cf8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/60328e362d4c2c802a54fcbf04f9d3fb892b4cf8",
+                "reference": "60328e362d4c2c802a54fcbf04f9d3fb892b4cf8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "type": "library",
+            "extra": {
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php80\\": ""
+                },
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ion Bazan",
+                    "email": "ion.bazan@gmail.com"
+                },
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 8.0+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.31.0"
             },
             "funding": [
                 {
@@ -7819,25 +8036,25 @@
         },
         {
             "name": "typo3/minimal",
-            "version": "v13.1.0",
+            "version": "v13.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/minimal.git",
-                "reference": "545a05309ac8c9ddc0468e8a84f610282ab4da89"
+                "reference": "e58cc5c791e423b61e2f6dfb46fc7386f2ac194c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/minimal/zipball/545a05309ac8c9ddc0468e8a84f610282ab4da89",
-                "reference": "545a05309ac8c9ddc0468e8a84f610282ab4da89",
+                "url": "https://api.github.com/repos/TYPO3/minimal/zipball/e58cc5c791e423b61e2f6dfb46fc7386f2ac194c",
+                "reference": "e58cc5c791e423b61e2f6dfb46fc7386f2ac194c",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-backend": "^13.1",
-                "typo3/cms-core": "^13.1",
-                "typo3/cms-extbase": "^13.1",
-                "typo3/cms-filelist": "^13.1",
-                "typo3/cms-fluid": "^13.1",
-                "typo3/cms-frontend": "^13.1"
+                "typo3/cms-backend": "^13.4",
+                "typo3/cms-core": "^13.4",
+                "typo3/cms-extbase": "^13.4",
+                "typo3/cms-filelist": "^13.4",
+                "typo3/cms-fluid": "^13.4",
+                "typo3/cms-frontend": "^13.4"
             },
             "type": "metapackage",
             "notification-url": "https://packagist.org/downloads/",
@@ -7862,9 +8079,9 @@
                 "irc": "irc://irc.freenode.net/#typo3-cms",
                 "issues": "https://forge.typo3.org",
                 "news": "nntp://lists.typo3.org",
-                "source": "https://github.com/TYPO3/minimal/tree/v13.1.0"
+                "source": "https://github.com/TYPO3/minimal/tree/v13.4.0"
             },
-            "time": "2024-04-23T10:39:40+00:00"
+            "time": "2024-10-15T10:07:56+00:00"
         },
         {
             "name": "typo3fluid/fluid",
@@ -7919,6 +8136,90 @@
                 "source": "https://github.com/TYPO3/Fluid"
             },
             "time": "2024-10-03T09:50:37+00:00"
+        },
+        {
+            "name": "vlucas/phpdotenv",
+            "version": "v5.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vlucas/phpdotenv.git",
+                "reference": "a59a13791077fe3d44f90e7133eb68e7d22eaff2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/a59a13791077fe3d44f90e7133eb68e7d22eaff2",
+                "reference": "a59a13791077fe3d44f90e7133eb68e7d22eaff2",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pcre": "*",
+                "graham-campbell/result-type": "^1.1.3",
+                "php": "^7.2.5 || ^8.0",
+                "phpoption/phpoption": "^1.9.3",
+                "symfony/polyfill-ctype": "^1.24",
+                "symfony/polyfill-mbstring": "^1.24",
+                "symfony/polyfill-php80": "^1.24"
+            },
+            "require-dev": {
+                "bamarni/composer-bin-plugin": "^1.8.2",
+                "ext-filter": "*",
+                "phpunit/phpunit": "^8.5.34 || ^9.6.13 || ^10.4.2"
+            },
+            "suggest": {
+                "ext-filter": "Required to use the boolean validator."
+            },
+            "type": "library",
+            "extra": {
+                "bamarni-bin": {
+                    "bin-links": true,
+                    "forward-command": false
+                },
+                "branch-alias": {
+                    "dev-master": "5.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dotenv\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                },
+                {
+                    "name": "Vance Lucas",
+                    "email": "vance@vancelucas.com",
+                    "homepage": "https://github.com/vlucas"
+                }
+            ],
+            "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
+            "keywords": [
+                "dotenv",
+                "env",
+                "environment"
+            ],
+            "support": {
+                "issues": "https://github.com/vlucas/phpdotenv/issues",
+                "source": "https://github.com/vlucas/phpdotenv/tree/v5.6.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/vlucas/phpdotenv",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-07-20T21:52:34+00:00"
         },
         {
             "name": "voku/html-min",
@@ -10863,12 +11164,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3-rector.git",
-                "reference": "a119179ac1bcf5615ca1415fd999a4bc1d06f5d8"
+                "reference": "7193380a96e5dc99a4b1ef97961f27d931b07854"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/a119179ac1bcf5615ca1415fd999a4bc1d06f5d8",
-                "reference": "a119179ac1bcf5615ca1415fd999a4bc1d06f5d8",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/7193380a96e5dc99a4b1ef97961f27d931b07854",
+                "reference": "7193380a96e5dc99a4b1ef97961f27d931b07854",
                 "shasum": ""
             },
             "require": {
@@ -10972,87 +11273,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-10-04T14:44:39+00:00"
-        },
-        {
-            "name": "symfony/polyfill-php80",
-            "version": "v1.31.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "60328e362d4c2c802a54fcbf04f9d3fb892b4cf8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/60328e362d4c2c802a54fcbf04f9d3fb892b4cf8",
-                "reference": "60328e362d4c2c802a54fcbf04f9d3fb892b4cf8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "type": "library",
-            "extra": {
-                "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php80\\": ""
-                },
-                "classmap": [
-                    "Resources/stubs"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ion Bazan",
-                    "email": "ion.bazan@gmail.com"
-                },
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill backporting some PHP 8.0+ features to lower PHP versions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.31.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-09-09T11:45:10+00:00"
+            "time": "2024-10-15T23:53:20+00:00"
         },
         {
             "name": "symfony/polyfill-php81",
