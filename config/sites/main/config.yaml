@@ -51,3 +51,5 @@ routes:
       User-agent: *
       Disallow:
       Sitemap: https://mens-circle.de/sitemap.xml
+dependencies:
+  - mens-circle/sitepackage

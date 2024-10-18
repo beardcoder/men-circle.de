@@ -1,7 +1,0 @@
-name: mens-circle/sitepackage
-label: Sitepackage
-dependencies:
-  typo3/fluid-styled-content
-  typo3/seo-sitemap
-  b13/picture
-  typo3/form
