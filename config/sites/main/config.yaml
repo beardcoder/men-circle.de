@@ -2,6 +2,8 @@ base: 'https://mens-circle.de/'
 baseVariants:
   - base: 'https://mens-circle.ddev.site/'
     condition: 'applicationContext == "Development/Local"'
+  - base: 'https://mens-circle.ddev.site/'
+    condition: 'applicationContext == "Production/Local"'
 disableStaticFileCache: false
 languages:
   - title: Deutsch
@@ -43,8 +45,7 @@ routeEnhancers:
         fallbackValue: '0'
 websiteTitle: 'Men’s Circle Niederbayern'
 routes:
-  -
-    route: robots.txt
+  - route: robots.txt
     type: staticText
     content: |
       User-agent: *
