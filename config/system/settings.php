@@ -117,7 +117,7 @@ return [
         'vite_asset_collector' => [
             'defaultManifest' => '_assets/vite/.vite/manifest.json',
             'devServerUri' => 'auto',
-            'useDevServer' => '0',
+            'useDevServer' => 'auto',
         ],
     ],
     'FE' => [

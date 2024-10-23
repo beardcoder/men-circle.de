@@ -14,7 +14,6 @@
     "spatie/schema-org": "^3.23",
     "typo3/cms-adminpanel": ">=13.3",
     "typo3/cms-beuser": ">=13.3",
-    "typo3/cms-fluid-styled-content": ">=13.3",
     "typo3/cms-form": ">=13.3",
     "typo3/cms-impexp": ">=13.3",
     "typo3/cms-install": ">=13.3",
@@ -44,7 +43,6 @@
     "ssch/typo3-rector": "dev-main",
     "typo3/cms-belog": ">=13.3",
     "typo3/cms-lowlevel": ">=13.3",
-    "typo3/cms-styleguide": "^13.3",
     "typo3/coding-standards": "^0.8.0"
   },
   "repositories": [

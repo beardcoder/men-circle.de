@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d29e4e2322808c002207f3eab77c766",
+    "content-hash": "b39d5cb55cb968843cd9aa66a142163d",
     "packages": [
         {
             "name": "b13/container",
@@ -6944,66 +6944,6 @@
             "time": "2024-10-15T07:25:20+00:00"
         },
         {
-            "name": "typo3/cms-fluid-styled-content",
-            "version": "v13.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/TYPO3-CMS/fluid_styled_content.git",
-                "reference": "d5a488ecbf429d6992cf8a4c4e353484d9889133"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/fluid_styled_content/zipball/d5a488ecbf429d6992cf8a4c4e353484d9889133",
-                "reference": "d5a488ecbf429d6992cf8a4c4e353484d9889133",
-                "shasum": ""
-            },
-            "require": {
-                "typo3/cms-core": "13.4.0",
-                "typo3/cms-fluid": "13.4.0",
-                "typo3/cms-frontend": "13.4.0"
-            },
-            "conflict": {
-                "typo3/cms": "*"
-            },
-            "type": "typo3-cms-framework",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "13.4.x-dev"
-                },
-                "typo3/cms": {
-                    "Package": {
-                        "partOfFactoryDefault": true
-                    },
-                    "extension-key": "fluid_styled_content"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "TYPO3\\CMS\\FluidStyledContent\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "TYPO3 Core Team",
-                    "email": "typo3cms@typo3.org",
-                    "role": "Developer"
-                }
-            ],
-            "description": "TYPO3 CMS Fluid Styled Content - Fluid templates for TYPO3 content elements.",
-            "homepage": "https://typo3.org",
-            "support": {
-                "chat": "https://typo3.org/help",
-                "docs": "https://docs.typo3.org/c/typo3/cms-fluid-styled-content/main/en-us",
-                "issues": "https://forge.typo3.org",
-                "source": "https://github.com/typo3/typo3"
-            },
-            "time": "2024-10-15T07:25:20+00:00"
-        },
-        {
             "name": "typo3/cms-form",
             "version": "v13.4.0",
             "source": {
@@ -11475,123 +11415,6 @@
             "time": "2024-10-15T07:25:20+00:00"
         },
         {
-            "name": "typo3/cms-felogin",
-            "version": "v13.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/TYPO3-CMS/felogin.git",
-                "reference": "7220ec55c8eea08e77e0aea8256e47ac0000d205"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/felogin/zipball/7220ec55c8eea08e77e0aea8256e47ac0000d205",
-                "reference": "7220ec55c8eea08e77e0aea8256e47ac0000d205",
-                "shasum": ""
-            },
-            "require": {
-                "typo3/cms-core": "13.4.0"
-            },
-            "conflict": {
-                "typo3/cms": "*"
-            },
-            "type": "typo3-cms-framework",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "13.4.x-dev"
-                },
-                "typo3/cms": {
-                    "Package": {
-                        "partOfFactoryDefault": true
-                    },
-                    "extension-key": "felogin"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "TYPO3\\CMS\\FrontendLogin\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "TYPO3 Core Team",
-                    "email": "typo3cms@typo3.org",
-                    "role": "Developer"
-                }
-            ],
-            "description": "TYPO3 CMS Frontend Login - A template-based plugin to log in website users in the TYPO3 frontend.",
-            "homepage": "https://typo3.org",
-            "support": {
-                "chat": "https://typo3.org/help",
-                "docs": "https://docs.typo3.org/c/typo3/cms-felogin/main/en-us",
-                "issues": "https://forge.typo3.org",
-                "source": "https://github.com/typo3/typo3"
-            },
-            "time": "2024-10-15T07:25:20+00:00"
-        },
-        {
-            "name": "typo3/cms-indexed-search",
-            "version": "v13.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/TYPO3-CMS/indexed_search.git",
-                "reference": "9c49bdc7cdc2035e73ddf33efc5fffea31d57125"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/indexed_search/zipball/9c49bdc7cdc2035e73ddf33efc5fffea31d57125",
-                "reference": "9c49bdc7cdc2035e73ddf33efc5fffea31d57125",
-                "shasum": ""
-            },
-            "require": {
-                "typo3/cms-core": "13.4.0"
-            },
-            "conflict": {
-                "typo3/cms": "*"
-            },
-            "suggest": {
-                "ext-exif": "Used to extract exif metadata 'COMMENT' and 'ImageDescription' of uploaded images",
-                "typo3/cms-scheduler": "For garbage collection of search statistics"
-            },
-            "type": "typo3-cms-framework",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "13.4.x-dev"
-                },
-                "typo3/cms": {
-                    "extension-key": "indexed_search"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "TYPO3\\CMS\\IndexedSearch\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "TYPO3 Core Team",
-                    "email": "typo3cms@typo3.org",
-                    "role": "Developer"
-                }
-            ],
-            "description": "TYPO3 CMS Indexed Search - Provides indexing functionality for TYPO3 pages and records as well as files including PDF, Word, HTML and plain text.",
-            "homepage": "https://typo3.org",
-            "support": {
-                "chat": "https://typo3.org/help",
-                "docs": "https://docs.typo3.org/c/typo3/cms-indexed-search/main/en-us",
-                "issues": "https://forge.typo3.org",
-                "source": "https://github.com/typo3/typo3"
-            },
-            "time": "2024-10-15T07:25:20+00:00"
-        },
-        {
             "name": "typo3/cms-lowlevel",
             "version": "v13.4.0",
             "source": {
@@ -11641,71 +11464,6 @@
             ],
             "description": "TYPO3 CMS Lowlevel - Technical analysis of the system. This includes raw database search, checking relations, counting pages and records etc.",
             "homepage": "https://typo3.org",
-            "support": {
-                "chat": "https://typo3.org/help",
-                "docs": "https://docs.typo3.org",
-                "issues": "https://forge.typo3.org",
-                "source": "https://github.com/typo3/typo3"
-            },
-            "time": "2024-10-15T07:25:20+00:00"
-        },
-        {
-            "name": "typo3/cms-styleguide",
-            "version": "v13.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/TYPO3-CMS/styleguide.git",
-                "reference": "36715abe41a55e35d8eabe44489266e5969a3ce3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/styleguide/zipball/36715abe41a55e35d8eabe44489266e5969a3ce3",
-                "reference": "36715abe41a55e35d8eabe44489266e5969a3ce3",
-                "shasum": ""
-            },
-            "require": {
-                "typo3/cms-core": "13.4.0",
-                "typo3/cms-felogin": "13.4.0",
-                "typo3/cms-fluid-styled-content": "13.4.0",
-                "typo3/cms-form": "13.4.0",
-                "typo3/cms-indexed-search": "13.4.0",
-                "typo3/cms-seo": "13.4.0"
-            },
-            "conflict": {
-                "typo3/cms": "*"
-            },
-            "type": "typo3-cms-framework",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "styleguide"
-                },
-                "branch-alias": {
-                    "dev-main": "13.4.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "TYPO3\\CMS\\Styleguide\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "TYPO3 Core Team",
-                    "email": "typo3cms@typo3.org",
-                    "role": "Developer"
-                }
-            ],
-            "description": "TYPO3 extension to showcase TYPO3 Backend capabilities",
-            "homepage": "https://typo3.org",
-            "keywords": [
-                "style guide",
-                "typo3",
-                "typo3 backend"
-            ],
             "support": {
                 "chat": "https://typo3.org/help",
                 "docs": "https://docs.typo3.org",
@@ -11809,15 +11567,15 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "b13/container": 20,
+        "b13/make": 20,
         "b13/picture": 20,
         "mens-circle/sitepackage": 20,
-        "b13/make": 20,
         "ssch/typo3-rector": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "platform-overrides": {
         "php": "8.3"
     },
