@@ -8785,12 +8785,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/b13/make.git",
-                "reference": "180b227f46da8bc037eca042733ea5981aea75f4"
+                "reference": "befcd9694f94f152a9f4a182ef320e4e774469b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/b13/make/zipball/180b227f46da8bc037eca042733ea5981aea75f4",
-                "reference": "180b227f46da8bc037eca042733ea5981aea75f4",
+                "url": "https://api.github.com/repos/b13/make/zipball/befcd9694f94f152a9f4a182ef320e4e774469b4",
+                "reference": "befcd9694f94f152a9f4a182ef320e4e774469b4",
                 "shasum": ""
             },
             "require": {
@@ -8839,7 +8839,7 @@
                 "issues": "https://github.com/b13/make/issues",
                 "source": "https://github.com/b13/make/tree/main"
             },
-            "time": "2024-08-13T09:24:35+00:00"
+            "time": "2024-10-22T14:32:03+00:00"
         },
         {
             "name": "clue/ndjson-react",
