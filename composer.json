@@ -9,6 +9,7 @@
     "friendsoftypo3/content-blocks": "^1.0",
     "helhum/dotenv-connector": "^3.1",
     "mens-circle/sitepackage": "@dev",
+    "opsone-ch/varnish": "^7.0",
     "praetorius/vite-asset-collector": "^1.11",
     "spatie/icalendar-generator": "^2.8.1",
     "spatie/schema-org": "^3.23",
