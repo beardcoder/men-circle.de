@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/b13/container.git",
-                "reference": "27824510ae236290c1d1d83ffa80c3f2fc391a89"
+                "reference": "b59b76ced4a60c0f93579b6263735ef6d74ccdb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/b13/container/zipball/27824510ae236290c1d1d83ffa80c3f2fc391a89",
-                "reference": "27824510ae236290c1d1d83ffa80c3f2fc391a89",
+                "url": "https://api.github.com/repos/b13/container/zipball/b59b76ced4a60c0f93579b6263735ef6d74ccdb7",
+                "reference": "b59b76ced4a60c0f93579b6263735ef6d74ccdb7",
                 "shasum": ""
             },
             "require": {
@@ -67,7 +67,7 @@
                 "issues": "https://github.com/b13/container/issues",
                 "source": "https://github.com/b13/container/tree/master"
             },
-            "time": "2024-10-30T09:34:00+00:00"
+            "time": "2024-10-30T10:38:53+00:00"
         },
         {
             "name": "b13/picture",
@@ -11159,12 +11159,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3-rector.git",
-                "reference": "cfb768e37f79b96f2b3be71af74bcb594904f0ff"
+                "reference": "2f5ab4bf09cb9bbea2a23117ce1429718286430d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/cfb768e37f79b96f2b3be71af74bcb594904f0ff",
-                "reference": "cfb768e37f79b96f2b3be71af74bcb594904f0ff",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/2f5ab4bf09cb9bbea2a23117ce1429718286430d",
+                "reference": "2f5ab4bf09cb9bbea2a23117ce1429718286430d",
                 "shasum": ""
             },
             "require": {
@@ -11268,7 +11268,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-10-25T20:59:13+00:00"
+            "time": "2024-10-30T21:39:46+00:00"
         },
         {
             "name": "symfony/polyfill-php81",
