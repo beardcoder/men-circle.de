@@ -10,7 +10,7 @@
 	"type": "module",
 	"devDependencies": {
 		"browserslist": "^4.24.2",
-		"lightningcss": "^1.27.0",
+		"lightningcss": "^1.28.1",
 		"prettier": "3.3.3",
 		"stylelint": "^16.10.0",
 		"stylelint-config-standard": "^36.0.1",
@@ -32,5 +32,5 @@
 		"simple-aos": "^4.2.0",
 		"ukiyojs": "^4.2.0"
 	},
-	"packageManager": "pnpm@9.12.2"
+	"packageManager": "pnpm@9.12.3"
 }
