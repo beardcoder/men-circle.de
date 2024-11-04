@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c62e55b03676549ce2e0d2271bb1e80e",
+    "content-hash": "2d509b08c9b954a94704033f5639b085",
     "packages": [
         {
             "name": "b13/container",
@@ -1461,6 +1461,94 @@
                 }
             ],
             "time": "2024-02-07T13:03:15+00:00"
+        },
+        {
+            "name": "lochmueller/staticfilecache",
+            "version": "15.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lochmueller/staticfilecache.git",
+                "reference": "94b0ee840912e6dbdb36aab5a7c2401e2ede1261"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lochmueller/staticfilecache/zipball/94b0ee840912e6dbdb36aab5a7c2401e2ede1261",
+                "reference": "94b0ee840912e6dbdb36aab5a7c2401e2ede1261",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pdo": "*",
+                "ext-zlib": "*",
+                "php": "^8.1",
+                "typo3/cms-backend": "^12.4||^13.4",
+                "typo3/cms-core": "^12.4||^13.4",
+                "typo3/cms-extensionmanager": "^12.4||^13.4"
+            },
+            "require-dev": {
+                "andersundsehr/phpstan-git-files": "^1.0",
+                "friendsofphp/php-cs-fixer": "^3.30",
+                "phpstan/extension-installer": "^1.3",
+                "phpstan/phpstan": "^1.10",
+                "saschaegerer/phpstan-typo3": "^1.8",
+                "ssch/typo3-rector": "^2.2",
+                "typo3/testing-framework": "^8.0"
+            },
+            "suggest": {
+                "friendsofsymfony/http-cache": "For HTTP proxy cache services like Varnish",
+                "lochmueller/seocli": "Scan websites against SEO criteria and/or trigger the indexing process and cache warming in deployment scripts"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "staticfilecache",
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": ".Build/Web"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SFC\\Staticfilecache\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Lochmüller",
+                    "email": "tim@fruit-lab.de",
+                    "homepage": "https://github.com/lochmueller",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Transparent static file cache solution using mod_rewrite and mod_expires. Increase performance for static pages by a factor of 230!!",
+            "homepage": "https://extensions.typo3.org/extension/staticfilecache",
+            "keywords": [
+                "StaticFileCache",
+                "TYPO3 CMS",
+                "cache",
+                "file",
+                "magic",
+                "speed",
+                "static"
+            ],
+            "support": {
+                "docs": "https://docs.typo3.org/p/lochmueller/staticfilecache/main/en-us/",
+                "issues": "https://github.com/lochmueller/staticfilecache/issues",
+                "source": "https://github.com/lochmueller/staticfilecache"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/lochmueller",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/lochmueller",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-11-02T13:26:40+00:00"
         },
         {
             "name": "lolli42/finediff",
@@ -6862,6 +6950,72 @@
                 }
             ],
             "description": "TYPO3 CMS Extbase - Extension framework to create TYPO3 frontend plugins and TYPO3 backend modules.",
+            "homepage": "https://typo3.org",
+            "support": {
+                "chat": "https://typo3.org/help",
+                "docs": "https://docs.typo3.org",
+                "issues": "https://forge.typo3.org",
+                "source": "https://github.com/typo3/typo3"
+            },
+            "time": "2024-10-15T07:25:20+00:00"
+        },
+        {
+            "name": "typo3/cms-extensionmanager",
+            "version": "v13.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/extensionmanager.git",
+                "reference": "35f4d8a37bb139cb6a44134d1023066106befd6d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/extensionmanager/zipball/35f4d8a37bb139cb6a44134d1023066106befd6d",
+                "reference": "35f4d8a37bb139cb6a44134d1023066106befd6d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-libxml": "*",
+                "typo3/cms-core": "13.4.0"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "13.4.x-dev"
+                },
+                "typo3/cms": {
+                    "Package": {
+                        "protected": true,
+                        "partOfFactoryDefault": true,
+                        "partOfMinimalUsableSystem": true
+                    },
+                    "extension-key": "extensionmanager"
+                },
+                "typo3/class-alias-loader": {
+                    "class-alias-maps": [
+                        "Migrations/Code/ClassAliasMap.php"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Extensionmanager\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TYPO3 CMS Extension Manager - Backend module (Admin Tools>Extensions) for viewing and managing extensions.",
             "homepage": "https://typo3.org",
             "support": {
                 "chat": "https://typo3.org/help",

@@ -8,6 +8,7 @@
     "b13/picture": "dev-master",
     "friendsoftypo3/content-blocks": "^1.0",
     "helhum/dotenv-connector": "^3.1",
+    "lochmueller/staticfilecache": "^15.0",
     "mens-circle/sitepackage": "@dev",
     "opsone-ch/varnish": "^7.0",
     "praetorius/vite-asset-collector": "^1.11",
