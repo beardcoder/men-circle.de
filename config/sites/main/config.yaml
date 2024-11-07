@@ -42,7 +42,7 @@ routeEnhancers:
         type: PersistedAliasMapper
         tableName: tx_sitepackage_domain_model_event
         routeFieldName: slug
-        fallbackValue: '0'
+        # fallbackValue: '0'
 websiteTitle: 'Men’s Circle Niederbayern'
 routes:
   - route: robots.txt
