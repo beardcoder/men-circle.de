@@ -1,0 +1,18 @@
+plugin.tx_sitepackage {
+  view {
+    templateRootPaths.10 = EXT:sitepackage/Resources/Private/Templates/Plugins/Events/
+    templateRootPaths.10 = {$events.templateRootPath}
+
+    partialRootPaths {
+      10 = {$events.partialRootPath}
+      100 = EXT:sitepackage/Resources/Private/Templates/Partials/
+    }
+
+    layoutRootPaths.10 = {$events.layoutRootPath}
+    defaultPid = auto
+  }
+
+  persistence {
+    storagePid = {$events.storagePid}
+  }
+}

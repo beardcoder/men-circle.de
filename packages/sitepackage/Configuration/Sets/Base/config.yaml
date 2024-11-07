@@ -1,0 +1,8 @@
+name: mens-circle/base
+label: Base Settings
+dependencies:
+    - typo3/seo-sitemap
+    - b13/picture
+    - typo3/form
+    - mens-circle/container
+    - mens-circle/events

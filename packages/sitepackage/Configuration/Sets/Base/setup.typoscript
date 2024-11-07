@@ -6,8 +6,6 @@
 #################
 #### Content ####
 #################
-@import 'EXT:sitepackage/Configuration/TypoScript/ContentElements/*.typoscript'
-@import 'EXT:sitepackage/Configuration/TypoScript/Containers/*.typoscript'
 @import 'EXT:sitepackage/Configuration/TypoScript/Plugins/*.typoscript'
 
 ##############
