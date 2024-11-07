@@ -52,4 +52,6 @@ routes:
       Disallow:
       Sitemap: https://mens-circle.de/sitemap.xml
 dependencies:
-  - mens-circle/sitepackage
+  - mens-circle/base
+  - mens-circle/container
+  - mens-circle/events
