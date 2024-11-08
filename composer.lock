@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d509b08c9b954a94704033f5639b085",
+    "content-hash": "754d63f9f0d9e545e7ab65c0d1eca8e9",
     "packages": [
         {
             "name": "b13/container",
@@ -1938,58 +1938,6 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v5.3.0"
             },
             "time": "2024-09-29T13:56:26+00:00"
-        },
-        {
-            "name": "opsone-ch/varnish",
-            "version": "7.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://gitlab.com/opsone_ch/typo3/varnish.git",
-                "reference": "66f0e575747edf5eb3269f779ce74a307936160c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/opsone_ch%2Ftypo3%2Fvarnish/repository/archive.zip?sha=66f0e575747edf5eb3269f779ce74a307936160c",
-                "reference": "66f0e575747edf5eb3269f779ce74a307936160c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1.0,<=8.3.99",
-                "typo3/cms-core": ">=12.4.0,<=13.5.99"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "varnish"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Opsone\\Varnish\\": "Classes"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Andri Steiner",
-                    "email": "team@opsone.ch"
-                }
-            ],
-            "description": "Varnish for TYPO3",
-            "homepage": "https://opsone.ch/",
-            "keywords": [
-                "extension",
-                "typo3",
-                "varnish"
-            ],
-            "support": {
-                "issues": "https://gitlab.com/opsone_ch/typo3/varnish/-/issues",
-                "source": "https://gitlab.com/opsone_ch/typo3/varnish/-/tree/7.0.0"
-            },
-            "time": "2024-03-27T15:19:40+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -7590,67 +7538,6 @@
             "time": "2024-10-15T07:25:20+00:00"
         },
         {
-            "name": "typo3/cms-recycler",
-            "version": "v13.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/TYPO3-CMS/recycler.git",
-                "reference": "94e28e3e363a8a917cad7d5d97950822f573bd60"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/recycler/zipball/94e28e3e363a8a917cad7d5d97950822f573bd60",
-                "reference": "94e28e3e363a8a917cad7d5d97950822f573bd60",
-                "shasum": ""
-            },
-            "require": {
-                "typo3/cms-core": "13.4.0"
-            },
-            "conflict": {
-                "typo3/cms": "*"
-            },
-            "suggest": {
-                "typo3/cms-scheduler": "Remove deleted records after given time"
-            },
-            "type": "typo3-cms-framework",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "13.4.x-dev"
-                },
-                "typo3/cms": {
-                    "Package": {
-                        "partOfFactoryDefault": true
-                    },
-                    "extension-key": "recycler"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "TYPO3\\CMS\\Recycler\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "TYPO3 Core Team",
-                    "email": "typo3cms@typo3.org",
-                    "role": "Developer"
-                }
-            ],
-            "description": "TYPO3 CMS Recycler - Restore deleted records or remove them from the database permanently.",
-            "homepage": "https://typo3.org",
-            "support": {
-                "chat": "https://typo3.org/help",
-                "docs": "https://docs.typo3.org/c/typo3/cms-recycler/main/en-us/",
-                "issues": "https://forge.typo3.org",
-                "source": "https://github.com/typo3/typo3"
-            },
-            "time": "2024-10-15T07:25:20+00:00"
-        },
-        {
             "name": "typo3/cms-redirects",
             "version": "v13.4.0",
             "source": {
@@ -8065,64 +7952,6 @@
                 }
             ],
             "description": "TYPO3 CMS TypoScript - TYPO3 backend module for the management of TypoScript records for the CMS frontend.",
-            "homepage": "https://typo3.org",
-            "support": {
-                "chat": "https://typo3.org/help",
-                "docs": "https://docs.typo3.org",
-                "issues": "https://forge.typo3.org",
-                "source": "https://github.com/typo3/typo3"
-            },
-            "time": "2024-10-15T07:25:20+00:00"
-        },
-        {
-            "name": "typo3/cms-viewpage",
-            "version": "v13.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/TYPO3-CMS/viewpage.git",
-                "reference": "97e41176d1ee55acf71c2e4b6e5b1d04c7d1d984"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/viewpage/zipball/97e41176d1ee55acf71c2e4b6e5b1d04c7d1d984",
-                "reference": "97e41176d1ee55acf71c2e4b6e5b1d04c7d1d984",
-                "shasum": ""
-            },
-            "require": {
-                "typo3/cms-core": "13.4.0"
-            },
-            "conflict": {
-                "typo3/cms": "*"
-            },
-            "type": "typo3-cms-framework",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "13.4.x-dev"
-                },
-                "typo3/cms": {
-                    "Package": {
-                        "partOfFactoryDefault": true
-                    },
-                    "extension-key": "viewpage"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "TYPO3\\CMS\\Viewpage\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "TYPO3 Core Team",
-                    "email": "typo3cms@typo3.org",
-                    "role": "Developer"
-                }
-            ],
-            "description": "TYPO3 CMS Viewpage - Use the (Web>View) backend module to view a frontend page inside the TYPO3 backend.",
             "homepage": "https://typo3.org",
             "support": {
                 "chat": "https://typo3.org/help",
