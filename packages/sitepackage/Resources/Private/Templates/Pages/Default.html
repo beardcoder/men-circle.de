@@ -5,11 +5,11 @@
 <f:layout name="Pages/Default" />
 
 <f:section name="Main">
-    <f:for each="{content.main.records}" as="contentElement">
+    <f:for each="{content.main.records}" as="record">
         <f:cObject
-            typoscriptObjectPath="{contentElement.mainType}"
-            table="{contentElement.mainType}"
-            data="{contentElement.rawRecord}"
+            typoscriptObjectPath="{record.mainType}"
+            data="{record.rawRecord}"
+            table="{record.mainType}"
         />
     </f:for>
 </f:section>
