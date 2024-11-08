@@ -7,8 +7,8 @@
 set -o errexit pipefail nounset
 #set -x
 
-SSH_TARGET=viking@spica.uberspace.de
-REMOTE_FILEADMIN_PATH=/home/viking/html/mens-circle.de/public/fileadmin
+SSH_TARGET=mens-circle@host.letsbenow.de
+REMOTE_FILEADMIN_PATH=/home/mens-circle/htdocs/mens-circle.de/public/fileadmin
 LOCAL_FILEADMIN_PATH=${DDEV_APPROOT}/.dumps/fileadmin
 
 echo "Fetching fileadmin from ${SSH_TARGET}:${REMOTE_FILEADMIN_PATH} to ${LOCAL_FILEADMIN_PATH}"

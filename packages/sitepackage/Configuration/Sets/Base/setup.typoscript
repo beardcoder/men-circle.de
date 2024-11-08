@@ -33,6 +33,7 @@ page {
     }
 
     dataProcessing {
+      10 = page-content
       20 = menu
       20 {
         includeSpacer = 1

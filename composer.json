@@ -40,6 +40,7 @@
     "php-static-analysis/rector-rule": "^0.3.0",
     "phpro/grumphp-shim": "^2.6",
     "ssch/typo3-rector": "dev-main",
+    "symfony/var-dumper": "^7.1",
     "typo3/cms-belog": ">=13.3",
     "typo3/cms-lowlevel": ">=13.3",
     "typo3/coding-standards": "^0.8.0"

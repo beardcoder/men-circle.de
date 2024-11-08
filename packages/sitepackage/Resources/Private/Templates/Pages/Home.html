@@ -5,6 +5,12 @@
 <f:layout name="Pages/Home" />
 
 <f:section name="Main">
-    <f:cObject data="{colPos: '0'}" typoscriptObjectPath="lib.dynamicContent" />
+    <f:for each="{content.main.records}" as="contentElement">
+        <f:cObject
+            typoscriptObjectPath="{contentElement.mainType}"
+            table="{contentElement.mainType}"
+            data="{contentElement.rawRecord}"
+        />
+    </f:for>
 </f:section>
 </html>

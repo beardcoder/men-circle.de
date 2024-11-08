@@ -7,8 +7,8 @@
 set -o errexit pipefail nounset
 #set -x
 
-SSH_TARGET=viking@spica.uberspace.de
-TARGET_DBNAME=viking_menscircle
+SSH_TARGET=mens-circle@host.letsbenow.de
+TARGET_DBNAME="mens-circle"
 
 DUMPDIR=${DDEV_APPROOT}/.dumps
 mkdir -p ${DUMPDIR}
