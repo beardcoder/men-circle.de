@@ -8,6 +8,7 @@
     "b13/picture": "dev-master",
     "friendsoftypo3/content-blocks": "^1.0",
     "helhum/dotenv-connector": "^3.1",
+    "helhum/typo3-console": "^8.2",
     "lochmueller/staticfilecache": "^15.0",
     "mens-circle/sitepackage": "@dev",
     "praetorius/vite-asset-collector": "^1.11",
