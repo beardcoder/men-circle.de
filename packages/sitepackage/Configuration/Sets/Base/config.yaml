@@ -1,5 +1,4 @@
 name: mens-circle/base
-label: "Mens Circle: Base Settings"
 dependencies:
     - typo3/seo-sitemap
     - b13/picture
