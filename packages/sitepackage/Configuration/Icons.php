@@ -14,4 +14,12 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:sitepackage/Resources/Public/Icons/Content/Text.svg',
     ],
+    'event-notification-module' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:sitepackage/Resources/Public/Icons/EventNotificationModule.svg',
+    ],
+    'event-module' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:sitepackage/Resources/Public/Icons/EventModule.svg',
+    ],
 ];

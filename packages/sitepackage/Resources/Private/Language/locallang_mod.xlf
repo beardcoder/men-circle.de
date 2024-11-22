@@ -4,7 +4,7 @@
 		<header/>
 		<body>
 			<trans-unit id="mlang_tabs_tab" resname="mlang_tabs_tab">
-				<source>E-Mail</source>
+				<source>Event Notification</source>
 			</trans-unit>
 		</body>
 	</file>
