@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MensCircle\Sitepackage\Backend\Controller;
 
+use MensCircle\Sitepackage\Domain\Model\Event;
 use MensCircle\Sitepackage\Domain\Model\EventNotification;
 use MensCircle\Sitepackage\Domain\Model\EventRegistration;
 use MensCircle\Sitepackage\Domain\Repository\EventNotificationRepository;
@@ -35,18 +36,25 @@ class EventNotificationController extends ActionController
         private readonly MailerInterface $mailer,
     ) {}
 
-    public function newAction(?EventNotification $eventNotification = null): ResponseInterface
+    public function listAction(): ResponseInterface
     {
         $eventRepository = GeneralUtility::makeInstance(EventRepository::class);
         $moduleTemplate = $this->initializeModuleTemplate($this->request);
-        $this->pageRenderer->loadJavaScriptModule('@mens-circle/sitepackage/bootstrap.js');
-        $this->pageRenderer->addCssFile('EXT:sitepackage/Resources/Public/Backend/Styles/Contrib/jodit.min.css');
-        $this->pageRenderer->addCssFile('EXT:sitepackage/Resources/Public/Backend/Styles/bootstrap.css');
 
         $moduleTemplate->assign('events', $eventRepository->findAll());
-        $eventNotificationAssign = $eventNotification ?? GeneralUtility::makeInstance(EventNotification::class);
+        return $moduleTemplate->renderResponse('Backend/EventNotification/List');
+    }
 
-        $moduleTemplate->assign('eventNotification', $eventNotificationAssign);
+    public function newAction(Event $event, ?EventNotification $eventNotification = null): ResponseInterface
+    {
+        $moduleTemplate = $this->initializeModuleTemplate($this->request);
+        $this->pageRenderer->loadJavaScriptModule('@mens-circle/sitepackage/bootstrap.js');
+        $this->pageRenderer->addCssFile('EXT:sitepackage/Resources/Public/Backend/Styles/bootstrap.css');
+
+        $moduleTemplate->assign('event', $event);
+        $eventNotification ??= GeneralUtility::makeInstance(EventNotification::class);
+
+        $moduleTemplate->assign('eventNotification', $eventNotification);
         $moduleTemplate->setTitle('Mail');
 
         return $moduleTemplate->renderResponse('Backend/EventNotification/New');
@@ -56,14 +64,14 @@ class EventNotificationController extends ActionController
      * @throws TransportExceptionInterface
      * @throws IllegalObjectTypeException
      */
-    public function sendAction(?EventNotification $eventNotification = null): ResponseInterface
+    public function sendAction(EventNotification $eventNotification): ResponseInterface
     {
         $event = $eventNotification->event;
         $eventNotification->setPid($event->getPid());
         $this->eventNotificationRepository->add($eventNotification);
         $objectStorage = $event->getParticipants();
 
-        $emailAddresses = array_map(fn(EventRegistration $eventRegistration): \Symfony\Component\Mime\Address => new Address($eventRegistration->getEmail(), $eventRegistration->getName()), $objectStorage->toArray());
+        $emailAddresses = array_map(static fn(EventRegistration $eventRegistration): Address => new Address($eventRegistration->getEmail(), $eventRegistration->getName()), $objectStorage->toArray());
 
         $fluidEmail = new FluidEmail();
         $fluidEmail
@@ -73,8 +81,7 @@ class EventNotificationController extends ActionController
             ->format(FluidEmail::FORMAT_BOTH)
             ->setTemplate('EventNotification')
             ->assign('subject', $eventNotification->subject)
-            ->assign('message', $eventNotification->message)
-        ;
+            ->assign('message', $eventNotification->message);
 
         $this->mailer->send($fluidEmail);
 

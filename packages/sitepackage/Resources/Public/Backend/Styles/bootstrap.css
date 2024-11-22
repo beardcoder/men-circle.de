@@ -1,7 +1,10 @@
-.jodit_theme_dark {
-    --jd-color-dark: var(--typo3-input-bg);
-    --jd-dark-background-color: var(--typo3-input-bg);
-    --jd-color-background-default: var(--typo3-input-bg);
-    --jd-color-border: var(--typo3-input-border-color);
-    --jd-dark-toolbar-color: var(--typo3-input-bg);
+:root, .ck {
+    --ck-color-base-text: var(--scaffold-color)!important;
+    --ck-color-base-background: var(--scaffold-bg) !important;
+    --ck-color-toolbar-background: var(--typo3-surface-container-high) !important;
+    --ck-color-base-border: var(--typo3-input-border-color) !important;
+}
+
+.ck-editor__editable_inline {
+    min-height: 400px;
 }

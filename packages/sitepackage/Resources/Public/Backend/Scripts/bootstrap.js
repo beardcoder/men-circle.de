@@ -1,32 +1,29 @@
-let editorPromise = null;
+import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
+import { Essentials } from '@ckeditor/ckeditor5-essentials';
+import { Bold, Italic } from '@ckeditor/ckeditor5-basic-styles';
+import { List } from '@ckeditor/ckeditor5-list';
+import { Link } from '@ckeditor/ckeditor5-link';
+import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
+import { SourceEditing } from '@ckeditor/ckeditor5-source-editing';
 
-function loadScript(url)
-{
-    return new Promise((resolve, reject) => {
-        const newScript = document.createElement('script');
-        newScript.async = true
-        newScript.onerror = reject;
-        newScript.onload = (ev) => resolve(ev);
-        newScript.src = url;
-        document.head.appendChild(newScript);
-    });
-}
-
-function loadEditor()
-{
-    if (editorPromise === null) {
-        const scriptUrl = import.meta.url.replace(/\/[^\/]+\.js/, '/Contrib/jodit.min.js')
-        editorPromise = loadScript(scriptUrl).then(() => window.Jodit);
+class MyModule {
+  constructor() {
+    let target = document.getElementById('message');
+    const config = {
+      toolbar: [ 'bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'link', '|', 'sourceEditing' ],
+      height: '400px'
     }
-    return editorPromise;
+    ClassicEditor.builtinPlugins = [
+      Essentials,
+      Bold,
+      Italic,
+      List,
+      Link,
+      Paragraph,
+      SourceEditing
+    ];
+    ClassicEditor.create(target, config);
+  }
 }
-const prefersLightColorScheme = () =>
-  window &&
-  window.matchMedia &&
-  window.matchMedia('(prefers-color-scheme: light)').matches;
 
-loadEditor().then(Jodit => {
-    new Jodit('#message', {
-        theme: prefersLightColorScheme() ? 'light' : 'dark',
-    });
-})
+export default new MyModule;
