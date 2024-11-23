@@ -9,12 +9,14 @@ return [
     'ctrl' => [
         'title' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event',
         'label' => 'title',
+        'label_alt' => 'start_date',
+        'label_alt_force' => true,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'delete' => 'deleted',
         'default_sortby' => 'start_date',
         'iconfile' => 'EXT:sitepackage/Resources/Public/Icons/tx_sitepackage_domain_model_event.svg',
-        'searchFields' => 'title',
+        'searchFields' => 'title,start_date',
         'enablecolumns' => [
             'fe_group' => 'fe_group',
             'disabled' => 'hidden',
@@ -219,7 +221,7 @@ return [
             'exclude' => true,
             'config' => [
                 'type' => 'inline',
-                'foreign_table' => 'tx_sitepackage_domain_model_eventregistration',
+                'foreign_table' => 'tx_sitepackage_domain_model_participant',
                 'foreign_field' => 'event',
                 'maxitems' => 9999,
                 'appearance' => [

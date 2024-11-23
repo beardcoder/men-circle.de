@@ -2,13 +2,15 @@
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_eventregistration',
+        'title' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_participant',
         'label' => 'first_name',
+        'label_alt' => 'last_name',
+        'label_alt_force' => true,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'delete' => 'deleted',
         'default_sortby' => 'first_name',
-        'iconfile' => 'EXT:sitepackage/Resources/Public/Icons/tx_sitepackage_domain_model_eventregistration.svg',
+        'iconfile' => 'EXT:sitepackage/Resources/Public/Icons/tx_sitepackage_domain_model_participant.svg',
         'searchFields' => 'first_name',
         'enablecolumns' => [
             'fe_group' => 'fe_group',
@@ -25,7 +27,7 @@ return [
         1 => [
             'showitem' => '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
             first_name, last_name, email, fe_user,
-                 --div--;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_eventregistration.tabs.access,
+                 --div--;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_participant.tabs.access,
                     --palette--;;hidden,
                     --palette--;;access,',
         ],
@@ -33,11 +35,11 @@ return [
     'palettes' => [
         'hidden' => [
             'showitem' => '
-                hidden;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_eventregistration.hidden
+                hidden;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_participant.hidden
             ',
         ],
         'access' => [
-            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_eventregistration.palettes.access',
+            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_participant.palettes.access',
             'showitem' => '
                 starttime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel,
                 endtime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel,
@@ -54,7 +56,7 @@ return [
             ],
         ],
         'first_name' => [
-            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_eventregistration.first_name',
+            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_participant.first_name',
             'config' => [
                 'type' => 'input',
                 'size' => 40,
@@ -64,7 +66,7 @@ return [
             ],
         ],
         'last_name' => [
-            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_eventregistration.last_name',
+            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_participant.last_name',
             'config' => [
                 'type' => 'input',
                 'size' => 40,
@@ -74,7 +76,7 @@ return [
             ],
         ],
         'email' => [
-            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_eventregistration.email',
+            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_participant.email',
             'config' => [
                 'type' => 'input',
                 'size' => 40,
@@ -85,7 +87,7 @@ return [
         ],
         'fe_user' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_eventregistration.fe_user',
+            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_participant.fe_user',
             'config' => [
                 'type' => 'group',
                 'allowed' => 'fe_users',

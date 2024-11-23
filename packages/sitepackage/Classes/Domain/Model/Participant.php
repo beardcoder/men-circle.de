@@ -7,7 +7,7 @@ namespace MensCircle\Sitepackage\Domain\Model;
 use TYPO3\CMS\Extbase\Annotation\Validate;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
-class EventRegistration extends AbstractEntity
+class Participant extends AbstractEntity
 {
     public ?Event $event = null;
     #[Validate(['validator' => 'NotEmpty'])]

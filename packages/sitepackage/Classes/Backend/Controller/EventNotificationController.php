@@ -6,7 +6,7 @@ namespace MensCircle\Sitepackage\Backend\Controller;
 
 use MensCircle\Sitepackage\Domain\Model\Event;
 use MensCircle\Sitepackage\Domain\Model\EventNotification;
-use MensCircle\Sitepackage\Domain\Model\EventRegistration;
+use MensCircle\Sitepackage\Domain\Model\Participant;
 use MensCircle\Sitepackage\Domain\Repository\EventNotificationRepository;
 use MensCircle\Sitepackage\Domain\Repository\EventRepository;
 use Psr\Http\Message\ResponseInterface;
@@ -16,7 +16,6 @@ use Symfony\Component\Mime\Address;
 use TYPO3\CMS\Backend\Attribute\AsController;
 use TYPO3\CMS\Backend\Routing\Exception\RouteNotFoundException;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
-use TYPO3\CMS\Backend\Template\Components\Menu\MenuItem;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Mail\FluidEmail;
@@ -91,7 +90,6 @@ class EventNotificationController extends ActionController
         $menuRegistry->addMenu($menu);
     }
 
-
     public function listAction(): ResponseInterface
     {
         $this->prepareTemplate($this->request);
@@ -133,7 +131,7 @@ class EventNotificationController extends ActionController
         $this->eventNotificationRepository->add($eventNotification);
         $objectStorage = $event->getParticipants();
 
-        $emailAddresses = array_map(static fn(EventRegistration $eventRegistration): Address => new Address($eventRegistration->getEmail(), $eventRegistration->getName()), $objectStorage->toArray());
+        $emailAddresses = array_map(static fn(Participant $participant): Address => new Address($participant->getEmail(), $participant->getName()), $objectStorage->toArray());
 
         $fluidEmail = new FluidEmail();
         $fluidEmail

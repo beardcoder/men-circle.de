@@ -54,19 +54,19 @@
                 <source>Big image with text</source>
                 <target>Großes Bild mit Text</target>
             </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_eventregistration.email" resname="tx_sitepackage_domain_model_eventregistration.email">
+            <trans-unit id="tx_sitepackage_domain_model_participant.email" resname="tx_sitepackage_domain_model_participant.email">
                 <source>Email</source>
                 <target>E-Mail</target>
             </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_eventregistration.fe_user" resname="tx_sitepackage_domain_model_eventregistration.fe_user">
+            <trans-unit id="tx_sitepackage_domain_model_participant.fe_user" resname="tx_sitepackage_domain_model_participant.fe_user">
                 <source>User</source>
                 <target>Benutzer</target>
             </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_eventregistration.first_name" resname="tx_sitepackage_domain_model_eventregistration.first_name">
+            <trans-unit id="tx_sitepackage_domain_model_participant.first_name" resname="tx_sitepackage_domain_model_participant.first_name">
                 <source>Firstname</source>
                 <target>Vorname</target>
             </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_eventregistration.last_name" resname="tx_sitepackage_domain_model_eventregistration.last_name">
+            <trans-unit id="tx_sitepackage_domain_model_participant.last_name" resname="tx_sitepackage_domain_model_participant.last_name">
                 <source>Lastname</source>
                 <target>Nachname</target>
             </trans-unit>

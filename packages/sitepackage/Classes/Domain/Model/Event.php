@@ -39,12 +39,12 @@ class Event extends AbstractEntity
     #[Extbase\ORM\Lazy()]
     protected FileReference|LazyLoadingProxy $image;
 
-    /** @var ObjectStorage<EventRegistration> */
+    /** @var ObjectStorage<Participant> */
     #[Extbase\ORM\Lazy()]
     #[Extbase\ORM\Cascade(['value' => 'remove'])]
     protected ObjectStorage $registration;
 
-    /** @var ObjectStorage<EventRegistration> */
+    /** @var ObjectStorage<Participant> */
     #[Extbase\ORM\Lazy()]
     #[Extbase\ORM\Cascade(['value' => 'remove'])]
     protected ObjectStorage $participants;
@@ -160,15 +160,15 @@ class Event extends AbstractEntity
         return $this->participants ?? $this->registration;
     }
 
-    public function addParticipant(EventRegistration $eventRegistration): void
+    public function addParticipant(Participant $participant): void
     {
-        $this->participants->attach($eventRegistration);
-        $this->registration->attach($eventRegistration);
+        $this->participants->attach($participant);
+        $this->registration->attach($participant);
     }
 
-    public function removeParticipant(EventRegistration $eventRegistration): void
+    public function removeParticipant(Participant $participant): void
     {
-        $this->participants->detach($eventRegistration);
-        $this->registration->detach($eventRegistration);
+        $this->participants->detach($participant);
+        $this->registration->detach($participant);
     }
 }

@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace MensCircle\Sitepackage\Controller;
 
 use MensCircle\Sitepackage\Domain\Model\Event;
-use MensCircle\Sitepackage\Domain\Model\EventRegistration;
 use MensCircle\Sitepackage\Domain\Model\FrontendUser;
-use MensCircle\Sitepackage\Domain\Repository\EventRegistrationRepository;
+use MensCircle\Sitepackage\Domain\Model\Participant;
 use MensCircle\Sitepackage\Domain\Repository\EventRepository;
 use MensCircle\Sitepackage\Domain\Repository\FrontendUserRepository;
+use MensCircle\Sitepackage\Domain\Repository\ParticipantRepository;
 use MensCircle\Sitepackage\PageTitle\EventPageTitleProvider;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -36,7 +36,7 @@ class EventController extends ActionController
 {
     public function __construct(
         private readonly EventRepository $eventRepository,
-        private readonly EventRegistrationRepository $eventRegistrationRepository,
+        private readonly ParticipantRepository $participantRepository,
         private readonly FrontendUserRepository $frontendUserRepository,
         private readonly EventPageTitleProvider $eventPageTitleProvider,
         private readonly ImageService $imageService,
@@ -70,9 +70,9 @@ class EventController extends ActionController
         return $this->redirect(actionName: 'detail', arguments: ['event' => $upcomingEvent]);
     }
 
-    public function detailAction(?Event $event = null, ?EventRegistration $eventRegistration = null): ResponseInterface
+    public function detailAction(?Event $event = null, ?Participant $participant = null): ResponseInterface
     {
-        $eventRegistrationToAssign = $eventRegistration ?? GeneralUtility::makeInstance(EventRegistration::class);
+        $participantToAssign = $participant ?? GeneralUtility::makeInstance(Participant::class);
 
         if (is_null($event)) {
             return $this->handleEventNotFoundError();
@@ -83,7 +83,7 @@ class EventController extends ActionController
         $this->pageRenderer->addHeaderData($event->buildSchema($this->uriBuilder));
 
         $this->view->assign('event', $event);
-        $this->view->assign('eventRegistration', $eventRegistrationToAssign);
+        $this->view->assign('participant', $participantToAssign);
 
         return $this->htmlResponse();
     }
@@ -100,28 +100,28 @@ class EventController extends ActionController
      * @throws IllegalObjectTypeException
      * @throws TransportExceptionInterface
      */
-    public function registrationAction(EventRegistration $eventRegistration): ResponseInterface
+    public function registrationAction(Participant $participant): ResponseInterface
     {
-        $feUser = $this->frontendUserRepository->findOneBy(['email' => $eventRegistration->getEmail()]);
+        $feUser = $this->frontendUserRepository->findOneBy(['email' => $participant->getEmail()]);
         if ($feUser === null) {
-            $feUser = $this->mapRegistrationToFeUser($eventRegistration);
+            $feUser = $this->mapParticipantToFeUser($participant);
             $this->frontendUserRepository->add($feUser);
         }
 
-        $eventRegistration->setFeUser($feUser);
-        $this->eventRegistrationRepository->add($eventRegistration);
+        $participant->setFeUser($feUser);
+        $this->participantRepository->add($participant);
 
         $this->addFlashMessage(
             LocalizationUtility::translate(
                 'registration.success',
                 'sitepackage',
-                [$eventRegistration->event->startDate->format('d.m.Y')]
+                [$participant->event->startDate->format('d.m.Y')]
             )
         );
 
-        $this->sendMailToAdminOnRegistration($eventRegistration);
+        $this->sendMailToAdminOnRegistration($participant);
 
-        $redirectUrl = $this->uriBuilder->reset()->setTargetPageUid(3)->setNoCache(true)->uriFor('detail', ['event' => $eventRegistration->event->getUid()]);
+        $redirectUrl = $this->uriBuilder->reset()->setTargetPageUid(3)->setNoCache(true)->uriFor('detail', ['event' => $participant->event->getUid()]);
 
         return $this->redirectToUri($redirectUrl);
     }
@@ -176,14 +176,14 @@ class EventController extends ActionController
             return;
         }
 
-        $registrationMvcArgument = $this->arguments->getArgument('eventRegistration');
+        $registrationMvcArgument = $this->arguments->getArgument('participant');
         $mvcPropertyMappingConfiguration = $registrationMvcArgument->getPropertyMappingConfiguration();
 
         // Set event to registration (required for validation)
         $mvcPropertyMappingConfiguration->allowProperties('event');
         $mvcPropertyMappingConfiguration->allowCreationForSubProperty('event');
         $mvcPropertyMappingConfiguration->allowModificationForSubProperty('event');
-        $arguments['eventRegistration']['event'] = (int)$this->request->getArgument('event');
+        $arguments['participant']['event'] = (int)$this->request->getArgument('event');
 
         $this->request = $this->request->withArguments($arguments);
     }
@@ -193,15 +193,15 @@ class EventController extends ActionController
         return $this->uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(3)->uriFor('detail', ['event' => $event->getUid()]);
     }
 
-    private function mapRegistrationToFeUser(EventRegistration $eventRegistration): FrontendUser
+    private function mapParticipantToFeUser(Participant $participant): FrontendUser
     {
         $frontendUser = GeneralUtility::makeInstance(FrontendUser::class);
         assert($frontendUser instanceof FrontendUser);
 
-        $frontendUser->setEmail($eventRegistration->getEmail());
-        $frontendUser->setFirstName($eventRegistration->getFirstName());
-        $frontendUser->setLastName($eventRegistration->getLastName());
-        $frontendUser->setUsername($eventRegistration->getEmail());
+        $frontendUser->setEmail($participant->getEmail());
+        $frontendUser->setFirstName($participant->getFirstName());
+        $frontendUser->setLastName($participant->getLastName());
+        $frontendUser->setUsername($participant->getEmail());
         $frontendUser->setPassword(Uuid::v4()->toHex());
 
         return $frontendUser;
@@ -210,16 +210,16 @@ class EventController extends ActionController
     /**
      * @throws TransportExceptionInterface
      */
-    private function sendMailToAdminOnRegistration(EventRegistration $eventRegistration): void
+    private function sendMailToAdminOnRegistration(Participant $participant): void
     {
         $fluidEmail = new FluidEmail();
         $fluidEmail
             ->to('hallo@mens-circle.de')
             ->from(new Address('hallo@mens-circle.de', 'Men\'s Circle Website'))
-            ->subject('Neue Anmeldung von ' . $eventRegistration->getName())
+            ->subject('Neue Anmeldung von ' . $participant->getName())
             ->format(FluidEmail::FORMAT_BOTH)
             ->setTemplate('MailToAdminOnRegistration')
-            ->assign('eventRegistration', $eventRegistration);
+            ->assign('participant', $participant);
 
         $mailer = GeneralUtility::makeInstance(MailerInterface::class);
         assert($mailer instanceof MailerInterface);

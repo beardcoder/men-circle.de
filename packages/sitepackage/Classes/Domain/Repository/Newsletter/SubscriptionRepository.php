@@ -1,14 +1,12 @@
 <?php
 
-declare(strict_types=1);
-
-namespace MensCircle\Sitepackage\Domain\Repository;
+namespace MensCircle\Sitepackage\Domain\Repository\Newsletter;
 
 use MensCircle\Sitepackage\Domain\Repository\Traits\StoragePageAgnosticTrait;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
-class EventRegistrationRepository extends Repository
+class SubscriptionRepository extends Repository
 {
     use StoragePageAgnosticTrait;
 
