@@ -141,6 +141,7 @@ class EventNotificationController extends ActionController
             ->from(new Address('hallo@mens-circle.de', 'Men\'s Circle Website'))
             ->subject($eventNotification->subject)
             ->format(FluidEmail::FORMAT_BOTH)
+            ->to(new Address('hallo@mens-circle.de', 'Men\'s Circle Website'))
             ->setTemplate('EventNotification')
             ->assign('subject', $eventNotification->subject)
             ->assign('message', $eventNotification->message);
@@ -153,13 +154,13 @@ class EventNotificationController extends ActionController
         $message = GeneralUtility::makeInstance(
             FlashMessage::class,
             '',
-            'Email Verssendet',
+            'Email Versendet',
             ContextualFeedbackSeverity::OK,
             true
         );
         $messageQueue->addMessage($message);
 
-        return $this->redirect('new');
+        return $this->redirect('list');
     }
 
     protected function initializeModuleTemplate(
