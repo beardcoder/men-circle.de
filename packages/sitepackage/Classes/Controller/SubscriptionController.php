@@ -9,15 +9,17 @@ class SubscriptionController extends ActionController
 
     public function __construct(SubscriptionRepository $subscriptionRepository) {}
 
-    public function subscribeAction()
+    public function subscribeAction(): \Psr\Http\Message\ResponseInterface
     {
         $email = $this->request->getArgument('email');
         // Handle Subscription Logic
+        return $this->htmlResponse();
     }
 
-    public function unsubscribeAction()
+    public function unsubscribeAction(): \Psr\Http\Message\ResponseInterface
     {
         $token = $this->request->getArgument('token');
         // Handle Unsubscription Logic
+        return $this->htmlResponse();
     }
 }

@@ -63,7 +63,7 @@
       "typo3/cms-composer-installers": true
     },
     "platform": {
-      "php": "8.3"
+      "php": "8.4"
     },
     "sort-packages": true
   },

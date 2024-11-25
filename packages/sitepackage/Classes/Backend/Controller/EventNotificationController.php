@@ -42,17 +42,17 @@ class EventNotificationController extends ActionController
         private readonly EventRepository $eventRepository
     ) {}
 
-    public function prepareTemplate(ServerRequestInterface $request): void
+    public function prepareTemplate(ServerRequestInterface $serverRequest): void
     {
-        $this->moduleTemplate = $this->moduleTemplateFactory->create($request);
+        $this->moduleTemplate = $this->moduleTemplateFactory->create($serverRequest);
     }
 
     /**
      * @throws RouteNotFoundException
      */
-    private function setDocHeader(ServerRequestInterface $request): void
+    private function setDocHeader(ServerRequestInterface $serverRequest): void
     {
-        $params = $request->getQueryParams();
+        $params = $serverRequest->getQueryParams();
         $menuRegistry = $this->moduleTemplate->getDocHeaderComponent()->getMenuRegistry();
 
         // Create a menu and set its identifier
@@ -147,16 +147,16 @@ class EventNotificationController extends ActionController
         $this->mailer->send($fluidEmail);
 
         $flashMessageService = GeneralUtility::makeInstance(FlashMessageService::class);
-        $messageQueue = $flashMessageService->getMessageQueueByIdentifier();
+        $flashMessageQueue = $flashMessageService->getMessageQueueByIdentifier();
 
-        $message = GeneralUtility::makeInstance(
+        $flashMessage = GeneralUtility::makeInstance(
             FlashMessage::class,
             '',
             'Email Versendet',
             ContextualFeedbackSeverity::OK,
             true
         );
-        $messageQueue->addMessage($message);
+        $flashMessageQueue->addMessage($flashMessage);
 
         return $this->redirect('list');
     }

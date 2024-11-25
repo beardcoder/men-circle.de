@@ -12,6 +12,7 @@ class UuidViewHelper extends AbstractViewHelper
     /**
      * @return string
      */
+    #[\Override]
     public function render(): string
     {
         return StringUtility::getUniqueId('uuid_');
