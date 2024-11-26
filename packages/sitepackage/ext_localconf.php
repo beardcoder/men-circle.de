@@ -3,14 +3,16 @@
 declare(strict_types=1);
 
 use MensCircle\Sitepackage\Controller\EventController;
+use MensCircle\Sitepackage\Controller\SubscriptionController;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 call_user_func(
     static function (): void {
+        $extensionKey = 'sitepackage';
         $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['sitepackage'] = 'EXT:sitepackage/Configuration/RTE/Default.yaml';
 
         ExtensionUtility::configurePlugin(
-            'Sitepackage',
+            ucfirst($extensionKey),
             'EventList',
             [EventController::class => 'list'],
             [],
@@ -18,10 +20,18 @@ call_user_func(
         );
 
         ExtensionUtility::configurePlugin(
-            'Sitepackage',
+            ucfirst($extensionKey),
             'EventDetail',
             [EventController::class => ['detail', 'registration', 'iCal', 'upcoming']],
             [EventController::class => ['registration', 'iCal', 'upcoming']],
+            ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+        );
+
+        ExtensionUtility::configurePlugin(
+            ucfirst($extensionKey),
+            'Newsletter',
+            [SubscriptionController::class => ['form', 'subscribe', 'doubleOptIn']],
+            [SubscriptionController::class => ['subscribe', 'doubleOptIn']],
             ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
         );
 

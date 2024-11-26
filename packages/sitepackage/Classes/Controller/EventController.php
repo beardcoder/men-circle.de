@@ -8,19 +8,17 @@ use MensCircle\Sitepackage\Domain\Model\Event;
 use MensCircle\Sitepackage\Domain\Model\FrontendUser;
 use MensCircle\Sitepackage\Domain\Model\Participant;
 use MensCircle\Sitepackage\Domain\Repository\EventRepository;
-use MensCircle\Sitepackage\Domain\Repository\FrontendUserRepository;
 use MensCircle\Sitepackage\Domain\Repository\ParticipantRepository;
 use MensCircle\Sitepackage\PageTitle\EventPageTitleProvider;
+use MensCircle\Sitepackage\Service\EmailService;
+use MensCircle\Sitepackage\Service\FrontendUserService;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\ResponseInterface;
 use Spatie\IcalendarGenerator\Components\Calendar;
 use Spatie\IcalendarGenerator\Components\Event as CalendarEvent;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
-use Symfony\Component\Mime\Address;
 use Symfony\Component\Uid\Uuid;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
-use TYPO3\CMS\Core\Mail\FluidEmail;
-use TYPO3\CMS\Core\Mail\MailerInterface;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Site\Entity\Site;
@@ -37,11 +35,12 @@ class EventController extends ActionController
     public function __construct(
         private readonly EventRepository $eventRepository,
         private readonly ParticipantRepository $participantRepository,
-        private readonly FrontendUserRepository $frontendUserRepository,
         private readonly EventPageTitleProvider $eventPageTitleProvider,
         private readonly ImageService $imageService,
         private readonly PageRenderer $pageRenderer,
         private readonly MetaTagManagerRegistry $metaTagManagerRegistry,
+        private readonly EmailService $emailService,
+        private readonly FrontendUserService $frontendUserService,
     ) {}
 
     /**
@@ -70,6 +69,10 @@ class EventController extends ActionController
         return $this->redirect(actionName: 'detail', arguments: ['event' => $upcomingEvent]);
     }
 
+    /**
+     * @throws \DateMalformedStringException
+     * @throws InvalidQueryException
+     */
     public function detailAction(?Event $event = null, ?Participant $participant = null): ResponseInterface
     {
         $participantToAssign = $participant ?? GeneralUtility::makeInstance(Participant::class);
@@ -102,12 +105,7 @@ class EventController extends ActionController
      */
     public function registrationAction(Participant $participant): ResponseInterface
     {
-        $feUser = $this->frontendUserRepository->findOneBy(['email' => $participant->getEmail()]);
-        if ($feUser === null) {
-            $feUser = $this->mapParticipantToFeUser($participant);
-            $this->frontendUserRepository->add($feUser);
-        }
-
+        $feUser = $this->frontendUserService->mapToFrontendUser($participant);
         $participant->setFeUser($feUser);
         $this->participantRepository->add($participant);
 
@@ -119,7 +117,13 @@ class EventController extends ActionController
             )
         );
 
-        $this->sendMailToAdminOnRegistration($participant);
+        $this->emailService->sendMail(
+            $participant->email,
+            'doubleOptIn',
+            ['participant' => $participant],
+            'Neue Anmeldung von ' . $participant->getName(),
+            $this->request
+        );
 
         $redirectUrl = $this->uriBuilder->reset()->setTargetPageUid(3)->setNoCache(true)->uriFor('detail', ['event' => $participant->event->getUid()]);
 
@@ -133,7 +137,7 @@ class EventController extends ActionController
     public function iCalAction(Event $event): MessageInterface
     {
         $processedFile = $this->imageService->applyProcessingInstructions(
-            $event->getImage()->getOriginalResource(),
+            $event->getImage()?->getOriginalResource(),
             ['width' => '600c', 'height' => '600c']
         );
 
@@ -205,26 +209,6 @@ class EventController extends ActionController
         $frontendUser->setPassword(Uuid::v4()->toHex());
 
         return $frontendUser;
-    }
-
-    /**
-     * @throws TransportExceptionInterface
-     */
-    private function sendMailToAdminOnRegistration(Participant $participant): void
-    {
-        $fluidEmail = new FluidEmail();
-        $fluidEmail
-            ->to('hallo@mens-circle.de')
-            ->from(new Address('hallo@mens-circle.de', 'Men\'s Circle Website'))
-            ->subject('Neue Anmeldung von ' . $participant->getName())
-            ->format(FluidEmail::FORMAT_BOTH)
-            ->setTemplate('MailToAdminOnRegistration')
-            ->assign('participant', $participant);
-
-        $mailer = GeneralUtility::makeInstance(MailerInterface::class);
-        assert($mailer instanceof MailerInterface);
-
-        $mailer->send($fluidEmail);
     }
 
     private function prepareSeoForEvent(Event $event): void

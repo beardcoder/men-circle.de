@@ -8,7 +8,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
-call_user_func(function (): void {
+call_user_func(static function (): void {
     $extensionKey = 'sitepackage';
     $signature = static fn(string $plugin): string => strtolower(
         sprintf('%s_%s', str_replace('_', '', $extensionKey), $plugin)
@@ -26,14 +26,25 @@ call_user_func(function (): void {
         'EventList',
         'LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:plugin.event_list',
         'tx-sitepackage-plugin-event-list',
-        $extensionKey
+        $extensionKey,
+        'LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:plugin.event_list.description'
     );
     ExtensionUtility::registerPlugin(
         ucfirst($extensionKey),
         'EventDetail',
         'LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:plugin.event_detail',
         'tx-sitepackage-plugin-event-list',
-        $extensionKey
+        $extensionKey,
+        'LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:plugin.event_detail.description'
+    );
+
+    ExtensionUtility::registerPlugin(
+        ucfirst($extensionKey),
+        'Newsletter',
+        'LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:plugin.newsletter',
+        'tx-sitepackage-plugin-newsletter',
+        $extensionKey,
+        'LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:plugin.newsletter.description'
     );
 
     ExtensionManagementUtility::addToAllTCAtypes(

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xliff version="1.2" xmlns:t3="http://typo3.org/schemas/xliff" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="de" original="" datatype="plaintext" date="2024-05-04T14:47:03+02:00">
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" original="" datatype="plaintext" date="2024-11-26T10:00:40+01:00">
         <body>
             <trans-unit id="backend_layout.column.normal" resname="backend_layout.column.normal">
                 <source>Normal</source>
@@ -24,11 +24,27 @@
             </trans-unit>
             <trans-unit id="plugin.event_detail" resname="plugin.event_detail">
                 <source>Event Detail</source>
-                <target>Event Detail</target>
+                <target>Veranstaltungsansicht</target>
+            </trans-unit>
+            <trans-unit id="plugin.event_detail.description" resname="plugin.event_detail.description">
+                <source>Shows an event</source>
+                <target>Zeigt eine Veranstaltung an</target>
             </trans-unit>
             <trans-unit id="plugin.event_list" resname="plugin.event_list">
                 <source>Event list</source>
                 <target>Veranstaltungsliste</target>
+            </trans-unit>
+            <trans-unit id="plugin.event_list.description" resname="plugin.event_list.description">
+                <source>Shows a list of events</source>
+                <target>Zeit eine Liste von Veranstaltungen</target>
+            </trans-unit>
+            <trans-unit id="plugin.newsletter" resname="plugin.newsletter">
+                <source>Newsletter</source>
+                <target>Newsletter</target>
+            </trans-unit>
+            <trans-unit id="plugin.newsletter.description" resname="plugin.newsletter.description">
+                <source>Plugin to register for the newsletter</source>
+                <target>Plugin zum registrieren für den Newsletter</target>
             </trans-unit>
             <trans-unit id="tt_content.CType.I.event_detail" resname="tt_content.CType.I.event_detail">
                 <source>Event Detail</source>

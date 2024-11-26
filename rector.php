@@ -28,7 +28,7 @@ return RectorConfig::configure()
         SetList::TYPE_DECLARATION,
         SetList::CODE_QUALITY,
         SetList::NAMING,
-        SetList::PHP_83,
+        SetList::PHP_84,
         Typo3SetList::CODE_QUALITY,
         Typo3SetList::GENERAL,
         Typo3LevelSetList::UP_TO_TYPO3_13,

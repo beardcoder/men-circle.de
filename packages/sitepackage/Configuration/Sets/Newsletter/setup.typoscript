@@ -1,0 +1,17 @@
+plugin.tx_sitepackage_newsletter {
+  view {
+    templateRootPaths.10 = {$newsletter.templateRootPath}
+
+    partialRootPaths {
+      10 = {$newsletter.partialRootPath}
+      100 = EXT:sitepackage/Resources/Private/Templates/Partials/
+    }
+
+    layoutRootPaths.10 = {$newsletter.layoutRootPath}
+    defaultPid = auto
+  }
+
+  persistence {
+    storagePid = {$newsletter.storagePid}
+  }
+}

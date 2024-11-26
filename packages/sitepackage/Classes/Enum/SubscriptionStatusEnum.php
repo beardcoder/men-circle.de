@@ -11,4 +11,9 @@ enum SubscriptionStatusEnum: int
     case Inactive = 3;
     case Unsubscribed = 4;
     case Expired = 5;
+
+    public function is(self ...$statuses): bool
+    {
+        return in_array($this, $statuses, true);
+    }
 }

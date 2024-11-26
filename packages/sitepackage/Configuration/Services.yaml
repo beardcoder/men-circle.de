@@ -6,7 +6,3 @@ services:
 
   MensCircle\Sitepackage\:
     resource: '../Classes/*'
-
-  voku\helper\HtmlMin:
-    class: voku\helper\HtmlMin
-    public: true

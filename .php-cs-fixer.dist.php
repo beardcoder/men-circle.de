@@ -1,9 +1,8 @@
 <?php
 
-use TYPO3\CodingStandards\CsFixerConfig;
-
-$config = CsFixerConfig::create();
+$config = \TYPO3\CodingStandards\CsFixerConfig::create();
 $config->getFinder()
-    ->in(__DIR__ . '/packages');
+    ->in(__DIR__ . '/packages')
+;
 
 return $config;
