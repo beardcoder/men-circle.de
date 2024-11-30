@@ -13,7 +13,7 @@ return [
             'disabled' => 'hidden',
         ],
         'searchFields' => 'email, first_name, last_name, status',
-        'iconfile' => 'EXT:sitepackage/Resources/Public/Icons/subscription.svg',
+        'iconfile' => 'EXT:sitepackage/Resources/Public/Icons/tx_sitepackage_domain_model_subscription.svg',
     ],
     'types' => [
         '0' => [
