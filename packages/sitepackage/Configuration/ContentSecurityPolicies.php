@@ -36,14 +36,8 @@ return Map::fromEntries([
         new Mutation(
             MutationMode::Extend,
             Directive::ScriptSrc,
-            SourceScheme::data,
-            new UriValue('https://cdnjs.cloudflare.com'),
-        ),
-
-        new Mutation(
-            MutationMode::Extend,
-            Directive::ScriptSrc,
             SourceKeyword::unsafeEval,
+            new UriValue('https://cdnjs.cloudflare.com'),
         ),
     ),
 ]);
