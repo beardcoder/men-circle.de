@@ -19,25 +19,9 @@ return Map::fromEntries([
 
     new MutationCollection(
         new Mutation(
-            MutationMode::Set,
-            Directive::DefaultSrc,
-            SourceKeyword::self,
-        ),
-
-        new Mutation(
-            MutationMode::Extend,
-            Directive::FontSrc,
-            SourceScheme::data,
-        ),
-
-        // Extends the ancestor directive ('default-src'),
-        // thus reuses 'self' and adds additional sources
-        // Results in `img-src 'self' data: https://*.typo3.org`
-        new Mutation(
             MutationMode::Extend,
             Directive::ScriptSrc,
             SourceScheme::data,
-            new UriValue('https://cdnjs.cloudflare.com'),
         ),
 
         new Mutation(
