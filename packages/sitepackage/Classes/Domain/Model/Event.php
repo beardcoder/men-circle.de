@@ -155,6 +155,11 @@ class Event extends AbstractEntity
         return "$this->address, $this->zip $this->city, Deutschland";
     }
 
+    public function setParticipants(ObjectStorage $objectStorage): void
+    {
+        $this->participants = $objectStorage;
+    }
+
     public function getParticipants(): ObjectStorage
     {
         return $this->participants ?? $this->registration;

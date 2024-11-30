@@ -21,7 +21,7 @@ return [
         '0' => [
             'showitem' => 'hidden, email, first_name, last_name, fe_user,
                 --palette--;Dates;dates,
-                double_opt_in_token, status',
+                double_opt_in_token, status, newsletter',
         ],
     ],
     'palettes' => [
@@ -121,6 +121,21 @@ return [
                 'renderType' => 'selectSingle',
                 'items' => array_map(static fn(SubscriptionStatusEnum $subscriptionStatusEnum): array => ['label' => $subscriptionStatusEnum->name, 'value' => $subscriptionStatusEnum->value], SubscriptionStatusEnum::cases()),
                 'default' => SubscriptionStatusEnum::Pending->value,
+            ],
+        ],
+        'newsletter' => [
+            'label' => 'Newsletter',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_sitepackage_domain_model_newsletter',
+                'MM' => 'tx_sitepackage_domain_model_subscription_rel',
+                'MM_opposite_field' => 'subscriptions',
+                'maxitems' => 99,
+                'appearance' => [
+                    'showSynchronizationLink' => 1,
+                    'showAllLocalizationLink' => 1,
+                    'showPossibleLocalizationRecords' => 1,
+                ],
             ],
         ],
     ],

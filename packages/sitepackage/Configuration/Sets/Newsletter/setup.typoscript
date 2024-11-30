@@ -8,7 +8,6 @@ plugin.tx_sitepackage_newsletter {
     }
 
     layoutRootPaths.10 = {$newsletter.layoutRootPath}
-    defaultPid = auto
   }
 
   persistence {

@@ -8,7 +8,6 @@ plugin.tx_sitepackage_eventlist {
     }
 
     layoutRootPaths.10 = {$events.layoutRootPath}
-    defaultPid = auto
   }
 
   persistence {

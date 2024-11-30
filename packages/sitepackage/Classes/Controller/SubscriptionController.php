@@ -52,7 +52,7 @@ class SubscriptionController extends ActionController
             $existingError = $this->handleExistingSubscription($existingSubscription);
 
             if ($existingError) {
-                return $this->jsonResponse(json_encode(['success' => false, 'errors' => $existingError, 'message' => 'Es sind Fehler aufgetreten. Bitte korrigiere die Eingaben.'], JSON_THROW_ON_ERROR));
+                return $this->jsonResponse(json_encode(['success' => false, 'errors' => [$existingError], 'message' => 'Es sind Fehler aufgetreten. Bitte korrigiere die Eingaben.'], JSON_THROW_ON_ERROR));
             }
         }
 

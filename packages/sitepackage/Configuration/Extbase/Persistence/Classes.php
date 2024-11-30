@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use MensCircle\Sitepackage\Domain\Model\FrontendUser;
+use MensCircle\Sitepackage\Domain\Model\Newsletter\Newsletter;
 use MensCircle\Sitepackage\Domain\Model\Newsletter\Subscription;
 
 return [
@@ -11,5 +12,8 @@ return [
     ],
     Subscription::class => [
         'tableName' => 'tx_sitepackage_domain_model_subscription',
+    ],
+    Newsletter::class => [
+        'tableName' => 'tx_sitepackage_domain_model_newsletter',
     ],
 ];

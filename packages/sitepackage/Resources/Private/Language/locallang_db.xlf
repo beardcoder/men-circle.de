@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" original="" datatype="plaintext" date="2024-09-29T12:50:06+02:00">
+    <file source-language="en" original="" datatype="plaintext" date="2024-11-30T20:35:31+01:00">
         <body>
             <trans-unit id="tx_sitepackage_domain_model_event" resname="tx_sitepackage_domain_model_event">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_eventnotification" resname="tx_sitepackage_domain_model_eventnotification">
-                <source></source>
+                <source>Event</source>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.address" resname="tx_sitepackage_domain_model_event.address">
+                <source>Adress</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.attendance_mode.label" resname="tx_sitepackage_domain_model_event.attendance_mode.label">
+                <source>Type</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.attendance_mode.options.offline" resname="tx_sitepackage_domain_model_event.attendance_mode.options.offline">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.attendance_mode.options.online" resname="tx_sitepackage_domain_model_event.attendance_mode.options.online">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_event.call_url.label" resname="tx_sitepackage_domain_model_event.call_url.label">
                 <source></source>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.cancelled" resname="tx_sitepackage_domain_model_event.cancelled">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_eventnotification.subject" resname="tx_sitepackage_domain_model_eventnotification.subject">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_eventnotification.message" resname="tx_sitepackage_domain_model_eventnotification.message">
                 <source></source>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.city" resname="tx_sitepackage_domain_model_event.city">
@@ -30,9 +33,6 @@
                 <source></source>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.hidden" resname="tx_sitepackage_domain_model_event.hidden">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_eventnotification.hidden" resname="tx_sitepackage_domain_model_eventnotification.hidden">
                 <source></source>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.latitude" resname="tx_sitepackage_domain_model_event.latitude">
@@ -56,25 +56,34 @@
             <trans-unit id="tx_sitepackage_domain_model_event.tabs.access" resname="tx_sitepackage_domain_model_event.tabs.access">
                 <source></source>
             </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_eventnotification.tabs.access" resname="tx_sitepackage_domain_model_eventnotification.tabs.access">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_event.tabs.registration" resname="tx_sitepackage_domain_model_event.tabs.registration">
-                <source></source>
-            </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.title" resname="tx_sitepackage_domain_model_event.title">
                 <source></source>
             </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_event.attendance_mode.label" resname="tx_sitepackage_domain_model_event.attendance_mode.label">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_event.attendance_mode.options.offline" resname="tx_sitepackage_domain_model_event.attendance_mode.options.offline">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_event.attendance_mode.options.online" resname="tx_sitepackage_domain_model_event.attendance_mode.options.online">
-                <source></source>
-            </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.zip" resname="tx_sitepackage_domain_model_event.zip">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_eventnotification" resname="tx_sitepackage_domain_model_eventnotification">
+                <source>Notification</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_eventnotification.hidden" resname="tx_sitepackage_domain_model_eventnotification.hidden">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_eventnotification.message" resname="tx_sitepackage_domain_model_eventnotification.message">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_eventnotification.subject" resname="tx_sitepackage_domain_model_eventnotification.subject">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_newsletter" resname="tx_sitepackage_domain_model_newsletter">
+                <source>Newsletter</source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_newsletter.message" resname="tx_sitepackage_domain_model_newsletter.message">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_newsletter.subject" resname="tx_sitepackage_domain_model_newsletter.subject">
+                <source></source>
+            </trans-unit>
+            <trans-unit id="tx_sitepackage_domain_model_newsletter.subscriptions" resname="tx_sitepackage_domain_model_newsletter.subscriptions">
                 <source></source>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_participant" resname="tx_sitepackage_domain_model_participant">
@@ -90,9 +99,6 @@
                 <source></source>
             </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_participant.last_name" resname="tx_sitepackage_domain_model_participant.last_name">
-                <source></source>
-            </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_event.call_url.label" resname="tx_sitepackage_domain_model_event.call_url.label">
                 <source></source>
             </trans-unit>
         </body>
