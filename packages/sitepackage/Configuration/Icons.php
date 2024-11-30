@@ -22,6 +22,10 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:sitepackage/Resources/Public/Icons/EventNotificationModule.svg',
     ],
+    'newsletter-module' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:sitepackage/Resources/Public/Icons/NewsletterModule.svg',
+    ],
     'event-module' => [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:sitepackage/Resources/Public/Icons/EventModule.svg',

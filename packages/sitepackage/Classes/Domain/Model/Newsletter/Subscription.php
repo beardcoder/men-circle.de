@@ -19,4 +19,9 @@ class Subscription extends AbstractEntity
     public \DateTime|null $doubleOptInDate = null;
     public \DateTime|null $privacyPolicyAcceptedDate = null;
     public SubscriptionStatusEnum $status = SubscriptionStatusEnum::Pending;
+
+    public function getName(): string
+    {
+        return $this->firstName . ' ' . $this->lastName;
+    }
 }
