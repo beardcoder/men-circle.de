@@ -10,7 +10,9 @@ return [
         'crdate' => 'crdate',
         'delete' => 'deleted',
         'default_sortby' => 'first_name',
-        'iconfile' => 'EXT:sitepackage/Resources/Public/Icons/tx_sitepackage_domain_model_participant.svg',
+        'typeicon_classes' => [
+            'default' => 'tx-sitepackage-domain-model-participant',
+        ],
         'searchFields' => 'first_name',
         'enablecolumns' => [
             'fe_group' => 'fe_group',

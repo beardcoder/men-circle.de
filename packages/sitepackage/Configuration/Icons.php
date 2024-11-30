@@ -26,4 +26,21 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:sitepackage/Resources/Public/Icons/EventModule.svg',
     ],
+
+    'tx-sitepackage-domain-model-subscription' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:sitepackage/Resources/Public/Icons/tx_sitepackage_domain_model_subscription.svg',
+    ],
+    'tx-sitepackage-domain-model-event' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:sitepackage/Resources/Public/Icons/tx_sitepackage_domain_model_event.svg',
+    ],
+    'tx-sitepackage-domain-model-eventnotification' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:sitepackage/Resources/Public/Icons/tx_sitepackage_domain_model_eventnotification.svg',
+    ],
+    'tx-sitepackage-domain-model-participant' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:sitepackage/Resources/Public/Icons/tx_sitepackage_domain_model_participant.svg',
+    ],
 ];

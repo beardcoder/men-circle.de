@@ -8,7 +8,9 @@ return [
         'crdate' => 'crdate',
         'delete' => 'deleted',
         'default_sortby' => 'crdate',
-        'iconfile' => 'EXT:sitepackage/Resources/Public/Icons/tx_sitepackage_domain_model_eventnotification.svg',
+        'typeicon_classes' => [
+            'default' => 'tx-sitepackage-domain-model-eventnotification',
+        ],
         'searchFields' => 'subject',
         'enablecolumns' => [
             'fe_group' => 'fe_group',

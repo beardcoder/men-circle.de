@@ -15,7 +15,9 @@ return [
         'crdate' => 'crdate',
         'delete' => 'deleted',
         'default_sortby' => 'start_date',
-        'iconfile' => 'EXT:sitepackage/Resources/Public/Icons/tx_sitepackage_domain_model_event.svg',
+        'typeicon_classes' => [
+            'default' => 'tx-sitepackage-domain-model-event',
+        ],
         'searchFields' => 'title,start_date',
         'enablecolumns' => [
             'fe_group' => 'fe_group',
