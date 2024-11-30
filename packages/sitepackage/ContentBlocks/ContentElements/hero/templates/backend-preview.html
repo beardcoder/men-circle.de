@@ -5,7 +5,7 @@
 <f:asset.css identifier="cbAccordionCssBackend" href="{cb:assetPath()}/EditorPreview.css"/>
 
 <div>
-    <p>{data.bodytext}</p>
+    <p>{data.bodytext -> f:format.raw()}</p>
 </div>
 <f:image
     alt="{data.image.0.alternative}"

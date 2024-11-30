@@ -1,6 +1,11 @@
-<f:layout name="SystemEmail" />
+<html
+    data-namespace-typo3-fluid="true"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+>
+<f:layout name="Default" />
 <f:section name="Title">
-    Registrierung von {participant.name} zum Event am {participant.event.startDate -> f:format.date(format: 'd.m.Y H:i')}
+    Registrierung von {participant.name} zum Event am
+    {participant.event.startDate -> f:format.date(format: 'd.m.Y H:i')}
 </f:section>
 <f:section name="Main">
 
@@ -11,3 +16,4 @@
     </ul>
 
 </f:section>
+</html>

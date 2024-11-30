@@ -1,8 +1,22 @@
-<f:layout name="NotificationEmail" />
+<html
+    data-namespace-typo3-fluid="true"
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+>
+<f:layout name="Default" />
 <f:section name="Title">
     Vielen dank {subscription.firstNane} für deine Anmeldung zum Newsletter
 </f:section>
 <f:section name="Main">
     <p>Bitte bestätige deine Anmeldung durch klick auf diesen Link</p>
-    <f:link.action action="doubleOptIn" absolute="true" pluginName="Newsletter" arguments="{token: subscription.doubleOptInToken}" controller="Subscription" extensionName="Sitepackage">Bestätigung</f:link.action>
+    <f:link.action
+        action="doubleOptIn"
+        absolute="true"
+        pluginName="Newsletter"
+        arguments="{token: subscription.doubleOptInToken}"
+        controller="Subscription"
+        pageUid="13"
+        extensionName="Sitepackage"
+    >Bestätigung
+    </f:link.action>
 </f:section>
+</html>

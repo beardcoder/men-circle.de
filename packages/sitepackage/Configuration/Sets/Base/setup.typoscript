@@ -172,6 +172,37 @@ lib.contentBlock {
   }
 }
 
+lib.newsletterForm = EXTBASEPLUGIN
+lib.newsletterForm {
+  extensionName = Sitepackage
+  pluginName = Newsletter
+}
+
+newsletterApi = PAGE
+newsletterApi {
+  typeNum = 1732915119
+  config {
+    disableAllHeaderCode = 1
+    xhtml_cleaning = 0
+    admPanel = 0
+    debug = 0
+    no_cache = 1
+
+    additionalHeaders {
+      10 {
+        header = Content-Type: application/json
+        replace = 1
+      }
+    }
+  }
+
+  10 = EXTBASEPLUGIN
+  10 {
+    extensionName = Sitepackage
+    pluginName = Newsletter
+  }
+}
+
 [applicationContext matches "/^Production/"]
   page.headerData.1010 = TEXT
   page.headerData.1010.value = <script async src="https://tracking.letsbenow.de/script.js" data-website-id="9384afba-8736-46df-a418-642b3ec39742"></script>

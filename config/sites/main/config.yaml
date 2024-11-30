@@ -43,15 +43,6 @@ routeEnhancers:
         tableName: tx_sitepackage_domain_model_event
         routeFieldName: slug
         # fallbackValue: '0'
-  Newsletter:
-    type: Extbase
-    extension: Sitepackage
-    namespace: tx_sitepackage_newsletter
-    plugin: Newsletter
-    routes:
-      - routePath: '/subscribe'
-        _controller: 'Subscription::subscribe'
-    defaultController: 'Subscription::form'
 websiteTitle: 'Men’s Circle Niederbayern'
 routes:
   - route: robots.txt

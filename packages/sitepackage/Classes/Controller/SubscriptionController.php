@@ -19,11 +19,13 @@ class SubscriptionController extends ActionController
 {
     public function __construct(
         private readonly SubscriptionRepository $subscriptionRepository,
-        private readonly TokenService $tokenService,
-        private readonly EmailService $emailService,
-        private readonly DoubleOptInService $doubleOptInService,
-        private readonly FrontendUserService $frontendUserService,
-    ) {}
+        private readonly TokenService           $tokenService,
+        private readonly EmailService           $emailService,
+        private readonly DoubleOptInService     $doubleOptInService,
+        private readonly FrontendUserService    $frontendUserService,
+    )
+    {
+    }
 
     public function formAction(?Subscription $subscription = null): ResponseInterface
     {
@@ -36,18 +38,24 @@ class SubscriptionController extends ActionController
     /**
      * @throws \DateMalformedStringException
      * @throws IllegalObjectTypeException
+     * @throws \JsonException
      */
     public function subscribeAction(Subscription $subscription): ResponseInterface
     {
-        $existingSubscription = $this->subscriptionRepository->findOneBy(['email' => $subscription->email]);
+        $validationErrors = $this->validateSubscription($subscription);
 
-        if ($existingSubscription instanceof Subscription) {
-            if ($existingSubscription->status->is(SubscriptionStatusEnum::Active)) {
-                return $this->htmlResponse();
-            }
-
-            $this->subscriptionRepository->remove($existingSubscription);
+        if (!empty($validationErrors)) {
+            return $this->jsonResponse(json_encode(['success' => false, 'errors' => $validationErrors, 'message' => 'Es sind Fehler aufgetreten. Bitte korrigiere die Eingaben.'], JSON_THROW_ON_ERROR));
         }
+
+        if ($existingSubscription = $this->subscriptionRepository->findOneBy(['email' => $subscription->email])) {
+            $existingError = $this->handleExistingSubscription($existingSubscription);
+
+            if ($existingError) {
+                return $this->jsonResponse(json_encode(['success' => false, 'errors' => $existingError, 'message' => 'Es sind Fehler aufgetreten. Bitte korrigiere die Eingaben.'], JSON_THROW_ON_ERROR));
+            }
+        }
+
 
         $feUser = $this->frontendUserService->mapToFrontendUser($subscription);
         $subscription->feUser = $feUser;
@@ -64,7 +72,39 @@ class SubscriptionController extends ActionController
             $this->request
         );
 
-        return $this->htmlResponse();
+        return $this->jsonResponse(json_encode(['success' => true, 'errors' => [], 'message' => 'Danke für die Anmeldung! Bitte bestätige deine E-Mail-Adresse über den Link, den wir dir gesendet haben.'], JSON_THROW_ON_ERROR));
+    }
+
+    /**
+     * @throws IllegalObjectTypeException
+     */
+    private function handleExistingSubscription(Subscription $existingSubscription): ?string
+    {
+        if ($existingSubscription->status->is(SubscriptionStatusEnum::Active)) {
+            return 'Die Email-Adresse ist bereits eingetragen.';
+        }
+
+        $this->subscriptionRepository->remove($existingSubscription);
+        return null;
+    }
+
+    private function validateSubscription(Subscription $subscription): array
+    {
+        $errors = [];
+
+        if (empty($subscription->email) || !filter_var($subscription->email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = 'Bitte eine gültige E-Mail-Adresse eingeben.';
+        }
+
+        if (empty($subscription->firstName)) {
+            $errors[] = 'Bitte einen Vornamen angeben.';
+        }
+
+        if (empty($subscription->lastName)) {
+            $errors[] = 'Bitte einen Nachnamen angeben.';
+        }
+
+        return $errors;
     }
 
     /**
@@ -74,10 +114,8 @@ class SubscriptionController extends ActionController
     public function doubleOptInAction(string $token): ResponseInterface
     {
         $subscription = $this->doubleOptInService->processDoubleOptIn($token);
-
-        return $subscription
-            ? $this->htmlResponse()
-            : $this->errorAction();
+        $this->view->assign('subscription', $subscription);
+        return $this->htmlResponse();
     }
 
     public function unsubscribeAction(string $token): ResponseInterface
