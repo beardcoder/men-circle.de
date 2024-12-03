@@ -22,6 +22,12 @@ mutations:
       - 'https://tracking.letsbenow.de/'
       - 'https://static.cloudflareinsights.com/'
 
+  - mode: extend
+    directive: 'connect-src'
+    sources:
+      - "'unsafe-inline'"
+      - 'https://tracking.letsbenow.de/'
+
   - mode: set
     directive: 'style-src'
     sources:
