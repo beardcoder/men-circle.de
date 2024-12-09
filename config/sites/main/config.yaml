@@ -1,3 +1,4 @@
+websiteTitle: 'Men’s Circle Niederbayern'
 base: 'https://mens-circle.de/'
 baseVariants:
   - base: 'https://mens-circle.ddev.site/'
@@ -14,36 +15,6 @@ languages:
     navigationTitle: Deutsch
     flag: de
 rootPageId: 1
-routeEnhancers:
-  PageTypeSuffix:
-    type: PageType
-    map:
-      /: 0
-      sitemap.xml: 1533906435
-  EventDetail:
-    type: Extbase
-    extension: Sitepackage
-    namespace: tx_sitepackage_eventdetail
-    plugin: EventDetail
-    routes:
-      - routePath: '/next'
-        _controller: 'Event::upcoming'
-      - routePath: '/{event_title}'
-        _controller: 'Event::detail'
-        _arguments:
-          event_title: event
-      - routePath: '/{event_title}/ical'
-        _controller: 'Event::iCal'
-        _arguments:
-          event_title: event
-    defaultController: 'Event::detail'
-    aspects:
-      event_title:
-        type: PersistedAliasMapper
-        tableName: tx_sitepackage_domain_model_event
-        routeFieldName: slug
-        # fallbackValue: '0'
-websiteTitle: 'Men’s Circle Niederbayern'
 routes:
   - route: robots.txt
     type: staticText
@@ -56,3 +27,7 @@ dependencies:
   - mens-circle/container
   - mens-circle/events
   - mens-circle/newsletter
+
+imports:
+  -
+    resource: EXT:sitepackage/Configuration/Routes/Events.yaml
