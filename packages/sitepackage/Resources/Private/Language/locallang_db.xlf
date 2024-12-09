@@ -53,9 +53,6 @@
             <trans-unit id="tx_sitepackage_domain_model_event.startdate" resname="tx_sitepackage_domain_model_event.startdate">
                 <source></source>
             </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_event.tabs.access" resname="tx_sitepackage_domain_model_event.tabs.access">
-                <source></source>
-            </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.title" resname="tx_sitepackage_domain_model_event.title">
                 <source></source>
             </trans-unit>

@@ -19,14 +19,24 @@ return [
     ],
     'types' => [
         '0' => [
-            'showitem' => 'hidden, email, first_name, last_name, fe_user,
-                --palette--;Dates;dates,
-                double_opt_in_token, status, newsletter',
+            'showitem' => implode(',', [
+                '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general',
+                'email, first_name, last_name, fe_user',
+                '--palette--;Dates;dates',
+                'double_opt_in_token, status, newsletter',
+                '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access',
+                '--palette--;;hidden',
+            ]),
         ],
     ],
     'palettes' => [
         'dates' => [
             'showitem' => 'opt_in_date, double_opt_in_date, opt_out_date, privacy_policy_accepted_date',
+        ],
+        'hidden' => [
+            'showitem' => '
+                hidden;LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.hidden
+            ',
         ],
     ],
     'columns' => [

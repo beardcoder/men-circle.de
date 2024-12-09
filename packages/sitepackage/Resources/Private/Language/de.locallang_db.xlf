@@ -70,10 +70,6 @@
                 <source></source>
                 <target>Start Datum</target>
             </trans-unit>
-            <trans-unit id="tx_sitepackage_domain_model_event.tabs.access" resname="tx_sitepackage_domain_model_event.tabs.access">
-                <source></source>
-                <target>Zugriff</target>
-            </trans-unit>
             <trans-unit id="tx_sitepackage_domain_model_event.title" resname="tx_sitepackage_domain_model_event.title">
                 <source></source>
                 <target>Titel</target>

@@ -15,38 +15,26 @@ return [
         ],
         'searchFields' => 'first_name',
         'enablecolumns' => [
-            'fe_group' => 'fe_group',
             'disabled' => 'hidden',
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'transOrigPointerField' => 'l10n_parent',
-        'transOrigDiffSourceField' => 'l10n_diffsource',
         'languageField' => 'sys_language_uid',
-        'translationSource' => 'l10n_source',
     ],
     'types' => [
         1 => [
-            'showitem' => '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
-            first_name, last_name, email, fe_user,
-                 --div--;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_participant.tabs.access,
-                    --palette--;;hidden,
-                    --palette--;;access,',
+            'showitem' => implode(',', [
+                '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general',
+                'first_name, last_name, email, fe_user',
+                '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access',
+                '--palette--;;hidden',
+            ]),
         ],
     ],
     'palettes' => [
         'hidden' => [
             'showitem' => '
-                hidden;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_participant.hidden
-            ',
-        ],
-        'access' => [
-            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_participant.palettes.access',
-            'showitem' => '
-                starttime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel,
-                endtime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel,
-                --linebreak--,
-                fe_group;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:fe_group_formlabel,
+                hidden;LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.hidden
             ',
         ],
     ],

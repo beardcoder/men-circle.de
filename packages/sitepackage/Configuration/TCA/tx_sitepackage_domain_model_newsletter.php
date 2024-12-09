@@ -13,10 +13,7 @@ return [
         ],
         'searchFields' => 'subject',
         'copyAfterDuplFields' => 'colPos,sys_language_uid',
-        'transOrigPointerField' => 'l18n_parent',
-        'transOrigDiffSourceField' => 'l18n_diffsource',
         'languageField' => 'sys_language_uid',
-        'translationSource' => 'l10n_source',
     ],
     'types' => [
         1 => [
