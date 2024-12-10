@@ -67,20 +67,14 @@ return [
             ],
         ],
         'fe_user' => [
-            'label' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_participant.fe_user',
+            'exclude' => true,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:user',
             'config' => [
-                'type' => 'group',
-                'allowed' => 'fe_users',
+                'type' => 'select',
+                'renderType' => 'selectSingle',
                 'foreign_table' => 'fe_users',
                 'size' => 1,
-                'minitems' => 0,
-                'maxitems' => 1,
                 'default' => 0,
-                'suggestOptions' => [
-                    'default' => [
-                        'additionalSearchFields' => 'first_name, last_name, email',
-                    ],
-                ],
             ],
         ],
         'opt_in_date' => [
