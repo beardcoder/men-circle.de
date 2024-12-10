@@ -6,12 +6,6 @@ return [
     'ctrl' => [
         'title' => 'Newsletter Subscription',
         'label' => 'email',
-        'tstamp' => 'tstamp',
-        'crdate' => 'crdate',
-        'delete' => 'deleted',
-        'enablecolumns' => [
-            'disabled' => 'hidden',
-        ],
         'searchFields' => 'email, first_name, last_name, status',
         'typeicon_classes' => [
             'default' => 'tx-sitepackage-domain-model-subscription',
@@ -34,9 +28,7 @@ return [
             'showitem' => 'opt_in_date, double_opt_in_date, opt_out_date, privacy_policy_accepted_date',
         ],
         'hidden' => [
-            'showitem' => '
-                hidden;LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.hidden
-            ',
+            'showitem' => 'hidden;LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.hidden',
         ],
     ],
     'columns' => [
@@ -67,14 +59,16 @@ return [
             ],
         ],
         'fe_user' => [
-            'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:user',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'fe_users',
-                'size' => 1,
-                'default' => 0,
+                'minitems' => 0,
+                'items' => [
+                    ['label' => null, 'value' => ''],
+                ],
+                'default' => null,
             ],
         ],
         'opt_in_date' => [

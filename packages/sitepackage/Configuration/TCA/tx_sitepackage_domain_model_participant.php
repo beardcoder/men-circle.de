@@ -6,20 +6,11 @@ return [
         'label' => 'first_name',
         'label_alt' => 'last_name',
         'label_alt_force' => true,
-        'tstamp' => 'tstamp',
-        'crdate' => 'crdate',
-        'delete' => 'deleted',
         'default_sortby' => 'first_name',
         'typeicon_classes' => [
             'default' => 'tx-sitepackage-domain-model-participant',
         ],
         'searchFields' => 'first_name',
-        'enablecolumns' => [
-            'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
-        ],
-        'languageField' => 'sys_language_uid',
     ],
     'types' => [
         1 => [
@@ -33,9 +24,7 @@ return [
     ],
     'palettes' => [
         'hidden' => [
-            'showitem' => '
-                hidden;LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.hidden
-            ',
+            'showitem' => 'hidden;LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.hidden',
         ],
     ],
     'columns' => [
@@ -76,14 +65,16 @@ return [
             ],
         ],
         'fe_user' => [
-            'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:user',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'fe_users',
-                'size' => 1,
-                'default' => 0,
+                'minitems' => 0,
+                'items' => [
+                    ['label' => null, 'value' => ''],
+                ],
+                'default' => null,
             ],
         ],
     ],

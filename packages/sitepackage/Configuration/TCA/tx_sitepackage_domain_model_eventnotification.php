@@ -4,16 +4,10 @@ return [
     'ctrl' => [
         'title' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_eventnotification',
         'label' => 'subject',
-        'tstamp' => 'tstamp',
-        'crdate' => 'crdate',
-        'delete' => 'deleted',
-        'default_sortby' => 'crdate',
         'typeicon_classes' => [
             'default' => 'tx-sitepackage-domain-model-eventnotification',
         ],
         'searchFields' => 'subject',
-        'copyAfterDuplFields' => 'colPos,sys_language_uid',
-        'languageField' => 'sys_language_uid',
     ],
     'types' => [
         1 => [

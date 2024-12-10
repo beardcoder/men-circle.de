@@ -11,9 +11,6 @@ return [
         'label' => 'title',
         'label_alt' => 'start_date',
         'label_alt_force' => true,
-        'tstamp' => 'tstamp',
-        'crdate' => 'crdate',
-        'delete' => 'deleted',
         'default_sortby' => 'start_date',
         'typeicon_classes' => [
             'default' => 'tx-sitepackage-domain-model-event',
@@ -21,11 +18,7 @@ return [
         'searchFields' => 'title,start_date',
         'enablecolumns' => [
             'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
         ],
-        'copyAfterDuplFields' => 'colPos,sys_language_uid',
-        'languageField' => 'sys_language_uid',
     ],
     'types' => [
         1 => [
@@ -48,9 +41,7 @@ return [
             'showitem' => 'start_date, end_date',
         ],
         'hidden' => [
-            'showitem' => '
-                hidden;LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.hidden
-            ',
+            'showitem' => 'hidden;LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.hidden',
         ],
     ],
     'columns' => [
