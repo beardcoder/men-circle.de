@@ -2,8 +2,8 @@
 
 namespace MensCircle\Sitepackage\Domain\Model\Newsletter;
 
-use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Newsletter extends AbstractEntity

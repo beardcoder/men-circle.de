@@ -26,7 +26,7 @@ readonly class DoubleOptInService
         }
 
         $subscription = $this->subscriptionRepository->findOneBy(['doubleOptInToken' => $token]);
-        if (!$subscription) {
+        if ($subscription === null) {
             return null;
         }
 

@@ -11,11 +11,11 @@ use Lcobucci\JWT\Validation\Constraint\SignedWith;
 
 class TokenService
 {
-    private Configuration $config;
+    private readonly Configuration $configuration;
 
     public function __construct()
     {
-        $this->config = Configuration::forSymmetricSigner(
+        $this->configuration = Configuration::forSymmetricSigner(
             new Sha256(),
             InMemory::plainText(getenv('JWT_SECRET'))
         );
@@ -28,7 +28,7 @@ class TokenService
     {
         $now = new \DateTimeImmutable();
 
-        $builder = $this->config->builder()
+        $builder = $this->configuration->builder()
             ->issuedAt($now)
             ->expiresAt($now->modify("+{$validForSeconds} seconds"));
 
@@ -36,20 +36,20 @@ class TokenService
             $builder->withClaim($key, $value);
         }
 
-        return $builder->getToken($this->config->signer(), $this->config->signingKey())->toString();
+        return $builder->getToken($this->configuration->signer(), $this->configuration->signingKey())->toString();
     }
 
     public function validateToken(string $token): bool
     {
         try {
-            $parsedToken = $this->config->parser()->parse($token);
+            $parsedToken = $this->configuration->parser()->parse($token);
             $constraints = [
-                new SignedWith($this->config->signer(), $this->config->signingKey()),
+                new SignedWith($this->configuration->signer(), $this->configuration->signingKey()),
                 new LooseValidAt(SystemClock::fromUTC()),
             ];
 
-            return $this->config->validator()->validate($parsedToken, ...$constraints);
-        } catch (\Throwable $e) {
+            return $this->configuration->validator()->validate($parsedToken, ...$constraints);
+        } catch (\Throwable) {
             return false;
         }
     }
@@ -57,14 +57,14 @@ class TokenService
     public function parseToken(string $token): ?array
     {
         try {
-            $parsedToken = $this->config->parser()->parse($token);
+            $parsedToken = $this->configuration->parser()->parse($token);
 
             if (!$this->validateToken($token)) {
                 return null;
             }
 
             return array_map(static fn($value) => $value, $parsedToken->claims()->all());
-        } catch (\Throwable $e) {
+        } catch (\Throwable) {
             return null;
         }
     }

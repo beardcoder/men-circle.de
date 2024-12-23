@@ -12,7 +12,6 @@ use MensCircle\Sitepackage\Domain\Repository\ParticipantRepository;
 use MensCircle\Sitepackage\PageTitle\EventPageTitleProvider;
 use MensCircle\Sitepackage\Service\EmailService;
 use MensCircle\Sitepackage\Service\FrontendUserService;
-use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\ResponseInterface;
 use Spatie\IcalendarGenerator\Components\Calendar;
 use Spatie\IcalendarGenerator\Components\Event as CalendarEvent;
@@ -105,8 +104,8 @@ class EventController extends ActionController
      */
     public function registrationAction(Participant $participant): ResponseInterface
     {
-        $feUser = $this->frontendUserService->mapToFrontendUser($participant);
-        $participant->setFeUser($feUser);
+        $frontendUser = $this->frontendUserService->mapToFrontendUser($participant);
+        $participant->setFeUser($frontendUser);
         $this->participantRepository->add($participant);
 
         $this->addFlashMessage(
@@ -134,7 +133,7 @@ class EventController extends ActionController
      * @throws PropagateResponseException
      * @throws \Exception
      */
-    public function iCalAction(Event $event): MessageInterface
+    public function iCalAction(Event $event): \Psr\Http\Message\ResponseInterface
     {
         $processedFile = $this->imageService->applyProcessingInstructions(
             $event->getImage()?->getOriginalResource(),
@@ -163,6 +162,7 @@ class EventController extends ActionController
             ->withBody($this->streamFactory->createStream($calendar->get()));
 
         throw new PropagateResponseException($response, 200);
+        return $this->htmlResponse();
     }
 
     /**

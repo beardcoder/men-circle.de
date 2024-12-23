@@ -32,12 +32,11 @@ class NewsletterController extends ActionController
 
     public function __construct(
         protected readonly ModuleTemplateFactory $moduleTemplateFactory,
-        private readonly PageRenderer            $pageRenderer,
-        private readonly MailerInterface         $mailer,
-        private readonly SubscriptionRepository  $subscriptionRepository, private readonly NewsletterRepository $newsletterRepository
-    )
-    {
-    }
+        private readonly PageRenderer $pageRenderer,
+        private readonly MailerInterface $mailer,
+        private readonly SubscriptionRepository $subscriptionRepository,
+        private readonly NewsletterRepository $newsletterRepository
+    ) {}
 
     public function prepareTemplate(ServerRequestInterface $serverRequest): void
     {
@@ -67,7 +66,7 @@ class NewsletterController extends ActionController
     {
         $subscriptions = $this->subscriptionRepository->findBy(['status' => SubscriptionStatusEnum::Active])->toArray();
 
-        array_walk($subscriptions, static fn (Subscription $subscription) => $newsletter->addSubscription($subscription));
+        array_walk($subscriptions, static fn(Subscription $subscription) => $newsletter->addSubscription($subscription));
 
         $emailAddresses = array_map(static fn(Subscription $subscription): Address => new Address($subscription->email, $subscription->getName()), $subscriptions);
         $this->newsletterRepository->add($newsletter);
@@ -101,8 +100,7 @@ class NewsletterController extends ActionController
 
     protected function initializeModuleTemplate(
         ServerRequestInterface $serverRequest,
-    ): ModuleTemplate
-    {
+    ): ModuleTemplate {
         return $this->moduleTemplateFactory->create($serverRequest);
     }
 }

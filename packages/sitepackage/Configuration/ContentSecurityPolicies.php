@@ -23,7 +23,6 @@ return Map::fromEntries([
             Directive::DefaultSrc,
             SourceKeyword::self,
         ),
-
         new Mutation(
             MutationMode::Extend,
             Directive::FontSrc,

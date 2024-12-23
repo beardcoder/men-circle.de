@@ -4,7 +4,6 @@ namespace MensCircle\Sitepackage\Domain\Model\Newsletter;
 
 use MensCircle\Sitepackage\Domain\Model\FrontendUser;
 use MensCircle\Sitepackage\Enum\SubscriptionStatusEnum;
-use TYPO3\CMS\Extbase\Annotation\Validate;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class Subscription extends AbstractEntity

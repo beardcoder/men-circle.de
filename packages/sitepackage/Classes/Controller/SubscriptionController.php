@@ -19,13 +19,11 @@ class SubscriptionController extends ActionController
 {
     public function __construct(
         private readonly SubscriptionRepository $subscriptionRepository,
-        private readonly TokenService           $tokenService,
-        private readonly EmailService           $emailService,
-        private readonly DoubleOptInService     $doubleOptInService,
-        private readonly FrontendUserService    $frontendUserService,
-    )
-    {
-    }
+        private readonly TokenService $tokenService,
+        private readonly EmailService $emailService,
+        private readonly DoubleOptInService $doubleOptInService,
+        private readonly FrontendUserService $frontendUserService,
+    ) {}
 
     public function formAction(?Subscription $subscription = null): ResponseInterface
     {
@@ -44,18 +42,17 @@ class SubscriptionController extends ActionController
     {
         $validationErrors = $this->validateSubscription($subscription);
 
-        if (!empty($validationErrors)) {
+        if ($validationErrors !== []) {
             return $this->jsonResponse(json_encode(['success' => false, 'errors' => $validationErrors, 'message' => 'Es sind Fehler aufgetreten. Bitte korrigiere die Eingaben.'], JSON_THROW_ON_ERROR));
         }
 
-        if ($existingSubscription = $this->subscriptionRepository->findOneBy(['email' => $subscription->email])) {
+        if ($existingSubscription = $this->subscriptionRepository->findOneBy(['email' => $subscription->email]) !== null) {
             $existingError = $this->handleExistingSubscription($existingSubscription);
 
             if ($existingError) {
                 return $this->jsonResponse(json_encode(['success' => false, 'errors' => [$existingError], 'message' => 'Es sind Fehler aufgetreten. Bitte korrigiere die Eingaben.'], JSON_THROW_ON_ERROR));
             }
         }
-
 
         $feUser = $this->frontendUserService->mapToFrontendUser($subscription);
         $subscription->feUser = $feUser;
@@ -78,7 +75,7 @@ class SubscriptionController extends ActionController
     /**
      * @throws IllegalObjectTypeException
      */
-    private function handleExistingSubscription(Subscription $existingSubscription): ?string
+    private function handleExistingSubscription(bool $existingSubscription): ?string
     {
         if ($existingSubscription->status->is(SubscriptionStatusEnum::Active)) {
             return 'Die Email-Adresse ist bereits eingetragen.';
@@ -92,15 +89,15 @@ class SubscriptionController extends ActionController
     {
         $errors = [];
 
-        if (empty($subscription->email) || !filter_var($subscription->email, FILTER_VALIDATE_EMAIL)) {
+        if (!isset($subscription->email) || ($subscription->email === '' || $subscription->email === '0') || !filter_var($subscription->email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = 'Bitte eine gültige E-Mail-Adresse eingeben.';
         }
 
-        if (empty($subscription->firstName)) {
+        if (!isset($subscription->firstName) || ($subscription->firstName === '' || $subscription->firstName === '0')) {
             $errors[] = 'Bitte einen Vornamen angeben.';
         }
 
-        if (empty($subscription->lastName)) {
+        if (!isset($subscription->lastName) || ($subscription->lastName === '' || $subscription->lastName === '0')) {
             $errors[] = 'Bitte einen Nachnamen angeben.';
         }
 
