@@ -120,8 +120,8 @@ class EventController extends ActionController
         );
 
         $this->emailService->sendMail(
-            $participant->email,
-            'doubleOptIn',
+            'hallo@mens-circle.de',
+            'MailToAdminOnRegistration',
             ['participant' => $participant],
             'Neue Anmeldung von ' . $participant->getName(),
             $this->request
