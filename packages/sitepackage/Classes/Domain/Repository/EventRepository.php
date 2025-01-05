@@ -6,7 +6,6 @@ namespace MensCircle\Sitepackage\Domain\Repository;
 
 use MensCircle\Sitepackage\Domain\Model\Event;
 use MensCircle\Sitepackage\Domain\Repository\Traits\StoragePageAgnosticTrait;
-use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
@@ -17,36 +16,24 @@ class EventRepository extends Repository
 {
     use StoragePageAgnosticTrait;
 
-    protected $defaultOrderings = ['startDate' => QueryInterface::ORDER_ASCENDING];
+    protected $defaultOrderings = [
+        'startDate' => QueryInterface::ORDER_ASCENDING,
+    ];
 
-    /**
-     * @throws \DateMalformedStringException
-     * @throws InvalidQueryException
-     */
     public function findNextEvents(): QueryResultInterface
     {
         $query = $this->createQuery();
         return $query
-            ->matching(
-                $query->logicalAnd(
-                    $query->greaterThanOrEqual('startDate', now()),
-                )
-            )
+            ->matching($query->logicalAnd($query->greaterThanOrEqual('startDate', now())))
             ->execute();
     }
 
-    /**
-     * @throws \DateMalformedStringException
-     * @throws InvalidQueryException
-     */
     public function findNextUpcomingEvent(): ?Event
     {
         $query = $this->createQuery();
 
         return $query
-            ->matching(
-                $query->greaterThanOrEqual('startDate', now())
-            )
+            ->matching($query->greaterThanOrEqual('startDate', now()))
             ->setLimit(1)
             ->execute()
             ->getFirst();

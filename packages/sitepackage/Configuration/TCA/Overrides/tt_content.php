@@ -11,14 +11,14 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 call_user_func(static function (): void {
     $extensionKey = 'sitepackage';
     $signature = static fn(string $plugin): string => strtolower(
-        sprintf('%s_%s', str_replace('_', '', $extensionKey), $plugin)
+        sprintf('%s_%s', str_replace('_', '', $extensionKey), $plugin),
     );
 
     ExtensionManagementUtility::addTcaSelectItemGroup(
         'tt_content',
         'CType',
         $extensionKey,
-        'LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:extension.title'
+        'LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:extension.title',
     );
 
     ExtensionUtility::registerPlugin(
@@ -27,7 +27,7 @@ call_user_func(static function (): void {
         'LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:plugin.event_list',
         'tx-sitepackage-plugin-event-list',
         $extensionKey,
-        'LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:plugin.event_list.description'
+        'LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:plugin.event_list.description',
     );
     ExtensionUtility::registerPlugin(
         ucfirst($extensionKey),
@@ -35,7 +35,7 @@ call_user_func(static function (): void {
         'LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:plugin.event_detail',
         'tx-sitepackage-plugin-event-list',
         $extensionKey,
-        'LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:plugin.event_detail.description'
+        'LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:plugin.event_detail.description',
     );
 
     ExtensionUtility::registerPlugin(
@@ -44,22 +44,20 @@ call_user_func(static function (): void {
         'LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:plugin.newsletter',
         'tx-sitepackage-plugin-newsletter',
         $extensionKey,
-        'LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:plugin.newsletter.description'
+        'LLL:EXT:sitepackage/Resources/Private/Language/locallang_be.xlf:plugin.newsletter.description',
     );
 
     ExtensionManagementUtility::addToAllTCAtypes(
         'tt_content',
         'pi_flexform',
-        implode(',', [
-            $signature('EventList'),
-        ]),
-        'after:header'
+        implode(',', [$signature('EventList')]),
+        'after:header',
     );
 
     ExtensionManagementUtility::addPiFlexFormValue(
         '*',
         'FILE:EXT:sitepackage/Configuration/FlexForms/flexform_event_list.xml',
-        $signature('EventList')
+        $signature('EventList'),
     );
 
     $GLOBALS['TCA']['tt_content']['types'][$signature('EventList')] = $GLOBALS['TCA']['tt_content']['types']['header'];
@@ -67,7 +65,7 @@ call_user_func(static function (): void {
         'tt_content',
         'pi_flexform, pages',
         $signature('EventList'),
-        'after:subheader'
+        'after:subheader',
     );
 
     GeneralUtility::makeInstance(Registry::class)->configureContainer(
@@ -78,14 +76,21 @@ call_user_func(static function (): void {
             '', // description
             [
                 [
-                    ['name' => 'Header', 'colPos' => 210, 'colspan' => 3],
+                    [
+                        'name' => 'Header',
+                        'colPos' => 210,
+                        'colspan' => 3,
+                    ],
                 ],
                 [
-                    ['name' => 'Features', 'colPos' => 200],
+                    [
+                        'name' => 'Features',
+                        'colPos' => 200,
+                    ],
                 ],
-            ] // grid configuration
+            ], // grid configuration
         )
-        )->setIcon('container-1col')
+        )->setIcon('container-1col'),
     );
 
     GeneralUtility::makeInstance(Registry::class)->configureContainer(
@@ -96,10 +101,13 @@ call_user_func(static function (): void {
             '', // description
             [
                 [
-                    ['name' => 'Elemente', 'colPos' => 200],
+                    [
+                        'name' => 'Elemente',
+                        'colPos' => 200,
+                    ],
                 ],
-            ] // grid configuration
+            ], // grid configuration
         )
-        )->setIcon('container-1col')
+        )->setIcon('container-1col'),
     );
 });

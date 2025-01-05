@@ -12,8 +12,6 @@ use MensCircle\Sitepackage\Service\TokenService;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
-use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
 
 class SubscriptionController extends ActionController
 {
@@ -33,24 +31,29 @@ class SubscriptionController extends ActionController
         return $this->htmlResponse();
     }
 
-    /**
-     * @throws \DateMalformedStringException
-     * @throws IllegalObjectTypeException
-     * @throws \JsonException
-     */
     public function subscribeAction(Subscription $subscription): ResponseInterface
     {
         $validationErrors = $this->validateSubscription($subscription);
 
         if ($validationErrors !== []) {
-            return $this->jsonResponse(json_encode(['success' => false, 'errors' => $validationErrors, 'message' => 'Es sind Fehler aufgetreten. Bitte korrigiere die Eingaben.'], JSON_THROW_ON_ERROR));
+            return $this->jsonResponse(json_encode([
+                'success' => false,
+                'errors' => $validationErrors,
+                'message' => 'Es sind Fehler aufgetreten. Bitte korrigiere die Eingaben.',
+            ], JSON_THROW_ON_ERROR));
         }
 
-        if ($existingSubscription = $this->subscriptionRepository->findOneBy(['email' => $subscription->email]) !== null) {
+        if ($existingSubscription = $this->subscriptionRepository->findOneBy([
+            'email' => $subscription->email,
+        ]) !== null) {
             $existingError = $this->handleExistingSubscription($existingSubscription);
 
             if ($existingError) {
-                return $this->jsonResponse(json_encode(['success' => false, 'errors' => [$existingError], 'message' => 'Es sind Fehler aufgetreten. Bitte korrigiere die Eingaben.'], JSON_THROW_ON_ERROR));
+                return $this->jsonResponse(json_encode([
+                    'success' => false,
+                    'errors' => [$existingError],
+                    'message' => 'Es sind Fehler aufgetreten. Bitte korrigiere die Eingaben.',
+                ], JSON_THROW_ON_ERROR));
             }
         }
 
@@ -64,17 +67,32 @@ class SubscriptionController extends ActionController
         $this->emailService->sendMail(
             $subscription->email,
             'doubleOptIn',
-            ['subscription' => $subscription],
+            [
+                'subscription' => $subscription,
+            ],
             'Bestätige deine Anmeldung für den Newsletter',
-            $this->request
+            $this->request,
         );
 
-        return $this->jsonResponse(json_encode(['success' => true, 'errors' => [], 'message' => 'Danke für die Anmeldung! Bitte bestätige deine E-Mail-Adresse über den Link, den wir dir gesendet haben.'], JSON_THROW_ON_ERROR));
+        return $this->jsonResponse(json_encode([
+            'success' => true,
+            'errors' => [],
+            'message' => 'Danke für die Anmeldung! Bitte bestätige deine E-Mail-Adresse über den Link, den wir dir gesendet haben.',
+        ], JSON_THROW_ON_ERROR));
     }
 
-    /**
-     * @throws IllegalObjectTypeException
-     */
+    public function doubleOptInAction(string $token): ResponseInterface
+    {
+        $subscription = $this->doubleOptInService->processDoubleOptIn($token);
+        $this->view->assign('subscription', $subscription);
+        return $this->htmlResponse();
+    }
+
+    public function unsubscribeAction(string $token): ResponseInterface
+    {
+        return $this->htmlResponse();
+    }
+
     private function handleExistingSubscription(bool $existingSubscription): ?string
     {
         if ($existingSubscription->status->is(SubscriptionStatusEnum::Active)) {
@@ -89,34 +107,21 @@ class SubscriptionController extends ActionController
     {
         $errors = [];
 
-        if (!isset($subscription->email) || ($subscription->email === '' || $subscription->email === '0') || !filter_var($subscription->email, FILTER_VALIDATE_EMAIL)) {
+        if (! isset($subscription->email) || ($subscription->email === '' || $subscription->email === '0') || ! filter_var(
+            $subscription->email,
+            FILTER_VALIDATE_EMAIL,
+        )) {
             $errors[] = 'Bitte eine gültige E-Mail-Adresse eingeben.';
         }
 
-        if (!isset($subscription->firstName) || ($subscription->firstName === '' || $subscription->firstName === '0')) {
+        if (! isset($subscription->firstName) || ($subscription->firstName === '' || $subscription->firstName === '0')) {
             $errors[] = 'Bitte einen Vornamen angeben.';
         }
 
-        if (!isset($subscription->lastName) || ($subscription->lastName === '' || $subscription->lastName === '0')) {
+        if (! isset($subscription->lastName) || ($subscription->lastName === '' || $subscription->lastName === '0')) {
             $errors[] = 'Bitte einen Nachnamen angeben.';
         }
 
         return $errors;
-    }
-
-    /**
-     * @throws UnknownObjectException
-     * @throws IllegalObjectTypeException
-     */
-    public function doubleOptInAction(string $token): ResponseInterface
-    {
-        $subscription = $this->doubleOptInService->processDoubleOptIn($token);
-        $this->view->assign('subscription', $subscription);
-        return $this->htmlResponse();
-    }
-
-    public function unsubscribeAction(string $token): ResponseInterface
-    {
-        return $this->htmlResponse();
     }
 }

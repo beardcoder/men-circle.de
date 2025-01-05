@@ -9,9 +9,13 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 class FrontendUser extends AbstractEntity
 {
     protected string $firstName = '';
+
     protected string $lastName = '';
+
     protected string $email = '';
+
     protected string $username = '';
+
     protected string $password = '';
 
     public function getFirstName(): string

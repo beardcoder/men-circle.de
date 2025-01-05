@@ -9,9 +9,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class UuidViewHelper extends AbstractViewHelper
 {
-    /**
-     * @return string
-     */
     #[\Override]
     public function render(): string
     {

@@ -41,6 +41,7 @@
     "roave/security-advisories": "dev-latest",
     "ssch/typo3-rector": "dev-main",
     "symfony/var-dumper": "^7.1",
+    "symplify/easy-coding-standard": "^12.5",
     "typo3/cms-belog": ">=13.3",
     "typo3/cms-lowlevel": ">=13.3",
     "typo3/cms-styleguide": "^13.4",

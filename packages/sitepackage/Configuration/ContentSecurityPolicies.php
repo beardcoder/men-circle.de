@@ -18,16 +18,8 @@ return Map::fromEntries([
     // NOTICE: When using `MutationMode::Set` existing declarations will be overridden
 
     new MutationCollection(
-        new Mutation(
-            MutationMode::Set,
-            Directive::DefaultSrc,
-            SourceKeyword::self,
-        ),
-        new Mutation(
-            MutationMode::Extend,
-            Directive::FontSrc,
-            SourceScheme::data,
-        ),
+        new Mutation(MutationMode::Set, Directive::DefaultSrc, SourceKeyword::self),
+        new Mutation(MutationMode::Extend, Directive::FontSrc, SourceScheme::data),
 
         // Extends the ancestor directive ('default-src'),
         // thus reuses 'self' and adds additional sources

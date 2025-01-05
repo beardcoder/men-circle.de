@@ -12,5 +12,7 @@ class ParticipantRepository extends Repository
 {
     use StoragePageAgnosticTrait;
 
-    protected $defaultOrderings = ['start_date' => QueryInterface::ORDER_ASCENDING];
+    protected $defaultOrderings = [
+        'start_date' => QueryInterface::ORDER_ASCENDING,
+    ];
 }

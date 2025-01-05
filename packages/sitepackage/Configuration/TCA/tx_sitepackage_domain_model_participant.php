@@ -72,7 +72,10 @@ return [
                 'foreign_table' => 'fe_users',
                 'minitems' => 0,
                 'items' => [
-                    ['label' => null, 'value' => ''],
+                    [
+                        'label' => null,
+                        'value' => '',
+                    ],
                 ],
                 'default' => null,
             ],

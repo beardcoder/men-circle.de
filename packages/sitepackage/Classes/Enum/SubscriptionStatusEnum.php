@@ -14,6 +14,6 @@ enum SubscriptionStatusEnum: int
 
     public function is(self ...$statuses): bool
     {
-        return in_array($this, $statuses, true);
+        return \in_array($this, $statuses, true);
     }
 }

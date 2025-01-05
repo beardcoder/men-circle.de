@@ -21,32 +21,54 @@ use TYPO3\CMS\Extbase\Service\ImageService;
 class Event extends AbstractEntity
 {
     public string $slug;
+
     public string $title;
+
     public string $description;
+
     public ?\DateTime $startDate = null;
+
     public ?\DateTime $endDate = null;
+
     public ?\DateTime $crdate = null;
+
     public string $place;
+
     public string $address;
+
     public string $zip;
+
     public string $city;
+
     public string $callUrl = '';
+
     public bool $cancelled = false;
+
     public int $attendanceMode = 0;
+
     public float $longitude = 0.0;
+
     public float $latitude = 0.0;
 
     #[Extbase\ORM\Lazy()]
     protected FileReference|LazyLoadingProxy $image;
 
-    /** @var ObjectStorage<Participant> */
+    /**
+     * @var ObjectStorage<Participant>
+     */
     #[Extbase\ORM\Lazy()]
-    #[Extbase\ORM\Cascade(['value' => 'remove'])]
+    #[Extbase\ORM\Cascade([
+        'value' => 'remove',
+    ])]
     protected ObjectStorage $registration;
 
-    /** @var ObjectStorage<Participant> */
+    /**
+     * @var ObjectStorage<Participant>
+     */
     #[Extbase\ORM\Lazy()]
-    #[Extbase\ORM\Cascade(['value' => 'remove'])]
+    #[Extbase\ORM\Cascade([
+        'value' => 'remove',
+    ])]
     protected ObjectStorage $participants;
 
     public function __construct()
@@ -90,14 +112,20 @@ class Event extends AbstractEntity
         $thisUrl = $uriBuilder->reset()
             ->setCreateAbsoluteUri(true)
             ->setTargetPageUid(3)
-            ->uriFor('detail', ['event' => $this->uid]);
+            ->uriFor('detail', [
+                'event' => $this->uid,
+            ]);
 
         $imageService = GeneralUtility::makeInstance(ImageService::class);
-        assert($imageService instanceof ImageService);
+        \assert($imageService instanceof ImageService);
 
         $processedFile = $imageService->applyProcessingInstructions(
-            $this->getImage()->getOriginalResource(),
-            ['width' => '600c', 'height' => '600c']
+            $this->getImage()
+                ->getOriginalResource(),
+            [
+                'width' => '600c',
+                'height' => '600c',
+            ],
         );
 
         $place = $this->isOffline() ? Schema::place()
@@ -107,14 +135,17 @@ class Event extends AbstractEntity
                     ->streetAddress($this->address)
                     ->addressLocality($this->city)
                     ->postalCode($this->zip)
-                    ->addressCountry('DE')
+                    ->addressCountry('DE'),
             ) : Schema::place()->url($this->callUrl);
 
         $imageUri = $imageService->getImageUri($processedFile, true);
-        $baseUrl = $uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(1)->buildFrontendUri();
+        $baseUrl = $uriBuilder->reset()
+            ->setCreateAbsoluteUri(true)
+            ->setTargetPageUid(1)
+            ->buildFrontendUri();
 
         return Schema::event()
-            ->name(sprintf('%s am %s', $this->title, $this->startDate->format('d.m.Y')))
+            ->name(\sprintf('%s am %s', $this->title, $this->startDate->format('d.m.Y')))
             ->description($this->description)
             ->image($imageUri)
             ->startDate($this->startDate)
@@ -128,7 +159,7 @@ class Event extends AbstractEntity
                     ->price(0)
                     ->availability(ItemAvailability::InStock)
                     ->url($thisUrl)
-                    ->priceCurrency('EUR')
+                    ->priceCurrency('EUR'),
             )
             ->organizer(Schema::person()->name('Markus Sommer')->url($baseUrl))
             ->performer(Schema::person()->name('Markus Sommer')->url($baseUrl));
@@ -152,7 +183,7 @@ class Event extends AbstractEntity
 
     public function getFullAddress(): string
     {
-        return "$this->address, $this->zip $this->city, Deutschland";
+        return "{$this->address}, {$this->zip} {$this->city}, Deutschland";
     }
 
     public function setParticipants(ObjectStorage $objectStorage): void

@@ -15,7 +15,6 @@ use MensCircle\Sitepackage\Service\FrontendUserService;
 use Psr\Http\Message\ResponseInterface;
 use Spatie\IcalendarGenerator\Components\Calendar;
 use Spatie\IcalendarGenerator\Components\Event as CalendarEvent;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Uid\Uuid;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
@@ -23,9 +22,6 @@ use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException;
-use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
-use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Service\ImageService;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -44,10 +40,6 @@ class EventController extends ActionController
         private readonly PersistenceManager $persistenceManager,
     ) {}
 
-    /**
-     * @throws \DateMalformedStringException
-     * @throws InvalidQueryException
-     */
     public function listAction(): ResponseInterface
     {
         $this->view->assign('events', $this->eventRepository->findNextEvents());
@@ -55,30 +47,24 @@ class EventController extends ActionController
         return $this->htmlResponse();
     }
 
-    /**
-     * @throws \DateMalformedStringException
-     * @throws InvalidQueryException
-     */
     public function upcomingAction(?Event $event = null): ResponseInterface
     {
         $upcomingEvent = $event ?? $this->eventRepository->findNextUpcomingEvent();
 
-        if (is_null($upcomingEvent)) {
+        if ($upcomingEvent === null) {
             return $this->handleEventNotFoundError();
         }
 
-        return $this->redirect(actionName: 'detail', arguments: ['event' => $upcomingEvent]);
+        return $this->redirect(actionName: 'detail', arguments: [
+            'event' => $upcomingEvent,
+        ]);
     }
 
-    /**
-     * @throws \DateMalformedStringException
-     * @throws InvalidQueryException
-     */
     public function detailAction(?Event $event = null, ?Participant $participant = null): ResponseInterface
     {
         $participantToAssign = $participant ?? GeneralUtility::makeInstance(Participant::class);
 
-        if (is_null($event)) {
+        if ($event === null) {
             return $this->handleEventNotFoundError();
         }
 
@@ -92,18 +78,11 @@ class EventController extends ActionController
         return $this->htmlResponse();
     }
 
-    /**
-     * @throws NoSuchArgumentException
-     */
     public function initializeRegistrationAction(): void
     {
         $this->setRegistrationFieldValuesToArguments();
     }
 
-    /**
-     * @throws IllegalObjectTypeException
-     * @throws TransportExceptionInterface
-     */
     public function registrationAction(Participant $participant): ResponseInterface
     {
         $frontendUser = $this->frontendUserService->mapToFrontendUser($participant);
@@ -115,32 +94,38 @@ class EventController extends ActionController
             LocalizationUtility::translate(
                 'registration.success',
                 'sitepackage',
-                [$participant->event->startDate->format('d.m.Y')]
-            )
+                [$participant->event->startDate->format('d.m.Y')],
+            ),
         );
 
         $this->emailService->sendMail(
             'hallo@mens-circle.de',
             'MailToAdminOnRegistration',
-            ['participant' => $participant],
+            [
+                'participant' => $participant,
+            ],
             'Neue Anmeldung von ' . $participant->getName(),
-            $this->request
+            $this->request,
         );
 
-        $redirectUrl = $this->uriBuilder->reset()->setTargetPageUid(3)->setNoCache(true)->uriFor('detail', ['event' => $participant->event->getUid()]);
+        $redirectUrl = $this->uriBuilder->reset()
+            ->setTargetPageUid(3)
+            ->setNoCache(true)
+            ->uriFor('detail', [
+                'event' => $participant->event->getUid(),
+            ]);
 
         return $this->redirectToUri($redirectUrl);
     }
 
-    /**
-     * @throws PropagateResponseException
-     * @throws \Exception
-     */
     public function iCalAction(Event $event): \Psr\Http\Message\ResponseInterface
     {
         $processedFile = $this->imageService->applyProcessingInstructions(
             $event->getImage()?->getOriginalResource(),
-            ['width' => '600c', 'height' => '600c']
+            [
+                'width' => '600c',
+                'height' => '600c',
+            ],
         );
 
         $calendarEvent = CalendarEvent::create()
@@ -153,7 +138,8 @@ class EventController extends ActionController
             ->organizer('markus@letsbenow.de', 'Markus Sommer');
 
         if ($event->isOffline() && $event->latitude && $event->longitude) {
-            $calendarEvent->address($event->getFullAddress(), $event->place)->coordinates($event->latitude, $event->longitude);
+            $calendarEvent->address($event->getFullAddress(), $event->place)
+                ->coordinates($event->latitude, $event->longitude);
         }
 
         $calendar = Calendar::create($event->getLongTitle())->event($calendarEvent);
@@ -168,18 +154,15 @@ class EventController extends ActionController
         return $this->htmlResponse();
     }
 
-    /**
-     * @throws NoSuchArgumentException
-     */
     protected function setRegistrationFieldValuesToArguments(): void
     {
         $arguments = $this->request->getArguments();
-        if (!isset($arguments['event'])) {
+        if (! isset($arguments['event'])) {
             return;
         }
 
         $event = $this->eventRepository->findByUid((int)$this->request->getArgument('event'));
-        if (!$event instanceof Event) {
+        if (! $event instanceof Event) {
             return;
         }
 
@@ -197,13 +180,18 @@ class EventController extends ActionController
 
     private function getUrlForEvent(Event $event): string
     {
-        return $this->uriBuilder->reset()->setCreateAbsoluteUri(true)->setTargetPageUid(3)->uriFor('detail', ['event' => $event->getUid()]);
+        return $this->uriBuilder->reset()
+            ->setCreateAbsoluteUri(true)
+            ->setTargetPageUid(3)
+            ->uriFor('detail', [
+                'event' => $event->getUid(),
+            ]);
     }
 
     private function mapParticipantToFeUser(Participant $participant): FrontendUser
     {
         $frontendUser = GeneralUtility::makeInstance(FrontendUser::class);
-        assert($frontendUser instanceof FrontendUser);
+        \assert($frontendUser instanceof FrontendUser);
 
         $frontendUser->setEmail($participant->getEmail());
         $frontendUser->setFirstName($participant->getFirstName());
@@ -218,42 +206,48 @@ class EventController extends ActionController
     {
         $this->eventPageTitleProvider->setTitle($event->getLongTitle());
 
-        $processedFile = $this->imageService->applyProcessingInstructions($event->getImage()->getOriginalResource(), ['width' => '600c', 'height' => '600c']);
+        $processedFile = $this->imageService->applyProcessingInstructions($event->getImage()->getOriginalResource(), [
+            'width' => '600c',
+            'height' => '600c',
+        ]);
         $imageUri = $this->imageService->getImageUri($processedFile, true);
 
         $this->setPageMetaProperty('og:title', $event->getLongTitle());
         $this->setPageMetaProperty('og:description', $event->description);
-        $this->setPageMetaProperty('og:image', $imageUri, ['width' => 600, 'height' => 600, 'alt' => $event->getImage()->getOriginalResource()->getAlternative()]);
+        $this->setPageMetaProperty('og:image', $imageUri, [
+            'width' => 600,
+            'height' => 600,
+            'alt' => $event->getImage()
+                ->getOriginalResource()
+                ->getAlternative(),
+        ]);
         $this->setPageMetaProperty('og:url', $this->getUrlForEvent($event));
     }
 
     private function setPageMetaProperty(string $property, string $value, array $additionalData = []): void
     {
-        $this->metaTagManagerRegistry->getManagerForProperty($property)->addProperty($property, $value, $additionalData);
+        $this->metaTagManagerRegistry->getManagerForProperty($property)
+            ->addProperty($property, $value, $additionalData);
     }
 
-    /**
-     * @throws \DateMalformedStringException
-     * @throws InvalidQueryException
-     */
     private function handleEventNotFoundError(): ResponseInterface
     {
         $upcomingEvent = $this->eventRepository->findNextUpcomingEvent();
-        if (is_null($upcomingEvent)) {
+        if ($upcomingEvent === null) {
             $site = $this->request->getAttribute('site');
-            assert($site instanceof Site);
+            \assert($site instanceof Site);
 
             return $this->redirectToUri($site->getBase(), 301);
         }
 
-        $this->addFlashMessage(
-            LocalizationUtility::translate(
-                'event.not_found',
-                'sitepackage',
-            )
-        );
+        $this->addFlashMessage(LocalizationUtility::translate('event.not_found', 'sitepackage'));
 
-        $redirectUrl = $this->uriBuilder->reset()->setTargetPageUid(3)->setNoCache(true)->uriFor('detail', ['event' => $upcomingEvent]);
+        $redirectUrl = $this->uriBuilder->reset()
+            ->setTargetPageUid(3)
+            ->setNoCache(true)
+            ->uriFor('detail', [
+                'event' => $upcomingEvent,
+            ]);
 
         return $this->redirectToUri($redirectUrl);
     }

@@ -11,10 +11,8 @@ use MensCircle\Sitepackage\Domain\Repository\EventNotificationRepository;
 use MensCircle\Sitepackage\Domain\Repository\EventRepository;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mime\Address;
 use TYPO3\CMS\Backend\Attribute\AsController;
-use TYPO3\CMS\Backend\Routing\Exception\RouteNotFoundException;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
@@ -26,7 +24,6 @@ use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 
 #[AsController]
 class EventNotificationController extends ActionController
@@ -39,55 +36,12 @@ class EventNotificationController extends ActionController
         private readonly EventNotificationRepository $eventNotificationRepository,
         private readonly MailerInterface $mailer,
         private readonly UriBuilder $backendUriBuilder,
-        private readonly EventRepository $eventRepository
+        private readonly EventRepository $eventRepository,
     ) {}
 
     public function prepareTemplate(ServerRequestInterface $serverRequest): void
     {
         $this->moduleTemplate = $this->moduleTemplateFactory->create($serverRequest);
-    }
-
-    /**
-     * @throws RouteNotFoundException
-     */
-    private function setDocHeader(ServerRequestInterface $serverRequest): void
-    {
-        $params = $serverRequest->getQueryParams();
-        $menuRegistry = $this->moduleTemplate->getDocHeaderComponent()->getMenuRegistry();
-
-        // Create a menu and set its identifier
-        $menu = $menuRegistry->makeMenu();
-        $menu->setIdentifier('select-event');
-
-        // Fetch events
-        $events = $this->eventRepository->findAll();
-        if (empty($events)) {
-            return; // Exit early if no events exist
-        }
-
-        // Build menu items for each event
-        foreach ($events as $event) {
-            if (!$event instanceof Event) {
-                continue; // Skip invalid items if necessary
-            }
-
-            $menu->addMenuItem(
-                $menu->makeMenuItem()
-                    ->setTitle($event->getLongTitle())
-                    ->setActive(
-                        isset($params['event']) && $event->getUid() === (int)$params['event']
-                    )
-                    ->setHref(
-                        $this->backendUriBuilder->buildUriFromRoute(
-                            'events_notification.EventNotification_new',
-                            ['event' => $event->getUid()]
-                        )
-                    )
-            );
-        }
-
-        // Add menu to registry
-        $menuRegistry->addMenu($menu);
     }
 
     public function listAction(): ResponseInterface
@@ -99,9 +53,6 @@ class EventNotificationController extends ActionController
         return $this->htmlResponse($this->moduleTemplate->render('Backend/EventNotification/List'));
     }
 
-    /**
-     * @throws RouteNotFoundException
-     */
     public function newAction(Event $event, ?EventNotification $eventNotification = null): ResponseInterface
     {
         $this->prepareTemplate($this->request);
@@ -111,7 +62,7 @@ class EventNotificationController extends ActionController
 
         $this->moduleTemplate->assign('event', $event);
         $eventNotification ??= GeneralUtility::makeInstance(EventNotification::class);
-        assert($eventNotification instanceof EventNotification);
+        \assert($eventNotification instanceof EventNotification);
 
         $eventNotification->event = $event;
         $this->moduleTemplate->assign('eventNotification', $eventNotification);
@@ -120,10 +71,6 @@ class EventNotificationController extends ActionController
         return $this->htmlResponse($this->moduleTemplate->render('Backend/EventNotification/New'));
     }
 
-    /**
-     * @throws TransportExceptionInterface
-     * @throws IllegalObjectTypeException
-     */
     public function sendAction(EventNotification $eventNotification): ResponseInterface
     {
         $event = $eventNotification->event;
@@ -131,7 +78,13 @@ class EventNotificationController extends ActionController
         $this->eventNotificationRepository->add($eventNotification);
         $objectStorage = $event->getParticipants();
 
-        $emailAddresses = array_map(static fn(Participant $participant): Address => new Address($participant->getEmail(), $participant->getName()), $objectStorage->toArray());
+        $emailAddresses = array_map(
+            static fn(Participant $participant): Address => new Address(
+                $participant->getEmail(),
+                $participant->getName(),
+            ),
+            $objectStorage->toArray(),
+        );
 
         $fluidEmail = new FluidEmail();
         $fluidEmail
@@ -154,16 +107,56 @@ class EventNotificationController extends ActionController
             '',
             'Email Versendet',
             ContextualFeedbackSeverity::OK,
-            true
+            true,
         );
         $flashMessageQueue->addMessage($flashMessage);
 
         return $this->redirect('list');
     }
 
-    protected function initializeModuleTemplate(
-        ServerRequestInterface $serverRequest,
-    ): ModuleTemplate {
+    protected function initializeModuleTemplate(ServerRequestInterface $serverRequest): ModuleTemplate
+    {
         return $this->moduleTemplateFactory->create($serverRequest);
+    }
+
+    private function setDocHeader(ServerRequestInterface $serverRequest): void
+    {
+        $params = $serverRequest->getQueryParams();
+        $menuRegistry = $this->moduleTemplate->getDocHeaderComponent()
+            ->getMenuRegistry();
+
+        // Create a menu and set its identifier
+        $menu = $menuRegistry->makeMenu();
+        $menu->setIdentifier('select-event');
+
+        // Fetch events
+        $events = $this->eventRepository->findAll();
+        if (empty($events)) {
+            return; // Exit early if no events exist
+        }
+
+        // Build menu items for each event
+        foreach ($events as $event) {
+            if (! $event instanceof Event) {
+                continue; // Skip invalid items if necessary
+            }
+
+            $menu->addMenuItem(
+                $menu->makeMenuItem()
+                    ->setTitle($event->getLongTitle())
+                    ->setActive(isset($params['event']) && $event->getUid() === (int)$params['event'])
+                    ->setHref(
+                        $this->backendUriBuilder->buildUriFromRoute(
+                            'events_notification.EventNotification_new',
+                            [
+                                'event' => $event->getUid(),
+                            ],
+                        ),
+                    ),
+            );
+        }
+
+        // Add menu to registry
+        $menuRegistry->addMenu($menu);
     }
 }

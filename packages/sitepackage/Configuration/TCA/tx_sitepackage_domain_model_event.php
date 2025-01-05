@@ -133,7 +133,8 @@ return [
             'exclude' => true,
             'config' => [
                 'type' => 'datetime',
-                'default' => now()->getTimestamp(),
+                'default' => now()
+                    ->getTimestamp(),
                 'required' => true,
             ],
         ],
@@ -142,7 +143,8 @@ return [
             'exclude' => true,
             'config' => [
                 'type' => 'datetime',
-                'default' => now()->getTimestamp(),
+                'default' => now()
+                    ->getTimestamp(),
                 'required' => true,
             ],
         ],

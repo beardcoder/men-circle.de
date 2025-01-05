@@ -66,7 +66,10 @@ return [
                 'foreign_table' => 'fe_users',
                 'minitems' => 0,
                 'items' => [
-                    ['label' => null, 'value' => ''],
+                    [
+                        'label' => null,
+                        'value' => '',
+                    ],
                 ],
                 'default' => null,
             ],
@@ -117,7 +120,10 @@ return [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'items' => array_map(static fn(SubscriptionStatusEnum $subscriptionStatusEnum): array => ['label' => $subscriptionStatusEnum->name, 'value' => $subscriptionStatusEnum->value], SubscriptionStatusEnum::cases()),
+                'items' => array_map(static fn(SubscriptionStatusEnum $subscriptionStatusEnum): array => [
+                    'label' => $subscriptionStatusEnum->name,
+                    'value' => $subscriptionStatusEnum->value,
+                ], SubscriptionStatusEnum::cases()),
                 'default' => SubscriptionStatusEnum::Pending->value,
             ],
         ],

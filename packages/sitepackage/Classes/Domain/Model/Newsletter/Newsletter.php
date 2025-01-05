@@ -9,8 +9,12 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 class Newsletter extends AbstractEntity
 {
     public string $subject = '';
+
     public string $message = '';
-    /** @var ObjectStorage<Subscription> */
+
+    /**
+     * @var ObjectStorage<Subscription>
+     */
     #[Extbase\ORM\Lazy()]
     protected ObjectStorage $subscriptions;
 
@@ -19,7 +23,9 @@ class Newsletter extends AbstractEntity
         $this->subscriptions = new ObjectStorage();
     }
 
-    /** @param ObjectStorage<Subscription> $objectStorage */
+    /**
+     * @param ObjectStorage<Subscription> $objectStorage
+     */
     public function setSubscriptions(ObjectStorage $objectStorage): void
     {
         $this->subscriptions = $objectStorage;

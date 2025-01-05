@@ -14,25 +14,35 @@ call_user_func(
         ExtensionUtility::configurePlugin(
             ucfirst($extensionKey),
             'EventList',
-            [EventController::class => 'list'],
+            [
+                EventController::class => 'list',
+            ],
             [],
-            ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+            ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
         );
 
         ExtensionUtility::configurePlugin(
             ucfirst($extensionKey),
             'EventDetail',
-            [EventController::class => ['detail', 'registration', 'iCal', 'upcoming']],
-            [EventController::class => ['registration', 'iCal', 'upcoming']],
-            ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+            [
+                EventController::class => ['detail', 'registration', 'iCal', 'upcoming'],
+            ],
+            [
+                EventController::class => ['registration', 'iCal', 'upcoming'],
+            ],
+            ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
         );
 
         ExtensionUtility::configurePlugin(
             ucfirst($extensionKey),
             'Newsletter',
-            [SubscriptionController::class => ['form', 'subscribe', 'doubleOptIn']],
-            [SubscriptionController::class => ['subscribe', 'doubleOptIn']],
-            ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+            [
+                SubscriptionController::class => ['form', 'subscribe', 'doubleOptIn'],
+            ],
+            [
+                SubscriptionController::class => ['subscribe', 'doubleOptIn'],
+            ],
+            ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
         );
 
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['backend'] = [
@@ -42,5 +52,5 @@ call_user_func(
             'loginHighlightColor' => '#b76f2b',
             'loginFootnote' => '© 2023-2024 Build with ❤️ and mindfulness in Bavaria',
         ];
-    }
+    },
 );

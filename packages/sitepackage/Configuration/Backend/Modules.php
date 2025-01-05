@@ -9,7 +9,9 @@ return [
     'events' => [
         'labels' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_mod_events.xlf',
         'iconIdentifier' => 'event-module',
-        'position' => ['after' => 'web'],
+        'position' => [
+            'after' => 'web',
+        ],
     ],
     'events_notification' => [
         'parent' => 'events',

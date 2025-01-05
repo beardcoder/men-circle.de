@@ -15,7 +15,10 @@ enum EventAttendanceModeEnum: int
     {
         return array_map(static fn($case): array => [
             'value' => $case->value,
-            'label' => sprintf('LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.attendance_mode.options.%s', strtolower($case->name)),
+            'label' => \sprintf(
+                'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.attendance_mode.options.%s',
+                strtolower($case->name),
+            ),
         ], self::cases());
     }
 
@@ -26,5 +29,4 @@ enum EventAttendanceModeEnum: int
             EventAttendanceModeEnum::ONLINE => EventAttendanceModeEnumeration::OnlineEventAttendanceMode,
         };
     }
-
 }

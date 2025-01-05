@@ -11,10 +11,18 @@ use TYPO3\CMS\Core\Mail\MailerInterface;
 
 readonly class EmailService
 {
-    public function __construct(private MailerInterface $mailer, private LoggerInterface $logger) {}
+    public function __construct(
+        private MailerInterface $mailer,
+        private LoggerInterface $logger,
+    ) {}
 
-    public function sendMail(string $toEmail, string $template, array $variables, string $subject, ServerRequestInterface $serverRequest): void
-    {
+    public function sendMail(
+        string $toEmail,
+        string $template,
+        array $variables,
+        string $subject,
+        ServerRequestInterface $serverRequest,
+    ): void {
         $fluidEmail = (new FluidEmail())
             ->to($toEmail)
             ->from(new Address('hallo@mens-circle.de', 'Men\'s Circle Website'))

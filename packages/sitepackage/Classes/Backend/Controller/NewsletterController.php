@@ -11,7 +11,6 @@ use MensCircle\Sitepackage\Domain\Repository\Newsletter\SubscriptionRepository;
 use MensCircle\Sitepackage\Enum\SubscriptionStatusEnum;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mime\Address;
 use TYPO3\CMS\Backend\Attribute\AsController;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
@@ -35,7 +34,7 @@ class NewsletterController extends ActionController
         private readonly PageRenderer $pageRenderer,
         private readonly MailerInterface $mailer,
         private readonly SubscriptionRepository $subscriptionRepository,
-        private readonly NewsletterRepository $newsletterRepository
+        private readonly NewsletterRepository $newsletterRepository,
     ) {}
 
     public function prepareTemplate(ServerRequestInterface $serverRequest): void
@@ -50,7 +49,9 @@ class NewsletterController extends ActionController
         $this->pageRenderer->addCssFile('EXT:sitepackage/Resources/Public/Backend/Styles/bootstrap.css');
         $this->moduleTemplate->setTitle('Newsletter');
 
-        $subscriptions = $this->subscriptionRepository->findBy(['status' => SubscriptionStatusEnum::Active]);
+        $subscriptions = $this->subscriptionRepository->findBy([
+            'status' => SubscriptionStatusEnum::Active,
+        ]);
         $newsletter ??= GeneralUtility::makeInstance(Newsletter::class);
 
         $this->moduleTemplate->assign('newsletter', $newsletter);
@@ -58,17 +59,24 @@ class NewsletterController extends ActionController
         return $this->htmlResponse($this->moduleTemplate->render('Backend/Newsletter/New'));
     }
 
-    /**
-     * @throws TransportExceptionInterface
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
-     */
     public function sendAction(Newsletter $newsletter): ResponseInterface
     {
-        $subscriptions = $this->subscriptionRepository->findBy(['status' => SubscriptionStatusEnum::Active])->toArray();
+        $subscriptions = $this->subscriptionRepository->findBy([
+            'status' => SubscriptionStatusEnum::Active,
+        ])->toArray();
 
-        array_walk($subscriptions, static fn(Subscription $subscription) => $newsletter->addSubscription($subscription));
+        array_walk(
+            $subscriptions,
+            static fn(Subscription $subscription) => $newsletter->addSubscription($subscription),
+        );
 
-        $emailAddresses = array_map(static fn(Subscription $subscription): Address => new Address($subscription->email, $subscription->getName()), $subscriptions);
+        $emailAddresses = array_map(
+            static fn(Subscription $subscription): Address => new Address(
+                $subscription->email,
+                $subscription->getName(),
+            ),
+            $subscriptions,
+        );
         $this->newsletterRepository->add($newsletter);
         $fluidEmail = new FluidEmail();
         $fluidEmail
@@ -91,16 +99,15 @@ class NewsletterController extends ActionController
             '',
             'Email Versendet',
             ContextualFeedbackSeverity::OK,
-            true
+            true,
         );
         $flashMessageQueue->addMessage($flashMessage);
 
         return $this->redirect('new');
     }
 
-    protected function initializeModuleTemplate(
-        ServerRequestInterface $serverRequest,
-    ): ModuleTemplate {
+    protected function initializeModuleTemplate(ServerRequestInterface $serverRequest): ModuleTemplate
+    {
         return $this->moduleTemplateFactory->create($serverRequest);
     }
 }

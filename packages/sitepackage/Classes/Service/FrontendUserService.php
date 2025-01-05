@@ -8,30 +8,28 @@ use MensCircle\Sitepackage\Domain\Model\Participant;
 use MensCircle\Sitepackage\Domain\Repository\FrontendUserRepository;
 use Symfony\Component\Uid\Uuid;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
 readonly class FrontendUserService
 {
-    public function __construct(private FrontendUserRepository $frontendUserRepository, private PersistenceManager $persistenceManager) {}
+    public function __construct(
+        private FrontendUserRepository $frontendUserRepository,
+        private PersistenceManager $persistenceManager,
+    ) {}
 
-    /**
-     * @throws IllegalObjectTypeException
-     */
     public function mapToFrontendUser(Subscription|Participant $model): FrontendUser
     {
-        $frontendUser = $this->frontendUserRepository->findOneBy(['email' => $model->email]);
+        $frontendUser = $this->frontendUserRepository->findOneBy([
+            'email' => $model->email,
+        ]);
 
-        if (!$frontendUser instanceof FrontendUser) {
-            $frontendUser = $this->mapDataToFrontendUser($model);
+        if (! $frontendUser instanceof FrontendUser) {
+            return $this->mapDataToFrontendUser($model);
         }
 
         return $frontendUser;
     }
 
-    /**
-     * @throws IllegalObjectTypeException
-     */
     private function mapDataToFrontendUser(Subscription|Participant $data): FrontendUser
     {
         /** @var FrontendUser $frontendUser */

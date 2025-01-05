@@ -17,13 +17,10 @@ class TokenService
     {
         $this->configuration = Configuration::forSymmetricSigner(
             new Sha256(),
-            InMemory::plainText(getenv('JWT_SECRET'))
+            InMemory::plainText(getenv('JWT_SECRET')),
         );
     }
 
-    /**
-     * @throws \DateMalformedStringException
-     */
     public function generateToken(?array $claims = [], int $validForSeconds = 86400): string
     {
         $now = new \DateTimeImmutable();
@@ -36,19 +33,22 @@ class TokenService
             $builder->withClaim($key, $value);
         }
 
-        return $builder->getToken($this->configuration->signer(), $this->configuration->signingKey())->toString();
+        return $builder->getToken($this->configuration->signer(), $this->configuration->signingKey())
+            ->toString();
     }
 
     public function validateToken(string $token): bool
     {
         try {
-            $parsedToken = $this->configuration->parser()->parse($token);
+            $parsedToken = $this->configuration->parser()
+                ->parse($token);
             $constraints = [
                 new SignedWith($this->configuration->signer(), $this->configuration->signingKey()),
                 new LooseValidAt(SystemClock::fromUTC()),
             ];
 
-            return $this->configuration->validator()->validate($parsedToken, ...$constraints);
+            return $this->configuration->validator()
+                ->validate($parsedToken, ...$constraints);
         } catch (\Throwable) {
             return false;
         }
@@ -57,9 +57,10 @@ class TokenService
     public function parseToken(string $token): ?array
     {
         try {
-            $parsedToken = $this->configuration->parser()->parse($token);
+            $parsedToken = $this->configuration->parser()
+                ->parse($token);
 
-            if (!$this->validateToken($token)) {
+            if (! $this->validateToken($token)) {
                 return null;
             }
 
