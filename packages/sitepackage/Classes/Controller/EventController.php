@@ -8,6 +8,7 @@ use MensCircle\Sitepackage\Domain\Model\Event;
 use MensCircle\Sitepackage\Domain\Model\FrontendUser;
 use MensCircle\Sitepackage\Domain\Model\Participant;
 use MensCircle\Sitepackage\Domain\Repository\EventRepository;
+use MensCircle\Sitepackage\Domain\Repository\FrontendUserRepository;
 use MensCircle\Sitepackage\Domain\Repository\ParticipantRepository;
 use MensCircle\Sitepackage\PageTitle\EventPageTitleProvider;
 use MensCircle\Sitepackage\Service\EmailService;
@@ -16,8 +17,11 @@ use Psr\Http\Message\ResponseInterface;
 use Spatie\IcalendarGenerator\Components\Calendar;
 use Spatie\IcalendarGenerator\Components\Event as CalendarEvent;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Uid\Uuid;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
+use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Site\Entity\Site;
@@ -26,6 +30,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
+use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Service\ImageService;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -40,6 +45,8 @@ class EventController extends ActionController
         private readonly MetaTagManagerRegistry $metaTagManagerRegistry,
         private readonly EmailService $emailService,
         private readonly FrontendUserService $frontendUserService,
+        private readonly FrontendUserRepository $frontendUserRepository,
+        private readonly PersistenceManager $persistenceManager,
     ) {}
 
     /**
@@ -104,9 +111,15 @@ class EventController extends ActionController
      */
     public function registrationAction(Participant $participant): ResponseInterface
     {
-        $frontendUser = $this->frontendUserService->mapToFrontendUser($participant);
-        $participant->setFeUser($frontendUser);
+        $feUser = $this->frontendUserRepository->findOneBy(['email' => $participant->getEmail()]);
+        if ($feUser === null) {
+            $feUser = $this->mapParticipantToFeUser($participant);
+            $this->frontendUserRepository->add($feUser);
+        }
+
+        $participant->setFeUser($feUser);
         $this->participantRepository->add($participant);
+        $this->persistenceManager->persistAll();
 
         $this->addFlashMessage(
             LocalizationUtility::translate(
@@ -116,17 +129,31 @@ class EventController extends ActionController
             )
         );
 
-        $this->emailService->sendMail(
-            $participant->email,
-            'doubleOptIn',
-            ['participant' => $participant],
-            'Neue Anmeldung von ' . $participant->getName(),
-            $this->request
-        );
+        $this->sendMailToAdminOnRegistration($participant);
 
         $redirectUrl = $this->uriBuilder->reset()->setTargetPageUid(3)->setNoCache(true)->uriFor('detail', ['event' => $participant->event->getUid()]);
 
         return $this->redirectToUri($redirectUrl);
+    }
+
+    /**
+     * @throws TransportExceptionInterface
+     */
+    private function sendMailToAdminOnRegistration(Participant $participant): void
+    {
+        $fluidEmail = new FluidEmail();
+        $fluidEmail
+            ->to('hallo@mens-circle.de')
+            ->from(new Address('hallo@mens-circle.de', 'Men\'s Circle Website'))
+            ->subject('Neue Anmeldung von ' . $participant->getName())
+            ->format(FluidEmail::FORMAT_BOTH)
+            ->setTemplate('MailToAdminOnRegistration')
+            ->assign('participant', $participant);
+
+        $mailer = GeneralUtility::makeInstance(MailerInterface::class);
+        assert($mailer instanceof MailerInterface);
+
+        $mailer->send($fluidEmail);
     }
 
     /**
