@@ -25,7 +25,7 @@ return [
             'showitem' => implode(',', [
                 '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general',
                 'title, description, attendance_mode, image, call_url, slug, cancelled,--palette--;;date,--palette--;;address',
-                '--div--;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.tabs.registration',
+                '--div--;LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_event.registrations',
                 'registration',
                 '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access',
                 '--palette--;;hidden',
