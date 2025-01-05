@@ -8,7 +8,6 @@ use MensCircle\Sitepackage\Domain\Model\Event;
 use MensCircle\Sitepackage\Domain\Model\FrontendUser;
 use MensCircle\Sitepackage\Domain\Model\Participant;
 use MensCircle\Sitepackage\Domain\Repository\EventRepository;
-use MensCircle\Sitepackage\Domain\Repository\FrontendUserRepository;
 use MensCircle\Sitepackage\Domain\Repository\ParticipantRepository;
 use MensCircle\Sitepackage\PageTitle\EventPageTitleProvider;
 use MensCircle\Sitepackage\Service\EmailService;
@@ -17,11 +16,8 @@ use Psr\Http\Message\ResponseInterface;
 use Spatie\IcalendarGenerator\Components\Calendar;
 use Spatie\IcalendarGenerator\Components\Event as CalendarEvent;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Address;
 use Symfony\Component\Uid\Uuid;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
-use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Site\Entity\Site;
@@ -45,7 +41,6 @@ class EventController extends ActionController
         private readonly MetaTagManagerRegistry $metaTagManagerRegistry,
         private readonly EmailService $emailService,
         private readonly FrontendUserService $frontendUserService,
-        private readonly FrontendUserRepository $frontendUserRepository,
         private readonly PersistenceManager $persistenceManager,
     ) {}
 
@@ -111,13 +106,8 @@ class EventController extends ActionController
      */
     public function registrationAction(Participant $participant): ResponseInterface
     {
-        $feUser = $this->frontendUserRepository->findOneBy(['email' => $participant->getEmail()]);
-        if ($feUser === null) {
-            $feUser = $this->mapParticipantToFeUser($participant);
-            $this->frontendUserRepository->add($feUser);
-        }
-
-        $participant->setFeUser($feUser);
+        $frontendUser = $this->frontendUserService->mapToFrontendUser($participant);
+        $participant->setFeUser($frontendUser);
         $this->participantRepository->add($participant);
         $this->persistenceManager->persistAll();
 
@@ -129,31 +119,17 @@ class EventController extends ActionController
             )
         );
 
-        $this->sendMailToAdminOnRegistration($participant);
+        $this->emailService->sendMail(
+            $participant->email,
+            'doubleOptIn',
+            ['participant' => $participant],
+            'Neue Anmeldung von ' . $participant->getName(),
+            $this->request
+        );
 
         $redirectUrl = $this->uriBuilder->reset()->setTargetPageUid(3)->setNoCache(true)->uriFor('detail', ['event' => $participant->event->getUid()]);
 
         return $this->redirectToUri($redirectUrl);
-    }
-
-    /**
-     * @throws TransportExceptionInterface
-     */
-    private function sendMailToAdminOnRegistration(Participant $participant): void
-    {
-        $fluidEmail = new FluidEmail();
-        $fluidEmail
-            ->to('hallo@mens-circle.de')
-            ->from(new Address('hallo@mens-circle.de', 'Men\'s Circle Website'))
-            ->subject('Neue Anmeldung von ' . $participant->getName())
-            ->format(FluidEmail::FORMAT_BOTH)
-            ->setTemplate('MailToAdminOnRegistration')
-            ->assign('participant', $participant);
-
-        $mailer = GeneralUtility::makeInstance(MailerInterface::class);
-        assert($mailer instanceof MailerInterface);
-
-        $mailer->send($fluidEmail);
     }
 
     /**
