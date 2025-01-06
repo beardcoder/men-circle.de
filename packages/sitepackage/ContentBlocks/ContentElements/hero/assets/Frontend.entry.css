@@ -60,6 +60,7 @@
 
     span {
         font-family: var(--font-accent), serif;
+        font-style: italic;
     }
 }
 

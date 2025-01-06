@@ -1,4 +1,4 @@
-import "@fontsource-variable/playfair-display";
+import "@fontsource-variable/playfair-display/wght-italic.css";
 import '@fontsource-variable/jost';
 
 const animateElements = () => {
