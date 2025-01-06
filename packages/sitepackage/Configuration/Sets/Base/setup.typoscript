@@ -209,3 +209,15 @@ newsletterApi {
   page.headerData.1020 = TEXT
   page.headerData.1020.value = <style>.aspect-square {aspect-ratio: 16 / 4;min-height:300px;}</style>
 [END]
+
+
+config.recordLinks.event {
+  forceLink = 0
+
+  typolink {
+    # Detail page
+    parameter = 3
+    additionalParams.data = field:uid
+    additionalParams.wrap = &tx_sitepackage_eventdetail[controller]=Event&tx_sitepackage_eventdetail[action]=detail&tx_sitepackage_eventdetail[event]=|
+  }
+}
