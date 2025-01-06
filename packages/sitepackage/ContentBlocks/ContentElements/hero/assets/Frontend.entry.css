@@ -54,7 +54,7 @@
 .c-hero__header {
     color: #fff;
     font-size: clamp(2.5rem, -0.5718rem + 6vi, 5rem);
-    font-weight: 900;
+    font-weight: 600;
     line-height: 1;
     text-transform: uppercase;
 
