@@ -212,8 +212,6 @@ newsletterApi {
 
 
 config.recordLinks.event {
-  forceLink = 0
-
   typolink {
     # Detail page
     parameter = 3
