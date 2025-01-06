@@ -1,3 +1,4 @@
+import "@fontsource-variable/playfair-display";
 import '@fontsource-variable/jost';
 
 const animateElements = () => {

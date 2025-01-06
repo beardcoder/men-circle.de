@@ -57,6 +57,10 @@
     font-weight: 900;
     line-height: 1;
     text-transform: uppercase;
+
+    span {
+        font-family: var(--font-accent), serif;
+    }
 }
 
 .c-hero__body {

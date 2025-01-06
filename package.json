@@ -2,6 +2,7 @@
   "dependencies": {
     "@csstools/normalize.css": "^12.1.1",
     "@fontsource-variable/jost": "^5.1.2",
+    "@fontsource-variable/playfair-display": "^5.1.1",
     "@fontsource/nothing-you-could-do": "^5.1.1",
     "@types/leaflet": "^1.9.15",
     "aos": "3.0.0-beta.6",

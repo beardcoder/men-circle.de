@@ -9,6 +9,7 @@
     --bg-color--layer-1: rgb(0 0 0 / 5%);
     --bg-color--layer-2: rgb(0 0 0 / 10%);
     --font-header: 'Jost Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-accent: 'Playfair Display Variable', ui-serif, serif;
     --container-width: 1280px
 }
 
