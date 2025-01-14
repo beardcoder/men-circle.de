@@ -2,7 +2,7 @@
 <xliff version="1.2" xmlns:t3="http://typo3.org/schemas/xliff" xmlns="urn:oasis:names:tc:xliff:document:1.2">
 	<file source-language="en" target-language="de" original="" datatype="plaintext" date="2024-04-19T13:42:13+02:00">
 		<body>
-			<trans-unit id="title" resname="title">
+			<trans-unit id="title">
 				<source>Header</source>
 				<target>Überschrift</target>
 			</trans-unit>

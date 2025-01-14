@@ -3,7 +3,7 @@
 	<file datatype="plaintext" original="Labels.xlf" source-language="en" date="2024-08-22T18:55:03+00:00" product-name="menscircle/default">
 		<header/>
 		<body>
-			<trans-unit id="title" resname="title">
+			<trans-unit id="title">
 				<source>Default</source>
 			</trans-unit>
 		</body>

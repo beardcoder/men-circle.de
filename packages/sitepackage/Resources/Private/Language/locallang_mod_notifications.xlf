@@ -3,7 +3,7 @@
 	<file source-language="en" datatype="plaintext" original="EXT:sitepackage/Resources/Private/Language/Module/locallang_mod.xlf" date="2011-10-17T20:22:34Z" product-name="lang">
 		<header/>
 		<body>
-			<trans-unit id="mlang_tabs_tab" resname="mlang_tabs_tab">
+			<trans-unit id="mlang_tabs_tab">
 				<source>Event Notification</source>
 			</trans-unit>
 		</body>

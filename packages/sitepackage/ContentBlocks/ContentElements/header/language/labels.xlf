@@ -3,10 +3,10 @@
 	<file source-language="en" original="Labels.xlf" datatype="plaintext" product-name="mens-circle/header" date="2024-04-19T13:42:13+02:00">
 		<header></header>
 		<body>
-			<trans-unit id="description" resname="description">
+			<trans-unit id="description">
 				<source>Description for Content Element mens-circle/header</source>
 			</trans-unit>
-			<trans-unit id="title" resname="title">
+			<trans-unit id="title">
 				<source>Header</source>
 			</trans-unit>
 		</body>
