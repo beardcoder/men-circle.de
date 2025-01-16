@@ -13,3 +13,10 @@ lib.contentElement {
     100 = EXT:sitepackage/Resources/Private/Templates/Layouts/
   }
 }
+
+lib.renderContent = RECORDS
+lib.renderContent {
+  tables = tt_content
+  source.field = contentUid
+  dontCheckPid = 1
+}
