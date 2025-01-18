@@ -31,3 +31,13 @@
         background-color: color-mix(in srgb, var(--bg-color) 80%, white);
     }
 }
+
+[data-animate="fadeUp"] {
+    opacity: 0;
+    transform: translateY(100px);
+}
+
+[data-animate="fadeDown"] {
+    opacity: 0;
+    transform: translateY(-100px);
+}

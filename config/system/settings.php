@@ -1,5 +1,4 @@
 <?php
-
 return [
     'BE' => [
         'compressionLevel' => 9,
@@ -29,7 +28,9 @@ return [
     ],
     'EXTCONF' => [
         'lang' => [
-            'availableLanguages' => ['de'],
+            'availableLanguages' => [
+                'de',
+            ],
         ],
     ],
     'EXTENSIONS' => [
@@ -240,7 +241,9 @@ return [
             'security.frontend.enforceContentSecurityPolicy' => true,
         ],
         'sitename' => 'Men\'s Circle Niederbayern',
-        'systemMaintainers' => [1],
+        'systemMaintainers' => [
+            1,
+        ],
         'trustedHostsPattern' => '.*.*',
     ],
 ];

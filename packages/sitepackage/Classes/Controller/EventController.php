@@ -151,7 +151,6 @@ class EventController extends ActionController
             ->withBody($this->streamFactory->createStream($calendar->get()));
 
         throw new PropagateResponseException($response, 200);
-        return $this->htmlResponse();
     }
 
     protected function setRegistrationFieldValuesToArguments(): void
@@ -190,8 +189,8 @@ class EventController extends ActionController
 
     private function mapParticipantToFeUser(Participant $participant): FrontendUser
     {
+        /** @var FrontendUser $frontendUser */
         $frontendUser = GeneralUtility::makeInstance(FrontendUser::class);
-        \assert($frontendUser instanceof FrontendUser);
 
         $frontendUser->setEmail($participant->getEmail());
         $frontendUser->setFirstName($participant->getFirstName());
@@ -235,7 +234,7 @@ class EventController extends ActionController
         $upcomingEvent = $this->eventRepository->findNextUpcomingEvent();
         if ($upcomingEvent === null) {
             $site = $this->request->getAttribute('site');
-            \assert($site instanceof Site);
+            assert($site instanceof Site);
 
             return $this->redirectToUri($site->getBase(), 301);
         }

@@ -22,19 +22,21 @@
             width="200c"
         />
         <div class="c-event-item__content">
-            <h5 class="c-event-item__title">
+            <h5 class="c-event-item__title" data-animate="fadeUp" data-delay="0.2">
                 {event.title}
             </h5>
+            <div data-animate="fadeUp" data-delay="0.4">
             <time
                 class="c-event-item__time"
                 datetime="{event.startDate -> f:format.date(format: 'c')}"
             >
                 {event.startDate -> f:format.date(format: 'd.m.Y H:i')}
             </time>
+            </div>
 
             <ul class="c-event-item__list">
                 <f:if condition="{event.offline}">
-                    <li class="c-event-item__list-item">
+                    <li class="c-event-item__list-item" data-animate="fadeUp" data-delay="0.6">
                         <svg
                             aria-hidden="true"
                             class="c-event-item__icon"
@@ -49,7 +51,7 @@
                         {event.place} - {event.address}
                     </li>
                 </f:if>
-                <li class="c-event-item__list-item">
+                <li class="c-event-item__list-item" data-animate="fadeUp" data-delay="0.8">
                     <svg
                         aria-hidden="true"
                         class="c-event-item__icon"
@@ -63,7 +65,7 @@
                     </svg>
                     Markus Sommer
                 </li>
-                <li class="c-event-item__list-item">
+                <li class="c-event-item__list-item" data-animate="fadeUp" data-delay="1">
                     <svg
                         aria-hidden="true"
                         class="c-event-item__icon"
