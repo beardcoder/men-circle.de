@@ -9,8 +9,8 @@
 
 <section class="c-text">
     <div class="c-text__wrapper">
+        <f:render arguments="{layout: 2, header: data.header}" partial="Header"></f:render>
         <div class="c-text__inner">
-            <f:render arguments="{layout: 2, header: data.header}" partial="Header"></f:render>
             <div data-animate="fadeUp">
                 {data.bodytext -> f:format.html()}
             </div>

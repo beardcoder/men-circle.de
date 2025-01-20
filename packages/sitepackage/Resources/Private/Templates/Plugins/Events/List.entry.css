@@ -1,10 +1,10 @@
 .o-event-list {
     margin: 0 auto;
-    max-inline-size: 1280px;
+    max-inline-size: var(--container-width);
     padding: 2rem 1.5rem;
 
     @media (width >= 640px) {
-        padding-block: 6rem;
+        padding-block: clamp(6rem, 5.396vi + 4.604rem, 10rem);
     }
 }
 

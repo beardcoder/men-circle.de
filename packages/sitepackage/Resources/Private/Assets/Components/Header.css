@@ -27,7 +27,7 @@
 }
 
 .o-header__container--dark {
-    color: #ffffff;
+    color: #fff;
 }
 
 .o-header__container--light {
@@ -42,8 +42,8 @@
 }
 
 .o-header__logo-link {
-    color: inherit;
     align-items: center;
+    color: inherit;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -90,12 +90,12 @@
     display: flex;
     font-size: 1.25rem;
     font-weight: bold;
-    text-transform: uppercase;
     gap: 2rem;
+    text-transform: uppercase;
 }
 
 .o-header__nav a {
-    display: block;
     color: inherit;
+    display: block;
     text-decoration: none;
 }

@@ -14,14 +14,13 @@
     padding: 2rem 1.5rem;
 
     @media (width >= 640px) {
-        padding-block: 6rem;
+        padding-block: clamp(6rem, 5.396vi + 4.604rem, 10rem);
     }
 }
 
 
 .c-newsletter__inner {
     margin-inline: auto;
-    max-inline-size: 56rem;
 
     @media (width >= 640px) {
         font-size: 1.125rem;

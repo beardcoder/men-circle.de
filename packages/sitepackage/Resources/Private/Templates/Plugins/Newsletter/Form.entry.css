@@ -1,10 +1,9 @@
-
 .c-newsletter-form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    max-inline-size: 35rem;
     margin-inline: auto;
+    max-inline-size: 35rem;
 }
 
 .c-newsletter-form__grid {
