@@ -9,6 +9,7 @@ mutations:
     directive: 'img-src'
     sources:
       - 'data:'
+      - 'https://*.basemaps.cartocdn.com'
 
   - mode: extend
     directive: 'font-src'

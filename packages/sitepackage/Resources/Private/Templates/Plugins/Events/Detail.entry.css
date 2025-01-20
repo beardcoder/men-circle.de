@@ -87,14 +87,13 @@
 }
 
 .c-event-detail__image-container {
-    block-size: 500px;
+    block-size: 660px;
 }
 
 .c-event-detail__image {
     block-size: 100%;
     inline-size: 100%;
-    object-fit: cover;
-    object-position: center;
+    position: relative;
 }
 
 @media (width >= 1024px) {
@@ -143,6 +142,7 @@
     block-size: 100%;
     inline-size: 100%;
     object-fit: cover;
+    position: absolute;
 }
 
 .c-event-address {
