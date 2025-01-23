@@ -10,6 +10,7 @@ class MyModule {
   constructor() {
     let target = document.getElementById('message');
     const config = {
+      licenseKey: 'GPL',
       toolbar: [ 'bold', 'italic', '|', 'bulletedList', 'numberedList', '|', 'link', '|', 'sourceEditing' ],
       height: '400px'
     }
