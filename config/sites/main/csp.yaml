@@ -20,8 +20,13 @@ mutations:
     directive: 'script-src'
     sources:
       - "'unsafe-inline'"
+      - "'unsafe-eval'"
       - 'https://tracking.letsbenow.de/'
       - 'https://static.cloudflareinsights.com/'
+      - 'https://cdnjs.cloudflare.com'
+      - "'nonce'"
+      - "'unsafe-eval'"
+      - "'report-sample'"
 
   - mode: extend
     directive: 'connect-src'
