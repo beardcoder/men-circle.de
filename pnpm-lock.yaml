@@ -20,6 +20,9 @@ importers:
       '@fontsource/nothing-you-could-do':
         specifier: ^5.1.1
         version: 5.1.1
+      '@sentry/browser':
+        specifier: ^8.53.0
+        version: 8.53.0
       '@types/leaflet':
         specifier: ^1.9.16
         version: 1.9.16
@@ -400,6 +403,30 @@ packages:
     resolution: {integrity: sha512-ar80GhdZb4DgmW3myIS9nRFYcpJRSME8iqWgzH2i44u+IdrzmiXVxeFnExQ5v4JYUSpg94bWjevMG8JHf1Da5Q==}
     cpu: [x64]
     os: [win32]
+
+  '@sentry-internal/browser-utils@8.53.0':
+    resolution: {integrity: sha512-TmW/UFtVm1I9tCCtRIGO3chuCVFE3jxOoV/q1HYiB+5rYk3ljVFxkUoch83IVMLJWz2hZtagKDaFoPhq65KSyQ==}
+    engines: {node: '>=14.18'}
+
+  '@sentry-internal/feedback@8.53.0':
+    resolution: {integrity: sha512-ZGqcxExSlezdy6gPu7ztvfrrgeUYYxvl90SC5cnNSAduNH4uHGySmYVLmCpz3HLkkYRGX7Na21A7Gx6ZLXLygw==}
+    engines: {node: '>=14.18'}
+
+  '@sentry-internal/replay-canvas@8.53.0':
+    resolution: {integrity: sha512-DvXf+gutg31O+VyuMhPIPF8wbWLrtWsyn+6npE32SdThRKp4YJdXdWRtinI9Y5VN0AR89saX2zFNqzCySzFZ7Q==}
+    engines: {node: '>=14.18'}
+
+  '@sentry-internal/replay@8.53.0':
+    resolution: {integrity: sha512-aFhJYK2Ky1ByIXooYep13skE8yaHtEIfjA0cFY6UsU9nDR3woxv3CtXOH+le2y9lmZSbNNFcpFfAGEMgryM8zQ==}
+    engines: {node: '>=14.18'}
+
+  '@sentry/browser@8.53.0':
+    resolution: {integrity: sha512-EUipXIq5Os5w1o17AAMg5Uy9wC2ah7WYbaBZjAyaxdXF7sMWF1OWwUo7BZxbYF44nvxZ69j+pjBKwqicjiJhcQ==}
+    engines: {node: '>=14.18'}
+
+  '@sentry/core@8.53.0':
+    resolution: {integrity: sha512-u6p5JeGSgvcoDqVcPve2gcJuhks8EQXPELzeYKuW3rHpsUfkLG6X5RVtk32dKOqqL2qzvMelnknBN7tyIf5PiA==}
+    engines: {node: '>=14.18'}
 
   '@tsconfig/node10@1.0.11':
     resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}
@@ -1334,6 +1361,34 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.32.1':
     optional: true
+
+  '@sentry-internal/browser-utils@8.53.0':
+    dependencies:
+      '@sentry/core': 8.53.0
+
+  '@sentry-internal/feedback@8.53.0':
+    dependencies:
+      '@sentry/core': 8.53.0
+
+  '@sentry-internal/replay-canvas@8.53.0':
+    dependencies:
+      '@sentry-internal/replay': 8.53.0
+      '@sentry/core': 8.53.0
+
+  '@sentry-internal/replay@8.53.0':
+    dependencies:
+      '@sentry-internal/browser-utils': 8.53.0
+      '@sentry/core': 8.53.0
+
+  '@sentry/browser@8.53.0':
+    dependencies:
+      '@sentry-internal/browser-utils': 8.53.0
+      '@sentry-internal/feedback': 8.53.0
+      '@sentry-internal/replay': 8.53.0
+      '@sentry-internal/replay-canvas': 8.53.0
+      '@sentry/core': 8.53.0
+
+  '@sentry/core@8.53.0': {}
 
   '@tsconfig/node10@1.0.11': {}
 
