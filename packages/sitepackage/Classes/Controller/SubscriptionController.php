@@ -12,6 +12,7 @@ use MensCircle\Sitepackage\Service\TokenService;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 
 class SubscriptionController extends ActionController
 {
@@ -31,6 +32,10 @@ class SubscriptionController extends ActionController
         return $this->htmlResponse();
     }
 
+    /**
+     * @throws IllegalObjectTypeException
+     * @throws \JsonException
+     */
     public function subscribeAction(Subscription $subscription): ResponseInterface
     {
         $validationErrors = $this->validateSubscription($subscription);
@@ -43,9 +48,8 @@ class SubscriptionController extends ActionController
             ], JSON_THROW_ON_ERROR));
         }
 
-        if ($existingSubscription = $this->subscriptionRepository->findOneBy([
-            'email' => $subscription->email,
-        ]) !== null) {
+        $existingSubscription = $this->subscriptionRepository->findOneBy(['email' => $subscription->email]);
+        if ($existingSubscription instanceof Subscription) {
             $existingError = $this->handleExistingSubscription($existingSubscription);
 
             if ($existingError) {
@@ -93,7 +97,10 @@ class SubscriptionController extends ActionController
         return $this->htmlResponse();
     }
 
-    private function handleExistingSubscription(bool $existingSubscription): ?string
+    /**
+     * @throws IllegalObjectTypeException
+     */
+    private function handleExistingSubscription(Subscription $existingSubscription): ?string
     {
         if ($existingSubscription->status->is(SubscriptionStatusEnum::Active)) {
             return 'Die Email-Adresse ist bereits eingetragen.';
