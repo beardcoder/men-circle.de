@@ -13,6 +13,7 @@
     "lcobucci/jwt": "^5.4",
     "lochmueller/staticfilecache": "^15.0",
     "mens-circle/sitepackage": "@dev",
+    "networkteam/sentry-client": "^5.2",
     "praetorius/vite-asset-collector": "^1.11",
     "spatie/icalendar-generator": "^2.8.1",
     "spatie/schema-org": "^3.23",
