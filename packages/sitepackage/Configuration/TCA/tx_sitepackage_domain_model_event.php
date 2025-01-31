@@ -11,6 +11,8 @@ return [
         'label' => 'title',
         'label_alt' => 'start_date',
         'label_alt_force' => true,
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
         'default_sortby' => 'start_date',
         'typeicon_classes' => [
             'default' => 'tx-sitepackage-domain-model-event',

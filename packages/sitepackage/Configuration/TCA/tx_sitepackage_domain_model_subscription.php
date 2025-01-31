@@ -6,6 +6,8 @@ return [
     'ctrl' => [
         'title' => 'Newsletter Subscription',
         'label' => 'email',
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
         'searchFields' => 'email, first_name, last_name, status',
         'typeicon_classes' => [
             'default' => 'tx-sitepackage-domain-model-subscription',

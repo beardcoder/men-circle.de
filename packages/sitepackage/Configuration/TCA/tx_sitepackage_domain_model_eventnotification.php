@@ -4,6 +4,8 @@ return [
     'ctrl' => [
         'title' => 'LLL:EXT:sitepackage/Resources/Private/Language/locallang_db.xlf:tx_sitepackage_domain_model_eventnotification',
         'label' => 'subject',
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
         'typeicon_classes' => [
             'default' => 'tx-sitepackage-domain-model-eventnotification',
         ],

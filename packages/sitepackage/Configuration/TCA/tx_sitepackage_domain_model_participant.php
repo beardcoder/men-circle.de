@@ -7,6 +7,8 @@ return [
         'label_alt' => 'last_name',
         'label_alt_force' => true,
         'default_sortby' => 'first_name',
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
         'typeicon_classes' => [
             'default' => 'tx-sitepackage-domain-model-participant',
         ],
