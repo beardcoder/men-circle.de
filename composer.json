@@ -6,7 +6,6 @@
   "require": {
     "b13/container": "dev-master",
     "b13/picture": "dev-master",
-    "causal/cloudflare": "^2.6",
     "friendsoftypo3/content-blocks": "^1.0",
     "helhum/dotenv-connector": "^3.1",
     "helhum/typo3-console": "^8.2",
