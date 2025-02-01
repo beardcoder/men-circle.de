@@ -34,6 +34,7 @@ mutations:
     sources:
       - "'unsafe-inline'"
       - 'https://tracking.letsbenow.de/'
+      - 'https://bug.letsbenow.de/'
 
   - mode: set
     directive: 'style-src'
