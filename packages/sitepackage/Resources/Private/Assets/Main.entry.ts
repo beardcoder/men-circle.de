@@ -34,6 +34,8 @@ Sentry.init({
 
 document.addEventListener('DOMContentLoaded', () => {
     inView('[data-animate="fadeUp"]', ({ target }) => {
+        if(!target) return;
+
         const delay = (target as HTMLElement).dataset?.delay ?? 0;
         const duration = (target as HTMLElement).dataset?.duration ?? 0.5;
         animate(
@@ -47,6 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     inView('[data-animate="fadeDown"]', ({ target }) => {
+      if(!target) return;
+
       const delay = (target as HTMLElement).dataset?.delay ?? 0;
       const duration = (target as HTMLElement).dataset?.duration ?? 0.5;
         animate(
