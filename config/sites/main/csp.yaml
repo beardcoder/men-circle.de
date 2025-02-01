@@ -22,6 +22,7 @@ mutations:
       - "'unsafe-inline'"
       - "'unsafe-eval'"
       - 'https://tracking.letsbenow.de/'
+      - 'https://bug.letsbenow.de/'
       - 'https://static.cloudflareinsights.com/'
       - 'https://cdnjs.cloudflare.com'
       - "'nonce'"
