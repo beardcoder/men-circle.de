@@ -21,19 +21,19 @@ mutations:
     sources:
       - "'unsafe-inline'"
       - "'unsafe-eval'"
-      - 'https://tracking.letsbenow.de/'
-      - 'https://bug.letsbenow.de/'
-      - 'https://static.cloudflareinsights.com/'
+      - 'https://tracking.letsbenow.de'
+      - 'https://bug.letsbenow.de'
+      - 'https://static.cloudflareinsights.com'
       - 'https://cdnjs.cloudflare.com'
-      - "'unsafe-eval'"
       - "'report-sample'"
 
   - mode: extend
     directive: 'connect-src'
     sources:
       - "'unsafe-inline'"
-      - 'https://tracking.letsbenow.de/'
-      - 'https://bug.letsbenow.de/'
+      - "'unsafe-eval'"
+      - 'https://tracking.letsbenow.de'
+      - 'https://bug.letsbenow.de'
 
   - mode: set
     directive: 'style-src'

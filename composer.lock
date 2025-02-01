@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "71f62c4fe1aeea5d665ffe9d91b93e9d",
+    "content-hash": "ffeba98c12a72026692ba35ac37462f3",
     "packages": [
         {
             "name": "b13/container",
@@ -172,6 +172,82 @@
                 "source": "https://github.com/Bacon/BaconQrCode/tree/v3.0.1"
             },
             "time": "2024-10-01T13:55:55+00:00"
+        },
+        {
+            "name": "causal/cloudflare",
+            "version": "2.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xperseguers/t3ext-cloudflare.git",
+                "reference": "c88956200602ae26c531b6bd7ef54e827d7f868a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xperseguers/t3ext-cloudflare/zipball/c88956200602ae26c531b6bd7ef54e827d7f868a",
+                "reference": "c88956200602ae26c531b6bd7ef54e827d7f868a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">= 7.4.0, <= 8.4.99",
+                "typo3/cms-core": "^11 || ^12 || ^13"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "cloudflare"
+                },
+                "branch-alias": {
+                    "dev-master": "2.6.x-dev",
+                    "dev-typo3/v8": "2.3.x-dev",
+                    "dev-typo3/v11": "2.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Causal\\Cloudflare\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Xavier Perseguers",
+                    "email": "xavier@causal.ch",
+                    "homepage": "https://www.causal.ch",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The Cloudflare extension for TYPO3 is a powerful solution to integrate your website with Cloudflare, whose mission is to help build a better Internet. This extension provides a variety of features to ensure your website is running optimally on the Cloudflare platform, a global leader in web performance and security.",
+            "keywords": [
+                "TYPO3 CMS",
+                "cdn",
+                "cloud",
+                "cloudflare",
+                "content delivery network",
+                "performance",
+                "proxy",
+                "reverse proxy",
+                "ssl"
+            ],
+            "support": {
+                "docs": "https://docs.typo3.org/p/causal/cloudflare/main/en-us/",
+                "issues": "https://github.com/xperseguers/t3ext-cloudflare/issues",
+                "source": "https://github.com/xperseguers/t3ext-cloudflare"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/xperseguers/10",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/xperseguers",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-10-23T07:30:11+00:00"
         },
         {
             "name": "christian-riesen/base32",
