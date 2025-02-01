@@ -40,3 +40,9 @@ mutations:
     sources:
       - "'self'"
       - "'unsafe-inline'"
+
+  - mode: set
+    directive: 'worker-src'
+    sources:
+      - "'self'"
+      - "blob:"
