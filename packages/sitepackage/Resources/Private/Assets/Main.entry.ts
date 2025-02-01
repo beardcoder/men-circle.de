@@ -33,13 +33,12 @@ Sentry.init({
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    inView('[data-animate="fadeUp"]', ({ target }) => {
-        if(!target) return;
+    inView('[data-animate="fadeUp"]', (element) => {
 
-        const delay = (target as HTMLElement).dataset?.delay ?? 0;
-        const duration = (target as HTMLElement).dataset?.duration ?? 0.5;
+        const delay = (element as HTMLElement).dataset?.delay ?? 0;
+        const duration = (element as HTMLElement).dataset?.duration ?? 0.5;
         animate(
-            target,
+          element,
             { opacity: 1, y: [100, 0] },
             {
                 delay: delay as number,
@@ -48,13 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     });
 
-    inView('[data-animate="fadeDown"]', ({ target }) => {
-      if(!target) return;
-
-      const delay = (target as HTMLElement).dataset?.delay ?? 0;
-      const duration = (target as HTMLElement).dataset?.duration ?? 0.5;
+    inView('[data-animate="fadeDown"]', (element) => {
+      const delay = (element as HTMLElement).dataset?.delay ?? 0;
+      const duration = (element as HTMLElement).dataset?.duration ?? 0.5;
         animate(
-            target,
+          element,
             { opacity: 1, y: [-100, 0] },
             {
                 delay: delay as number,

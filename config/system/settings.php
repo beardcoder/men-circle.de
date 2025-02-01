@@ -72,6 +72,16 @@ return [
         'scheduler' => [
             'maxLifetime' => '1440',
         ],
+        'sentry_client' => [
+            'disableDatabaseLogging' => '0',
+            'dsn' => '',
+            'ignoreMessageRegex' => '',
+            'logWriterComponentIgnorelist' => '',
+            'release' => '',
+            'reportDatabaseConnectionErrors' => '0',
+            'reportUserInformation' => 'userid',
+            'showEventId' => '1',
+        ],
         'staticfilecache' => [
             'backendDisplayMode' => 'both',
             'boostMode' => '0',
