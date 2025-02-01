@@ -25,7 +25,6 @@ mutations:
       - 'https://bug.letsbenow.de/'
       - 'https://static.cloudflareinsights.com/'
       - 'https://cdnjs.cloudflare.com'
-      - "'nonce'"
       - "'unsafe-eval'"
       - "'report-sample'"
 
