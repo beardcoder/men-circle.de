@@ -87,10 +87,10 @@ class NewsletterController extends ActionController
             $subscriptions,
         );
         $this->newsletterRepository->add($newsletter);
-        $fluidEmail = new FluidEmail();
 
         $tokenService = GeneralUtility::makeInstance(UniversalSecureTokenService::class);
         foreach ($emailAddresses as $emailAddress) {
+            $fluidEmail = new FluidEmail();
             $fluidEmail
                 ->from(new Address('hallo@mens-circle.de', 'Men\'s Circle Website'))
                 ->subject($newsletter->subject)
