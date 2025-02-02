@@ -1,13 +1,22 @@
-websiteTitle: 'Men’s Circle Niederbayern'
 base: 'https://mens-circle.de/'
 baseVariants:
-  - base: 'https://mens-circle.ddev.site/'
+  -
+    base: 'https://mens-circle.ddev.site/'
     condition: 'applicationContext == "Development/Local"'
-  - base: 'https://mens-circle.ddev.site/'
+  -
+    base: 'https://mens-circle.ddev.site/'
     condition: 'applicationContext == "Production/Local"'
+dependencies:
+  - typo3/redirects
+  - b13/picture
+  - mens-circle/base
+  - mens-circle/container
+  - mens-circle/events
+  - mens-circle/newsletter
 disableStaticFileCache: false
 languages:
-  - title: Deutsch
+  -
+    title: Deutsch
     enabled: true
     languageId: 0
     base: /
@@ -16,20 +25,15 @@ languages:
     flag: de
 rootPageId: 1
 routes:
-  - route: robots.txt
+  -
+    route: robots.txt
     type: staticText
-    content: |
-      User-agent: *
-      Disallow:
-      Sitemap: https://mens-circle.de/sitemap.xml
-dependencies:
-  - typo3/redirects
-  - b13/picture
-  - mens-circle/base
-  - mens-circle/container
-  - mens-circle/events
-  - mens-circle/newsletter
-
+    content: "User-agent: *\r\nDisallow:\r\nSitemap: https://mens-circle.de/sitemap.xml\r\n"
+  -
+    route: newsletter/unsubscribe
+    type: uri
+    source: 't3://page?uid=1'
+websiteTitle: 'Men’s Circle Niederbayern'
 imports:
   -
-    resource: EXT:sitepackage/Configuration/Routes/Events.yaml
+    resource: 'EXT:sitepackage/Configuration/Routes/Events.yaml'

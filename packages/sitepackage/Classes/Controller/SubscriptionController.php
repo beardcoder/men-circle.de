@@ -9,10 +9,12 @@ use MensCircle\Sitepackage\Service\DoubleOptInService;
 use MensCircle\Sitepackage\Service\EmailService;
 use MensCircle\Sitepackage\Service\FrontendUserService;
 use MensCircle\Sitepackage\Service\TokenService;
+use MensCircle\Sitepackage\Service\UniversalSecureTokenService;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
+use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
 
 class SubscriptionController extends ActionController
 {
@@ -92,8 +94,21 @@ class SubscriptionController extends ActionController
         return $this->htmlResponse();
     }
 
+    /**
+     * @throws UnknownObjectException
+     * @throws IllegalObjectTypeException
+     * @throws \SodiumException
+     */
     public function unsubscribeAction(string $token): ResponseInterface
     {
+        $tokenService = GeneralUtility::makeInstance(UniversalSecureTokenService::class);
+        $email = $tokenService->decrypt($token)['email'];
+        $subscription = $this->subscriptionRepository->findOneBy(['email' => $email]);
+        if ($subscription instanceof Subscription) {
+            $subscription->optOutDate = new \DateTime();
+            $subscription->status = SubscriptionStatusEnum::Unsubscribed;
+            $this->subscriptionRepository->update($subscription);
+        }
         return $this->htmlResponse();
     }
 

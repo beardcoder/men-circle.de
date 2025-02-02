@@ -37,10 +37,10 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
         ucfirst($extensionKey),
         'Newsletter',
         [
-            SubscriptionController::class => ['form', 'subscribe', 'doubleOptIn'],
+            SubscriptionController::class => ['form', 'subscribe', 'doubleOptIn', 'unsubscribe'],
         ],
         [
-            SubscriptionController::class => ['subscribe', 'doubleOptIn'],
+            SubscriptionController::class => ['subscribe', 'doubleOptIn', 'unsubscribe'],
         ],
         ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
     );
