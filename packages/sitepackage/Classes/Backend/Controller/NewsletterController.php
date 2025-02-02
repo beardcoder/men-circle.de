@@ -101,9 +101,9 @@ class NewsletterController extends ActionController
                 ->assign('subject', $newsletter->subject)
                 ->assign('unsubscribeLink', $this->generateFrontendLinkInBackendContext($tokenService->encrypt(['email' => $emailAddress->getAddress()])))
                 ->assign('message', $newsletter->message);
+            $this->mailer->send($fluidEmail);
         }
 
-        $this->mailer->send($fluidEmail);
 
         $flashMessageService = GeneralUtility::makeInstance(FlashMessageService::class);
         $flashMessageQueue = $flashMessageService->getMessageQueueByIdentifier();
